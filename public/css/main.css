@@ -273,6 +273,7 @@ body {
     border-radius: var(--radius);
     object-fit: cover;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .card-img .favorite-icon i {
