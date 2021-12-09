@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin chi tiết</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/detail_body.css">
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="nav" id="navbar">
+        <div class="nav-container ">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-icon" href="">Nav Icon</a>
+                </li>
+            </ul>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-item-link hover-underline-animation" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item-link hover-underline-animation" href="">Product
+                        <i aria-hidden="true" class="fa fa-sort-desc"></i>
+                    </a>
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a class="menu-item-link " href="">Electrics
+                                <i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Smart Phone</a>
+                                </li>
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Laptop</a>
+                                </li>
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Ipad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-item-link " href="">Vehicles
+                                <i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Car</a>
+                                </li>
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Plane</a>
+                                </li>
+                                <li class="sub-menu-item">
+                                    <a class="sub-menu-item-link" href="">Motorbike</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-item-link" href="">Other
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item-link hover-underline-animation" href="">Contact</a>
+                </li>
+            </ul>
+            <ul class="search">
+                <li class="search-item">
+                    <form action="" class="search-box">
+                        <input class="search-box-text" name="search" placeholder="Search.." type="text">
+                    </form>
+                    <i class="fa fa-search search-btn"></i>
+                </li>
+            </ul>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-item-link" href="">
+                        <i aria-hidden="true" class="fa fa-user"></i>
+                        <i aria-hidden="true" class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="menu menu-account">
+                        <li class="menu-item">
+                            <a class="menu-item-link" href="">My Auction
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-item-link" href="">Account
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="seperate"></div>
+    </div>
+    <div class="body-content">
+        <div class="slider-container container-fluid row">
+            <div class="slider-button col-lg-2">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            </div>
+            <div class="col-lg-8">
+                <div class="slider-item main-image"></div>
+                <div class="slider-item sub-image-1"></div>
+                <div class="slider-item sub-image-2"></div>
+                <div class="slider-item sub-image-3"></div>
+            </div>
+            <div class="slider-button col-lg-2">
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+        <div class="product-information-container container-fluid row">
+            <div class="product-detail-heeader">
+                <h2 class="product-title">Product name</h2>
+                <ul class="seller-information account-information">
+                    <li>Seller: Seller name</li>
+                    <li>
+                        123
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </li>
+                    <li>
+                        9
+                        <i class="fa fa-thumbs-o-down"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <div class="product-detail-information">
+                    <div class="price-table">
+                        <ul class="current-higest-bidder highest-price">
+                            <li class="current-price-name">
+                                <h5 class="current">Current Price</h5>
+                            </li>
+                            <li class="current-price-value">
+                                <h3 class="price">US $700.00</h3>
+                            </li>
+                        </ul>
+                        <ul class="current-higest-bidder highest-bidder-information account-information">
+                            <li>
+                                <span class="details">Bidder: Bidder name</span>
+                            </li>
+                            <li>
+                                24
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </li>
+                            <li>
+                                2
+                                <i class="fa fa-thumbs-o-down"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="bid-container container">
+                    <div class="bid-type row">
+                        <button class="bid-button normal-bid-button col-lg-5" onclick="showBidForm(1)">Normal Bid</button>
+                        <button class="bid-button auto-bid-button col-lg-5" onclick="showBidForm(2)">Auto Bid</button>
+                    </div>
+                    <form class="bid-form normal-bid-form row">
+                        <div class="col-lg-1"></div>
+                        <input class="bid-input col-lg-6" type="text" placeholder="Enter your bid amount">
+                        <div class="col-lg-1"></div>
+                        <button class="submit-bid-button col-lg-3" type="submit">Submit Bid</button>
+                    </form>
+                    <form class="bid-form auto-bid-form row">
+                        <div class="col-lg-1"></div>
+                        <input class="bid-input col-lg-5" type="text" placeholder="Enter your maximum bid amount">
+                        <div class="col-lg-1"></div>
+                        <input class="bid-input col-lg-4" type="text" placeholder="Enter your bid step">
+                        <div class="col-lg-8"></div>
+                        <button class="submit-bid-button auto-submit-bid-button col-lg-3" type="submit">Submit Bid</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="auction-time-container">
+                    <h5 class="auction-time auction-start-time-text">This Auction Start on:</h5>
+                    <h3 class="auction-time auction-start-time-value">24-11-2021 19:23:00 </h3>
+                    <hr>
+                    <h5 class="auction-time auction-end-time-text">And Will Ends in:</h5>
+                    <p id="timer" class="auction-time auction-end-time-value"></p>
+                    <div class="auction-time auto-extends container-fluid">
+                        <i class="fa fa-question-circle-o"></i>
+                        This auction timming is auto extends
+                    </div>
+                </div>
+                <div class="buy-now-container row">
+                    <h1 class="buy-now-title col-lg-12">OR</h1>
+                    <button class="buy-now-button col-lg-6">Buy Now: $4,200</button>
+                </div>
+            </div>
+        </div>
+        <div class="description-container container-fluid">
+            <div class="description-header">
+                <h2>Description</h2>
+                <p>Both versions convey a topic; it’s pretty easy to predict that the paragraph will be about epidemiological evidence, but only the second version establishes an argumentative point and puts it in context. The paragraph doesn’t just describe the epidemiological evidence; it shows how epidemiology is telling the same story as etiology. Similarly, while Version A doesn’t relate to anything in particular, Version B immediately suggests that the prior paragraph addresses the biological pathway (i.e. etiology) of a disease and that the new paragraph will bolster the emerging hypothesis with a different kind of evidence. As a reader, it’s easy to keep track of how the paragraph about cells and chemicals and such relates to the paragraph about populations in different places.
+
+                    A last thing to note about key sentences is that academic readers expect them to be at the beginning of the paragraph. (The first sentence this paragraph is a good example of this in action!) This placement helps readers comprehend your argument. To see how, try this: find an academic piece (such as a textbook or scholarly article) that strikes you as well written and go through part of it reading just the first sentence of each paragraph. You should be able to easily follow the sequence of logic. When you’re writing for professors, it is especially effective to put your key sentences first because they usually convey your own original thinking. It’s a very good sign when your paragraphs are typically composed of a telling key sentence followed by evidence and explanation.
+                    
+                    Knowing this convention of academic writing can help you both read and write more effectively. When you’re reading a complicated academic piece for the first time, you might want to go through reading only the first sentence or two of each paragraph to get the overall outline of the argument. Then you can go back and read all of it with a clearer picture of how each of the details fit in. And when you’re writing, you may also find it useful to write the first sentence of each paragraph (instead of a topic-based outline) to map out a thorough argument before getting immersed in sentence-level wordsmithing.</p>
+            </div>
+        </div>
+        <div class="related-product-container">
+            <h2 class="related-product-title">Relate Product</h2>
+            <div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
+					<div class="card-product">
+						<div class="card-top">
+							<div class="card-img">
+								<a href="#"><img src="../images/10.png" alt="product"></a>
+								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
+								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
+							</div>
+							<div class="card-content">
+								<h6 class="title lh-base fs-4 m-2">
+									<a href="#0">Gold Ring</a>
+								</h6>
+							</div>
+						</div>
+						<div class="card-mid">
+							<div class="card-content green-text">
+								<div class="icon mx-2">
+									<i class="fa fa-gavel fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="current-bid">Current Bid</div>
+									<div class="amount text-dark">$876.00</div>
+								</div>
+							</div>
+							<div class="card-content red-text">
+								<div class="icon mx-2">
+									<i class="fa fa-shopping-bag fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="buy-now">Buy Now</div>
+									<div class="amount text-dark">$5,00.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-bottom">
+							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
+							<div class="total-bids">30 Bids</div>
+						</div>
+
+						<div class="card-btn-submit m-3 text-center">
+							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
+					<div class="card-product">
+						<div class="card-top">
+							<div class="card-img">
+								<a href="#"><img src="../images/10.png" alt="product"></a>
+								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
+								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
+							</div>
+							<div class="card-content">
+								<h6 class="title lh-base fs-4 m-2">
+									<a href="#0">Gold Ring</a>
+								</h6>
+							</div>
+						</div>
+						<div class="card-mid">
+							<div class="card-content green-text">
+								<div class="icon mx-2">
+									<i class="fa fa-gavel fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="current-bid">Current Bid</div>
+									<div class="amount text-dark">$876.00</div>
+								</div>
+							</div>
+							<div class="card-content red-text">
+								<div class="icon mx-2">
+									<i class="fa fa-shopping-bag fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="buy-now">Buy Now</div>
+									<div class="amount text-dark">$5,00.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-bottom">
+							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
+							<div class="total-bids">30 Bids</div>
+						</div>
+
+						<div class="card-btn-submit m-3 text-center">
+							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
+					<div class="card-product">
+						<div class="card-top">
+							<div class="card-img">
+								<a href="#"><img src="../images/10.png" alt="product"></a>
+								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
+								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
+							</div>
+							<div class="card-content">
+								<h6 class="title lh-base fs-4 m-2">
+									<a href="#0">Gold Ring</a>
+								</h6>
+							</div>
+						</div>
+						<div class="card-mid">
+							<div class="card-content green-text">
+								<div class="icon mx-2">
+									<i class="fa fa-gavel fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="current-bid">Current Bid</div>
+									<div class="amount text-dark">$876.00</div>
+								</div>
+							</div>
+							<div class="card-content red-text">
+								<div class="icon mx-2">
+									<i class="fa fa-shopping-bag fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="buy-now">Buy Now</div>
+									<div class="amount text-dark">$5,00.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-bottom">
+							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
+							<div class="total-bids">30 Bids</div>
+						</div>
+
+						<div class="card-btn-submit m-3 text-center">
+							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
+					<div class="card-product">
+						<div class="card-top">
+							<div class="card-img">
+								<a href="#"><img src="../images/10.png" alt="product"></a>
+								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
+								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
+							</div>
+							<div class="card-content">
+								<h6 class="title lh-base fs-4 m-2">
+									<a href="#0">Gold Ring</a>
+								</h6>
+							</div>
+						</div>
+						<div class="card-mid">
+							<div class="card-content green-text">
+								<div class="icon mx-2">
+									<i class="fa fa-gavel fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="current-bid">Current Bid</div>
+									<div class="amount text-dark">$876.00</div>
+								</div>
+							</div>
+							<div class="card-content red-text">
+								<div class="icon mx-2">
+									<i class="fa fa-shopping-bag fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="buy-now">Buy Now</div>
+									<div class="amount text-dark">$5,00.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-bottom">
+							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
+							<div class="total-bids">30 Bids</div>
+						</div>
+
+						<div class="card-btn-submit m-3 text-center">
+							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
+						</div>
+					</div>
+				</div>
+<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
+					<div class="card-product">
+						<div class="card-top">
+							<div class="card-img">
+								<a href="#"><img src="../images/10.png" alt="product"></a>
+								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
+								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
+							</div>
+							<div class="card-content">
+								<h6 class="title lh-base fs-4 m-2">
+									<a href="#0">Gold Ring</a>
+								</h6>
+							</div>
+						</div>
+						<div class="card-mid">
+							<div class="card-content green-text">
+								<div class="icon mx-2">
+									<i class="fa fa-gavel fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="current-bid">Current Bid</div>
+									<div class="amount text-dark">$876.00</div>
+								</div>
+							</div>
+							<div class="card-content red-text">
+								<div class="icon mx-2">
+									<i class="fa fa-shopping-bag fa-2x"></i>
+								</div>
+								<div class="card-price-content">
+									<div class="buy-now">Buy Now</div>
+									<div class="amount text-dark">$5,00.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-bottom">
+							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
+							<div class="total-bids">30 Bids</div>
+						</div>
+
+						<div class="card-btn-submit m-3 text-center">
+							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+<script src="../js/main.js"></script>
+<script src="../js/detail_body.js"></script>
+</body>
+</html>
