@@ -1,0 +1,135 @@
+#navbar {
+    z-index: 3;
+}
+
+#post-product-form {
+    background: url(../images/coin-bg.png) top center / cover no-repeat;
+}
+
+.form-container {
+    background-image: linear-gradient(147deg, #99d6ea 0%, #eec7fc 100%);
+    border-radius: 10px; 
+}
+
+.form-header {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form-content ul {
+    list-style-type: none;
+}
+
+.text-section {
+    padding-top: 15px;
+}
+
+.text-section-item {
+    padding: 2%;
+}
+
+.text-field {
+    padding: 0px 10px;
+    height: 36px;
+    border-width: thin;
+    border-radius: 5px;
+}
+
+.text-field.title {
+    width: 100%;
+}
+
+.product-dropdown, .bid-price input {
+    width: 49%;
+}
+
+#category, #startPrice {
+    margin-right: 5px;
+}
+
+.checkbox {
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-right: 5px;
+}
+
+.checkbox:hover {
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-size: 20px;
+}
+
+#endTime {
+    cursor: pointer;
+}
+
+#endDate {
+    border: none;
+}
+
+.image-section {
+    padding: 2%;
+}
+
+#upload {
+    opacity: 0;
+}
+
+#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.image-area {
+    border: 2px dashed rgba(140, 73, 146, 0.7);
+    padding: 1rem;
+    position: relative;
+}
+
+.image-area::before {
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}
+
+.image-area img {
+    z-index: 2;
+    position: relative;
+}
+
+footer {
+    height: 100%;
+}
+
+.submit-secsion {
+    text-align: center;
+}
+
+#submit-btt {
+    border: none;
+    border-radius: 50px;
+    margin-left: 5.5%;
+    margin-bottom: 2%;
+    padding: 10px 50px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
+    box-shadow: -1.04px 4.891px 20px 0px rgb(69 49 183 / 50%);
+}
+
+.footer {
+    height: 100px;
+    width: 100%;
+    margin-top: 100px;
+}
