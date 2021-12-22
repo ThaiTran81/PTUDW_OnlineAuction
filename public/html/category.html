@@ -32,7 +32,24 @@
                         Filter By Price
                     </div>
                     <div class="filter-content justify-content-center">
-                        <!-- <input type="range" name="range" step="50000" min="100000" max="1000000" value="" onchange="rangePrimary.value=value"> -->
+                        <div class="price-input">
+                            <div class="field">
+                              <span>Min</span>
+                              <input type="number" class="input-min" value="2500">
+                            </div>
+                            <div class="separator">-</div>
+                            <div class="field">
+                              <span>Max</span>
+                              <input type="number" class="input-max" value="7500">
+                            </div>
+                          </div>
+                          <div class="slider">
+                            <div class="progress"></div>
+                          </div>
+                          <div class="range-input">
+                            <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                            <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                          </div>
                     </div>
                 </div>
                 <div class="filter">
@@ -162,39 +179,7 @@
                             <div class="row justify-content-center">
                                 <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
                             </div>
-                        </div>
-                        <div class="product">
-                            <a href="" class="product-item-link">
-                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                <h5>Product's Name</h5>
-                            </a>
-                            <div class="product-bid-area">
-                                <div class="bid">
-                                    <div class="product-icon-area">
-                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="product-text-area">
-                                        <p class="green-text">Current Bid</p>
-                                        <p>100$</p>
-                                    </div>
-                                </div>
-                                <div class="buy">
-                                    <div class="product-icon-area">
-                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="product-text-area">
-                                        <p class="text-danger">Buy Now</p>
-                                        <p>100$</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-time-area">
-
-                            </div>
-                            <div class="row justify-content-center">
-                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
-                            </div>
-                        </div>
+                        </div>                      
                     </div>
                     <div class="col-md-4">
                         <div class="product">
@@ -328,6 +313,8 @@
         </div>
     </div>
     <link rel="stylesheet" href="../css/category.css">
+    <script src="../js/category.js"></script>
+
 </body>
 
 </html>
