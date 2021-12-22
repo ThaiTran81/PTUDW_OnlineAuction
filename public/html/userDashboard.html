@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="userdashboard">
+        <div class="row">
+            <div class="col-sm-8 col-md-4">
+                <div class="widget">
+                    <div class="user">
+                        <div class="user-thumb">
+                            <img src="http://pixner.net/sbidu/main/assets/images/dashboard/user.png" alt="">
+                        </div>
+                        <div class="user-info">
+                            <p class="user-name">Huynh Tuan Dat</p>
+                            <p class="user-email">tuandat290601@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="controller">
+                        <ul id ="userdb" class="control-list">
+                            <li>
+                                <a id ="dashboard-btn"  href="" class="active">
+                                    <ion-icon name="grid-outline" class="db-icon"></ion-icon>
+                                    dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a id ="profile-btn" href="" class="">
+                                    <ion-icon name="settings-outline" class="db-icon"></ion-icon>
+                                    personal profile
+                                </a>
+                            </li>
+                            <li>
+                                <a id ="mybid-btn" href="" class="">
+                                    <ion-icon name="hammer-outline" class="db-icon"></ion-icon>
+                                    my bids
+                                </a>
+                            </li>
+                            <li>
+                                <a id ="winningbid-btn" href="" class="">
+                                    <ion-icon name="trophy-outline" class="db-icon"></ion-icon>
+                                    winning bids
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a id ="alert-btn" href="" class="">
+                                    <ion-icon name="notifications-outline" class="db-icon"></ion-icon>
+                                    my alerts
+                                </a>
+                            </li> -->
+                            <li>
+                                <a id ="myfavorite-btn" href="" class="">
+                                    <ion-icon name="star-outline" class="db-icon"></ion-icon>
+                                    my favorites
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="" class="">
+                                    <ion-icon name="link-outline" class="db-icon"></ion-icon>
+                                    referrals
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="dbcontent" class="col-sm-8 col-md-8">
+                <div id = "dashboard" class="db show">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <p>My Activity</p>
+                        </div>
+                        <div class="widget-content">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="user-activity">
+                                        <div class="activity-thumb">
+                                            <img src="http://pixner.net/sbidu/main/assets/images/dashboard/01.png"
+                                                alt="">
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-quantity">
+                                                80
+                                            </div>
+                                            <div class="activity-title">
+                                                Active Bids
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="user-activity">
+                                        <div class="activity-thumb">
+                                            <img src="http://pixner.net/sbidu/main/assets/images/dashboard/02.png"
+                                                alt="">
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-quantity">
+                                                80
+                                            </div>
+                                            <div class="activity-title">
+                                                Items Won
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="user-activity">
+                                        <div class="activity-thumb">
+                                            <img src="http://pixner.net/sbidu/main/assets/images/dashboard/03.png"
+                                                alt="">
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-quantity">
+                                                80
+                                            </div>
+                                            <div class="activity-title">
+                                                Favorites
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title">
+                            Purchasing
+                            <ul class="nav-purchase">
+                                <li id="current" class="current-purchase">
+                                    <a href="">
+                                        Current
+                                    </a>
+                                </li>
+                                <li id="current" class="">
+                                    <a href="">
+                                        Pending
+                                    </a>
+                                </li>
+                                <li id="current" class="">
+                                    <a href="">
+                                        History
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget-content">
+                            <div id="current-tab" class="tab-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Bid Price</th>
+                                            <th>Highest Bid</th>
+                                            <th>Lowest Bid</th>
+                                            <th>Expires</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-content show">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Bid Price</th>
+                                            <th>Highest Bid</th>
+                                            <th>Lowest Bid</th>
+                                            <th>Expires</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Bid Price</th>
+                                            <th>Highest Bid</th>
+                                            <th>Lowest Bid</th>
+                                            <th>Expires</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mark</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Mark</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id = "profile" class="db">
+                    <div class="widget">
+                        <div class="widget-title">
+                            Personal Details
+                        </div>
+                        <span class="edit">
+                            <ion-icon name="create-outline"></ion-icon>
+                            Edit
+                        </span>
+                        <div class="widget-content">
+                            <ul class="detail">
+                                <li>
+                                    <div class="detail-name">
+                                        Name
+                                    </div>
+                                    <div class="detail-value">
+                                        Huynh Tuan Dat
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Date of Birth
+                                    </div>
+                                    <div class="detail-value">
+                                        29/06/2001
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Address
+                                    </div>
+                                    <div class="detail-value">
+                                        123 Nguyen Van Cu, TP.HCM
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title">
+                            Account Settings
+                        </div>
+                        <span class="edit">
+                            <ion-icon name="create-outline"></ion-icon>
+                            Edit
+                        </span>
+                        <div class="widget-content">
+                            <ul class="detail">
+                                <li>
+                                    <div class="detail-name">
+                                        Language
+                                    </div>
+                                    <div class="detail-value">
+                                        English (United States)
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Time zone
+                                    </div>
+                                    <div class="detail-value">
+                                        (GMT-06:00) Central America
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Status
+                                    </div>
+                                    <div class="detail-value">
+                                        Active
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Email Address
+                                    </div>
+                                    <div class="detail-value">
+                                        tuandat290601@gmail.com
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Phone Number
+                                    </div>
+                                    <div class="detail-value">
+                                        070550****
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="detail-name">
+                                        Password
+                                    </div>
+                                    <div class="detail-value">
+                                        *******
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id = "mybid" class="db">
+                    <div class="widget">
+                        <div class="widget-title">
+                            My Bids
+                        </div>
+                        <div class="control-btn">
+                            <a href="">
+                                <button id = "upcoming-btn" class="btn chosen">Upcoming</button>
+                            </a>
+                            <a href="">
+                                <button  id = "past-btn" class="btn">Past</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div id = "upcoming-list" class="widget-list list-show">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id = "past-list" class="widget-list">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id = "winningbid" class="db">
+                    <div class="widget">
+                        <div class="widget-title">
+                            Winning Bid
+                        </div>
+                        <div class="list-header d-flex justify-content-between">
+                            <div class="sort">
+                                <div class="sort-title">
+                                    Sort by:
+                                </div>
+                                <select name="sort-by" class="select-bar" id="">
+                                    <option value="all">All</option>
+                                    <option value="name">Name</option>
+                                    <option value="date">Date</option>
+                                </select>
+                            </div>
+                            <form action="" class="search">
+                                <input type="text" placeholder="Item Name">
+                                <button type="submit">
+                                    <ion-icon name="search-outline"></ion-icon>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-list list-show">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id = "myfavorite" class="db">
+                    <div class="widget">
+                        <div class="widget-title">
+                            My Favorites
+                        </div>
+                        <div class="list-header d-flex justify-content-between">
+                            <div class="sort">
+                                <div class="sort-title">
+                                    Sort by:
+                                </div>
+                                <select name="sort-by" class="select-bar" id="">
+                                    <option value="all">All</option>
+                                    <option value="name">Name</option>
+                                    <option value="date">Date</option>
+                                </select>
+                            </div>
+                            <form action="" class="search">
+                                <input type="text" placeholder="Item Name">
+                                <button type="submit">
+                                    <ion-icon name="search-outline"></ion-icon>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-list list-show">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product">
+                                    <a href="" class="product-item-link">
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                        <h5>Product's Name</h5>
+                                    </a>
+                                    <div class="product-bid-area">
+                                        <div class="bid">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="green-text">Current Bid</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <div class="product-icon-area">
+                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="product-text-area">
+                                                <p class="text-danger">Buy Now</p>
+                                                <p>100$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-time-area">
+        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/userDashboard.css">
+    <script  src="../js/userDashboard.js"></script>
+
+</body>
+
+</html>

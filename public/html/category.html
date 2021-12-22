@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="category">
+        <div class="row">
+            <div class="category-fiter col-md-3">
+                <div class="filter">
+                    <div class="filter-title">
+                        Filter By Price
+                    </div>
+                    <div class="filter-content justify-content-center">
+                        <!-- <input type="range" name="range" step="50000" min="100000" max="1000000" value="" onchange="rangePrimary.value=value"> -->
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="filter-title">
+                        Auction Type
+                    </div>
+                    <div class="filter-content">
+                        <ul class="checklist">
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="type1">
+                                    <label class="form-check-label" for="type1">
+                                        Electircs
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="type2">
+                                    <label class="form-check-label" for="type2">
+                                        Vehicles
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="type3">
+                                    <label class="form-check-label" for="type3">
+                                        Furnitures
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="filter-title">
+                        Ending Within
+                    </div>
+                    <div class="filter-content">
+                        <ul class="checklist">
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="time1">
+                                    <label class="form-check-label" for="time1">
+                                        1 Day
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="time1">
+                                    <label class="form-check-label" for="time1">
+                                        1 Week
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="time2">
+                                    <label class="form-check-label" for="time2">
+                                        1 Month
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="time3">
+                                    <label class="form-check-label" for="time3">
+                                        3 Month
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category-content col-md-9">
+                <div class="list-header d-flex justify-content-between mb-4">
+                    <div class="sort">
+                        <div class="sort-title">
+                            Sort by:
+                        </div>
+                        <select name="sort-by" class="select-bar" id="">
+                            <option value="all">All</option>
+                            <option value="name">Name</option>
+                            <option value="date">Date</option>
+                        </select>
+                    </div>
+                    <form action="" class="search">
+                        <input type="text" placeholder="Item Name">
+                        <button type="submit">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </form>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="product">
+                            <a href="" class="product-item-link">
+                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                <h5>Product's Name</h5>
+                            </a>
+                            <div class="product-bid-area">
+                                <div class="bid">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="green-text">Current Bid</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                                <div class="buy">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="text-danger">Buy Now</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-time-area">
+
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <a href="" class="product-item-link">
+                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                <h5>Product's Name</h5>
+                            </a>
+                            <div class="product-bid-area">
+                                <div class="bid">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="green-text">Current Bid</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                                <div class="buy">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="text-danger">Buy Now</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-time-area">
+
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product">
+                            <a href="" class="product-item-link">
+                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                <h5>Product's Name</h5>
+                            </a>
+                            <div class="product-bid-area">
+                                <div class="bid">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="green-text">Current Bid</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                                <div class="buy">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="text-danger">Buy Now</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-time-area">
+
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product">
+                            <a href="" class="product-item-link">
+                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                <h5>Product's Name</h5>
+                            </a>
+                            <div class="product-bid-area">
+                                <div class="bid">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="green-text">Current Bid</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                                <div class="buy">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="text-danger">Buy Now</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-time-area">
+
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product">
+                            <a href="" class="product-item-link">
+                                <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
+                                <h5>Product's Name</h5>
+                            </a>
+                            <div class="product-bid-area">
+                                <div class="bid">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-gavel green-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="green-text">Current Bid</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                                <div class="buy">
+                                    <div class="product-icon-area">
+                                        <i class="fa fa-money text-danger" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="product-text-area">
+                                        <p class="text-danger">Buy Now</p>
+                                        <p>100$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-time-area">
+
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="pagination justify-content-center">
+                    <li>
+                        <a href="" class="">
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="">
+                            1
+                        </a>
+                    </li><li>
+                        <a href="" class="">
+                            2
+                        </a>
+                    </li><li>
+                        <a href="" class="">
+                            3
+                        </a>
+                    </li><li>
+                        <a href="" class="">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="../css/category.css">
+</body>
+
+</html>
