@@ -1,0 +1,241 @@
+*, ::after, ::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+ion-icon {
+    color: red;
+}
+
+
+table, thead, th, tr, td {
+    border: none !important;
+}
+
+div, p, h1, h2, h3, h4, h5 {
+    color: #37406f ;
+    margin: 0;
+    padding: 0;
+}
+
+.userdashboard {
+    width: 90%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.widget {
+    width: 100%;
+    box-shadow: 0px 9px 20px 0px rgb(22 26 57/36%);
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.user {
+    text-align: center;
+}
+
+.user-name {
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.controller {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.control-list {
+    list-style: none;
+}
+
+.db-icon {
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.control-list li {
+    margin-bottom: 3px;
+}
+
+.control-list li a {
+    display: block;
+    width: 100%;
+    text-transform: capitalize;
+    color: #37406f;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+
+.control-list li a:hover {
+    background-color: #f7f6fc;
+}
+
+.active {
+    background-color: #f7f6fc;
+}
+
+.db {
+    display: none;
+}
+
+
+.widget-title {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.widget-content {
+    padding: 10px 0;
+    margin: 0 20px;
+    border-top: 1px solid #ccc;
+}
+
+.user-activity {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #f7f6fc;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.activity-thumb {
+    height: 80px;
+    margin-bottom: 8px;
+}
+
+.activity-content {
+
+}
+
+.activity-quantity {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.activity-title {
+    font-size: 24px;
+}
+
+.nav-purchase {
+    list-style: none;
+    display: flex;
+}
+
+.nav-purchase li {
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.nav-purchase li:hover {
+    cursor: pointer;;
+    border-bottom: 4px solid red;
+}
+
+.nav-purchase li a {
+    color: #37406f;
+    text-decoration: none;
+}
+
+.current-purchase {
+    border-bottom: 4px solid red;
+}
+
+.table-content {
+    width: 100%;
+}
+
+.tab-content {
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
+.list-show {
+    display: block !important;
+}
+
+.edit {
+    position: absolute;
+    right: 30px;
+    top: 30px
+}
+
+.edit:hover {
+    cursor: pointer;
+}
+
+.detail {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.detail li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.detail-name {
+    position: relative;
+    width: 150px;
+}
+
+.detail-name::after {
+    content: ":";
+    position: absolute;
+    margin-right: 20px;
+    right: 0;
+}
+
+.control-btn {
+    margin-left: 20px;
+}
+
+.btn {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #f72585, #b5179e,#7209b7 );
+}
+
+.chosen {
+    background-image: linear-gradient(45deg, #f94144, #f9844a,#f9c74f );
+}
+
+.widget-list {
+    display: none;
+}
+
+.list-header{
+    box-shadow: unset;
+}
+
+
+
+
+
+
+
+
+
+
+

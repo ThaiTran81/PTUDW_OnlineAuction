@@ -1,8 +1,105 @@
-#navbar {
-    z-index: 3;
+/* Dashboard sidebar css */
+#dashboard {
+    padding: 15px 0;
+    margin-top: 50px;
+    background: url(../images/wave.png) top center / cover no-repeat;
 }
 
+#side-bar {
+    height: 24rem;
+    padding: 20px 10px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 6px 18px 0px rgb(16 5 54 / 17%);
+}
+
+.sidebar-header {
+    margin-bottom: 50px;
+}
+
+.personal-email {
+    color:rgba(0,0,0,.5);
+}
+
+.sidebar-btt {
+    border: 2px;
+    border-radius: 50px;
+    width: 100%;
+    padding: 10px 0px;
+    margin: 4px 0px;
+    color: #102b3f;
+    font-weight: 500;
+    font-size: 20px;
+    background: -webkit-linear-gradient(33deg, #f1d6ff 0%, #c0fdff 100%);
+}
+
+.sidebar-btt:hover {
+    color: #274c77;
+    box-shadow: -1.04px 4.891px 20px 0px rgb(69 49 183 / 20%);
+}
+
+/* Dashboard content css */
+
+.side-bar-content {
+    padding: 20px 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 6px 18px 0px rgb(16 5 54 / 17%);
+}
+
+.side-bar-content.current-auction-content {
+    display: none;
+}
+
+.sb-title{
+    font-size: 24px;
+    color: #000;
+    text-decoration: none;
+}
+
+.auction-product-item {
+    margin-top: 5%;
+    margin-left: 5.5%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(13, 21, 75, 0.15);
+}
+
+.pro-card-title {
+    margin-bottom: 10%;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.pro-card-title:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+.product-price {
+    margin-top: 28px !important;
+    display: flex;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    padding: 5px;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.evaluate-btn {
+    margin-right: 10%;
+}
+
+.product-pagination {
+    margin: 4%;
+}
+
+/* Post product form css */
+
 #post-product-form {
+    margin-top: 40px;
     background: url(../images/coin-bg.png) top center / cover no-repeat;
 }
 
@@ -107,10 +204,6 @@
     position: relative;
 }
 
-footer {
-    height: 100%;
-}
-
 .submit-secsion {
     text-align: center;
 }
@@ -128,6 +221,7 @@ footer {
     box-shadow: -1.04px 4.891px 20px 0px rgb(69 49 183 / 50%);
 }
 
+/* Footer */
 .footer {
     height: 100px;
     width: 100%;
