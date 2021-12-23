@@ -371,7 +371,6 @@ a:hover{
 .card-mid .card-content .icon {
     align-self: center;
     margin-right: 5px;
-
 }
 
 .green-text {
@@ -380,6 +379,10 @@ a:hover{
 
 .red-text {
     color: #f72585;
+}
+
+.blue-text {
+    color: #48caea;
 }
 
 .card-bottom {

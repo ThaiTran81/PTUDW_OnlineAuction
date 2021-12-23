@@ -99,6 +99,22 @@
         </div>
         <div id="seperate"></div>
     </div>
+
+    <!-- Start body intro -->
+    <div class="body-intro">
+        <div class="intro-bg">
+            <img src="../images/intro.png" class = "intro-img" alt="">
+        </div>
+        <div class="intro-text">
+            <h2>Need to liquidate some stuff</h2>
+            <p>START AN AUCTION NOW</p>
+            <h5>Online Auction is where everyone goes to shop, sell,and give, while discovering variety and affordability.</h5>
+            <!-- <button type="button" class="btn btn-warning start-btn">Get start</button> -->
+        </div>
+    </div>
+    <!-- End body intro -->
+
+    <!-- Start main body -->
     <div class="body-content">
         <div class="slider-container container-fluid row">
             <div class="slider-button col-lg-2">
@@ -114,9 +130,14 @@
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
         </div>
+
+        <!-- Product detail information start -->
         <div class="product-information-container container-fluid row">
             <div class="product-detail-heeader">
-                <h2 class="product-title">Product name</h2>
+                <div class="product-detail-title">
+                    <h2 class="product-title">Product name</h2>
+                    <span class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></span>
+                </div>                
                 <ul class="seller-information account-information">
                     <li>Seller: Seller name</li>
                     <li>
@@ -156,24 +177,25 @@
                     </div>
                 </div>
                 <hr>
-                <div class="bid-container container">
-                    <div class="bid-type row">
+                <div class="bid-container">
+                    <!-- <div class="bid-type row">
                         <button class="bid-button normal-bid-button col-lg-5" onclick="showBidForm(1)">Normal Bid</button>
                         <button class="bid-button auto-bid-button col-lg-5" onclick="showBidForm(2)">Auto Bid</button>
-                    </div>
-                    <form class="bid-form normal-bid-form row">
+                    </div> -->
+                    <!-- <form class="bid-form normal-bid-form row">
                         <div class="col-lg-1"></div>
                         <input class="bid-input col-lg-6" type="text" placeholder="Enter your bid amount">
                         <div class="col-lg-1"></div>
                         <button class="submit-bid-button col-lg-3" type="submit">Submit Bid</button>
-                    </form>
-                    <form class="bid-form auto-bid-form row">
-                        <div class="col-lg-1"></div>
-                        <input class="bid-input col-lg-5" type="text" placeholder="Enter your maximum bid amount">
-                        <div class="col-lg-1"></div>
-                        <input class="bid-input col-lg-4" type="text" placeholder="Enter your bid step">
-                        <div class="col-lg-8"></div>
-                        <button class="submit-bid-button auto-submit-bid-button col-lg-3" type="submit">Submit Bid</button>
+                    </form> -->
+                    <form class="bid-form">
+                        <div class="bid-form-input">
+                            <input class="bid-input" type="text" placeholder="Enter your maximum bid amount">
+                            <input class="bid-input" type="text" placeholder="Enter your bid step">
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <button class="submit-bid-button auto-submit-bid-button" type="submit">Submit Bid</button>  
+                        </div>                                            
                     </form>
                 </div>
             </div>
@@ -183,7 +205,7 @@
                     <h3 class="auction-time auction-start-time-value">24-11-2021 19:23:00 </h3>
                     <hr>
                     <h5 class="auction-time auction-end-time-text">And Will Ends in:</h5>
-                    <p id="timer" class="auction-time auction-end-time-value"></p>
+                    <p class="timer auction-time auction-end-time-value"></p>
                     <div class="auction-time auto-extends container-fluid">
                         <i class="fa fa-question-circle-o"></i>
                         This auction timming is auto extends
@@ -195,6 +217,41 @@
                 </div>
             </div>
         </div>
+        <!-- Product detail information end -->
+
+        <!-- Product auction history start -->
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        <!-- Product auction history end -->
+
+        <!-- Description start -->
         <div class="description-container container-fluid">
             <div class="description-header">
                 <h2>Description</h2>
@@ -205,232 +262,258 @@
                     Knowing this convention of academic writing can help you both read and write more effectively. When you’re reading a complicated academic piece for the first time, you might want to go through reading only the first sentence or two of each paragraph to get the overall outline of the argument. Then you can go back and read all of it with a clearer picture of how each of the details fit in. And when you’re writing, you may also find it useful to write the first sentence of each paragraph (instead of a topic-based outline) to map out a thorough argument before getting immersed in sentence-level wordsmithing.</p>
             </div>
         </div>
+        <!-- Description end -->
+
+        <!-- Related product start -->
         <div class="related-product-container">
             <h2 class="related-product-title">Relate Product</h2>
             <div class="row">
-				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
-					<div class="card-product">
-						<div class="card-top">
-							<div class="card-img">
-								<a href="#"><img src="../images/10.png" alt="product"></a>
-								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
-								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
-							</div>
-							<div class="card-content">
-								<h6 class="title lh-base fs-4 m-2">
-									<a href="#0">Gold Ring</a>
-								</h6>
-							</div>
+                <!-- Product card -->
+				<div class="auction-product-item col-xl-3 col-md-5 col-11">
+					<div class="auction-item-link">
+                        <div class="pro-card-header">
+                            <a class="pro-card-title">Product's Name</a>
+                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                        </div>
+                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+					</div>
+					<div class="product-price">
+                        <div class="card-content">
+                            <span class="card-content-value green-text">
+                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                <span class="current-bid">Current Bid</span>
+                            </span>
+                            <span>
+                                <span class="card-content-value">$876.00</span>
+                                <span class="total-bids">30 Bids</span>
+                            </span>                        
+                        </div>
+                        <div class="card-content">
+                            <span class="card-content-value blue-text">
+                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                <div class="current-bid">Bidder</div>
+                            </span>                            
+                            <span class="card-content-value">Bidder's Name</span>                            
+                        </div>
+					</div>
+                    <div class="product-card-time">
+						<div class="card-time-content right-border text-center">
+                            <div>Start on:</div>
+                            <div>24-11-2021 19:23:00</div>
 						</div>
-						<div class="card-mid">
-							<div class="card-content green-text">
-								<div class="icon mx-2">
-									<i class="fa fa-gavel fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="current-bid">Current Bid</div>
-									<div class="amount text-dark">$876.00</div>
-								</div>
-							</div>
-							<div class="card-content red-text">
-								<div class="icon mx-2">
-									<i class="fa fa-shopping-bag fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="buy-now">Buy Now</div>
-									<div class="amount text-dark">$5,00.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-bottom">
-							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
-							<div class="total-bids">30 Bids</div>
-						</div>
-
-						<div class="card-btn-submit m-3 text-center">
-							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
-						</div>
+                        <div class="card-time-content">
+                            <div>Expire in:</div>
+                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                        </div>
+					</div>
+                    <div class="buy-now-price">
+                        <div class="card-content">
+                            <span class="card-content-value red-text">
+                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
+                                <div class="current-bid">Buy Now</div>
+                            </span>                            
+                            <span class="card-content-value">$1,000.00</span>                            
+                        </div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
-					<div class="card-product">
-						<div class="card-top">
-							<div class="card-img">
-								<a href="#"><img src="../images/10.png" alt="product"></a>
-								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
-								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
-							</div>
-							<div class="card-content">
-								<h6 class="title lh-base fs-4 m-2">
-									<a href="#0">Gold Ring</a>
-								</h6>
-							</div>
+                <!-- Product card -->
+                <div class="auction-product-item col-xl-3 col-md-5 col-11">
+					<div class="auction-item-link">
+                        <div class="pro-card-header">
+                            <a class="pro-card-title">Product's Name</a>
+                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                        </div>
+                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+					</div>
+					<div class="product-price">
+                        <div class="card-content">
+                            <span class="card-content-value green-text">
+                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                <span class="current-bid">Current Bid</span>
+                            </span>
+                            <span>
+                                <span class="card-content-value">$876.00</span>
+                                <span class="total-bids">30 Bids</span>
+                            </span>                        
+                        </div>
+                        <div class="card-content">
+                            <span class="card-content-value blue-text">
+                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                <div class="current-bid">Bidder</div>
+                            </span>                            
+                            <span class="card-content-value">Bidder's Name</span>                            
+                        </div>
+					</div>
+                    <div class="product-card-time">
+						<div class="card-time-content right-border text-center">
+                            <div>Start on:</div>
+                            <div>24-11-2021 19:23:00</div>
 						</div>
-						<div class="card-mid">
-							<div class="card-content green-text">
-								<div class="icon mx-2">
-									<i class="fa fa-gavel fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="current-bid">Current Bid</div>
-									<div class="amount text-dark">$876.00</div>
-								</div>
-							</div>
-							<div class="card-content red-text">
-								<div class="icon mx-2">
-									<i class="fa fa-shopping-bag fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="buy-now">Buy Now</div>
-									<div class="amount text-dark">$5,00.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-bottom">
-							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
-							<div class="total-bids">30 Bids</div>
-						</div>
-
-						<div class="card-btn-submit m-3 text-center">
-							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
-						</div>
+                        <div class="card-time-content">
+                            <div>Expire in:</div>
+                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                        </div>
+					</div>
+                    <div class="buy-now-price">
+                        <div class="card-content">
+                            <span class="card-content-value red-text">
+                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
+                                <div class="current-bid">Buy Now</div>
+                            </span>                            
+                            <span class="card-content-value">$1,000.00</span>                            
+                        </div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
-					<div class="card-product">
-						<div class="card-top">
-							<div class="card-img">
-								<a href="#"><img src="../images/10.png" alt="product"></a>
-								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
-								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
-							</div>
-							<div class="card-content">
-								<h6 class="title lh-base fs-4 m-2">
-									<a href="#0">Gold Ring</a>
-								</h6>
-							</div>
+                <!-- Product card -->
+                <div class="auction-product-item col-xl-3 col-md-5 col-11">
+					<div class="auction-item-link">
+                        <div class="pro-card-header">
+                            <a class="pro-card-title">Product's Name</a>
+                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                        </div>
+                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+					</div>
+					<div class="product-price">
+                        <div class="card-content">
+                            <span class="card-content-value green-text">
+                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                <span class="current-bid">Current Bid</span>
+                            </span>
+                            <span>
+                                <span class="card-content-value">$876.00</span>
+                                <span class="total-bids">30 Bids</span>
+                            </span>                        
+                        </div>
+                        <div class="card-content">
+                            <span class="card-content-value blue-text text-center">
+                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                <div class="current-bid">Bidder</div>
+                            </span>                            
+                            <span class="card-content-value">Bidder's Name</span>                            
+                        </div>
+					</div>
+                    <div class="product-card-time">
+						<div class="card-time-content right-border">
+                            <div>Start on:</div>
+                            <div>24-11-2021 19:23:00</div>
 						</div>
-						<div class="card-mid">
-							<div class="card-content green-text">
-								<div class="icon mx-2">
-									<i class="fa fa-gavel fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="current-bid">Current Bid</div>
-									<div class="amount text-dark">$876.00</div>
-								</div>
-							</div>
-							<div class="card-content red-text">
-								<div class="icon mx-2">
-									<i class="fa fa-shopping-bag fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="buy-now">Buy Now</div>
-									<div class="amount text-dark">$5,00.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-bottom">
-							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
-							<div class="total-bids">30 Bids</div>
-						</div>
-
-						<div class="card-btn-submit m-3 text-center">
-							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
-						</div>
+                        <div class="card-time-content">
+                            <div>Expire in:</div>
+                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                        </div>
+					</div>
+                    <div class="buy-now-price">
+                        <div class="card-content">
+                            <span class="card-content-value red-text">
+                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
+                                <div class="current-bid">Buy Now</div>
+                            </span>                            
+                            <span class="card-content-value">$1,000.00</span>                            
+                        </div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
-					<div class="card-product">
-						<div class="card-top">
-							<div class="card-img">
-								<a href="#"><img src="../images/10.png" alt="product"></a>
-								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
-								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
-							</div>
-							<div class="card-content">
-								<h6 class="title lh-base fs-4 m-2">
-									<a href="#0">Gold Ring</a>
-								</h6>
-							</div>
+                <!-- Product card -->
+                <div class="auction-product-item col-xl-3 col-md-5 col-11">
+					<div class="auction-item-link">
+                        <div class="pro-card-header">
+                            <a class="pro-card-title">Product's Name</a>
+                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                        </div>
+                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+					</div>
+					<div class="product-price">
+                        <div class="card-content">
+                            <span class="card-content-value green-text">
+                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                <span class="current-bid">Current Bid</span>
+                            </span>
+                            <span>
+                                <span class="card-content-value">$876.00</span>
+                                <span class="total-bids">30 Bids</span>
+                            </span>                        
+                        </div>
+                        <div class="card-content">
+                            <span class="card-content-value blue-text">
+                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                <div class="current-bid">Bidder</div>
+                            </span>                            
+                            <span class="card-content-value">Bidder's Name</span>                            
+                        </div>
+					</div>
+                    <div class="product-card-time">
+						<div class="card-time-content right-border text-center">
+                            <div>Start on:</div>
+                            <div>24-11-2021 19:23:00</div>
 						</div>
-						<div class="card-mid">
-							<div class="card-content green-text">
-								<div class="icon mx-2">
-									<i class="fa fa-gavel fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="current-bid">Current Bid</div>
-									<div class="amount text-dark">$876.00</div>
-								</div>
-							</div>
-							<div class="card-content red-text">
-								<div class="icon mx-2">
-									<i class="fa fa-shopping-bag fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="buy-now">Buy Now</div>
-									<div class="amount text-dark">$5,00.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-bottom">
-							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
-							<div class="total-bids">30 Bids</div>
-						</div>
-
-						<div class="card-btn-submit m-3 text-center">
-							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
-						</div>
+                        <div class="card-time-content">
+                            <div>Expire in:</div>
+                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                        </div>
+					</div>
+                    <div class="buy-now-price">
+                        <div class="card-content">
+                            <span class="card-content-value red-text">
+                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
+                                <div class="current-bid">Buy Now</div>
+                            </span>                            
+                            <span class="card-content-value">$1,000.00</span>                            
+                        </div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-4 col-lg-3 mt-2">
-					<div class="card-product">
-						<div class="card-top">
-							<div class="card-img">
-								<a href="#"><img src="../images/10.png" alt="product"></a>
-								<a href="#0" class="favorite-icon"><i class="fa fa-star-o fa-lg"></i></a>
-								<a href="#0" class="bid-icon"><i class="fa fa-gavel"></i></a>
-							</div>
-							<div class="card-content">
-								<h6 class="title lh-base fs-4 m-2">
-									<a href="#0">Gold Ring</a>
-								</h6>
-							</div>
+                <!-- Product card -->
+                <div class="auction-product-item col-xl-3 col-md-5 col-11">
+					<div class="auction-item-link">
+                        <div class="pro-card-header">
+                            <a class="pro-card-title">Product's Name</a>
+                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                        </div>
+                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+					</div>
+					<div class="product-price">
+                        <div class="card-content">
+                            <span class="card-content-value green-text">
+                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                <span class="current-bid">Current Bid</span>
+                            </span>
+                            <span>
+                                <span class="card-content-value">$876.00</span>
+                                <span class="total-bids">30 Bids</span>
+                            </span>                        
+                        </div>
+                        <div class="card-content">
+                            <span class="card-content-value blue-text">
+                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                <div class="current-bid">Bidder</div>
+                            </span>                            
+                            <span class="card-content-value">Bidder's Name</span>                            
+                        </div>
+					</div>
+                    <div class="product-card-time">
+						<div class="card-time-content right-border text-center">
+                            <div>Start on:</div>
+                            <div>24-11-2021 19:23:00</div>
 						</div>
-						<div class="card-mid">
-							<div class="card-content green-text">
-								<div class="icon mx-2">
-									<i class="fa fa-gavel fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="current-bid">Current Bid</div>
-									<div class="amount text-dark">$876.00</div>
-								</div>
-							</div>
-							<div class="card-content red-text">
-								<div class="icon mx-2">
-									<i class="fa fa-shopping-bag fa-2x"></i>
-								</div>
-								<div class="card-price-content">
-									<div class="buy-now">Buy Now</div>
-									<div class="amount text-dark">$5,00.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-bottom">
-							<div class="card-bid-counter red-text">0d  : 3h  : 48m  : 31s</div>
-							<div class="total-bids">30 Bids</div>
-						</div>
-
-						<div class="card-btn-submit m-3 text-center">
-							<a class="btn-submit-bid" href="#" role="button">Submit a Bid</a>
-						</div>
+                        <div class="card-time-content">
+                            <div>Expire in:</div>
+                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                        </div>
+					</div>
+                    <div class="buy-now-price">
+                        <div class="card-content">
+                            <span class="card-content-value red-text">
+                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
+                                <div class="current-bid">Buy Now</div>
+                            </span>                            
+                            <span class="card-content-value">$1,000.00</span>                            
+                        </div>
 					</div>
 				</div>
 			</div>
         </div>
+        <!-- Related product end -->
     </div>
+    <!-- End main body -->
+
 <script src="../js/main.js"></script>
 <script src="../js/detail_body.js"></script>
 </body>

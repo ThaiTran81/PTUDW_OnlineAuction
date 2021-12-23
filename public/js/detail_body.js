@@ -16,24 +16,26 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
 }
 
-var formIndex = 1;
-showBidForm(formIndex);
-
-function showBidForm(n) {
-  var forms = document.getElementsByClassName("bid-form");
-  if (n == 1) {
-    forms[1].style.display = "none";
-    forms[0].style.display = "flex";
-  }
-  if (n == 2) {
-    forms[0].style.display = "none";
-    forms[1].style.display = "flex";
-  }
-}
-
 setInterval(function(){ 
   plusSlides(1);
 }, 2000);
+
+// var formIndex = 1;
+// showBidForm(formIndex);
+
+// function showBidForm(n) {
+//   var forms = document.getElementsByClassName("bid-form");
+//   if (n == 1) {
+//     forms[1].style.display = "none";
+//     forms[0].style.display = "flex";
+//   }
+//   if (n == 2) {
+//     forms[0].style.display = "none";
+//     forms[1].style.display = "flex";
+//   }
+// }
+
+
 
 // Set the date we're counting down to
 var countDownDate = new Date("Dec 24, 2021 07:30:25").getTime();
@@ -53,12 +55,34 @@ var x = setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
-  document.getElementById("timer").innerHTML = days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s ";
+  var els = document.getElementsByClassName("timer");
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "EXPIRED";
-  }
+  [].forEach.call(els, function(el) {
+    el.innerHTML = days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s ";
+
+    if (distance < 0) {
+      clearInterval(x);
+      el.innerHTML = "EXPIRED";
+    }
+  });
+  // // Display the result in the element with id="demo"
+  // document.getElementsByClassName("timer")[0].innerHTML = days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s ";
+
+  // // If the count down is finished, write some text
+  // if (distance < 0) {
+  //   clearInterval(x);
+  //   document.getElementsByClassName("timer")[0].innerHTML = "EXPIRED";
+  // }
 }, 1000);
+
+
+// var heart = document.getElementsByClassName("timer");
+
+// [].forEach.call(els, function(el) {
+//   el.innerHTML = days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s ";
+
+//   if (distance < 0) {
+//     clearInterval(x);
+//     el.innerHTML = "EXPIRED";
+//   }
+// });
