@@ -1,0 +1,91 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background-color: var(--bg-theme);
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    padding: 0 16px 16px;
+    border-radius: 13px;
+}
+
+.sidebar-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.nav-brand {
+    color: inherit;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 3.5rem;
+    padding: 0 1rem;
+}
+
+
+
+a.nav-brand:hover{
+    text-decoration: none;
+    color: var(--btn-text-color);
+}
+
+.sidebar-content .navbar-nav .nav-item{
+    border-radius: 15px;
+    padding: 0 1rem;
+}
+
+.active{
+    background-color: var(--btn-bg);
+    color: var(--btn-text-color);
+}
+
+.sidebar-content .navbar-nav .nav-item a{
+    --line-height: 45px;
+    color: inherit;
+    display: block;
+    line-height: var(--line-height);
+    transition: all .1s ease-in-out;
+}
+
+.show .dropdown-icon{
+    transform: rotate(90deg);
+}
+
+.sidebar-content .navbar-nav .nav-item a:hover{
+    padding-left: 8px;
+}
+
+.sidebar-content .navbar-nav .nav-item .nav-link i{
+    vertical-align: middle;
+}
+
+.sidebar-content .navbar-nav .nav-item .nav-link .dropdown-icon{
+    float: right;
+    line-height: var(--line-height);
+    font-size: 30px;
+    transition: all .2s ease-in-out;
+}
+
+.navbar-nav .sub-nav{
+    padding-left: 2rem;
+}
+
+.main-content{
+    margin-left: 300px;
+}

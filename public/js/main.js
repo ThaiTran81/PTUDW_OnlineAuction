@@ -9,3 +9,16 @@ function scrollFunction() {
     document.getElementById("seperate").style.display="block";
   }
 }
+
+function showMenu(evt){
+  console.log(evt.target);
+  document.querySelector(evt.target.getAttribute('href')).classList.toggle("d-none");
+  evt.target.classList.toggle('show');
+}
+
+let dropdownMenu = document.querySelectorAll('.dropdown--menu');
+
+dropdownMenu.forEach(el =>{
+  console.log(1);
+  el.addEventListener("click", function (evt){ showMenu(evt)})
+});

@@ -3,8 +3,8 @@ import hashPass from 'bcrypt'
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    res.render('signin', {layout: false})
+router.get('/sign-in', function (req, res) {
+    res.render('vwAccount/signin', {layout: false})
 });
 
 
