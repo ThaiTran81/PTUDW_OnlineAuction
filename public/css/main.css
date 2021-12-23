@@ -371,7 +371,6 @@ a:hover{
 .card-mid .card-content .icon {
     align-self: center;
     margin-right: 5px;
-
 }
 
 .green-text {
@@ -380,6 +379,10 @@ a:hover{
 
 .red-text {
     color: #f72585;
+}
+
+.blue-text {
+    color: #48caea;
 }
 
 .card-bottom {
@@ -477,8 +480,8 @@ a:hover{
 .auction-body {
     background-repeat: no-repeat;
     width: 100%;
+    z-index: 0;
     height: auto;
-    z-index: 1;
 }
 
 .auction-content {
@@ -501,7 +504,7 @@ a:hover{
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 9px 20px 0px rgb(22 26 57 / 36%);
-    z-index: 1;
+    z-index: 0;
     background-color: white;
 }
 
@@ -630,39 +633,58 @@ a:hover{
 }
 
 #footer {
-    margin-top: 0px;
+    margin-top: 300px;
+    background-color: #7209B7;
 }
 
-@media (min-width: 1200px) {
-    .sidebar.navbar-expand-xl {
-        position: fixed;
-        z-index: 1030;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: stretch;
-        -ms-flex-align: stretch;
-        align-items: stretch;
-    }
-    .sidebar.navbar-expand-xl .offcanvas {
-        position: relative;
-    }
-    .sidebar.navbar-expand-xl .navbar-brand {
-        padding: 1.3rem;
-    }
-    .sidebar.navbar-expand-xl .navbar-nav .nav-item {
-        position: relative;
-    }
+.footer-widget {
+    padding: 20px;
 }
 
-.sidebar {
-    position: relative;
-    padding: 0;
+.footer-title {
+    color: white;
 }
+
+.link-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.link-list li {
+    margin-bottom: 5px;
+}
+
+.link-list li a {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+}
+
+.link-list li a i {
+    margin-right: 10px;
+}
+
+.link-list li a:hover{
+    color: red;
+}
+
+.social {
+}
+
+.social i {
+    margin: 0;
+    font-size: 26px;
+    margin-top: 10px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-top: 12px;
+    color: #888888;
+    border-radius: 50%;
+}
+
+.social i:hover {
+    color: red;
+}
+
