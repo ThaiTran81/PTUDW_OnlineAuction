@@ -6,6 +6,8 @@
 		<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 			  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet"
+			  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 		<link href="public/css/main.css" rel="stylesheet" type="text/css">
 		<link href="public/css/base.css" rel="stylesheet" type="text/css">
 
@@ -15,39 +17,41 @@
 			<div class="nav-container ">
 				<ul class="nav-list">
 					<li class="nav-item">
-						<a class="nav-icon" href="">Nav Icon</a>
+						<a class="nav-icon" href="">BIDUS</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item-link hover-underline-animation d-flex align-items-center" id="navbar-category" href="">
+							<i class="bx bx-category bx-md" id="icon-category"></i>
+							Danh mục
+						</a>
+						<ul class="menu">
+							{{#each lcCategories}}
+								<li class="menu-item">
+								<a class="menu-item-link" href="{{this.catID}}">{{this.catName}}
+
+									{{#if types}}
+										<i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
+									</a>
+										<ul class="sub-menu">
+											{{#each types}}
+												<li class="sub-menu-item">
+													<a class="sub-menu-item-link" href="{{this.typID}}">{{this.typName}}</a>
+												</li>
+											{{/each}}
+										</ul>
+									{{else}}
+										</a>
+									{{/if}}
+								</li>
+							{{/each}}
+						</ul>
 					</li>
 				</ul>
 				<ul class="nav-list">
 					<li class="nav-item">
 						<a class="nav-item-link hover-underline-animation" href="">Trang chủ</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-item-link hover-underline-animation" href="">Danh mục
-							<i aria-hidden="true" class="fa fa-sort-desc"></i>
-						</a>
-						<ul class="menu">
-							{{#each lcCategories}}
-							<li class="menu-item">
-								<a class="menu-item-link" href="{{this.catID}}">{{this.catName}}
 
-								{{#if types}}
-									<i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
-								</a>
-								<ul class="sub-menu">
-									{{#each types}}
-										<li class="sub-menu-item">
-											<a class="sub-menu-item-link" href="{{this.typID}}">{{this.typName}}</a>
-										</li>
-									{{/each}}
-								</ul>
-								{{else}}
-								</a>
-								{{/if}}
-							</li>
-							{{/each}}
-						</ul>
-					</li>
 					<li class="nav-item">
 						<a class="nav-item-link hover-underline-animation" href="">Contact</a>
 					</li>
