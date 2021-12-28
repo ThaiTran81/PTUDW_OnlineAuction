@@ -1,24 +1,24 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+// var slideIndex = 1;
+// showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("slider-item");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display="none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("slider-item");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display="none";
+//   }
+//   slides[slideIndex-1].style.display = "block";
+// }
 
-setInterval(function(){ 
-  plusSlides(1);
-}, 2000);
+// setInterval(function(){ 
+//   plusSlides(1);
+// }, 2000);
 
 // var formIndex = 1;
 // showBidForm(formIndex);
@@ -38,7 +38,7 @@ setInterval(function(){
 
 
 // Set the date we're counting down to
-var countDownDate = new Date("Dec 24, 2021 07:30:25").getTime();
+var countDownDate = new Date("Jan 24, 2022 07:30:25").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
