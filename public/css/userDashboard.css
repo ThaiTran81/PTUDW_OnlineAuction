@@ -12,6 +12,18 @@ ion-icon {
     color: red;
 }
 
+.green-text {
+    color: #06d6a0;
+}
+
+.red-text {
+    color: #f72585;
+}
+
+.blue-text {
+    color: #48caea;
+}
+
 
 table, thead, th, tr, td {
     border: none !important;
@@ -39,8 +51,14 @@ div, p, h1, h2, h3, h4, h5 {
     position: relative;
 }
 
+/* user controller */
+
 .user {
     text-align: center;
+}
+
+.user-thumb img {
+    width: 88px;
 }
 
 .user-name {
@@ -83,6 +101,8 @@ div, p, h1, h2, h3, h4, h5 {
     background-color: #f7f6fc;
 }
 
+/* dash board content */
+
 .active {
     background-color: #f7f6fc;
 }
@@ -113,7 +133,7 @@ div, p, h1, h2, h3, h4, h5 {
     border-radius: 20px;
 }
 
-.activity-thumb {
+.activity-thumb img {
     height: 80px;
     margin-bottom: 8px;
 }
@@ -214,11 +234,11 @@ div, p, h1, h2, h3, h4, h5 {
     border-radius: 20px;
     color: white;
     font-weight: bold;
-    background-image: linear-gradient(45deg, #f72585, #b5179e,#7209b7 );
+    background-image: linear-gradient(45deg, #f72585, #b5179e,#7209b7);
 }
 
 .chosen {
-    background-image: linear-gradient(45deg, #f94144, #f9844a,#f9c74f );
+    background-image: linear-gradient(45deg, #f94144, #f9844a,#f9c74f);
 }
 
 .widget-list {
@@ -228,6 +248,22 @@ div, p, h1, h2, h3, h4, h5 {
 .list-header{
     box-shadow: unset;
 }
+
+/* Responsive */
+
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px){
+
+}
+
+/* Mobile*/
+@media (max-width: 740px){
+    .search input {
+        width: 120px;
+    }
+}
+
 
 
 

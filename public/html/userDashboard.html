@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/category.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
@@ -19,8 +20,9 @@
 <body>
     <div class="userdashboard">
         <div class="row">
-            <div class="col-sm-8 col-md-4">
+            <div class="col-lg-4">
                 <div class="widget">
+                    <!-- user avt + brief info  -->
                     <div class="user">
                         <div class="user-thumb">
                             <img src="http://pixner.net/sbidu/main/assets/images/dashboard/user.png" alt="">
@@ -30,6 +32,7 @@
                             <p class="user-email">tuandat290601@gmail.com</p>
                         </div>
                     </div>
+                    <!-- user controller -->
                     <div class="controller">
                         <ul id ="userdb" class="control-list">
                             <li>
@@ -78,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div id="dbcontent" class="col-sm-8 col-md-8">
+            <div id="dbcontent" class="col-lg-8">
                 <div id = "dashboard" class="db show">
                     <div class="widget">
                         <div class="widget-title">
@@ -86,7 +89,7 @@
                         </div>
                         <div class="widget-content">
                             <div class="row d-flex justify-content-center">
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <div class="user-activity">
                                         <div class="activity-thumb">
                                             <img src="http://pixner.net/sbidu/main/assets/images/dashboard/01.png"
@@ -102,7 +105,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <div class="user-activity">
                                         <div class="activity-thumb">
                                             <img src="http://pixner.net/sbidu/main/assets/images/dashboard/02.png"
@@ -118,7 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <div class="user-activity">
                                         <div class="activity-thumb">
                                             <img src="http://pixner.net/sbidu/main/assets/images/dashboard/03.png"
@@ -386,248 +389,354 @@
                     </div>
                     <div id = "upcoming-list" class="widget-list list-show">
                         <div class="row justify-content-center">
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                                        </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
+                                        </div>
+                                    </div>
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
+                                    </div>
+                                </div>                
                             </div>
                         </div>
                     </div>
                     <div id = "past-list" class="widget-list">
                         <div class="row justify-content-center">
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
-                                        </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-time-area">
-        
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -657,107 +766,201 @@
                     </div>
                     <div class="widget-list list-show">
                         <div class="row justify-content-center">
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                                        </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
+                                        </div>
+                                    </div>
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
+                                    </div>
+                                </div>                
                             </div>
                         </div>
                     </div>
@@ -788,107 +991,201 @@
                     </div>
                     <div class="widget-list list-show">
                         <div class="row justify-content-center">
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="col-md-6">
-                                <div class="product">
-                                    <a href="" class="product-item-link">
-                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="product-img">
-                                        <h5>Product's Name</h5>
-                                    </a>
-                                    <div class="product-bid-area">
-                                        <div class="bid">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-gavel green-text" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="green-text">Current Bid</p>
-                                                <p>100$</p>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
                                         </div>
-                                        <div class="buy">
-                                            <div class="product-icon-area">
-                                                <i class="fa fa-money text-danger" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="product-text-area">
-                                                <p class="text-danger">Buy Now</p>
-                                                <p>100$</p>
-                                            </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
                                         </div>
                                     </div>
-                                    <div class="product-time-area">
-        
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-light submit-btn">Submit A Bid</button>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="auction-product-item">
+                                    <div class="auction-item-link">
+                                        <div class="pro-card-header">
+                                            <a class="pro-card-title">Product's Name</a>
+                                            <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+                                        </div>
+                                        <img src="http://pixner.net/sbidu/main/assets/images/auction/car/auction-1.jpg" alt="" class="card-img">
+                                    </div>
+                                    <div class="product-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value green-text">
+                                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
+                                                <span class="current-bid">Current Bid</span>
+                                            </span>
+                                            <span>
+                                                <span class="card-content-value">$876.00</span>
+                                                <span class="total-bids">30 Bids</span>
+                                            </span>                        
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-content-value blue-text">
+                                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
+                                                <div class="current-bid">Bidder</div>
+                                            </span>                            
+                                            <span class="card-content-value">Bidder's Name</span>                            
+                                        </div>
+                                    </div>
+                                    <div class="product-card-time">
+                                        <div class="card-time-content right-border text-center">
+                                            <div>Start on:</div>
+                                            <div>24-11-2021 19:23:00</div>
+                                        </div>
+                                        <div class="card-time-content">
+                                            <div>Expire in:</div>
+                                            <div class="timer related-auction auction-time auction-end-time-value"></div>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now-price">
+                                        <div class="card-content">
+                                            <span class="card-content-value red-text">
+                                                <i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+                                                <div class="current-bid">Buy Now</div>
+                                            </span>                            
+                                            <span class="card-content-value">$1,000.00</span>                            
+                                        </div>
+                                    </div>
+                                </div>                
                             </div>
                         </div>
                     </div>
