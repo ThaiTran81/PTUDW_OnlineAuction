@@ -7,8 +7,8 @@ router.get('/:catID', async function (req, res) {
     const catId = req.params.catID || 0;
     const list = await productModel.findByCatId(catId);
     const typeList = await categoryModel.findAllTypeByCat(catId);
-    console.log(list);
-    res.render('vwProduct/bycat', {products: list, types: typeList, empty: list.length === 0});
+    console.log(req.body);
+    res.render('vwProduct/bycat', {products: list, categoryID:catId, types: typeList, empty: list.length === 0});
 })
 
 export default router;
