@@ -1,11 +1,15 @@
-import db from '../utils/db.js';
+import knex from '../utils/db.js';
 
 export default {
-  findAll() {
-    return db('product');
-  },
+    findAll() {
+        return knex('product');
+    },
 
-  findByCatId(typId) {
-    return db('product').where('typID', typId);
-  },
+    findByCatId(catid) {
+
+        return knex('product')
+            .join('type', 'product.typID', '=', 'type.typID')
+            .select('product.proID', 'product.typID', 'type.catID', 'product.proName', 'product.curPrice', 'product.buyNow', 'product.startDate', 'product.endDate')
+        // .where('type.catID','=', catid);
+    },
 }
