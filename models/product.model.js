@@ -9,7 +9,7 @@ export default {
 
         return knex('product')
             .join('type', 'product.typID', '=', 'type.typID')
-            .select('product.proID', 'product.typID', 'type.catID', 'product.proName', 'product.curPrice', 'product.buyNow', 'product.startDate', 'product.endDate')
-        // .where('type.catID','=', catid);
+            .select('product.proID', 'product.typID', 'type.catID', 'product.proName', 'product.startPrice', 'product.buyNow', 'product.startDate', 'product.endDate')
+            .where('type.catID','=', catid);
     },
 }
