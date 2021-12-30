@@ -3,6 +3,15 @@
 {{/section}}
 {{#section 'js'}}
 	<script src="/public/js/category.js"></script>
+	<script>
+		var checkbox = document.querySelectorAll('.type-checkbox');
+		checkbox.forEach((element) => {
+			element.addEventListener('change', function () {
+				var typeForm = document.getElementById('type-form');
+                typeForm.submit();
+			})
+		})
+	</script>
 {{/section}}
 <div class="category">
 	<div class="row">
@@ -37,18 +46,23 @@
 					Loại sản phẩm
 				</div>
 				<div class="filter-content">
-					<ul class="checklist">
+					<form action="{{categoryID}}" method="get" id="type-form">
 						{{#each this.types}}
-							<li>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="type1">
-									<label class="form-check-label" for="type1">
-										{{this.typName}}
-									</label>
-								</div>
-							</li>
+							<ul class="checklist">
+
+								<li>
+									<div class="form-check">
+										<input class="form-check-input type-checkbox" type="checkbox"
+											   value="{{this.typID}}" name="type">
+										<span class="form-check-label">
+											{{this.typName}}
+										</span>
+									</div>
+								</li>
+
+							</ul>
 						{{/each}}
-					</ul>
+					</form>
 				</div>
 			</div>
 			<div class="filter">
