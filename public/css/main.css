@@ -455,7 +455,9 @@ a:hover{
 
 .top-auction {
     display: block;
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .top-auction-img{
@@ -463,9 +465,6 @@ a:hover{
 }
 
 
-.auction-title{
-    padding-left: 100px;
-}
 
 
 .auction-title h5{
@@ -480,8 +479,8 @@ a:hover{
 .auction-body {
     background-repeat: no-repeat;
     width: 100%;
-    z-index: 0;
     height: auto;
+    margin-top: 30px;
 }
 
 .auction-content {
@@ -490,70 +489,8 @@ a:hover{
     margin-right: auto;
 }
 
-.auction-list {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 40px 0;
-}
-
-.auction-item {
-    padding: 20px 10px;
-    margin: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0px 9px 20px 0px rgb(22 26 57 / 36%);
-    z-index: 0;
+.auction-product-item {
     background-color: white;
-}
-
-.auction-item-link {
-    text-decoration: none !important;
-    color: black;
-}
-
-.auction-item-link h5 {
-    padding: 10px 0;
-}
-
-.auction-item-link h5:hover{
-    color: red;
-}
-
-.auction-bid-area{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-top: 2px dashed #ccc;
-    border-bottom: 2px dashed #ccc;
-}
-
-.bid, .buy{
-   display: flex;
-   width: 50%;
-}
-
-.buy {
-    border-left: 1px solid #ccc;
-}
-
-.auction-icon-area i {
-    font-size: 36px;
-    padding: 0 10px;
-    margin-top: 10px;
-
-}
-
-
-
-.auction-text-area p {
-    margin: 0;
-    font-size: 20px;
-}
-
-.auction-time-area{
-
 }
 
 .small-icon {
