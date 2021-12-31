@@ -246,6 +246,7 @@ div, p, h1, h2, h3, h4, h5 {
 }
 
 .list-header{
+    margin-top: 20px !important;
     box-shadow: unset;
 }
 

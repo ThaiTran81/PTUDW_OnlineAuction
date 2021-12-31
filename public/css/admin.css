@@ -1,11 +1,14 @@
 
-*{
+*,::after,::before{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-
+h1, h2, h3, h4, h5, p {
+    padding: 0;
+    margin: 0;
+}
 
 body{
     background-color: var(--bg-theme);
@@ -14,14 +17,43 @@ body{
     color: var(--text-color);
 }
 
+.btn {
+    background-image: none;
+    margin: 0;
+    padding: auto;
+    border-radius: 10px;
+}
+
+th {
+    font-size: 20px
+}
+
+tr{
+    font-size: 18px;
+}
+
+td, th{
+    text-align: center;
+    align-items: center;
+}
+
+
+.display {
+    display: flex !important;
+}
+
 .sidebar {
-    display: flex;
+    display: none;
     flex-direction: column;
-    height: 100%;
     width: 300px;
+    height: 100vh;
     position: fixed;
     padding: 0 16px 16px;
     border-radius: 13px;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 9px 20px 0px rgb(22 26 57/36%);
 }
 
 .sidebar-content{
@@ -46,13 +78,13 @@ a.nav-brand:hover{
 }
 
 .sidebar-content .navbar-nav .nav-item{
-    border-radius: 15px;
-    padding: 0 1rem;
+    
 }
 
 .active{
     background-color: var(--btn-bg);
-    color: var(--btn-text-color);
+    color: var(--btn-text-color) !important;
+    border-radius: 10px;
 }
 
 .sidebar-content .navbar-nav .nav-item a{
@@ -61,15 +93,20 @@ a.nav-brand:hover{
     display: block;
     line-height: var(--line-height);
     transition: all .1s ease-in-out;
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
 }
+
+.sidebar-content .navbar-nav .nav-item a:hover {
+    padding-left: 30px;
+}
+
+
 
 .show .dropdown-icon{
     transform: rotate(90deg);
 }
 
-.sidebar-content .navbar-nav .nav-item a:hover{
-    padding-left: 8px;
-}
 
 .sidebar-content .navbar-nav .nav-item .nav-link i{
     vertical-align: middle;
@@ -86,6 +123,221 @@ a.nav-brand:hover{
     padding-left: 2rem;
 }
 
-.main-content{
-    margin-left: 300px;
+/* Manage button */
+
+.admin-manage {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    z-index: 1;
 }
+
+.manage-notification {
+    display: none;
+    position: relative;
+}
+
+.notification {
+    width: 160px;
+    position: absolute;
+    background-color: white;
+    padding: 10px 20px;
+    top: -100px;
+    left: -10px;
+    border-radius: 20px;
+}
+
+.notification::after {
+    content: "";
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;
+    left: 10px;
+    bottom: -15px;
+}
+
+.admin-manage a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.admin-manage a:hover + .manage-notification{
+    display: block;
+}
+
+
+.admin-manage a i {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
+
+/* Admin Main */
+
+
+.main-container {
+    height: 100vh;
+    position: relative;
+}
+
+
+.container {
+    height: 100vh;
+    position: relative;
+}
+
+.admin-content {
+    display: none;
+    margin-top: 50px;
+}
+
+    
+    /* Common */
+
+.widget {
+    width: 100%;
+    box-shadow: 0px 9px 20px 0px rgb(22 26 57/36%);
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: white;
+}
+
+.widget-title {
+    font-size: 36px;
+    padding: 0 20px;
+}
+
+
+.checklist {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.checklist label {
+    width: 350px;
+}
+
+.widget-content {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.widget-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 1em;
+    
+}
+
+.list-header {
+    box-shadow: none;
+}
+
+.add-btn {
+    margin-top: 20px;
+    font-weight: bold;
+    float: right;
+}
+
+    /* Dashboard */
+
+#admin-dashboard{
+    /* display: none; */
+}
+
+    /* Category */
+#admin-category{
+    /* display: block; */
+}
+
+    /* Products View */
+#admin-produc-view {
+
+}
+
+.admin-table {
+    height: 500px;
+    overflow: auto;
+}
+
+.table-cell-thumb {
+    margin-left: 20px;
+}
+
+.table-cell-thumb img {
+    max-width: 100px;
+}
+
+.table-cell-info .cell-info {
+    display: block;
+    color: inherit;
+}
+
+.table-cell-info .seller-info {
+    font-size: 14px;
+    color: inherit;
+}
+
+    /* Admin Seller View */
+.table-cell-info .seller-rate {
+    font-size: 14px;
+}
+
+/* Modal */
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.my-modal {
+    background-color: white;
+    width: 40%;
+    position: fixed; 
+    top: 35%;
+    left: 30%;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 9px 20px 0px rgb(22 26 57/36%);
+    animation: modalFadeIn ease 1s;
+}
+
+.my-modal input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.add-modal-1,
+.add-modal-2,
+.delete-modal,
+.edit-modal {
+    display: none;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-show {
+    display: block !important;
+}
+
+
