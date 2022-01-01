@@ -19,13 +19,9 @@ router.post('/signup', function (req, res) {
         .then((response) => response.json())
         .then((google_response) => {
 
-            // google_response is the object return by
-            // google as a response
             if (google_response.success === true) {
-                //   if captcha is verified
                 return res.send('success');
             } else {
-                // if captcha is not verified
                 return res.send({response: "Failed"});
             }
         })

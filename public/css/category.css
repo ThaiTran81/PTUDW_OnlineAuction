@@ -199,8 +199,13 @@ input[type="range"]::-moz-range-thumb{
 }
 
 .pro-card-title {
-    font-size: 24px;
+    font-size: 1.2rem;
     font-weight: bold;
+    word-break: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-width: 100%;
+    overflow: hidden;
     transition: 0.3s;
 }
 

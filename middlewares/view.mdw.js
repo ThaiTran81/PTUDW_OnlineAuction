@@ -10,6 +10,7 @@ export default function (app) {
                 return numeral(val).format('0,0') + ' VNĐ';
             },
             equal(val1, val2) {
+                console.log(val1===val2);
                 return val1 === val2;
             },
 

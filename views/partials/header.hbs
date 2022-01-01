@@ -17,7 +17,7 @@
 			<div class="nav-container ">
 				<ul class="nav-list">
 					<li class="nav-item">
-						<a class="nav-icon" href="">BIDUS</a>
+						<a class="nav-icon" href="/">BIDUS</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-item-link hover-underline-animation d-flex align-items-center" id="navbar-category" href="">
@@ -27,7 +27,7 @@
 						<ul class="menu">
 							{{#each lcCategories}}
 								<li class="menu-item">
-								<a class="menu-item-link" href="{{this.catID}}">{{this.catName}}
+								<a class="menu-item-link" href="/category/{{this.catID}}">{{this.catName}}
 
 									{{#if types}}
 										<i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
@@ -35,7 +35,7 @@
 										<ul class="sub-menu">
 											{{#each types}}
 												<li class="sub-menu-item">
-													<a class="sub-menu-item-link" href="{{this.typID}}">{{this.typName}}</a>
+													<a class="sub-menu-item-link" href="/category/{{../catID}}?type={{typID}}">{{this.typName}}</a>
 												</li>
 											{{/each}}
 										</ul>
@@ -65,31 +65,6 @@
 					</li>
 				</ul>
 				<ul class="nav-list">
-					<li class="nav-item">
-						<a class="nav-item-link" href="">
-							<i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
-						</a>
-						<ul class="menu menu-cart">
-							<li class="menu-item cart-item">
-								<div class="item-img">
-									<img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb15a297-137b-4cdf-8df1-663ae0623af7/sb-dunk-high-pro-skate-shoes-BKPRGl.png" alt="" class="pro-img-cart">
-								</div>
-								<div class="item-info">
-									<div class="item-name">
-										<p >Toyota 2019</p>
-									</div>
-									<div class="item-price">
-										<p class="green-text">$300</p>
-									</div>
-								</div>
-								<div>
-									<button type="button" class="btn btn-danger close-btn">
-										<i class="fa fa-times" aria-hidden="true"></i>
-									</button>
-								</div>
-							</li>
-						</ul>
-					</li>
 					{{#if lcAuth}}
 						<li class="nav-item">
 						<a class="nav-item-link" href="">
