@@ -32,7 +32,5 @@ router.get('/:catID', async function (req, res) {
     });
 });
 
-router.get('')
-
 
 export default router;

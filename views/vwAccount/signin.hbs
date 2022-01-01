@@ -10,6 +10,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		<title>Register</title>
+
 	</head>
 	<body>
 		<div class="container h-100">
@@ -64,7 +65,7 @@
 								<h1>Sign Up</h1>
 							</div>
 						</div>
-						<form action="/account/signup" method="post" name="">
+						<form action="/account/signup" method="post" name="" id="frmRegister">
 							<div class="form-group">
 								<label for="">Email address</label>
 								<input type="email" name="resgist_email" class="form-control" id="resgist_email"
@@ -77,7 +78,8 @@
 							</div>
 							<div class="form-group">
 								<label for="">Confirm Password</label>
-								<input type="password" name="password" class="form-control" aria-describedby=""
+								<input type="password" name="confirm_password" id="confirm_password"
+									   class="form-control" aria-describedby=""
 									   placeholder="Confirm Password" required>
 							</div>
 							<div class="form-group">
@@ -88,11 +90,13 @@
 							<div class="form-group">
 								<p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
 							</div>
-							<div class="g-recaptcha form-group ml-5"
+							<div class="g-recaptcha form-group ml-5" data-callback="recaptchaCallback"
 								 data-sitekey="6Lf8bNMdAAAAANyVxgOQ6V48gRwvDSJq0EnGEumu">
 							</div>
 							<div class="col-md-12 ">
-								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Submit</button>
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" id="btnRegist"
+										disabled>Submit
+								</button>
 							</div>
 
 
@@ -118,5 +122,21 @@
 				integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<script src="/public/js/register.js"></script>
+		<script>
+			$('#btnRegist').on('click', function (e) {
+				e.preventDefault();
+				const pass = $('#resgist_password').val();
+				const confirm_pass = $('#confirm_password').val();
+				if (pass !== confirm_pass) {
+					alert('Mật khẩu xác nhận không khớp! Vui lòng kiểm tra lại')
+				} else {
+					$('#frmRegister').off('submit').submit();
+				}
+			});
+			function recaptchaCallback() {
+				$('#btnRegist').removeAttr('disabled');
+			};
+
+		</script>
 	</body>
 </html>
