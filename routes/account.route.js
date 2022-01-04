@@ -45,6 +45,22 @@ router.post('/signup', function (req, res) {
         });
 })
 
+router.post('/sign-in', async function (req, res){
+    const user = await userModel.findUserByEmail(req.body.email);
+
+    if (user===null){
+        res.send('not found');
+    }
+    return res.send(user);
+    // const ret = bcrypt.compareSync(req.body.password, user.password);
+    // if (ret===false){
+    //     res.send('fail password');
+    // }
+    // delete user.password;
+    // req.session.auth = true;
+    // req.session.authUser = user;
+    // res.send('true password');
+})
 
 
 export default router;
