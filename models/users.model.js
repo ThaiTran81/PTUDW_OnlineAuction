@@ -6,7 +6,7 @@ export default {
     },
 
     add(user){
-        return knex('users').insert({email: user.email, password: user.password, phone: user.phone, type: user.type});
+        return knex('users').insert({email: user.email, password: user.password, type: user.type});
     }
 
     
