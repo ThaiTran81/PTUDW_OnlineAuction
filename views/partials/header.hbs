@@ -1,97 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Main</title>
-		<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-			  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-		<link rel="stylesheet"
-			  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
-		<link href="/public/css/base.css" rel="stylesheet" type="text/css">
-		{{{_sections.css}}}
-	</head>
-	<body>
-		<div class="nav" id="navbar">
-			<div class="nav-container ">
-				<ul class="nav-list">
-					<li class="nav-item">
-						<a class="nav-icon" href="/">BIDUS</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-item-link hover-underline-animation d-flex align-items-center" id="navbar-category" href="">
-							<i class="bx bx-category bx-md" id="icon-category"></i>
-							Danh mục
-						</a>
-						<ul class="menu">
-							{{#each lcCategories}}
-								<li class="menu-item">
-								<a class="menu-item-link" href="/category/{{this.catID}}">{{this.catName}}
 
-									{{#if types}}
+<head>
+	<meta charset="UTF-8">
+	<title>Main</title>
+	<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+	<link href="/public/css/base.css" rel="stylesheet" type="text/css">
+	{{{_sections.css}}}
+</head>
+
+<body>
+	<div class="nav" id="navbar">
+		<div class="nav-container ">
+			<div class="row">
+				<div class="col-4">
+					<ul class="nav-list">
+						<li class="nav-item">
+							<a class="nav-icon" href="/">BIDUS</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link hover-underline-animation d-flex align-items-center"
+								id="navbar-category" href="">
+								<i class="bx bx-category bx-md" id="icon-category"></i>
+								Danh mục
+							</a>
+							<ul class="menu">
+								{{#each lcCategories}}
+								<li class="menu-item">
+									<a class="menu-item-link" href="/category/{{this.catID}}">{{this.catName}}
+
+										{{#if types}}
 										<i aria-hidden="true" class="fa fa-chevron-right" style="font-size: 12px;"></i>
 									</a>
-										<ul class="sub-menu">
-											{{#each types}}
-												<li class="sub-menu-item">
-													<a class="sub-menu-item-link" href="/category/{{../catID}}?type={{typID}}">{{this.typName}}</a>
-												</li>
-											{{/each}}
-										</ul>
+									<ul class="sub-menu">
+										{{#each types}}
+										<li class="sub-menu-item">
+											<a class="sub-menu-item-link"
+												href="/category/{{../catID}}?type={{typID}}">{{this.typName}}</a>
+										</li>
+										{{/each}}
+									</ul>
 									{{else}}
-										</a>
+									</a>
 									{{/if}}
 								</li>
-							{{/each}}
-						</ul>
-					</li>
-				</ul>
-				<ul class="nav-list">
-					<li class="nav-item">
-						<a class="nav-item-link hover-underline-animation" href="">Trang chủ</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-item-link hover-underline-animation" href="">Contact</a>
-					</li>
-				</ul>
-				<ul class="search">
-					<li class="search-item">
-						<form action="" class="search-box">
-							<input class="search-box-text" name="search" placeholder="Search.." type="text">
-						</form>
-						<i class="fa fa-search search-btn"></i>
-					</li>
-				</ul>
-				<ul class="nav-list">
-					{{#if lcAuth}}
+								{{/each}}
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6">
+					<div class="search d-flex">
+						<div class="row">
+							<div class="col-4">
+								<div class="combobox d-flex">
+									<div class="select">
+										<select class = "no-radius">
+											<option value="0">Danh mục</option>
+											<option value="1">Điện tử - Điện lạnh</option>
+											<option value="2">Nhà cửa - Đời sống</option>
+											<option value="3">Thời trang</option>
+										</select>
+									</div>
+									
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="search-box">
+									<div class="search-input">
+										<input type="text" class="input-search" placeholder="Tìm kiếm">
+									</div>
+									<div class="search-btn"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<ul class="nav-list">
+						{{#if lcAuth}}
 						<li class="nav-item">
-						<a class="nav-item-link" href="">
-							<i aria-hidden="true" class="fa fa-user"></i>
-							<i aria-hidden="true" class="fa fa-caret-down"></i>
-						</a>
-						<ul class="menu menu-account">
-							<li class="menu-item">
-								<a class="menu-item-link" href="">My Auction
-								</a>
-							</li>
-							<li class="menu-item">
-								<a class="menu-item-link" href="">Account
-								</a>
-							</li>
-						</ul>
-					</li>
-					{{else}}
+							<a class="nav-item-link" href="">
+								<i aria-hidden="true" class="fa fa-user"></i>
+								<i aria-hidden="true" class="fa fa-caret-down"></i>
+							</a>
+							<ul class="menu menu-account">
+								<li class="menu-item">
+									<a class="menu-item-link" href="">My Auction
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-item-link" href="">Account
+									</a>
+								</li>
+							</ul>
+						</li>
+						{{else}}
 						<li class="nav-item">
 							<a class="signin-btn" href="/account/sign-in">
 								<i class="fa fa-sign-in"></i> Đăng nhập
 							</a>
 						</li>
 
-					{{/if}}
+						{{/if}}
 
-				</ul>
+					</ul>
+				</div>
 			</div>
-			<div id="seperate"></div>
 		</div>
+		<div id="seperate"></div>
+	</div>
