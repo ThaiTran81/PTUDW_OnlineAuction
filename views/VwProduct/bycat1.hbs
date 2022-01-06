@@ -1,0 +1,216 @@
+{{#section 'css'}}
+	<link rel="stylesheet" href="/public/css/category.css">
+{{/section}}
+{{#section 'js'}}
+	<script src="/public/js/category.js"></script>
+	<script>
+		var checkbox = document.querySelectorAll('.type-radio');
+		checkbox.forEach((element) => {
+			element.addEventListener('change', function () {
+				var typeForm = document.getElementById('type-form');
+				typeForm.submit();
+			})
+		})
+	</script>
+{{/section}}
+<div class="category">
+	<div class="row">
+		<div class="category-fiter col-md-3">
+			<div class="filter">
+				<div class="filter-title">
+					Lọc theo giá
+				</div>
+				<div class="filter-content justify-content-center">
+					<div class="price-input">
+						<div class="field">
+							<span>Thấp nhất</span>
+							<input type="number" class="input-min" value="2500">
+						</div>
+						<div class="separator">-</div>
+						<div class="field">
+							<span>Cao nhất</span>
+							<input type="number" class="input-max" value="7500">
+						</div>
+					</div>
+					<div class="slider">
+						<div class="progress"></div>
+					</div>
+					<div class="range-input">
+						<input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+						<input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+					</div>
+				</div>
+			</div>
+			<div class="filter">
+				<div class="filter-title">
+					Loại sản phẩm
+				</div>
+				<div class="filter-content">
+					<form action="{{categoryID}}" method="get" id="type-form">
+						<ul class="checklist">
+							{{#each this.types}}
+								<li>
+									<div class="form-check">
+										{{#if isCurType}}
+											<input class="form-check-input type-radio" type="radio"
+												   value="{{value.typID}}" name="type" checked>
+										{{else}}
+											<input class="form-check-input type-radio" type="radio"
+												   value="{{value.typID}}" name="type">
+										{{/if}}
+										<span class="form-check-label">
+											{{value.typName}}
+										</span>
+									</div>
+								</li>
+							{{/each}}
+
+						</ul>
+					</form>
+				</div>
+			</div>
+			<div class="filter">
+				<div class="filter-title">
+					Kết thúc trong khoảng
+				</div>
+				<div class="filter-content">
+					<ul class="checklist">
+						<li>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="time1">
+								<label class="form-check-label" for="time1">
+									1 Ngày
+								</label>
+							</div>
+						</li>
+						<li>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="time1">
+								<label class="form-check-label" for="time1">
+									1 Tuần
+								</label>
+							</div>
+						</li>
+						<li>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="time2">
+								<label class="form-check-label" for="time2">
+									1 Tháng
+								</label>
+							</div>
+						</li>
+						<li>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="time3">
+								<label class="form-check-label" for="time3">
+									3 Tháng
+								</label>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="category-content col-md-9">
+			<div class="list-header d-flex justify-content-between mb-4">
+				<div class="sort">
+					<div class="sort-title">
+						Sort by:
+					</div>
+					<select name="sort-by" class="select-bar" id="">
+						<option value="all">All</option>
+						<option value="name">Name</option>
+						<option value="date">Date</option>
+					</select>
+				</div>
+				<form action="" class="search">
+					<input type="text" placeholder="Item Name">
+					<button type="submit">
+						<ion-icon name="search-outline"></ion-icon>
+					</button>
+				</form>
+			</div>
+			<div class="row justify-content-center">
+				{{#if (equal this.empty false)}}
+					{{#each this.products}}
+						<div class="col-md-6 col-lg-4">
+							<div class="auction-product-item">
+								<div class="auction-item-link">
+									<div class="pro-card-header">
+										<a class="pro-card-title">{{proName}}</a>
+										<i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
+									</div>
+									<img src="/public/images/product/{{proID}}/thumb.png" alt=""
+										 class="card-img">
+								</div>
+								<div class="product-price">
+									<div class="card-content">
+										<span class="card-content-value green-text">
+											<i class="icon mx-2 fa fa-gavel fa-2x"></i>
+											<span class="current-bid">Giá khởi điểm</span>
+										</span>
+										<span>
+											<span class="card-content-value">{{format_number startPrice}}</span>
+											<span class="total-bids">30 Bids</span>
+										</span>
+									</div>
+								</div>
+								<div class="product-card-time">
+									<div class="card-time-content right-border text-center">
+										<div>Start on:</div>
+										<div>24-11-2021 19:23:00</div>
+									</div>
+									<div class="card-time-content">
+										<div>Expire in:</div>
+										<div class="timer related-auction auction-time auction-end-time-value"></div>
+									</div>
+								</div>
+								<div class="buy-now-price">
+									<div class="card-content">
+										<span class="card-content-value red-text">
+											<i class="icon mx-2 fa fa-shopping-bag fa-2x red-text"></i>
+											<div class="current-bid">Mua ngay</div>
+										</span>
+										<span class="card-content-value">{{format_number buyNow}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				{{/if}}
+
+			</div>
+
+			<ul class="pagination justify-content-center">
+				<li>
+					<a href="" class="">
+						<ion-icon name="arrow-back-outline"></ion-icon>
+					</a>
+				</li>
+				<li>
+					<a href="" class="">
+						1
+					</a>
+				</li>
+				<li>
+					<a href="" class="">
+						2
+					</a>
+				</li>
+				<li>
+					<a href="" class="">
+						3
+					</a>
+				</li>
+				<li>
+					<a href="" class="">
+						<ion-icon name="arrow-forward-outline"></ion-icon>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+

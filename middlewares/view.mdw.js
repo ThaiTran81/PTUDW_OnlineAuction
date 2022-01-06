@@ -7,10 +7,9 @@ export default function (app) {
         extname: '.hbs',
         helpers: {
             format_number(val) {
-                return numeral(val).format('0,0') + ' VNĐ';
+                return numeral(val).format('0,0') + ' ₫';
             },
             equal(val1, val2) {
-                console.log(val1===val2);
                 return val1 === val2;
             },
 

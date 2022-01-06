@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="headingWh mb-2 mb-md-4">Danh sách sản phẩm đấu giá</h2>
+				<h2 class="headingWh mb-2 mb-md-4">Discover</h2>
 				<div class="filters d-none d-md-block">
 					<div class="filtertop">
 						<div class="filterLeft">
@@ -23,10 +23,11 @@
 							<div class="btn-group">
 								<button class="filterbtn dropdown-toggle text-start" type="button"
 										id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-									Tất cả
+									{{selectedType.typName}}
 								</button>
 
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<li><a class="dropdown-item" href="/category/{{selectedCate.catID}}">Tất cả</a></li>
 									{{#each types}}
 										<li><a class="dropdown-item" href="/category/{{../selectedCate.catID}}/{{this.typID}}">{{this.typName}}</a></li>
 									{{/each}}
@@ -107,14 +108,14 @@
 			{{#each pageNumbers}}
 				{{#if this.isCurrent}}
 					<li class="page-active">
-						<a href="/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
+						<a href="/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}" class="">
 							{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
-						<a href="/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
-							{{this.value}} 8
+						<a href="/category/{{../selectedCate.catID}}?page={{../selectedType.typID}}" class="">
+							{{this.value}}
 						</a>
 					</li>
 				{{/if}}

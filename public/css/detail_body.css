@@ -469,7 +469,6 @@ bottom: .5em;
 }
 
 .card-content {
-    font-weight: bold;
     width: 100%;
     padding: 2%;
     display: flex;
@@ -504,6 +503,8 @@ bottom: .5em;
 
 .card-content-value .icon {
     margin-left: 0 !important;
+    width: auto;
+    height: auto;
 }
 
 .card-content-value {

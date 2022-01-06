@@ -201,9 +201,7 @@ body {
 }
 
 .pagination li:hover {
-    background: linear-gradient(45deg,#faa307, #ffba08, #ffffff);
-    
-
+    background: linear-gradient(45deg,#faa307, #ffba08);
 }
 
 .pagination li a {
@@ -212,6 +210,9 @@ body {
     padding: 10px;
 }
 
+.page-active{
+    background: linear-gradient(45deg,#faa307, #ffba08);
+}
 
 /* Responsive */
 
