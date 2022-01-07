@@ -45,4 +45,5 @@ export default {
             'ORDER BY COUNT(h.UID) DESC\n' +
             'LIMIT '+n);
     }
+
 }
