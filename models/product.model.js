@@ -34,6 +34,6 @@ export default {
     },
 
     findTop5End(){
-        return knex('product').limit(5).where('endDate','>',Date.now()).orderBy('endDate')
+        return knex('product').limit(5).where('endDate','>',new Date()).orderBy('endDate')
     }
 }
