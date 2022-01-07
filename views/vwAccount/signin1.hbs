@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/public/css/register.css">
+		<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		<title>Register</title>
+
+	</head>
+	<body>
+		<div class="container h-100">
+			<div class="row my-auto h-100 align-items-center">
+				<div class="col-md-5 mx-auto">
+					<div id="login" class="form myform display">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Sign In</h1>
+							</div>
+						</div>
+						<form action="/account/sign-in" method="post" name="login">
+							<div class="form-group">
+								<label for="">Email address</label>
+								<input type="email" name="email" class="form-control" id="email" aria-describedby=""
+									   placeholder="Enter email">
+							</div>
+							<div class="form-group">
+								<label for="">Password</label>
+								<input type="password" name="password" id="password" class="form-control"
+									   aria-describedby="" placeholder="Enter Password">
+							</div>
+							<div class="col-md-12 text-center ">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+							</div>
+							<div class="col-md-12 ">
+								<div class="login-or">
+									<hr class="hr-or">
+									<span class="span-or">or Sign in with</span>
+								</div>
+							</div>
+							<div class="col-md-12 mb-3 text-center">
+								<a href="" class="signin-link" style="color: red;">
+									<i class="fa fa-google-plus mr-3" aria-hidden="true"></i>
+								</a>
+								<a href="" class="signin-link">
+									<i class="fa fa-facebook-square" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div class="form-group">
+								<p class="text-center">Don't have account?
+									<a href="#" onclick="prev()">Sign up here</a>
+								</p>
+							</div>
+						</form>
+					</div>
+
+					<!--sign up-->
+					<div id="signup" href="" class="form myform">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Sign Up</h1>
+							</div>
+						</div>
+						<form action="/account/signup" method="post" name="" id="frmRegister">
+							<div class="form-group">
+								<label for="">Email address</label>
+								<input type="email" name="resgist_email" class="form-control" id="resgist_email"
+									   aria-describedby="" placeholder="Enter email" required>
+							</div>
+							<div class="form-group">
+								<label for="">Password</label>
+								<input type="password" name="resgist_password" id="resgist_password"
+									   class="form-control" aria-describedby="" placeholder="Enter Password" required>
+							</div>
+							<div class="form-group">
+								<label for="">Confirm Password</label>
+								<input type="password" name="confirm_password" id="confirm_password"
+									   class="form-control" aria-describedby=""
+									   placeholder="Confirm Password" required>
+							</div>
+<!--							<div class="form-group">-->
+<!--								<label for="">Phone number</label>-->
+<!--								<input type="text" name="phone" class="form-control" aria-describedby=""-->
+<!--									   placeholder="Enter Phone Number" required>-->
+<!--							</div>-->
+							<div class="form-group">
+								<p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+							</div>
+							<div class="col-md-12 ">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" id="btnRegist"
+										disabled>Submit
+								</button>
+							</div>
+
+
+						</form>
+						<div class="form-group mt-4">
+							<p class="text-center">Already have account?
+								<a href="#" onclick="next()">Login Here</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script crossorigin="anonymous"
+				integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+				src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script crossorigin="anonymous"
+				integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script crossorigin="anonymous"
+				integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="/public/js/register.js"></script>
+		<script>
+			$('#btnRegist').on('click', function (e) {
+				e.preventDefault();
+				const pass = $('#resgist_password').val();
+				const confirm_pass = $('#confirm_password').val();
+				if (pass !== confirm_pass) {
+					alert('Mật khẩu xác nhận không khớp! Vui lòng kiểm tra lại')
+				} else {
+					$('#frmRegister').off('submit').submit();
+				}
+			});
+			function recaptchaCallback() {
+				$('#btnRegist').removeAttr('disabled');
+			};
+
+		</script>
+	</body>
+</html>

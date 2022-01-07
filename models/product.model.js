@@ -32,4 +32,8 @@ export default {
             .where('CatID', catId).count({amount: 'proID'});
         return list[0].amount;
     },
+
+    findTop5End(){
+        return knex('product').limit(5).where('endDate','>',Date.now()).orderBy('endDate')
+    }
 }

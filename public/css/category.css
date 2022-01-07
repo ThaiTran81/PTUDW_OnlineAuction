@@ -15,10 +15,10 @@ body {
     height: 100vh;
 }
 
-.row {
-    margin-left: 0;
-    margin-right: 0;
-}
+/*.row {*/
+/*    margin-left: 0;*/
+/*    margin-right: 0;*/
+/*}*/
 
 .category {
     width: 90% !important;

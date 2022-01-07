@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Sign Up</title>
+		<meta charset="utf-8">
+		<meta name="Googlebot-News" content="noindex, nofollow">
+		<meta name="googlebot" content="noindex, nofollow">
+		<meta name="robots" content="noimageindex">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" media="all" href="/public/css/bootstrap.min.css">
+		<link rel="stylesheet" media="all" href="/public/css/slick.css">
+		<link rel="stylesheet" media="all" href="/public/css/slick-theme.css">
+		<link rel="stylesheet" media="all" href="/public/css/style.css">
+		<link rel="icon" type="image/png" sizes="28x28" href="img/favi.png">
+		<meta name="theme-color" content="#sdfsf">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+	</head>
+	<body class="themebgcolor">
+		<div class="circlebg1"><img class="img-fluid" src="/public/images/circlebg19.svg" alt="img"></div>
+		<!-- banner sec -->
+		<div class="bannerSec">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bannercntSec signupsec">
+							<div class="bannercnt signctn">
+								<p class="textwhitecolor w-100">Quay lại
+									<a href="/">trang chủ</a></p>
+								<br>
+								<h2 class="textwhitecolor signheading">Đăng ký tài khoản <span
+										class="textbluecolor">BIDUS</span></h2>
+								{{#if failMsg}}
+									<div class="alert alert-danger w-100" role="alert">
+										{{failMsg}}
+										<button type="button" class="btn-close float-end" data-bs-dismiss="alert"
+												aria-label="Close"></button>
+									</div>
+								{{/if}}
+								<div class="sign-from signup-form">
+									<form action="/account/sign-up" id="frmRegister" method="post">
+										<div class="input-box">
+											<input type="text" name="name" placeholder="Họ tên"
+												   class="form-input" required>
+										</div>
+										<div class="input-box">
+											<input type="text" name="address" placeholder="Địa chỉ"
+												   class="form-input" required>
+										</div>
+										<div class="input-box">
+											<input type="email" name="email" placeholder="Email"
+												   class="form-input" required>
+										</div>
+										<div class="row input-box">
+											<div class="col-md-6">
+												<input id="pass" type="password" name="pass" placeholder="Mật khẩu"
+													   class="form-input" required>
+											</div>
+											<div class="col-md-6">
+												<input id="cpass" type="password" name="cpass"
+													   placeholder="Xác nhận mật khẩu"
+													   class="form-input" required>
+											</div>
+										</div>
+										<div class="g-recaptcha form-group input-box w-100"
+											 data-callback="recaptchaCallback"
+											 data-sitekey="6Lf8bNMdAAAAANyVxgOQ6V48gRwvDSJq0EnGEumu">
+										</div>
+										<button class="btn btnlightblue me-3 w-100" id="btnRegist" type="submit"
+												disabled>Đăng ký
+										</button>
+									</form>
+								</div>
+								<div class="sign-btn mt-2">
+									<p>Đã có tài khoản ? <a href="/account/sign-in">Đăng nhập</a></p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<script src="/public/js/jquery-2.0.0.min.js"></script>
+		<script src="/public/js/bootstrap.bundle.min.js"></script>
+		<script src="/public/js/slick.js"></script>
+		<script src="/public/js/comman.js"></script>
+		<script>
+			$('#btnRegist').on('click', function (e) {
+				e.preventDefault();
+				const pass = $('#pass').val();
+				const confirm_pass = $('#cpass').val();
+				if (pass !== confirm_pass) {
+					alert('Mật khẩu xác nhận không khớp! Vui lòng kiểm tra lại')
+				} else {
+					$('#frmRegister').off('submit').submit();
+				}
+			});
+
+			function recaptchaCallback() {
+				$('#btnRegist').removeAttr('disabled');
+			};
+
+		</script>
+
+	</body>
+</html>

@@ -12,6 +12,10 @@ export default function (app) {
             equal(val1, val2) {
                 return val1 === val2;
             },
+            getName(fullname) {
+                const arr = fullname.split(" ");
+                return arr[arr.length-1];
+            },
 
             section: hbs_sections()
         }

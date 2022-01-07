@@ -4,10 +4,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import accountRoute from '../routes/account.route.js';
 import productRoute from '../routes/product-user.route.js';
+import productModel from '../models/product.model.js'
 
 export default function (app){
-    app.get('/', function (req, res){
-        res.render('home');
+    app.get('/', async function (req, res){
+        const list5End = await productModel.findTop5End();
+        console.log(list5End);
+        res.render('home', {list5End});
     });
 
     app.get('/prooduct', function (req, res){

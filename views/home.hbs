@@ -10,12 +10,64 @@
 
 	</div>
 </div>
-<!-- Last Added Items -->
+<!-- top 5 sp gan ket thuc -->
 <div class="LastAddedItems pt-3">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Last Added Items</h2>
+				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm gần kết thúc</h2>
+				<div class="lastAdded slider d-flex align-items-stretch">
+					{{#each list5End}}
+						<div class="aboutitem">
+							<div class="aboutitemImg"><img class="img-fluid"
+														   src="/public/images/product/{{proID}}/thumb.png"
+														   alt="img"></div>
+							<div class="bgdarkbluecolor aboutitemcnt">
+								<div class="itemtitlecode">
+									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+									<h3 class="textwhitecolor">{{proName}}</h3>
+								</div>
+								<div class="product-price mb-auto">
+									<div class="card-content">
+										<div class="card-content-value green-text">
+											<i class="icon mx-2 fa fa-gavel"></i>
+											<span class="current-bid">{{format_number startPrice}}</span>
+										</div>
+										<span>
+                                            <span class="card-content-value textgraycolor">Đã đấu</span>
+                                            <span class="total-bids">0 Lượt</span>
+                                        </span>
+									</div>
+									<div class="card-content">
+                                        <span class="card-content-value blue-text">
+                                            <i class="icon mx-2 fa fa-user"></i>
+                                            <div class="current-bid">Bidder's Name</div>
+                                        </span>
+									</div>
+								</div>
+								<div class="buy-now-price">
+									<div class="card-content">
+                                        <span class="card-content-value red-text">
+                                            <i class="icon mx-2 fa fa-shopping-cart"></i>
+                                            <div class="current-bid">Mua ngay</div>
+                                        </span>
+										<span class="card-content-value">{{format_number buyNow}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- top 5 sp nhieu luot ra gia nhat -->
+<div class="LastAddedItems pt-3 mt-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm có nhiều lượt ra giá nhất</h2>
 				<div class="lastAdded slider">
 					<div class="aboutitem">
 						<div class="aboutitemImg"><img class="img-fluid" src="/public/images/last-added-itemimg01.png"
@@ -27,10 +79,59 @@
 							</div>
 							<div class="product-price">
 								<div class="card-content">
-                                        <div class="card-content-value green-text">
-                                            <i class="icon mx-2 fa fa-gavel"></i>
-                                            <span class="current-bid">876.000 ₫</span>
-                                        </div>
+									<div class="card-content-value green-text">
+										<i class="icon mx-2 fa fa-gavel"></i>
+										<span class="current-bid">876.000 ₫</span>
+									</div>
+									<span>
+                                            <span class="card-content-value textgraycolor">Đã đấu</span>
+                                            <span class="total-bids">30 Lượt</span>
+                                        </span>
+								</div>
+								<div class="card-content">
+                                        <span class="card-content-value blue-text">
+                                            <i class="icon mx-2 fa fa-user"></i>
+                                            <div class="current-bid">Bidder's Name</div>
+                                        </span>
+								</div>
+							</div>
+							<div class="buy-now-price">
+								<div class="card-content">
+                                        <span class="card-content-value red-text">
+                                            <i class="icon mx-2 fa fa-shopping-cart"></i>
+                                            <div class="current-bid">Mua ngay</div>
+                                        </span>
+									<span class="card-content-value">1,000.00 ₫</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- top 5 sp co gia cao nhat -->
+<div class="LastAddedItems pt-3 mt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm có nhiều lượt ra giá nhất</h2>
+				<div class="lastAdded slider">
+					<div class="aboutitem">
+						<div class="aboutitemImg"><img class="img-fluid" src="/public/images/last-added-itemimg01.png"
+													   alt="img"></div>
+						<div class="bgdarkbluecolor aboutitemcnt">
+							<div class="itemtitlecode">
+								<h2 class="text-danger"><i class="fa fa-clock-o"></i> 12:00:09</h2>
+								<h3 class="textwhitecolor">Dây truyền</h3>
+							</div>
+							<div class="product-price">
+								<div class="card-content">
+									<div class="card-content-value green-text">
+										<i class="icon mx-2 fa fa-gavel"></i>
+										<span class="current-bid">876.000 ₫</span>
+									</div>
 									<span>
                                             <span class="card-content-value textgraycolor">Đã đấu</span>
                                             <span class="total-bids">30 Lượt</span>

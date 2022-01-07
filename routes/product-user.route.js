@@ -17,7 +17,6 @@ router.get('/:catID', async function (req, res) {
     var lstType = await categoryModel.findAllTypeByCat(catId);
 
     for (let i=0; i<lst.length; i++) {
-        console.log(lst[i]);
         if (lst[i].catID === +catId) {
             selected = lst[i];
         }
@@ -25,7 +24,6 @@ router.get('/:catID', async function (req, res) {
             nCategories.push(lst[i]);
         }
     }
-    console.log(selected);
     const limit = 12;
     const page = req.query.page || 1;
     const offset = (page - 1) * limit;

@@ -490,12 +490,21 @@ header {
     min-width: inherit;
     width: auto;
     height: auto;
+    max-width: 200px;
+    max-height: 50px;
     background: #020E1E;
     display: inline-flex;
     align-items: center;
     align-content: center;
     justify-content: center;
     border-radius: 90px;
+}
+
+.login a.btn span{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .login a.btn images {
@@ -3792,6 +3801,10 @@ textarea.form-input {
 
     /*.slick-slide { padding: 0; }*/
     /*.slick-slider { padding: 0 15px; }*/
+
+.slide{
+    height: 100%;
+}
     .circlebg2 {
         top: 80px;
     }
