@@ -8,9 +8,10 @@ import productModel from '../models/product.model.js'
 
 export default function (app){
     app.get('/', async function (req, res){
-        const list5End = await productModel.findTop5End();
-        console.log(list5End);
-        res.render('home', {list5End});
+        const list5End = await productModel.findTopEnd(5);
+        var list5Bid = await productModel.findTopBid(5);
+        list5Bid = list5Bid[0];
+        res.render('home', {list5End, list5Bid});
     });
 
     app.get('/prooduct', function (req, res){

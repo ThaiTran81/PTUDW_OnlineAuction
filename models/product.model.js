@@ -33,7 +33,16 @@ export default {
         return list[0].amount;
     },
 
-    findTop5End(){
-        return knex('product').limit(5).where('endDate','>',Date.now()).orderBy('endDate')
+    findTopEnd(n){
+        return knex('product').limit(n).where('endDate','>',new Date()).orderBy('endDate');
+    },
+
+    findTopBid(n){
+        return knex.raw('SELECT p.proID, p.proName, p.endDate, p.buyNow, COUNT(h.UID) AS bidNum\n' +
+            'FROM product p JOIN historyauc h on p.proID=h.proID\n' +
+            'WHERE p.endDate >= NOW()\n' +
+            'GROUP BY p.proID\n' +
+            'ORDER BY COUNT(h.UID) DESC\n' +
+            'LIMIT '+n);
     }
 }
