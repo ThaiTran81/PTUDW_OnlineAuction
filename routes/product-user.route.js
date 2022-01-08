@@ -1,6 +1,7 @@
 import express from "express";
 import productModel from "../models/product.model.js";
-import categoryModel from "../models/category.model.js"
+import categoryModel from "../models/category.model.js";
+import protectEmail from "../middlewares/protectEmail.mdw.js";
 
 const router = express.Router();
 
@@ -41,6 +42,7 @@ router.get('/category/:catID', async function (req, res) {
     }
 
     const list = await productModel.findPageByCatId(catId, limit, offset);
+
     res.render('vwProduct/byCat', {
         products: list,
         empty: list.length === 0,
@@ -77,7 +79,6 @@ router.get('/category/:catID/:typeID', async function (req, res) {
         }
     }
 
-    console.log(selectedCat);
     const limit = 12;
     const page = req.query.page || 1;
     const offset = (page - 1) * limit;

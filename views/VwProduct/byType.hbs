@@ -70,17 +70,17 @@
 									<div class="card-content">
 										<div class="card-content-value green-text">
 											<i class="icon mx-2 fa fa-gavel"></i>
-											<span class="current-bid">{{format_number startPrice}}</span>
+											<span class="current-bid">{{format_number price}}</span>
 										</div>
 										<span>
                                             <span class="card-content-value textgraycolor">Đã đấu</span>
-                                            <span class="total-bids">0 Lượt</span>
+                                            <span class="total-bids">{{BidCount}} Lượt</span>
                                         </span>
 									</div>
 									<div class="card-content">
                                         <span class="card-content-value blue-text">
                                             <i class="icon mx-2 fa fa-user"></i>
-                                            <div class="current-bid">Bidder's Name</div>
+                                            <div class="current-bid">{{protect_email email}}</div>
                                         </span>
 									</div>
 								</div>

@@ -13,6 +13,11 @@ export default function (app) {
         res.locals.auth = req.session.auth;
         res.locals.authUser = req.session.authUser;
 
+        res.locals.sort = [{value: 'timeDesc', name:'Sắp xếp theo thời gian kết thúc giảm dần', isSelected: false},
+            {value:'timeAsc', name:'Sắp xếp theo thời gian kết thúc tăng dần', isSelected: false},
+            {value: 'priceDesc', name:'Sắp xếp theo giá giảm dần', isSelected: false},
+            {value: 'priceAsc', name: 'Sắp xếp theo giá tăng dần', isSelected: false}]
+
         next();
     });
     // get parent cat

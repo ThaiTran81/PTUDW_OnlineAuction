@@ -9,9 +9,9 @@ import productModel from '../models/product.model.js'
 export default function (app){
     app.get('/', async function (req, res){
         const list5End = await productModel.findTopEnd(5);
-        var list5Bid = await productModel.findTopBid(5);
-        list5Bid = list5Bid[0];
-        res.render('home', {list5End, list5Bid});
+        const list5Bid = await productModel.findTopBid(5);
+        const list5Price = await productModel.findTopPrice(5);
+        res.render('home', {list5End, list5Bid, list5Price});
     });
 
     app.use('/account', accountRoute);

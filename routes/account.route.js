@@ -8,13 +8,12 @@ const router = express.Router();
 
 router.get('/sign-in', function (req, res) {
     req.session.returnTo = req.headers.referer || '/';
-    if(req.session.auth) return res.redirect(req.session.returnTo);
+    if (req.session.auth) return res.redirect(req.session.returnTo);
     res.render('vwAccount/signin', {layout: false});
 });
 
 
 router.get('/sign-up', function (req, res) {
-    req.session.returnTo = req.originalUrl;
     res.render('vwAccount/signup', {layout: false});
 })
 
@@ -63,9 +62,13 @@ router.post('/sign-up', async function (req, res) {
 
 router.post('/sign-in', async function (req, res) {
     const user = await userModel.findUserByEmail(req.body.email);
+
+    if (user === null){
+        return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản hoặc mật khẩu không đúng'});
+    }
     const ret = bcrypt.compareSync(req.body.password, user.password);
-    if (ret===false){
-        return res.render('vwAccount/signin',{layout: false, failMsg:'Tài khoản hoặc mật khẩu không đúng'});
+    if (ret === false) {
+        return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản hoặc mật khẩu không đúng'});
     }
     delete user.password;
     req.session.auth = true;
@@ -75,7 +78,7 @@ router.post('/sign-in', async function (req, res) {
 })
 
 
-router.post('/logout',  function (req, res) {
+router.post('/logout', function (req, res) {
     req.session.auth = false;
     req.session.authUser = null;
     req.session.returnTo = req.headers.referer;
@@ -83,8 +86,8 @@ router.post('/logout',  function (req, res) {
     res.redirect(url);
 });
 
-router.get('/admin', function (req,res){
-    res.render('admin/adminDashboard', {layout:false});
+router.get('/admin', function (req, res) {
+    res.render('admin/adminDashboard', {layout: false});
 })
 
 export default router;
