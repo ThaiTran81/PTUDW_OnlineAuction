@@ -67,6 +67,7 @@ const DeflateModal = document.querySelector(".deflate-modal")
 for (const Btn of AddBtns) {
     Btn.addEventListener("click", function(e) {
         e.preventDefault();
+
         Modal.style.display = "block";
         if (Btn.id == "add-lv1") {
             document.querySelector(".add-modal-1").style.display = "block";
@@ -83,6 +84,15 @@ for (const del of DeleteBtns) {
         e.preventDefault();
         Modal.style.display = "block";
         DeleteModal.style.display = "block";
+    })
+}
+
+// Edit
+for (const edit of EditBtns) {
+    edit.addEventListener('click', function(e) {
+        e.preventDefault();
+        Modal.style.display = "block";
+        EditModal.style.display = "block";
     })
 }
 

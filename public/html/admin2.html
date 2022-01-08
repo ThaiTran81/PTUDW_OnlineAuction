@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" href="/public/css/base.css">
+
+	<title>Admin Dashboard</title>
+</head>
+
+<body>
+    <a href="" class="back"> <i class='bx bx-left-arrow-alt'></i> Quay lại</a>
+    <div class="main-category">
+        <div class="container">
+            <div class="widget mt-5">
+                <div class="widget-title">
+                    Tên danh mục cấp 1
+                    <span style = "float: right;">
+                        <button class="btn btn-primary edit-btn"><i class='bx bx-edit'></i></button>
+                        <button class="btn btn-danger delete-btn"><i class='bx bx-trash'></i></button>       
+                    </span>
+                </div>
+                <div class="widget-content">
+                    <table class="widget-table">
+                        <col style="width:40%">
+                        <col style="width:30%">
+                        <col style="width:30%">
+                        <thead>
+                            <tr>
+                                <th>Tên danh mục cấp 2</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Sửa/Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="">Đồ điện</td>
+                                <td scope="">20</td>
+                                <td>
+                                    <button class="btn btn-primary edit-btn"><i class='bx bx-edit'></i></button>
+                                    <button class="btn btn-danger delete-btn"><i class='bx bx-trash'></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="">Đồ điện</td>
+                                <td scope="">20</td>
+                                <td>
+                                    <button class="btn btn-primary edit-btn"><i class='bx bx-edit'></i></button>
+                                    <button class="btn btn-danger delete-btn"><i class='bx bx-trash'></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="">Đồ điện</td>
+                                <td scope="">20</td>
+                                <td>
+                                    <button class="btn btn-primary edit-btn"><i class='bx bx-edit'></i></button>
+                                    <button class="btn btn-danger delete-btn"><i class='bx bx-trash'></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="">Đồ điện</td>
+                                <td scope="">20</td>
+                                <td>
+                                    <button class="btn btn-primary edit-btn"><i class='bx bx-edit'></i></button>
+                                    <button class="btn btn-danger delete-btn"><i class='bx bx-trash'></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row flex-row-reverse mr-5">
+                        <button id="add-lv2" class="btn btn-success add-btn">
+                            <i class='bx bx-plus'></i>
+                            Thêm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-modal">
+        <form action="" id="add1" class="add-modal-1 my-modal">
+			<h1>Thêm danh mục cấp 1 mới </h1>
+			<input type="text" id="exampleInputEmail1" placeholder="Enter Category Name">
+			<button type="submit" class="btn btn-success mr-2 mt-2 confirm-add-btn">
+				<i class='bx bx-check mr-2'></i>Hoàn tất</button>
+			<button class="btn btn-danger mt-2 close-btn">
+				<i class='bx bx-x mr-2'></i>Hủy bỏ</button>
+		</form>
+        <form action="" id="add2" class="add-modal-2 my-modal">
+			<h1>Thêm danh mục cấp 2 mới </h1>
+			<input type="text" id="exampleInputEmail1" placeholder="Enter Category Name">
+			<button type="submit" class="btn btn-success mr-2 mt-2 confirm-add-btn">
+				<i class='bx bx-check mr-2'></i>Hoàn tất</button>
+			<button class="btn btn-danger mt-2 close-btn">
+				<i class='bx bx-x mr-2'></i>Hủy bỏ</button>
+		</form>
+        <!-- Edit -->
+		<form action="" id="" class="edit-modal my-modal">
+			<h1>Chỉnh sửa danh mục </h1>
+			<input type="text" id="exampleInputEmail1" placeholder="Enter Category Name">
+			<button type="submit" class="btn btn-success mr-2 mt-2 confirm-add-btn">
+				<i class='bx bx-check mr-2'></i>Hoàn tất</button>
+			<button class="btn btn-danger mt-2 close-btn">
+				<i class='bx bx-x mr-2'></i>Hủy bỏ</button>
+		</form>
+		<!-- Delete -->
+		<form action="" id="" class="delete-modal my-modal">
+			<h1>Xóa mục này?</h1>
+			<button type="submit" class="btn btn-success mr-2 mt-2 confirm-add-btn">
+				<i class='bx bx-check mr-2'></i>Đồng ý</button>
+			<button class="btn btn-danger mt-2 close-btn">
+				<i class='bx bx-x mr-2'></i>Hủy bỏ</button>
+		</form>
+    </div>
+
+	
+
+	<link rel="stylesheet" href="/public/css/category.css">
+	<!-- <link rel="stylesheet" href="../css/userDashboard.css"> -->
+	<link href="/public/css/admin.css" rel="stylesheet" type="text/css">
+	<script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="../js/admin2.js"></script>
+</body>
+
+</html>

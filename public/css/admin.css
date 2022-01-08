@@ -82,9 +82,10 @@ a.nav-brand:hover{
 }
 
 .active{
-    background-color: var(--btn-bg);
-    color: var(--btn-text-color) !important;
+    /*background-color: var(--btn-bg);*/
+    color: #48cae4 !important;
     border-radius: 10px;
+    font-weight: 500;
 }
 
 .sidebar-content .navbar-nav .nav-item a{
@@ -256,10 +257,6 @@ a.nav-brand:hover{
 }
 
     /* Products View */
-#admin-produc-view {
-
-}
-
 .admin-table {
     height: 500px;
     overflow: auto;
@@ -338,6 +335,14 @@ a.nav-brand:hover{
 
 .content-show {
     display: block !important;
+}
+
+.back {
+    
+}
+
+.back i {
+    vertical-align: middle;
 }
 
 
