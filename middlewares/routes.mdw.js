@@ -14,12 +14,8 @@ export default function (app){
         res.render('home', {list5End, list5Bid});
     });
 
-    app.get('/prooduct', function (req, res){
-        res.render('', {layout: false})
-    })
-
     app.use('/account', accountRoute);
-    app.use('/category', productRoute);
+    app.use('/product', productRoute);
 
     app.use(function (req, res, next) {
         // res.render('404', { layout: false });

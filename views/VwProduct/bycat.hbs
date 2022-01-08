@@ -15,7 +15,7 @@
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									{{#each lstCategories}}
 										<li><a class="dropdown-item"
-											   href="/category/{{this.catID}}">{{this.catName}}</a></li>
+											   href="/product/category/{{this.catID}}">{{this.catName}}</a></li>
 									{{/each}}
 								</ul>
 							</div>
@@ -28,7 +28,7 @@
 
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									{{#each types}}
-										<li><a class="dropdown-item" href="/category/{{../selectedCate.catID}}/{{this.typID}}">{{this.typName}}</a></li>
+										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/{{this.typID}}">{{this.typName}}</a></li>
 									{{/each}}
 								</ul>
 							</div>
@@ -63,7 +63,7 @@
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
 									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
-									<h3 class="textwhitecolor">{{proName}}</h3>
+									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
 									<div class="card-content">
@@ -107,13 +107,13 @@
 			{{#each pageNumbers}}
 				{{#if this.isCurrent}}
 					<li class="page-active">
-						<a href="/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
+						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
 							{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
-						<a href="/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
+						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
 							{{this.value}}
 						</a>
 					</li>

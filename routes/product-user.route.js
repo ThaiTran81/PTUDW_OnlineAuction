@@ -8,7 +8,7 @@ router.get('/', async function (req, res){
 
 })
 
-router.get('/:catID', async function (req, res) {
+router.get('/category/:catID', async function (req, res) {
 
     const catId = req.params.catID || 1;
     let nCategories = [];
@@ -51,7 +51,7 @@ router.get('/:catID', async function (req, res) {
     });
 });
 
-router.get('/:catID/:typeID', async function (req, res) {
+router.get('/category/:catID/:typeID', async function (req, res) {
 
     const catId = req.params.catID || 1;
     const typeId = req.params.typeID || 1;
@@ -105,6 +105,11 @@ router.get('/:catID/:typeID', async function (req, res) {
         selectedType
     });
 });
+
+router.get('/detail/:id', function (req, res){
+    const proID = req.params.id;
+    res.render('vwProduct/productDetail');
+})
 
 
 export default router;
