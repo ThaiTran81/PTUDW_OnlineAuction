@@ -53,8 +53,8 @@ header{
 .body-intro{
     width: 100%;
     display: flex;
-    padding-top: 70px;
-    background: linear-gradient(-45deg, #B5179E, #7209B7, #560BAD, #480CA8, #4361ee);
+    margin-top: 70px;
+    /*background: linear-gradient(-45deg, #B5179E, #7209B7, #560BAD, #480CA8, #4361ee);*/
     border-bottom-left-radius: 100% 100%;
     border-bottom-right-radius: 50% 100%;
     position: relative;
@@ -79,16 +79,18 @@ header{
 
 .intro-text h2{
     color: #48cae4;
-    font-weight: 200;
+    font-weight: 400;
 }
 
 .intro-text p {
     font-size: 80px;
     color: white;
     font-weight: bold;
+    text-shadow: 3px 3px 8px #ccc;
 }
 
 .intro-text h5 {
-    color: white;
+    color: black;
     padding-right: 300px;
+    margin-bottom: 30px;
 }

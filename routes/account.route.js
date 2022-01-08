@@ -83,4 +83,8 @@ router.post('/logout',  function (req, res) {
     res.redirect(url);
 });
 
+router.get('/admin', function (req,res){
+    res.render('admin/adminDashboard', {layout:false});
+})
+
 export default router;

@@ -326,6 +326,7 @@ button.btn:hover, button.btn:focus {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    min-height: 46px;
 }
 
 .itemtitlecode h4 {
