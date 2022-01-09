@@ -5,8 +5,10 @@
 			<div class="col-md-12">
 				<div class="authoreproimg">
 					<div class="authoreproimgBox">
-						<img class="img-fluid d-none d-md-block cover-img mt-5" src="/public/images/subheader.jpg" alt="img">
-						<img class="img-fluid d-block d-md-none cover-md-img mt-5" src="/public/images/subheader.jpg" alt="img">
+						<img class="img-fluid d-none d-md-block cover-img mt-5" src="/public/images/subheader.jpg"
+							 alt="img">
+						<img class="img-fluid d-block d-md-none cover-md-img mt-5" src="/public/images/subheader.jpg"
+							 alt="img">
 					</div>
 					<div class="authoreproicon"><img class="img-fluid" src="/public/images/author.jpg" alt="img"></div>
 				</div>
@@ -23,7 +25,8 @@
 					<!--</div>-->
 					<div class="prCnt">
 						<h2 class="textwhitecolor">{{authUser.name}}</h2>
-						<h3 class="textgraycolor mt-3 mb-4"><span class="textbluecolor">email:</span> {{authUser.email}}</h3>
+						<h3 class="textgraycolor mt-3 mb-4"><span class="textbluecolor">email:</span> {{authUser.email}}
+						</h3>
 						<!--<p class="textgraycolor">There are many variations of passages of Lorem Ipsum available, but<br> the majority have suffered alteration in some form, by injected</p>-->
 					</div>
 				</div>
@@ -50,8 +53,9 @@
 								Yêu thích <span>{{count_array watchList}}</span></button>
 							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFour">
 								<i class="fa fa-clock-o"></i>
-								Lịch sử đấu giá</button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFour">
+								Lịch sử đấu giá
+							</button>
+							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFive">
 								<i class="fa fa-user"></i>
 								<a class="textgraycolor" href="#">Thông tin cá nhân</a></button>
 
@@ -61,7 +65,8 @@
 						<div class="tab-pane fade show active" id="TabOne">
 							<div class="row d-none d-md-flex">
 								<div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-									<button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+									<button class="filterbtn dropdown-toggle text-start" type="button"
+											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 										Price
 									</button>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -71,7 +76,8 @@
 								</div>
 
 								<div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-									<button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+									<button class="filterbtn dropdown-toggle text-start" type="button"
+											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 										Newest
 									</button>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -81,7 +87,8 @@
 								</div>
 
 								<div class="col-md-6 col-xl-3 ">
-									<button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+									<button class="filterbtn dropdown-toggle text-start" type="button"
+											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 										All items
 									</button>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -100,8 +107,10 @@
 																		   alt="img"></div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
-													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
-													<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
+													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
+															data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+													<h3 class="textwhitecolor"><a
+															href="/product/detail/{{proID}}">{{proName}}</a></h3>
 												</div>
 												<div class="product-price mb-auto">
 													<div class="card-content">
@@ -149,8 +158,10 @@
 																		   alt="img"></div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
-													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
-													<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
+													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
+															data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+													<h3 class="textwhitecolor"><a
+															href="/product/detail/{{proID}}">{{proName}}</a></h3>
 												</div>
 												<div class="product-price mb-auto">
 													<div class="card-content">
@@ -197,8 +208,10 @@
 																		   alt="img"></div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
-													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
-													<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
+													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
+															data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+													<h3 class="textwhitecolor"><a
+															href="/product/detail/{{proID}}">{{proName}}</a></h3>
 												</div>
 												<div class="product-price mb-auto">
 													<div class="card-content">
@@ -246,7 +259,8 @@
 									{{#each historyBid}}
 										<tr class="mt-1">
 											<td class="textwhitecolor offericon aboutitem aboutitemimages">
-												<img class="img-fluid rounded-2" src="/public/images/product/{{proID}}/thumb.png" alt="img">
+												<img class="img-fluid rounded-2"
+													 src="/public/images/product/{{proID}}/thumb.png" alt="img">
 											</td>
 											<td class="textwhitecolor">
 												<div class="actiCollect">
@@ -341,6 +355,46 @@
 							</div>
 
 						</div>
+						<div class="tab-pane fade justify-content-center" id="TabFive">
+							<div class="sign-from signup-form m-auto">
+								<form action="#" method="post">
+									<div class="input-box">
+										<input type="text" name="name" placeholder="Họ tên"
+											   class="form-input" value="{{authUser.name}}">
+									</div>
+									<div class="input-box">
+										<input type="text" name="address" placeholder="Địa chỉ"
+											   class="form-input" value="{{authUser.addr}}">
+									</div>
+									<div class="input-box">
+										<input type="email" name="email" placeholder="Email"
+											   class="form-input" value="{{authUser.email}}">
+									</div>
+									<div class="input-box">
+										<input type="text" name="dob" placeholder="Ngày sinh"
+											   class="form-input" id="datepicker" value="{{format_dob authUser.dob}}">
+									</div>
+									<div class="input-box">
+										<input type="password" name="curPass" placeholder="Mật khẩu hiện tại"
+											   class="form-input">
+									</div>
+									<div class="row input-box">
+										<div class="col-md-6">
+											<input id="pass" type="password" name="pass" placeholder="Mật khẩu mới"
+												   class="form-input">
+										</div>
+										<div class="col-md-6">
+											<input id="cpass" type="password" name="cpass"
+												   placeholder="Xác nhận mật khẩu mới"
+												   class="form-input">
+										</div>
+									</div>
+									<button class="btn btnlightblue me-3 w-100" id="btnRegist" type="submit">
+										Cập nhật thông tin
+									</button>
+								</form>
+							</div>
+						</div>
 
 					</div>
 				</div>
@@ -348,3 +402,14 @@
 		</div>
 	</div>
 </div>
+
+{{#section 'js'}}
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<script>
+		$( function() {
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy");
+		} );
+	</script>
+{{/section}}

@@ -29,19 +29,29 @@
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<li><a class="dropdown-item" href="/product/category/{{selectedCate.catID}}">Tất cả</a></li>
 									{{#each types}}
-										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/{{this.typID}}">{{this.typName}}</a></li>
+										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a></li>
 									{{/each}}
 								</ul>
 							</div>
 
 
 							<div class="btn-group">
-								<button class="filterbtn dropdown-toggle text-start" type="button"
-										id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-									<li><a class="dropdown-item" href="#">Single items</a></li>
-									<li><a class="dropdown-item" href="#">Bundles</a></li>
+								{{#each sort}}
+									{{#if this.isSelected}}
+										<button class="filterbtn dropdown-toggle text-start w-auto me-1" type="button"
+												id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+											{{this.name}}
+										</button>
+									{{/if}}
+								{{/each}}
+								<ul class="dropdown-menu w-auto" aria-labelledby="dropdownMenuButton" style="">
+									{{#each sort}}
+										{{#unless isSelected}}
+											<li><a class="dropdown-item"
+												   href="/product/category/{{../selectedCate.catID}}/type/{{../selectedType.typID}}?sort={{value}}
+												">{{name}}</a></li>
+										{{/unless}}
+									{{/each}}
 								</ul>
 							</div>
 

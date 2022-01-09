@@ -28,20 +28,31 @@
 
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									{{#each types}}
-										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/{{this.typID}}">{{this.typName}}</a></li>
+										<li><a class="dropdown-item"
+											   href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a>
+										</li>
 									{{/each}}
 								</ul>
 							</div>
 
 
 							<div class="btn-group">
-								<button class="filterbtn dropdown-toggle text-start" type="button"
-										id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-										Sắp xếp theo thời gian tăng dần
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-									<li><a class="dropdown-item" href="#">Sắp xếp theo thời gian giảm dần</a></li>
-									<li><a class="dropdown-item" href="#">Sắp xếp theo</a></li>
+								{{#each sort}}
+									{{#if this.isSelected}}
+										<button class="filterbtn dropdown-toggle text-start w-auto me-1" type="button"
+												id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+											{{this.name}}
+										</button>
+									{{/if}}
+								{{/each}}
+								<ul class="dropdown-menu w-auto" aria-labelledby="dropdownMenuButton" style="">
+									{{#each sort}}
+										{{#unless isSelected}}
+											<li><a class="dropdown-item"
+												   href="/product/category/{{../selectedCate.catID}}?sort={{value}}
+												">{{name}}</a></li>
+										{{/unless}}
+									{{/each}}
 								</ul>
 							</div>
 
@@ -63,7 +74,8 @@
 														   alt="img"></div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
+											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -109,13 +121,13 @@
 				{{#if this.isCurrent}}
 					<li class="page-active">
 						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
-							{{this.value}}
+						{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
 						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
-							{{this.value}}
+						{{this.value}}
 						</a>
 					</li>
 				{{/if}}
@@ -130,7 +142,7 @@
 		<div class="row d-block d-md-none">
 			<div class="col-md-12 text-center">
 				<button type="button" class="btn btnlightblue filterbtnsm" data-bs-toggle="modal"
-						data-bs-target="#filterModal">Filter
+						data-bs-target="#filterModal">Lọc
 				</button>
 			</div>
 		</div>

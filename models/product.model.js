@@ -20,9 +20,49 @@ export default {
             'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN type ON type.typID=p.typID WHERE p.endDate> NOW() AND type.catID= '+catId+ ' LIMIT '+ limit+ ' OFFSET '+ offset);
         return proByCat[0];
     },
+    async findPageByCatId_TimeAsc(catId, limit, offset) {
+        const proByCat = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN type ON type.typID=p.typID WHERE p.endDate> NOW() AND type.catID= '+catId+ ' ORDER BY p.endDate ASC LIMIT '+ limit+ ' OFFSET '+ offset);
+        return proByCat[0];
+    },
+    async findPageByCatId_PriceAsc(catId, limit, offset) {
+        const proByCat = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN type ON type.typID=p.typID WHERE p.endDate> NOW() AND type.catID= '+catId+ ' ORDER BY h.price ASC LIMIT '+ limit+ ' OFFSET '+ offset);
+        return proByCat[0];
+    },
+    async findPageByCatId_PriceDesc(catId, limit, offset) {
+        const proByCat = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN type ON type.typID=p.typID WHERE p.endDate> NOW() AND type.catID= '+catId+ ' ORDER BY h.price DESC LIMIT '+ limit+ ' OFFSET '+ offset);
+        return proByCat[0];
+    },
+    async findPageByCatId_TimeDesc(catId, limit, offset) {
+        const proByCat = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN type ON type.typID=p.typID WHERE p.endDate> NOW() AND type.catID='+catId+' ORDER BY p.endDate DESC LIMIT '+limit+' OFFSET '+offset);
+        return proByCat[0];
+    },
     async findPageByType(catId, typeId, limit, offset) {
         const proByType = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
             'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND typID='+typeId +' LIMIT ' +limit +' OFFSET ' +offset);
+        return proByType[0];
+    },
+    async findPageByType_TimeAsc(catId, typeId, limit, offset) {
+        const proByType = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND typID='+typeId +' ORDER BY p.endDate ASC LIMIT '+limit +' OFFSET ' +offset);
+        return proByType[0];
+    },
+    async findPageByType_TimeDesc(catId, typeId, limit, offset) {
+        const proByType = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND typID='+typeId +' ORDER BY p.endDate DESC LIMIT '+limit +' OFFSET ' +offset);
+        return proByType[0];
+    },
+    async findPageByType_priceDesc(catId, typeId, limit, offset) {
+        const proByType = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND typID='+typeId +' ORDER BY h.price DESC LIMIT '+limit +' OFFSET ' +offset);
+        return proByType[0];
+    },
+    async findPageByType_priceAsc(catId, typeId, limit, offset) {
+        const proByType = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND typID='+typeId +' ORDER BY h.price ASC LIMIT '+limit +' OFFSET ' +offset);
         return proByType[0];
     },
     async countByCatId(catId) {
@@ -69,5 +109,5 @@ export default {
         const historyBid = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
             'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN currentauction c2 ON c2.proID=p.proID WHERE p.endDate<=NOW() AND c2.UID='+uID);
         return historyBid[0];
-    }
+    },
 }
