@@ -94,3 +94,25 @@ header{
     padding-right: 300px;
     margin-bottom: 30px;
 }
+
+.cover-img {
+    width: 1180px;
+    height: 300px;
+}
+
+.cover-md-img{
+    width: 414px;
+    height: 249px;
+}
+
+.activitItem{
+    width: 50px;
+    height: 50px;
+}
+
+.line-2{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}

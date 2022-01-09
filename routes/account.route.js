@@ -2,6 +2,8 @@ import express from 'express';
 import fetch from 'isomorphic-fetch';
 import bcrypt from "bcrypt";
 import userModel from "../models/users.model.js";
+import auth from "../middlewares/auth.mdw.js";
+import productModel from "../models/product.model.js"
 
 
 const router = express.Router();
@@ -88,6 +90,14 @@ router.post('/logout', function (req, res) {
 
 router.get('/admin', function (req, res) {
     res.render('admin/adminDashboard', {layout: false});
+});
+
+router.get('/profile',auth ,async function (req, res){
+    const curBid = await productModel.findCurBid(res.locals.authUser.UID);
+    const winBid = await productModel.findWinBid(res.locals.authUser.UID);
+    const watchList = await productModel.findWatchList(res.locals.authUser.UID);
+    const historyBid = await productModel.findHistoryBid(res.locals.authUser.UID);
+    res.render('vwAccount/profile', {curBid, winBid, watchList, historyBid});
 })
 
 export default router;

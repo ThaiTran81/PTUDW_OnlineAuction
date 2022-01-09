@@ -25,7 +25,9 @@ export default function (app) {
                     part2 = splitted[1];
                     return part1 + "...@" + part2;
             },
-
+            count_array(arr){
+                return arr.length || 0;
+            },
             section: hbs_sections()
         }
     }))

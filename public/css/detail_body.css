@@ -333,10 +333,10 @@ ul.current-higest-bidder li {
     }
 }
 
-.tab-pane {
-    height: 8rem;
-    overflow-y: scroll;
-}
+/*.tab-pane {*/
+/*    height: 8rem;*/
+/*    overflow-y: scroll;*/
+/*}*/
 
 .purchasing-table {
     width: 100%;

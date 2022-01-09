@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
 *, ::after, ::before {
-    padding: 0 ;
-    margin: 0 ;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -21,7 +21,7 @@ body {
     font-size: 1rem;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
     color: unset;
 }
@@ -56,7 +56,7 @@ a:hover{
 
 .nav-container {
     width: 100%;
-    height: 80px ;
+    height: 80px;
     align-items: center;
 }
 
@@ -75,7 +75,7 @@ a:hover{
     list-style: none;
     padding: 8px 0;
     color: white;
-    margin: 0 ;
+    margin: 0;
     align-items: center;
 }
 
@@ -142,7 +142,6 @@ a:hover{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
 
 
 .menu-item:hover .sub-menu {
@@ -237,7 +236,7 @@ option {
     border: none;
 }
 
-.search{
+.search {
     line-height: 80px;
     padding: 0;
     margin: 0;
@@ -267,15 +266,15 @@ option {
     align-items: center;
 }
 
-.item-img  {
+.item-img {
     width: 20%;
 }
 
-.pro-img-cart{
+.pro-img-cart {
     width: 100%;
 }
 
-.close-btn{
+.close-btn {
     width: 30px;
     height: 30px;
     padding: 0;
@@ -298,14 +297,14 @@ option {
 
 /*card product*/
 
-.product-header{
+.product-header {
     display: flex;
     background-color: white;
     border-radius: 15px;
     justify-content: flex-start;
 }
 
-.product-header .select-bar{
+.product-header .select-bar {
     padding: 5px 10px;
     border-radius: 15px;
     margin-right: 2rem;
@@ -408,12 +407,11 @@ option {
 }
 
 
-
 /*.body-content {*/
 /*    height: 100vh;*/
 /*}*/
 
-.body-intro{
+.body-intro {
     width: 100%;
     display: flex;
     margin-top: 70px;
@@ -422,7 +420,6 @@ option {
     border-bottom-right-radius: 50% 100%;
     position: relative;
 }
-
 
 
 .intro-bg {
@@ -440,7 +437,7 @@ option {
     flex-wrap: wrap;
 }
 
-.intro-text h2{
+.intro-text h2 {
     color: #48cae4;
     font-weight: 400;
 }
@@ -463,10 +460,10 @@ option {
     height: 70px;
     color: white;
     font-size: 32px;
-    background: linear-gradient(-45deg,#f48c06, #faa307, #ffba08,  #ffffff);
+    background: linear-gradient(-45deg, #f48c06, #faa307, #ffba08, #ffffff);
     border-radius: 50px;
-    border: unset ;
-    padding: 0 ;
+    border: unset;
+    padding: 0;
     margin-top: 50px;
 }
 
@@ -477,14 +474,12 @@ option {
     margin-right: auto;
 }
 
-.top-auction-img{
+.top-auction-img {
     width: 20%;
 }
 
 
-
-
-.auction-title h5{
+.auction-title h5 {
     color: rgba(0, 0, 0, 0.5)
 }
 
@@ -519,7 +514,7 @@ option {
 }
 
 .submit-btn {
-    background: linear-gradient(#3a0ca3, #3f37c9, #4895ef,  #4cc9f0);
+    background: linear-gradient(#3a0ca3, #3f37c9, #4895ef, #4cc9f0);
     color: white;
     border-radius: 20px;
     font-size: 20px;
@@ -551,7 +546,7 @@ option {
     width: 100%;
 }
 
-#hot-price{
+#hot-price {
     margin-top: 100px;
 }
 
@@ -575,7 +570,7 @@ option {
     border-radius: 30px;
 }
 
-.signin-btn{
+.signin-btn {
     background-color: #4895ef;
     width: 10rem;
     height: 3rem;
@@ -618,7 +613,7 @@ option {
     margin-right: 10px;
 }
 
-.link-list li a:hover{
+.link-list li a:hover {
     color: red;
 }
 
@@ -642,3 +637,7 @@ option {
     color: red;
 }
 
+.cover-img {
+    width: 1180px !important;
+    height: 300px !important;
+}
