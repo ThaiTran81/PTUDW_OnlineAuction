@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+
+				<h5 class="card-title">Quản lý các danh mục sản phẩm</h5>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Thêm danh mục"
+						   aria-label="Thêm danh mục mới" id="add-txt">
+					<button class="btn btn-success" id="add-btn" type="button"><i class="fa fa-plus"></i> Thêm</button>
+				</div>
+				<ul class="list-group">
+					{{#each lcCategories}}
+						<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+							<a href="/admin/category/{{catID}}" class="">
+								{{catName}}</a>
+							<div>
+								<a href="/admin/category/{{catID}}" class="btn btn-outline-primary rounded-pill"><i
+										class="fa fa-pencil-square-o"></i> </a>
+								<a class="btn btn-outline-danger rounded-pill"><i class="fa fa-trash"></i> </a>
+							</div>
+
+						</li>
+
+					{{/each}}
+
+					<!--<a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>-->
+					<!--<a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>-->
+					<!--<a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{{#section 'js'}}
+	<script>
+		$(document).ready(function () {
+			$('#add-btn').click(function () {
+				const catName = $('#add-txt').val();
+				if (catName === "") {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Tên danh mục không được bỏ trống </div>").insertBefore('.row').delay(1000).fadeOut(3000);
+				} else {
+					axios({
+						method: 'post',
+						url: '/admin/category/add',
+						data: {
+							'catName': catName
+						}
+					}).then(function (res) {
+						$('.list-group').prepend("<li class='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>" +
+								"<a href='/admin/category/" + res.catID + "'>" +
+								catName + "</a>" +
+								"<div>" +
+								"<a href='/admin/category/" + res.catID + "' class='btn btn-outline-primary rounded-pill'>" +
+								"<i class='fa fa-pencil-square-o'></i> </a>" +
+								"<a class='btn btn-outline-danger rounded-pill'><i class='fa fa-trash'></i> </a>" +
+								"</div>" +
+								"</li>")
+					})
+				}
+			})
+		})
+	</script>
+{{/section}}

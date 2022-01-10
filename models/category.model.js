@@ -8,5 +8,8 @@ export default {
         const rows =  knex('type').where('catID', id);
         if(rows.length ===0) return null;
         return rows;
+    },
+    addNewCategory(catName){
+        return knex('category').insert({'catName': catName}).returning('catID');
     }
 }

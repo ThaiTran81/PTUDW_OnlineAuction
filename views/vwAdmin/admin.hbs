@@ -1,10 +1,6 @@
-
-<div class="alert alert-success row" id="successNotify" role="alert">
-	Thành công
-</div>
 <div class="row">
 	{{#each waitList}}
-		<div class="col-lg-6">
+		<div class="col-lg-6" data-user="{{UID}}">
 			<div class="card">
 				<div class="card-body">
 					<div class="mail-info">
@@ -40,19 +36,41 @@
 
 {{#section 'js'}}
 	<script>
-		$( document ).ready(function() {
-			$('.deny').click(function (){
-				// axios({
-				// 	method: 'post',
-				// 	url: '/admin/up-seller',
-				// 	data: {
-				// 		accept: 0,
-				// 		uid: $(this).attr('data-user')
-				// 	}
-				// });
-				$('#successNotify').show();
-				$('#successNotify').fadeOut(1000);
+		$(document).ready(function () {
+			$('.deny').click(function () {
+				axios({
+					method: 'post',
+					url: '/admin/up-seller',
+					data: {
+						accept: false,
+						uid: $(this).attr('data-user')
+					}
+				}).then((res) => {
+					$('div[data-user=' + $(this).attr('data-user') + ']').fadeOut();
+					$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.row').fadeOut(2000);
+				}).catch(function (){
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Đã có lỗi xảy ra</div>").insertBefore('.row').delay(1000).fadeOut();
+
+				})
+			});
+
+			$('.accept').click(function () {
+				axios({
+					method: 'post',
+					url: '/admin/up-seller',
+					data: {
+						accept: true,
+						uid: $(this).attr('data-user')
+					}
+				}).then((res) => {
+					$('div[data-user=' + $(this).attr('data-user') + ']').fadeOut();
+					$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.row').fadeOut(2000);
+				}).catch(function (){
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Đã có lỗi xảy ra, thao tác không thành công</div>").insertBefore('.row').delay(1000).fadeOut();
+
+				})
 			})
+
 		});
 	</script>
 

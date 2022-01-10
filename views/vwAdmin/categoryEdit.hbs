@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Chỉnh sửa danh mục <span class="text-primary">{{catName}}</span></h5>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Danh mục cấp 1"
+						   aria-label="Recipient's username with two button addons" value="{{catName}}">
+					<button class="btn btn-outline-danger" type="button"><i class="fa fa-close"></i> Xoá</button>
+					<button class="btn btn-outline-primary" type="button"><i class="fa fa-check"></i> Cập nhật</button>
+				</div>
+				<div class="divider"></div>
+				<h5 class="card-title">Danh mục cấp 2 của <span class="text-primary">{{catName}}</span></h5>
+				{{#each types}}
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Danh mục cấp 2"
+							   aria-label="Recipient's username with two button addons" value="{{typName}}">
+						<button class="btn btn-outline-danger" type="button"><i class="fa fa-close"></i> Xoá</button>
+						<button class="btn btn-outline-primary" type="button"><i class="fa fa-check"></i> Cập nhật</button>
+					</div>
+				{{/each}}
+
+			</div>
+		</div>
+	</div>
+</div>
