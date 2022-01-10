@@ -110,4 +110,11 @@ export default {
             'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID JOIN currentauction c2 ON c2.proID=p.proID WHERE p.endDate<=NOW() AND c2.UID='+uID);
         return historyBid[0];
     },
+    async findById(proID) {
+        const list = await knex.raw('SELECT p.*,u.* FROM product p JOIN users u ON p.ownerUID = u.UID WHERE p.proID = ' + proID);
+        if (list.length === 0)
+            return null;
+
+        return list[0][0];
+    }
 }
