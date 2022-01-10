@@ -4,6 +4,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import accountRoute from '../routes/account.route.js';
 import productRoute from '../routes/product-user.route.js';
+import sellerRoute from '../routes/seller.route.js';
 import productModel from '../models/product.model.js'
 
 export default function (app){
@@ -16,6 +17,8 @@ export default function (app){
 
     app.use('/account', accountRoute);
     app.use('/product', productRoute);
+    app.use('/category', productRoute);
+    app.use('/seller', sellerRoute);
 
     app.use(function (req, res, next) {
         // res.render('404', { layout: false });

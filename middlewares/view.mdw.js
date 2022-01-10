@@ -28,6 +28,20 @@ export default function (app) {
             count_array(arr){
                 return arr.length || 0;
             },
+            format_date(date) {
+                return  new Date(date).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+            },
+            format_name(name) {
+                return '**** ' + name.split(' ').pop();
+            },
+            cal_rating_point(like, dislike) {
+                return Math.round((like / (dislike+like)) * 100) + ' %';
+            },
+            check_block(isBlock) {
+              if (isBlock == 0)
+                  return true;
+              return false;
+            },
             section: hbs_sections()
         }
     }))

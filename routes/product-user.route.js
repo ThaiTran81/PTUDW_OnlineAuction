@@ -1,6 +1,7 @@
 import express from "express";
 import productModel from "../models/product.model.js";
 import categoryModel from "../models/category.model.js";
+import detailModel from "../models/detail.model.js";
 import protectEmail from "../middlewares/protectEmail.mdw.js";
 
 const router = express.Router();
@@ -107,9 +108,18 @@ router.get('/category/:catID/:typeID', async function (req, res) {
     });
 });
 
-router.get('/detail/:id', function (req, res){
+router.get('/detail/:id', async function (req, res){
     const proID = req.params.id;
-    res.render('vwProduct/productDetail');
+    const product = await detailModel.findById(proID);
+    const historyBid = await detailModel.findHistoryBid(proID);
+    const currentPrice = historyBid.pop();
+    historyBid.push(currentPrice);
+    const currentBidder = await detailModel.findBidder(proID);
+    if (product === null) {
+        return res.redirect('/');
+    }
+    // console.log(currentBidder);
+    res.render('vwProduct/productDetail', { product, historyBid, currentPrice, currentBidder });
 })
 
 
