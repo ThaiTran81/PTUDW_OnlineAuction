@@ -116,3 +116,7 @@ header{
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+
+.createTime{
+    font-size: 0.75rem;
+}

@@ -74,8 +74,7 @@
 														   alt="img"></div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
-											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -92,7 +91,7 @@
 									<div class="card-content">
                                         <span class="card-content-value blue-text">
                                             <i class="icon mx-2 fa fa-user"></i>
-                                            <div class="current-bid">{{protect_email email}}</div>
+                                            <div class="current-bid">{{format_name name}}</div>
                                         </span>
 									</div>
 								</div>
@@ -105,6 +104,7 @@
 										<span class="card-content-value">{{format_number buyNow}}</span>
 									</div>
 								</div>
+								<div class="createTime"><i>{{format_date startDate}}</i></div>
 							</div>
 						</div>
 					</div>
