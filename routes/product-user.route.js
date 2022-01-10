@@ -6,16 +6,14 @@ import protectEmail from "../middlewares/protectEmail.mdw.js";
 
 const router = express.Router();
 
-router.get('/', async function (req, res){
-
-})
-
 router.get('/category/:catID', async function (req, res) {
 
     const catId = req.params.catID || 1;
+    const sort = req.query.sort || 'timeDesc';
     let nCategories = [];
     var selected = res.locals.lcCategories[0];
     var lst = res.locals.lcCategories;
+    var filter = res.locals.sort;
     var lstType = await categoryModel.findAllTypeByCat(catId);
 
     for (let i=0; i<lst.length; i++) {
@@ -26,6 +24,8 @@ router.get('/category/:catID', async function (req, res) {
             nCategories.push(lst[i]);
         }
     }
+
+
     const limit = 12;
     const page = req.query.page || 1;
     const offset = (page - 1) * limit;
@@ -42,8 +42,26 @@ router.get('/category/:catID', async function (req, res) {
         });
     }
 
-    const list = await productModel.findPageByCatId(catId, limit, offset);
+    for(let i = 0; i< filter.length;i++){
+        filter[i].isSelected = sort === filter[i].value;
+    }
+    var list;
+    switch (sort) {
+        case "timeDesc":
+            list = await productModel.findPageByCatId_TimeDesc(catId,limit, offset);
+            break;
+        case "timeAsc":
+            list = await productModel.findPageByCatId_TimeAsc(catId,limit, offset);
+            break;
+        case "priceAsc":
+            list = await productModel.findPageByCatId_PriceAsc(catId, limit, offset);
+            break;
+        case "priceDesc":
+            list = await productModel.findPageByCatId_PriceDesc(catId, limit, offset);
+            break;
+    }
 
+    // list = await productModel.findPageByCatId(catId, limit, offset);
     res.render('vwProduct/byCat', {
         products: list,
         empty: list.length === 0,
@@ -54,13 +72,15 @@ router.get('/category/:catID', async function (req, res) {
     });
 });
 
-router.get('/category/:catID/:typeID', async function (req, res) {
-
+router.get('/category/:catID/type/:typeID', async function (req, res) {
+    console.log(req.params.typeID)
     const catId = req.params.catID || 1;
     const typeId = req.params.typeID || 1;
+    const sort = req.query.sort || 'timeDesc';
     let nCategories = [];
     var selectedCat = res.locals.lcCategories[0];
     var lst = res.locals.lcCategories;
+    var filter = res.locals.sort;
     var lstType = await categoryModel.findAllTypeByCat(catId);
     var selectedType = lstType[0];
 
@@ -96,7 +116,24 @@ router.get('/category/:catID/:typeID', async function (req, res) {
         });
     }
 
-    const list = await productModel.findPageByType(catId,typeId, limit, offset);
+    for(let i = 0; i< filter.length;i++){
+        filter[i].isSelected = sort === filter[i].value;
+    }
+    var list;
+    switch (sort) {
+        case "timeDesc":
+            list = await productModel.findPageByType_TimeDesc(catId, typeId,limit, offset);
+            break;
+        case "timeAsc":
+            list = await productModel.findPageByType_TimeAsc(catId, typeId,limit, offset);
+            break;
+        case "priceAsc":
+            list = await productModel.findPageByType_priceAsc(catId, typeId, limit, offset);
+            break;
+        case "priceDesc":
+            list = await productModel.findPageByType_priceDesc(catId, typeId, limit, offset);
+            break;
+    }
     res.render('vwProduct/byType', {
         products: list,
         empty: list.length === 0,

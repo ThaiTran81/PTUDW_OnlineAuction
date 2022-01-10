@@ -1,6 +1,7 @@
 import {engine} from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections';
 import numeral from 'numeral';
+import moment from 'moment';
 
 export default function (app) {
     app.engine('hbs', engine({
@@ -38,9 +39,12 @@ export default function (app) {
                 return Math.round((like / (dislike+like)) * 100) + ' %';
             },
             check_block(isBlock) {
-              if (isBlock == 0)
-                  return true;
-              return false;
+                if (isBlock == 0)
+                    return true;
+                return false;
+            },
+            format_dob(val) {
+                return moment(val).format('MM/DD/YYYY');
             },
             section: hbs_sections()
         }
