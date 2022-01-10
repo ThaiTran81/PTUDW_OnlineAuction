@@ -14,10 +14,11 @@
 		<link rel="stylesheet" media="all" href="/public/css/slick.css">
 		<link rel="stylesheet" media="all" href="/public/css/slick-theme.css">
 		<link rel="stylesheet" media="all" href="/public/css/style.css">
-		<link rel="stylesheet" href="/public/css/main2.css">
 		<link rel="stylesheet" href="/public/css/seller.css">
 		<link rel="stylesheet" href="/public/css/category.css">
 		<link rel="stylesheet" href="/public/css/detail_body.css">
+
+
 
 		<meta name="theme-color" content="#sdfsf">
         {{{_sections.css}}}
@@ -35,21 +36,64 @@
 						<div class="d-flex">
 							<div class="logo"><a href="/" class="nav-icon">BIDUS</a></div>
 							<nav class="ms-3 navbar navbar-expand-xl justify-content-between">
+								<div class="collapse navbar-collapse" id="navbar-content">					
+									<ul class="navbar-nav d-flex flex-column mr-auto mb-2 mb-lg-0">
+                                        <li>
+											<div class="searchform search-res">
+												<form>
+													<div class="categori-style">
+														<select class="nice-select-style" aria-label="Default select example">
+															<option value="-1" selected>Tất cả</option>
+															{{#each lcCategories}}
+															<option value="{{this.catID}}">{{this.catName}}</option>
+															{{/each}}
+														</select>
+													</div>
+													<div class="search-box">
+														<input type="text" name="SearchItem" placeholder="Tìm kiếm sản phẩm">
+													</div>
+							    				</form>
+											</div>
+										</li>
+										<li class = "nav-item d-none nav-item-res">
+										    <div class="login d-none login-res  d-md-inline-flex">
+                                               <div class="dropdown me-md-3 me-lg-2 me-xl-1 me-xxl-3">
+                                                   {{#if auth}}
+                                                        <a class="btn" href="/account/sign-in" role="button" id="dropdownMenuLink"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <img src="/public/images/usericon.svg" alt="img">
+															<span class="text-light">Xin chào, {{getName authUser.name}}</span>
+                                                        </a>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <form id="frmLogout" action="/account/logout" method="post" hidden></form>
+                                                            {{#if (equal authUser.type '1')}}
+                                                                <li><a class="dropdown-item" href="/seller/">Quản lý bán hàng</a></li>
+                                                            {{/if}}
+                                                            {{#if (equal authUser.type '0')}}
+                                                                <li><a class="dropdown-item" href="/account/admin/">Admin</a></li>
+                                                                <li><a class="dropdown-item" href="/admin/">Quản lý bán hàng</a></li>
+                                                            {{/if}}
+                                                            <li><a class="dropdown-item" href="/account/profile/">Tài khoản</a></li>
+                                                            <li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
+                                                        </ul>
+                                                    {{else}}
+                                                        <a class="btn" href="/account/sign-in">
+                                                            <img src="/public/images/usericon.svg" alt="img">
+                                                            <span class="text-light"> Đăng nhập</span>
+                                                        </a>
+                                                    {{/if}}
 
-								<div class="collapse navbar-collapse" id="navbar-content">
-									<div class="logo d-md-none"><a href="#"><img class="img-fluid"
-																				 src="/public/images/cryptonlogo.svg"
-																				 alt="img"></a></div>
-									<div class="searchform d-md-none">
-										<form>
-											<input type="text" name="SearchItem"
-												   placeholder="Search items, collections and creators">
-											<button><img src="img/searchicon.svg" alt="img"></button>
-										</form>
-									</div>
 
-									<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                                                <!--<a class="btn" href="/account/sign-in" role="button" id="dropdownMenuLink"-->
+                                                <!--   data-bs-toggle="dropdown" aria-expanded="false">-->
+                                                <!--	<img src="/public/images/usericon.svg" alt="img">-->
+                                                <!--	<span class="text-light"> Đăng nhập</span>-->
+                                                <!--</a>-->
 
+
+                                                </div>
+                                            </div>
+										</li>
 										<li class="nav-item dropdown active">
 											<a class="nav-link dropdown-toggle ms-1 fs-6" href="#"
 											   data-bs-toggle="dropdown"
@@ -66,26 +110,24 @@
 											</ul>
 										</li>
 
+
 									</ul>
 								</div>
 							</nav>
-							<div class="searchform flex-grow-1 flex-shrink-1 d-none d-md-inline-flex">
+                            <div class="searchform">
 								<form>
-									<div class="categori-style position-relative">
+									<div class="categori-style">
 										<select class="nice-select-style" aria-label="Default select example">
 											<option value="-1" selected>Tất cả</option>
 											{{#each lcCategories}}
-												<option value="{{this.catID}}">{{this.catName}}</option>
+											<option value="{{this.catID}}">{{this.catName}}</option>
 											{{/each}}
 										</select>
 									</div>
-									<div class="w-100">
-										<input type="text" name="SearchItem"
-											   placeholder="Tìm kiếm sản phẩm">
+									<div class="search-box">
+										<input type="text" name="SearchItem" placeholder="Tìm kiếm sản phẩm">
 									</div>
-
-									<!--<button><img src="/public/images/searchicon.svg" alt="img"></button>-->
-								</form>
+							    </form>
 							</div>
 							<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
 									data-bs-target="#navbar-content">
@@ -140,3 +182,4 @@
 				</div>
 			</div>
 		</header>
+		<link rel="stylesheet" href="/public/css/main2.css">
