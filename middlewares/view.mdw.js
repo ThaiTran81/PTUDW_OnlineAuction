@@ -30,7 +30,9 @@ export default function (app) {
                 return arr.length || 0;
             },
             format_date(date) {
-                return  new Date(date).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                moment.locale('vi');
+                return moment(date).format('LLL');
+                // return  new Date(date).toISOString().replace(/T/, ' ').replace(/\..+/, '');
             },
             format_name(name) {
                 return '**** ' + name.split(' ').pop();

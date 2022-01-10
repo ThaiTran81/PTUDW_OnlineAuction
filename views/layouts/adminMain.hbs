@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Title -->
+		<title>BIDUS - Admin Dashboard</title>
+
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
+		<link href="/public/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+			  integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+			  crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<!-- Theme Styles -->
+		<link href="/public/admin/css/admin.css" rel="stylesheet">
+		<link href="/public/admin/css/custom.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class='loader'>
+			<div class='spinner-grow text-primary' role='status'>
+				<span class='sr-only'>Loading...</span>
+			</div>
+		</div>
+
+		<div class="page-container">
+			<div class="page-header">
+				<nav class="navbar navbar-expand-lg d-flex justify-content-between">
+					<div class="" id="navbarNav">
+						<ul class="navbar-nav justify-content-start" id="leftNav">
+							<li class="nav-item">
+								<a class="nav-link" id="sidebar-toggle" href="#"><i data-feather="arrow-left"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Về trang chủ</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<span class="text-dark fs-4">Trang quản lý BIDUS</span>
+					</div>
+					<div class="navbar-nav"></div>
+				</nav>
+			</div>
+			<div class="page-sidebar">
+				<ul class="list-unstyled accordion-menu">
+					<li>
+						<div class="px-2 mail-info">
+							<div class="mail-author d-flex align-items-center">
+								<i data-feather="user"></i>
+								<div class="mail-author-info">
+									<span class="mail-author-name">Admin</span>
+									<span class="mail-author-address">admin@gmail.com</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="sidebar-title">
+						Người dùng
+					</li>
+					<li class="active-page">
+						<a href="index.html"><i data-feather="user-plus"></i>Duyệt yêu cầu seller</a>
+					</li>
+					<li>
+						<a href="index.html"><i data-feather="users"></i>Người dùng</a>
+					</li>
+					<li class="sidebar-title">
+						Danh mục
+					</li>
+					<li>
+						<a href="email.html"><i data-feather="inbox"></i>Quản lý danh mục</a>
+					</li>
+				</ul>
+			</div>
+			<div class="page-content">
+				<div class="main-wrapper">
+					{{{body}}}
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Javascripts -->
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://unpkg.com/@popperjs/core@2"></script>
+		<script src="/public/js/bootstrap.bundle.min.js"></script>
+		<script src="https://unpkg.com/feather-icons"></script>
+		<script src="/public/admin/js/admin.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+				integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+				crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		{{{_sections.js}}}
+	</body>
+</html>

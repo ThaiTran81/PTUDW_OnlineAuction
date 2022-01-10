@@ -89,7 +89,7 @@ router.post('/logout', function (req, res) {
 });
 
 router.get('/admin', function (req, res) {
-    res.render('admin/adminDashboard', {layout: false});
+    res.render('admin/adminDashboard2', {layout: false});
 });
 
 router.get('/profile',auth ,async function (req, res){

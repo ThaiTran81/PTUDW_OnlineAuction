@@ -6,6 +6,7 @@ import accountRoute from '../routes/account.route.js';
 import productRoute from '../routes/product-user.route.js';
 import sellerRoute from '../routes/seller.route.js';
 import productModel from '../models/product.model.js'
+import adminRoute from '../routes/admin.route.js';
 
 export default function (app){
     app.get('/', async function (req, res){
@@ -19,6 +20,7 @@ export default function (app){
     app.use('/product', productRoute);
     app.use('/category', productRoute);
     app.use('/seller', sellerRoute);
+    app.use('/admin', adminRoute);
 
     app.use(function (req, res, next) {
         // res.render('404', { layout: false });

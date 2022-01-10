@@ -20,5 +20,9 @@ export default {
             return null;
         }
         return list[0];
+    },
+    async findAllWaitSellers(){
+        const waitList = await knex.raw('SELECT u.UID,u.email,u.`name`,u.addr,u.dob,u.good,u.dislike,us.askDate FROM users u JOIN upseller us ON u.UID=us.UID WHERE us.isAcpt=0');
+        return waitList[0];
     }
 }

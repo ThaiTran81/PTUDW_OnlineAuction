@@ -1,0 +1,59 @@
+
+<div class="alert alert-success row" id="successNotify" role="alert">
+	Thành công
+</div>
+<div class="row">
+	{{#each waitList}}
+		<div class="col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="mail-info">
+						<div class="mail-author d-flex align-items-center">
+							<i class="fa fa-user-circle fa-2x align-middle"></i>
+							<div class="mail-author-info">
+								<span class="mail-author-name">{{name}}</span>
+								<span class="mail-author-address">{{email}}</span>
+							</div>
+						</div>
+						<div class="mail-other-info">
+							<span>{{format_date askDate}}</span>
+						</div>
+					</div>
+					<div class="d-flex w-100 justify-content-start">
+						<p class="me-3"><i class="fa fa-thumbs-up fs-4 text-success"></i> Likes: {{good}} </p>
+						<p class=""><i class="fa fa-thumbs-down fs-4 text-danger"></i> Dislikes: {{dislike}} </p>
+					</div>
+
+					<div class="float-end">
+						<form action="">
+							<a class="btn btn-outline-danger deny" data-user="{{UID}}">Từ chối</a>
+							<a class="btn btn-outline-primary accept" data-user="{{UID}}">Phê duyệt</a>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	{{/each}}
+</div>
+
+{{#section 'js'}}
+	<script>
+		$( document ).ready(function() {
+			$('.deny').click(function (){
+				// axios({
+				// 	method: 'post',
+				// 	url: '/admin/up-seller',
+				// 	data: {
+				// 		accept: 0,
+				// 		uid: $(this).attr('data-user')
+				// 	}
+				// });
+				$('#successNotify').show();
+				$('#successNotify').fadeOut(1000);
+			})
+		});
+	</script>
+
+{{/section}}
