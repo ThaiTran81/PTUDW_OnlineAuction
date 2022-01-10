@@ -109,10 +109,10 @@
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 										<form id="frmLogout" action="/account/logout" method="post" hidden></form>
-										{{#if (equal authUser.type '1')}}
+										{{#if (equal authUser.type 1)}}
 											<li><a class="dropdown-item" href="/seller/">Quản lý bán hàng</a></li>
 										{{/if}}
-										{{#if (equal authUser.type '0')}}
+										{{#if (equal authUser.type 0)}}
 											<li><a class="dropdown-item" href="/account/admin/">Admin</a></li>
 											<li><a class="dropdown-item" href="/admin/">Quản lý bán hàng</a></li>
 										{{/if}}
