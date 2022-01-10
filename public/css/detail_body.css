@@ -333,7 +333,7 @@ ul.current-higest-bidder li {
     }
 }
 
-div.tab-content {
+div.limit-height-tab {
     height: 8rem;
     overflow-y: scroll;
 }
