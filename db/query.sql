@@ -208,5 +208,5 @@ FROM
 	JOIN currentauction c2 ON c2.proID = p.proID 
 WHERE
 	p.endDate <= NOW() 
-	AND c2.UID =5
-LIMIT 4 OFFSET 2
+	AND c2.UID = 5 
+	LIMIT 4 OFFSET 2
