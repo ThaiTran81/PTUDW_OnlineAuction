@@ -152,8 +152,10 @@
                         <h5 class="auction-time">Kết thúc vào:</h5>
                         <h3 class="auction-time">{{format_date product.endDate}}</h3>
                         <div class="auction-time auto-extends container-fluid">
+                        {{#if (equal autoExtend 1)}}
                             <i class="fa fa-question-circle-o"></i>
                             Thời gian của buổi đấu giá này sẽ tự động gia hạn
+                        {{/if}}
                         </div>
                     </div>
                 </div>
@@ -176,8 +178,9 @@
     <!-- Main product information end -->
 
     <div class="middle container-fluid row">
+        <div class="col-lg-1"></div>
         <!-- Description start -->
-        <div class="description-container container-fluid col-lg-10">
+        <div class="description-container container-fluid col-lg-10" style="margin-left: 0">
             <div class="description-header">
                 <h2>Mô tả sản phẩm</h2>
                 {{#each description}}
@@ -200,245 +203,54 @@
 
     <!-- Related product start -->
     <div class="related-product-container">
-        <h2 class="related-product-title">Relate Product</h2>
-        <div class="row">
-            <!-- Product card -->
-            <div class="auction-product-item col-xl-3 col-md-5 col-11">
-                <div class="auction-item-link">
-                    <div class="pro-card-header">
-                        <a class="pro-card-title">Product's Name</a>
-                        <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
-                    </div>
-                    <img src="../images/plane.jpg" alt="" class="card-img">
-                </div>
-                <div class="product-price">
-                    <div class="card-content">
-                            <span class="card-content-value green-text">
-                                <i class="icon mx-2 fa-gavel fa-2x"></i>
-                                <span class="current-bid">Current Bid</span>
-                            </span>
-                        <span>
-                                <span class="card-content-value">$876.00</span>
-                                <span class="total-bids">30 Bids</span>
-                            </span>
-                    </div>
-                    <div class="card-content">
-                            <span class="card-content-value blue-text">
-                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
-                                <div class="current-bid">Bidder</div>
-                            </span>
-                        <span class="card-content-value">Bidder's Name</span>
-                    </div>
-                </div>
-                <div class="product-card-time">
-                    <div class="card-time-content right-border text-center">
-                        <div>Start on:</div>
-                        <div>24-11-2021 19:23:00</div>
-                    </div>
-                    <div class="card-time-content">
-                        <div>Expire in:</div>
-                        <div class="timer related-auction auction-time auction-end-time-value"></div>
-                    </div>
-                </div>
-                <div class="buy-now-price">
-                    <div class="card-content">
-                            <span class="card-content-value red-text">
-                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
-                                <div class="current-bid">Buy Now</div>
-                            </span>
-                        <span class="card-content-value">$1,000.00</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Product card -->
-            <div class="auction-product-item col-xl-3 col-md-5 col-11">
-                <div class="auction-item-link">
-                    <div class="pro-card-header">
-                        <a class="pro-card-title">Product's Name</a>
-                        <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
-                    </div>
-                    <img src="../images/plane.jpg" alt="" class="card-img">
-                </div>
-                <div class="product-price">
-                    <div class="card-content">
-                            <span class="card-content-value green-text">
-                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
-                                <span class="current-bid">Current Bid</span>
-                            </span>
-                        <span>
-                                <span class="card-content-value">$876.00</span>
-                                <span class="total-bids">30 Bids</span>
-                            </span>
-                    </div>
-                    <div class="card-content">
-                            <span class="card-content-value blue-text">
-                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
-                                <div class="current-bid">Bidder</div>
-                            </span>
-                        <span class="card-content-value">Bidder's Name</span>
-                    </div>
-                </div>
-                <div class="product-card-time">
-                    <div class="card-time-content right-border text-center">
-                        <div>Start on:</div>
-                        <div>24-11-2021 19:23:00</div>
-                    </div>
-                    <div class="card-time-content">
-                        <div>Expire in:</div>
-                        <div class="timer related-auction auction-time auction-end-time-value"></div>
-                    </div>
-                </div>
-                <div class="buy-now-price">
-                    <div class="card-content">
-                            <span class="card-content-value red-text">
-                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
-                                <div class="current-bid">Buy Now</div>
-                            </span>
-                        <span class="card-content-value">$1,000.00</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Product card -->
-            <div class="auction-product-item col-xl-3 col-md-5 col-11">
-                <div class="auction-item-link">
-                    <div class="pro-card-header">
-                        <a class="pro-card-title">Product's Name</a>
-                        <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
-                    </div>
-                    <img src="../images/plane.jpg" alt="" class="card-img">
-                </div>
-                <div class="product-price">
-                    <div class="card-content">
-                            <span class="card-content-value green-text">
-                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
-                                <span class="current-bid">Current Bid</span>
-                            </span>
-                        <span>
-                                <span class="card-content-value">$876.00</span>
-                                <span class="total-bids">30 Bids</span>
-                            </span>
-                    </div>
-                    <div class="card-content">
-                            <span class="card-content-value blue-text text-center">
-                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
-                                <div class="current-bid">Bidder</div>
-                            </span>
-                        <span class="card-content-value">Bidder's Name</span>
-                    </div>
-                </div>
-                <div class="product-card-time">
-                    <div class="card-time-content right-border">
-                        <div>Start on:</div>
-                        <div>24-11-2021 19:23:00</div>
-                    </div>
-                    <div class="card-time-content">
-                        <div>Expire in:</div>
-                        <div class="timer related-auction auction-time auction-end-time-value"></div>
-                    </div>
-                </div>
-                <div class="buy-now-price">
-                    <div class="card-content">
-                            <span class="card-content-value red-text">
-                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
-                                <div class="current-bid">Buy Now</div>
-                            </span>
-                        <span class="card-content-value">$1,000.00</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Product card -->
-            <div class="auction-product-item col-xl-3 col-md-5 col-11">
-                <div class="auction-item-link">
-                    <div class="pro-card-header">
-                        <a class="pro-card-title">Product's Name</a>
-                        <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
-                    </div>
-                    <img src="../images/plane.jpg" alt="" class="card-img">
-                </div>
-                <div class="product-price">
-                    <div class="card-content">
-                            <span class="card-content-value green-text">
-                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
-                                <span class="current-bid">Current Bid</span>
-                            </span>
-                        <span>
-                                <span class="card-content-value">$876.00</span>
-                                <span class="total-bids">30 Bids</span>
-                            </span>
-                    </div>
-                    <div class="card-content">
-                            <span class="card-content-value blue-text">
-                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
-                                <div class="current-bid">Bidder</div>
-                            </span>
-                        <span class="card-content-value">Bidder's Name</span>
-                    </div>
-                </div>
-                <div class="product-card-time">
-                    <div class="card-time-content right-border text-center">
-                        <div>Start on:</div>
-                        <div>24-11-2021 19:23:00</div>
-                    </div>
-                    <div class="card-time-content">
-                        <div>Expire in:</div>
-                        <div class="timer related-auction auction-time auction-end-time-value"></div>
-                    </div>
-                </div>
-                <div class="buy-now-price">
-                    <div class="card-content">
-                            <span class="card-content-value red-text">
-                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
-                                <div class="current-bid">Buy Now</div>
-                            </span>
-                        <span class="card-content-value">$1,000.00</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Product card -->
-            <div class="auction-product-item col-xl-3 col-md-5 col-11">
-                <div class="auction-item-link">
-                    <div class="pro-card-header">
-                        <a class="pro-card-title">Product's Name</a>
-                        <i class="fav-pro icon mx-2 fa fa-heart-o fa-1x red-text"></i>
-                    </div>
-                    <img src="../images/plane.jpg" alt="" class="card-img">
-                </div>
-                <div class="product-price">
-                    <div class="card-content">
-                            <span class="card-content-value green-text">
-                                <i class="icon mx-2 fa fa-gavel fa-2x"></i>
-                                <span class="current-bid">Current Bid</span>
-                            </span>
-                        <span>
-                                <span class="card-content-value">$876.00</span>
-                                <span class="total-bids">30 Bids</span>
-                            </span>
-                    </div>
-                    <div class="card-content">
-                            <span class="card-content-value blue-text">
-                                <i class="icon mx-2 fa fa-user-circle-o fa-2x"></i>
-                                <div class="current-bid">Bidder</div>
-                            </span>
-                        <span class="card-content-value">Bidder's Name</span>
-                    </div>
-                </div>
-                <div class="product-card-time">
-                    <div class="card-time-content right-border text-center">
-                        <div>Start on:</div>
-                        <div>24-11-2021 19:23:00</div>
-                    </div>
-                    <div class="card-time-content">
-                        <div>Expire in:</div>
-                        <div class="timer related-auction auction-time auction-end-time-value"></div>
-                    </div>
-                </div>
-                <div class="buy-now-price">
-                    <div class="card-content">
-                            <span class="card-content-value red-text">
-                                <i class="icon mx-2 fa fa-shopping-bag fa-2x"></i>
-                                <div class="current-bid">Buy Now</div>
-                            </span>
-                        <span class="card-content-value">$1,000.00</span>
+        <h2 class="related-product-title">Các sản phẩm khác cùng chuyên mục</h2>
+        <div class="LastAddedItems pt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="lastAdded slider d-flex align-items-stretch">
+                            {{#each relatePros}}
+                                <div class="aboutitem">
+                                    <div class="aboutitemImg"><img class="img-fluid"
+                                                                   src="/public/images/product/{{proID}}/thumb.png"
+                                                                   alt="img"></div>
+                                    <div class="bgdarkbluecolor aboutitemcnt">
+                                        <div class="itemtitlecode">
+                                            <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+                                            <h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
+                                        </div>
+                                        <div class="product-price mb-auto">
+                                            <div class="card-content">
+                                                <div class="card-content-value green-text">
+                                                    <i class="icon mx-2 fa fa-gavel"></i>
+                                                    <span class="current-bid">{{format_number price}}</span>
+                                                </div>
+                                                <span>
+                                            <span class="card-content-value textgraycolor">Đã đấu</span>
+                                            <span class="total-bids">{{BidCount}} Lượt</span>
+                                        </span>
+                                            </div>
+                                            <div class="card-content">
+                                        <span class="card-content-value blue-text">
+                                            <i class="icon mx-2 fa fa-user"></i>
+                                            <div class="current-bid">{{format_name name}}</div>
+                                        </span>
+                                            </div>
+                                        </div>
+                                        <div class="buy-now-price">
+                                            <div class="card-content">
+                                        <span class="card-content-value red-text">
+                                            <i class="icon mx-2 fa fa-shopping-cart"></i>
+                                            <div class="current-bid">Mua ngay</div>
+                                        </span>
+                                                <span class="card-content-value">{{format_number buyNow}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="createTime"><i>{{format_date startDate}}</i></div>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
                     </div>
                 </div>
             </div>
