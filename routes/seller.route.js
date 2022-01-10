@@ -4,7 +4,7 @@ import productModel from "../models/product.model.js";
 
 const router = express.Router();
 
-router.get('/', async function(req, res){
+router.get('/:id', async function(req, res){
     // const catId = req.params.catID || 1;
     // let nCategories = [];
     // var selected = res.locals.lcCategories[0];
@@ -45,7 +45,7 @@ router.get('/', async function(req, res){
     //     types: lstType
     // });
     console.log(req);
-    res.render('vwSeller/Seller');
+    res.render('vwSeller/seller');
 });
 
 export default router;
