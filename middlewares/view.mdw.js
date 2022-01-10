@@ -11,7 +11,7 @@ export default function (app) {
                 return numeral(val).format('0,0') + ' ₫';
             },
             equal(val1, val2) {
-                return val1 == val2;
+                return val1 === val2;
             },
             getName(fullname) {
                 const arr = fullname.split(" ");
@@ -37,11 +37,6 @@ export default function (app) {
             },
             cal_rating_point(like, dislike) {
                 return Math.round((like / (dislike+like)) * 100) + ' %';
-            },
-            check_block(isBlock) {
-                if (isBlock == 0)
-                    return true;
-                return false;
             },
             format_dob(val) {
                 return moment(val).format('MM/DD/YYYY');

@@ -8,6 +8,13 @@ export default {
 
         return list[0][0];
     },
+    async getDescription(proID) {
+        const list = await knex.raw('SELECT d.* FROM product p JOIN description d ON p.proID = d.proID WHERE p.proID = ' + proID);
+        if (list.length === 0)
+            return null;
+
+        return list[0];
+    },
     async findHistoryBid(proID) {
         const list = await knex.raw('SELECT h.price, h.aucTime, u.* FROM historyauc h JOIN users u ON h.UID = u.UID WHERE h.proID = ' + proID);
         if (list.length === 0)

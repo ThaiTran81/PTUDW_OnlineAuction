@@ -1,11 +1,8 @@
 {{#section 'css'}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"></head>
     <link rel="stylesheet" href="/public/css/detail_body.css">
 {{/section}}
 
 {{#section 'js'}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> <script src="/public/js/detail_body.js"></script>
 {{/section}}
 
@@ -13,14 +10,14 @@
     <!-- Main product information start -->
     <div class="product-information-container container-fluid row">
         <div class="carousel col-lg-5">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner rounded">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner" style="border-radius: 10px">
                     <div class="carousel-item active">
                         <img src="/public/images/product/{{product.proID}}/thumb.png" class="d-block w-100" alt="...">
                     </div>
@@ -34,32 +31,32 @@
                         <img src="/public/images/product/{{product.proID}}/sub3.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
             <div class="dashboard-widget">
                 <div class="dashboard-purchasing-tabs">
                     <ul class="nav-tabs nav">
                         <li>
-                            <a href="#bid-his-tab" class="active" data-toggle="tab">Bidding History</a>
+                            <a href="#bid-his-tab" class="active" data-toggle="tab">Lịch sử đấu giá</a>
                         </li>
                         <li>
-                            <a href="#bidder-tab" data-toggle="tab">Bidder</a>
+                            <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane show active fade" id="bid-his-tab">
                             <table class="purchasing-table">
                                 <thead>
-                                    <th>Time</th>
-                                    <th>Bidder</th>
-                                    <th>Bid Price</th>
+                                    <th>Thời điểm</th>
+                                    <th>Người mua</th>
+                                    <th>Giá</th>
                                 </thead>
                                 <tbody>
                                 {{#each historyBid}}
@@ -75,9 +72,9 @@
                         <div class="tab-pane show fade" id="bidder-tab">
                             <table class="purchasing-table">
                                 <thead>
-                                    <th>Bidder</th>
-                                    <th>Rating Point</th>
-                                    <th>Status</th>
+                                    <th>Người mua</th>
+                                    <th>Điểm đánh giá</th>
+                                    <th>Được phép đấu giá</th>
                                 </thead>
                                 <tbody>
                                 {{#each currentBidder}}
@@ -85,8 +82,11 @@
                                         <td data-purchase="bidder">{{format_name this.name}}</td>
                                         <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
                                         <td data-purchase="">
-                                            {{check_block this.isBlock}}
-                                            <i class="green-text fa fa-check-circle"></i>
+                                        {{#if (equal isBlock 0)}}
+                                            <i class="participate-bidder green-text fa fa-check-circle"></i>
+                                        {{else}}
+                                            <i class="participate-bidder red-text fa fa-minus-circle"></i>
+                                        {{/if}}
                                         </td>
                                     </tr>
                                 {{/each}}
@@ -106,7 +106,7 @@
                 </div>
                 <ul class="seller-information account-information">
                     <li>
-                        Seller: {{format_name product.name}}
+                        Người bán: {{format_name product.name}}
                     </li>
                     <li>
                         {{product.good}}
@@ -121,11 +121,11 @@
             <div class="product-detail-information row">
                 <div class="price-table col-lg-6">
                     <div class="current-higest-bidder highest-price">
-                        <h5 class="current-price-name">Current Price</h5>
+                        <h5 class="current-price-name">Giá hiện tại</h5>
                         <h3 class="current-price-value">{{format_number currentPrice.price}}</h3>
                     </div>
                     <div class="bidder-information account-information">
-                        <div>Bidder: {{format_name currentPrice.name}}</div>
+                        <div>Người mua: {{format_name currentPrice.name}}</div>
                         <div>
                             {{currentPrice.good}}
                             <i class="fa fa-thumbs-o-up"></i>
@@ -137,7 +137,7 @@
                     </div>
                     <hr>
                     <div class="time-remaining">
-                        <h5 class="auction-time auction-end-time-text">Remaining</h5>
+                        <h5 class="auction-time auction-end-time-text">Còn lại</h5>
                         <p class=" auction-time auction-end-time-value">
                             <i class="fa fa-clock-o"></i>
                             <span data-countdown='{{product.endDate}}' >{{product.endDate}}</span>
@@ -146,14 +146,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="auction-time-container">
-                        <h5 class="auction-time">This Auction Start on:</h5>
+                        <h5 class="auction-time">Bắt đầu từ:</h5>
                         <h3 class="auction-time">{{format_date product.startDate}}</h3>
                         <hr>
-                        <h5 class="auction-time">And Will Ends in:</h5>
+                        <h5 class="auction-time">Kết thúc vào:</h5>
                         <h3 class="auction-time">{{format_date product.endDate}}</h3>
                         <div class="auction-time auto-extends container-fluid">
                             <i class="fa fa-question-circle-o"></i>
-                            This auction timming is auto extends
+                            Thời gian của buổi đấu giá này sẽ tự động gia hạn
                         </div>
                     </div>
                 </div>
@@ -164,12 +164,12 @@
                         <img src="/public/images/bid.png" alt="product">
                     </div>
                     <input type="text" class="bg-light" placeholder="Enter you maximum bid amount">
-                    <button type="submit" class="submit-bid-button auto-submit-bid-button">Bid Now</button>
+                    <button type="submit" class="submit-bid-button auto-submit-bid-button">Ra giá</button>
                 </form>
             </div>
             <div class="mt-3 mb-2 row d-flex justify-content-around">
-                <button type="submit" class="bottom-btt buy-now-button col-lg-5">Buy now: {{format_number product.buyNow}}</button>
-                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5">Add To Watch List</button>
+                <button type="submit" class="bottom-btt buy-now-button col-lg-5">Mua ngay: {{format_number product.buyNow}}</button>
+                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5">Thêm vào danh sách yêu thích</button>
             </div>
         </div>
     </div>
@@ -179,12 +179,18 @@
         <!-- Description start -->
         <div class="description-container container-fluid col-lg-10">
             <div class="description-header">
-                <h2>Description</h2>
-                <p>Both versions convey a topic; it’s pretty easy to predict that the paragraph will be about epidemiological evidence, but only the second version establishes an argumentative point and puts it in context. The paragraph doesn’t just describe the epidemiological evidence; it shows how epidemiology is telling the same story as etiology. Similarly, while Version A doesn’t relate to anything in particular, Version B immediately suggests that the prior paragraph addresses the biological pathway (i.e. etiology) of a disease and that the new paragraph will bolster the emerging hypothesis with a different kind of evidence. As a reader, it’s easy to keep track of how the paragraph about cells and chemicals and such relates to the paragraph about populations in different places.
-
-                    A last thing to note about key sentences is that academic readers expect them to be at the beginning of the paragraph. (The first sentence this paragraph is a good example of this in action!) This placement helps readers comprehend your argument. To see how, try this: find an academic piece (such as a textbook or scholarly article) that strikes you as well written and go through part of it reading just the first sentence of each paragraph. You should be able to easily follow the sequence of logic. When you’re writing for professors, it is especially effective to put your key sentences first because they usually convey your own original thinking. It’s a very good sign when your paragraphs are typically composed of a telling key sentence followed by evidence and explanation.
-
-                    Knowing this convention of academic writing can help you both read and write more effectively. When you’re reading a complicated academic piece for the first time, you might want to go through reading only the first sentence or two of each paragraph to get the overall outline of the argument. Then you can go back and read all of it with a clearer picture of how each of the details fit in. And when you’re writing, you may also find it useful to write the first sentence of each paragraph (instead of a topic-based outline) to map out a thorough argument before getting immersed in sentence-level wordsmithing.</p>
+                <h2>Mô tả sản phẩm</h2>
+                {{#each description}}
+                    <div class="mt-2 p-3">
+                        <div>
+                            <i class="fa fa-pencil text-primary"></i>
+                            {{format_date dateDes}}
+                        </div>
+                        <div class="p-3">
+                            {{{description}}}
+                        </div>
+                    </div>
+                {{/each}}
             </div>
         </div>
         <div class="col-lg-2"></div>
