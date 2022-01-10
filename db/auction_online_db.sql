@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MySQL_Web
+ Source Server         : conn
  Source Server Type    : MySQL
- Source Server Version : 50734
- Source Host           : localhost:8889
+ Source Server Version : 100421
+ Source Host           : localhost:3306
  Source Schema         : auction_online_db
 
  Target Server Type    : MySQL
- Target Server Version : 50734
+ Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 09/01/2022 01:42:09
+ Date: 10/01/2022 21:15:59
 */
 
 SET NAMES utf8mb4;
@@ -21,213 +21,208 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category` (
-  `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `catName` varchar(50) DEFAULT NULL,
+CREATE TABLE `category`  (
+  `catID` int NOT NULL AUTO_INCREMENT,
+  `catName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`catID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-BEGIN;
 INSERT INTO `category` VALUES (1, 'Điện tử - Điện lạnh');
 INSERT INTO `category` VALUES (2, 'Nhà cửa, đời sống');
 INSERT INTO `category` VALUES (3, 'Sách');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for currentauction
 -- ----------------------------
 DROP TABLE IF EXISTS `currentauction`;
-CREATE TABLE `currentauction` (
-  `UID` int(11) NOT NULL,
-  `proID` int(11) NOT NULL,
-  `isDone` bit(1) DEFAULT b'0',
-  `maxPrice` decimal(15,2) DEFAULT NULL,
-  `stepPrice` int(11) DEFAULT NULL,
-  `isBlock` bit(1) DEFAULT b'0',
-  PRIMARY KEY (`UID`,`proID`) USING BTREE,
-  KEY `fk_currentAuction_product` (`proID`) USING BTREE,
-  CONSTRAINT `fk_currentAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`),
-  CONSTRAINT `fk_currentAuction_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `currentauction`  (
+  `UID` int NOT NULL,
+  `proID` int NOT NULL,
+  `isDone` tinyint(1) NULL DEFAULT 0,
+  `maxPrice` decimal(15, 2) NULL DEFAULT NULL,
+  `stepPrice` int NULL DEFAULT NULL,
+  `isBlock` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`UID`, `proID`) USING BTREE,
+  INDEX `fk_currentAuction_product`(`proID` ASC) USING BTREE,
+  CONSTRAINT `fk_currentAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_currentAuction_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of currentauction
 -- ----------------------------
-BEGIN;
-INSERT INTO `currentauction` VALUES (1, 14, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (2, 11, b'0', 1800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (3, 28, b'0', 4800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 5, b'0', 4400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 11, b'0', 4200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 13, b'0', 2700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 17, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 18, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 20, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 23, b'0', 2100.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 27, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 30, b'0', 7700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 32, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 33, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 34, b'0', 5900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 36, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 37, b'0', 5500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (5, 40, b'0', 1700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 2, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 4, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 7, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 8, b'0', 5400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 11, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 13, b'0', 3200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 15, b'0', 3700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 19, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 20, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 23, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 24, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 25, b'0', 2300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 28, b'0', 8000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 31, b'0', 2300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 33, b'0', 4000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 34, b'0', 2300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 35, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 36, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 38, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (6, 40, b'0', 5500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 1, b'0', 3500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 2, b'0', 3500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 5, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 7, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 9, b'0', 4800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 12, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 16, b'0', 2800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 17, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 18, b'0', 4200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 19, b'0', 4000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 21, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 22, b'0', 2500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 23, b'0', 2900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 24, b'0', 4400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 25, b'0', 3700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 29, b'0', 6500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 33, b'0', 2300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 35, b'0', 4000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 39, b'0', 5400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (7, 40, b'0', 3600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 3, b'0', 3500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 4, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 6, b'0', 4800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 9, b'0', 6400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 12, b'0', 2700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 14, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 15, b'0', 5300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 16, b'0', 4000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 19, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 23, b'0', 4900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 24, b'0', 3200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 26, b'0', 3400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 28, b'0', 5400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 29, b'0', 5200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 30, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 31, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 32, b'0', 4700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 35, b'0', 5200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 36, b'0', 4800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (8, 38, b'0', 4400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 1, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 4, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 5, b'0', 3400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 7, b'0', 2600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 10, b'0', 5600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 12, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 14, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 16, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 17, b'0', 2700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 18, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 19, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 21, b'0', 2700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 24, b'0', 2600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 26, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 29, b'0', 2900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 30, b'0', 8000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 31, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 32, b'0', 5200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 33, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 34, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 35, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 37, b'0', 4900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 38, b'0', 3200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (9, 40, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 2, b'0', 2700.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 3, b'0', 3350.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 5, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 6, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 8, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 9, b'0', 4200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 10, b'0', 4800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 13, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 15, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 21, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 22, b'0', 4500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 23, b'0', 4300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 25, b'0', 5500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 26, b'0', 2800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 37, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 38, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 39, b'0', 8400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (10, 40, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 1, b'0', 4000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 5, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 6, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 8, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 11, b'0', 3000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 13, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 17, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 18, b'0', 2200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 20, b'0', 4400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 21, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 24, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 25, b'0', 4300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 27, b'0', 2100.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 28, b'0', 2900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 30, b'0', 5000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 32, b'0', 2400.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 33, b'0', 2800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (11, 37, b'0', 3500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 1, b'0', 3200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 2, b'0', 2200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 3, b'0', 1900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 6, b'0', 2600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 9, b'0', 2600.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 10, b'0', 2800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 12, b'0', 4200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 13, b'0', 3800.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 22, b'0', 3900.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 26, b'0', 2000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 27, b'0', 3300.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 29, b'0', 6000.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 34, b'0', 3500.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 36, b'0', 4200.00, NULL, b'0');
-INSERT INTO `currentauction` VALUES (12, 39, b'0', 8700.00, NULL, b'0');
-COMMIT;
+INSERT INTO `currentauction` VALUES (1, 14, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (2, 11, 0, 1800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (3, 28, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 5, 0, 4400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 11, 0, 4200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 13, 0, 2700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 17, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 18, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 20, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 23, 0, 2100.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 27, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 30, 0, 7700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 32, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 33, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 34, 0, 5900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 36, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 37, 0, 5500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 40, 0, 1700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 2, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 4, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 7, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 8, 0, 5400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 11, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 13, 0, 3200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 15, 0, 3700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 19, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 20, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 23, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 24, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 25, 0, 2300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 28, 0, 8000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 31, 0, 2300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 33, 0, 4000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 34, 0, 2300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 35, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 36, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 38, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 40, 0, 5500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 1, 0, 3500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 2, 0, 3500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 5, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 7, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 9, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 12, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 16, 0, 2800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 17, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 18, 0, 4200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 19, 0, 4000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 21, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 22, 0, 2500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 23, 0, 2900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 24, 0, 4400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 25, 0, 3700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 29, 0, 6500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 33, 0, 2300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 35, 0, 4000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 39, 0, 5400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (7, 40, 0, 3600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 3, 0, 3500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 4, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 6, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 9, 0, 6400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 12, 0, 2700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 14, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 15, 0, 5300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 16, 0, 4000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 19, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 23, 0, 4900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 24, 0, 3200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 26, 0, 3400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 28, 0, 5400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 29, 0, 5200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 30, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 31, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 32, 0, 4700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 35, 0, 5200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 36, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 38, 0, 4400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 1, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 4, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 5, 0, 3400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 7, 0, 2600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 10, 0, 5600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 12, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 14, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 16, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 17, 0, 2700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 18, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 19, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 21, 0, 2700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 24, 0, 2600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 26, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 29, 0, 2900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 30, 0, 8000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 31, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 32, 0, 5200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 33, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 34, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 35, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 37, 0, 4900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 38, 0, 3200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 40, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 2, 0, 2700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 3, 0, 3350.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 5, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 6, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 8, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 9, 0, 4200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 10, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 13, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 15, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 21, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 22, 0, 4500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 23, 0, 4300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 25, 0, 5500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 26, 0, 2800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 37, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 38, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 39, 0, 8400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 40, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 1, 0, 4000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 5, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 6, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 8, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 11, 0, 3000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 13, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 17, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 18, 0, 2200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 20, 0, 4400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 21, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 24, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 25, 0, 4300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 27, 0, 2100.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 28, 0, 2900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 30, 0, 5000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 32, 0, 2400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 33, 0, 2800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (11, 37, 0, 3500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 1, 0, 3200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 2, 0, 2200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 3, 0, 1900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 6, 0, 2600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 9, 0, 2600.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 10, 0, 2800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 12, 0, 4200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 13, 0, 3800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 22, 0, 3900.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 26, 0, 2000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 27, 0, 3300.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 29, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 34, 0, 3500.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 36, 0, 4200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 39, 0, 8700.00, NULL, 0);
 
 -- ----------------------------
 -- Table structure for description
 -- ----------------------------
 DROP TABLE IF EXISTS `description`;
-CREATE TABLE `description` (
-  `proID` int(11) NOT NULL,
+CREATE TABLE `description`  (
+  `proID` int NOT NULL,
   `dateDes` datetime NOT NULL,
-  `description` longtext,
-  PRIMARY KEY (`proID`,`dateDes`) USING BTREE,
-  CONSTRAINT `fk_description_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`proID`, `dateDes`) USING BTREE,
+  CONSTRAINT `fk_description_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of description
 -- ----------------------------
-BEGIN;
 INSERT INTO `description` VALUES (1, '2021-12-24 17:13:31', '<h4 class=\"BlockTitle__Wrapper-sc-qpz3fo-0 eHltcn\" style=\"box-sizing: border-box; color: rgb(51, 51, 51); font-size: 20px; font-weight: 400; line-height: 32px; padding: 8px 16px; text-transform: capitalize; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center; margin: 0px; font-family: Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">M&ocirc; Tả Sản Phẩm</h4>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\">\r\n            <div style=\"box-sizing: border-box;\">\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">Nội dung t&iacute;nh năng</h5>\r\n                <p style=\"box-sizing: border-box; margin: 5px 0px 12px;\"><span data-sheets-textstyleruns=\'{\"1\":0,\"2\":{\"5\":1}}{\"1\":12}{\"1\":760,\"2\":{\"5\":1}}{\"1\":777}{\"1\":1981,\"2\":{\"5\":1}}{\"1\":1982}{\"1\":2090,\"2\":{\"5\":1}}{\"1\":2097}{\"1\":2327,\"2\":{\"5\":1}}{\"1\":2329}{\"1\":2330,\"2\":{\"5\":1}}{\"1\":2347}{\"1\":2411,\"2\":{\"5\":1}}{\"1\":2438}\' data-sheets-userformat=\'{\"2\":12801,\"3\":{\"1\":0},\"12\":0,\"15\":\"Montserrat\",\"16\":9}\' data-sheets-value=\'{\"1\":2,\"2\":\"MacBook Air\\nMạnh mẽ. Mà nhẹ bỗng.\\nMacBook Air. Nay có chip Apple M1.\\nSiêu mạnh mẽ. Siêu nhẹ.\\n\\nMacBook Air là máy tính xách tay mỏng và nhẹ nhất của Apple – nay thay đổi ngoạn mục với chip Apple M1 mạnh \\nmẽ. Tạo ra một cú nhảy vọt về hiệu năng CPU và đồ họa, cùng thời lượng pin lên đến 18 giờ. (1)\\n\\nMáy tính xách tay mỏng và nhẹ nhất của Apple, nay siêu mạnh mẽ với chip Apple M1. Xử lý công việc giúp bạn với \\nCPU 8 lõi nhanh như chớp. Đưa các ứng dụng và game có đồ họa khủng lên một tầm cao mới với GPU 8 lõi. Đồng \\nthời, tăng tốc các tác vụ máy học với Neural Engine 16 lõi. Tất cả gói gọn trong một thiết kế không quạt, không tiếng \\nồn, thời lượng pin dài nhất từ trước đến nay lên đến 18 giờ. (1) MacBook Air. Vẫn cực kỳ cơ động. Mà mạnh mẽ hơn \\nnhiều.\\n\\nTính năng nổi bật\\n•        Chip M1 do Apple thiết kế tạo ra một cú nhảy vọt về hiệu năng máy học, CPU và GPU\\n•        Tăng thời gian sử dụng với thời lượng pin lên đến 18 giờ (1)\\n•        CPU 8 lõi cho tốc độ nhanh hơn đến 3.5x, xử lý công việc nhanh chóng hơn bao giờ hết (2)\\n•        GPU lên đến 8 lõi với tốc độ xử lý đồ họa nhanh hơn đến 5x cho các ứng dụng và game đồ họa khủng (2)\\n•        Neural Engine 16 lõi cho công nghệ máy học hiện đại\\n•        Bộ nhớ thống nhất 8GB giúp bạn làm việc gì cũng nhanh chóng và trôi chảy \\n•        Ổ lưu trữ SSD siêu nhanh khởi chạy ứng dụng và mở tập tin chỉ trong tích tắc\\n•        Thiết kế không quạt giảm tối đa tiếng ồn khi sử dụng \\n•        Màn hình Retina 13.3 inch với dải màu rộng P3 cho hình ảnh sống động và chi tiết ấn tượng (3)\\n•        Camera FaceTime HD với bộ xử lý tín hiệu hình ảnh tiên tiến cho các cuộc gọi video đẹp hình, rõ tiếng hơn\\n•        Bộ ba micro phối hợp tập trung thu giọng nói của bạn, không thu tạp âm môi trường\\n•        Wi-Fi 6 thế hệ mới giúp kết nối nhanh hơn\\n•        Hai cổng Thunderbolt / USB 4 để sạc và kết nối phụ kiện\\n•        Bàn phím Magic Keyboard có đèn nền và Touch ID giúp mở khóa và thanh toán an toàn hơn\\n•        macOS sở hữu thiết kế ấn tượng, dễ sử dụng và phối hợp mượt mà với iPhone\\n•        Hiện có màu vàng kim, xám bạc và bạc\\n\\nPháp lý\\nHiện có sẵn các lựa chọn để nâng cấp.\\n(1) Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\\n(2) So với thế hệ máy trước.\\n(3) Kích thước màn hình tính theo đường chéo.\\n\\n\\nThông số kỹ thuật\\nTruy cập apple.com/macbook-air/specs để xem cấu hình đầy đủ. \\n\\nTên chính thức của sản phẩm\\nMacBook Air (M1, 2020)\\n\"}\' style=\"box-sizing: border-box;\">MacBook Air l&agrave; m&aacute;y t&iacute;nh x&aacute;ch tay mỏng v&agrave; nhẹ nhất của Apple &ndash; nay thay đổi ngoạn mục với chip Apple M1 mạnh mẽ. Tạo ra một c&uacute; nhảy vọt về hiệu năng CPU v&agrave; đồ họa, c&ugrave;ng thời lượng pin l&ecirc;n đến 18 giờ. (1)<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">M&aacute;y t&iacute;nh x&aacute;ch tay mỏng v&agrave; nhẹ nhất của Apple, nay si&ecirc;u mạnh mẽ với chip Apple M1. Xử l&yacute; c&ocirc;ng việc gi&uacute;p bạn với CPU 8 l&otilde;i nhanh như chớp. Đưa c&aacute;c ứng dụng v&agrave; game c&oacute; đồ họa khủng l&ecirc;n một tầm cao mới với GPU 8 l&otilde;i. Đồng thời, tăng tốc c&aacute;c t&aacute;c vụ m&aacute;y học với Neural Engine 16 l&otilde;i. Tất cả g&oacute;i gọn trong một thiết kế kh&ocirc;ng quạt, kh&ocirc;ng tiếng ồn, thời lượng pin d&agrave;i nhất từ trước đến nay l&ecirc;n đến 18 giờ. (1) MacBook Air vẫn cực kỳ cơ động m&agrave; mạnh mẽ hơn nhiều.<br style=\"box-sizing: border-box;\"></span></p>\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">T&iacute;nh năng nổi bật</h5>\r\n                <ul style=\"box-sizing: border-box;\">\r\n                    <li style=\"box-sizing: border-box;\">Chip M1 do Apple thiết kế tạo ra một c&uacute; nhảy vọt về hiệu năng m&aacute;y học, CPU v&agrave; GPU</li>\r\n                    <li style=\"box-sizing: border-box;\">Tăng thời gian sử dụng với thời lượng pin l&ecirc;n đến 18 giờ (1)</li>\r\n                    <li style=\"box-sizing: border-box;\">CPU 8 l&otilde;i cho tốc độ nhanh hơn đến 3.5x, xử l&yacute; c&ocirc;ng việc nhanh ch&oacute;ng hơn bao giờ hết (2)</li>\r\n                    <li style=\"box-sizing: border-box;\">GPU l&ecirc;n đến 8 l&otilde;i với tốc độ xử l&yacute; đồ họa nhanh hơn đến 5x cho c&aacute;c ứng dụng v&agrave; game đồ họa khủng (2)</li>\r\n                    <li style=\"box-sizing: border-box;\">Neural Engine 16 l&otilde;i cho c&ocirc;ng nghệ m&aacute;y học hiện đại</li>\r\n                    <li style=\"box-sizing: border-box;\">Bộ nhớ thống nhất 8GB gi&uacute;p bạn l&agrave;m việc g&igrave; cũng nhanh ch&oacute;ng v&agrave; tr&ocirc;i chảy</li>\r\n                    <li style=\"box-sizing: border-box;\">Ổ lưu trữ SSD si&ecirc;u nhanh khởi chạy ứng dụng v&agrave; mở tập tin chỉ trong t&iacute;ch tắc</li>\r\n                    <li style=\"box-sizing: border-box;\">Thiết kế kh&ocirc;ng quạt giảm tối đa tiếng ồn khi sử dụng</li>\r\n                    <li style=\"box-sizing: border-box;\">M&agrave;n h&igrave;nh Retina 13.3 inch với dải m&agrave;u rộng P3 cho h&igrave;nh ảnh sống động v&agrave; chi tiết ấn tượng (3)</li>\r\n                    <li style=\"box-sizing: border-box;\">Camera FaceTime HD với bộ xử l&yacute; t&iacute;n hiệu h&igrave;nh ảnh ti&ecirc;n tiến cho c&aacute;c cuộc gọi video đẹp h&igrave;nh, r&otilde; tiếng hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">Bộ ba micro phối hợp tập trung thu giọng n&oacute;i của bạn, kh&ocirc;ng thu tạp &acirc;m m&ocirc;i trường</li>\r\n                    <li style=\"box-sizing: border-box;\">Wi-Fi 6 thế hệ mới gi&uacute;p kết nối nhanh hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">Hai cổng Thunderbolt / USB 4 để sạc v&agrave; kết nối phụ kiện</li>\r\n                    <li style=\"box-sizing: border-box;\">B&agrave;n ph&iacute;m Magic Keyboard c&oacute; đ&egrave;n nền v&agrave; Touch ID gi&uacute;p mở kh&oacute;a v&agrave; thanh to&aacute;n an to&agrave;n hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">macOS sở hữu thiết kế ấn tượng, dễ sử dụng v&agrave; phối hợp mượt m&agrave; với iPhone</li>\r\n                    <li style=\"box-sizing: border-box;\">Hiện c&oacute; m&agrave;u v&agrave;ng kim, x&aacute;m bạc v&agrave; bạc</li>\r\n                </ul>\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">Ph&aacute;p l&yacute;</h5>\r\n                <p style=\"box-sizing: border-box; margin: 5px 0px 12px;\"><span data-sheets-textstyleruns=\'{\"1\":0,\"2\":{\"5\":1}}{\"1\":12}{\"1\":760,\"2\":{\"5\":1}}{\"1\":777}{\"1\":1981,\"2\":{\"5\":1}}{\"1\":1982}{\"1\":2090,\"2\":{\"5\":1}}{\"1\":2097}{\"1\":2327,\"2\":{\"5\":1}}{\"1\":2329}{\"1\":2330,\"2\":{\"5\":1}}{\"1\":2347}{\"1\":2411,\"2\":{\"5\":1}}{\"1\":2438}\' data-sheets-userformat=\'{\"2\":12801,\"3\":{\"1\":0},\"12\":0,\"15\":\"Montserrat\",\"16\":9}\' data-sheets-value=\'{\"1\":2,\"2\":\"MacBook Air\\nMạnh mẽ. Mà nhẹ bỗng.\\nMacBook Air. Nay có chip Apple M1.\\nSiêu mạnh mẽ. Siêu nhẹ.\\n\\nMacBook Air là máy tính xách tay mỏng và nhẹ nhất của Apple – nay thay đổi ngoạn mục với chip Apple M1 mạnh \\nmẽ. Tạo ra một cú nhảy vọt về hiệu năng CPU và đồ họa, cùng thời lượng pin lên đến 18 giờ. (1)\\n\\nMáy tính xách tay mỏng và nhẹ nhất của Apple, nay siêu mạnh mẽ với chip Apple M1. Xử lý công việc giúp bạn với \\nCPU 8 lõi nhanh như chớp. Đưa các ứng dụng và game có đồ họa khủng lên một tầm cao mới với GPU 8 lõi. Đồng \\nthời, tăng tốc các tác vụ máy học với Neural Engine 16 lõi. Tất cả gói gọn trong một thiết kế không quạt, không tiếng \\nồn, thời lượng pin dài nhất từ trước đến nay lên đến 18 giờ. (1) MacBook Air. Vẫn cực kỳ cơ động. Mà mạnh mẽ hơn \\nnhiều.\\n\\nTính năng nổi bật\\n•        Chip M1 do Apple thiết kế tạo ra một cú nhảy vọt về hiệu năng máy học, CPU và GPU\\n•        Tăng thời gian sử dụng với thời lượng pin lên đến 18 giờ (1)\\n•        CPU 8 lõi cho tốc độ nhanh hơn đến 3.5x, xử lý công việc nhanh chóng hơn bao giờ hết (2)\\n•        GPU lên đến 8 lõi với tốc độ xử lý đồ họa nhanh hơn đến 5x cho các ứng dụng và game đồ họa khủng (2)\\n•        Neural Engine 16 lõi cho công nghệ máy học hiện đại\\n•        Bộ nhớ thống nhất 8GB giúp bạn làm việc gì cũng nhanh chóng và trôi chảy \\n•        Ổ lưu trữ SSD siêu nhanh khởi chạy ứng dụng và mở tập tin chỉ trong tích tắc\\n•        Thiết kế không quạt giảm tối đa tiếng ồn khi sử dụng \\n•        Màn hình Retina 13.3 inch với dải màu rộng P3 cho hình ảnh sống động và chi tiết ấn tượng (3)\\n•        Camera FaceTime HD với bộ xử lý tín hiệu hình ảnh tiên tiến cho các cuộc gọi video đẹp hình, rõ tiếng hơn\\n•        Bộ ba micro phối hợp tập trung thu giọng nói của bạn, không thu tạp âm môi trường\\n•        Wi-Fi 6 thế hệ mới giúp kết nối nhanh hơn\\n•        Hai cổng Thunderbolt / USB 4 để sạc và kết nối phụ kiện\\n•        Bàn phím Magic Keyboard có đèn nền và Touch ID giúp mở khóa và thanh toán an toàn hơn\\n•        macOS sở hữu thiết kế ấn tượng, dễ sử dụng và phối hợp mượt mà với iPhone\\n•        Hiện có màu vàng kim, xám bạc và bạc\\n\\nPháp lý\\nHiện có sẵn các lựa chọn để nâng cấp.\\n(1) Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\\n(2) So với thế hệ máy trước.\\n(3) Kích thước màn hình tính theo đường chéo.\\n\\n\\nThông số kỹ thuật\\nTruy cập apple.com/macbook-air/specs để xem cấu hình đầy đủ. \\n\\nTên chính thức của sản phẩm\\nMacBook Air (M1, 2020)\\n\"}\' style=\"box-sizing: border-box;\">Hiện c&oacute; sẵn c&aacute;c lựa chọn để n&acirc;ng cấp.<br style=\"box-sizing: border-box;\">(1) Thời lượng pin kh&aacute;c nhau t&ugrave;y theo c&aacute;ch sử dụng v&agrave; cấu h&igrave;nh. Truy cập apple.com/batteries để biết th&ecirc;m th&ocirc;ng tin.<br style=\"box-sizing: border-box;\">(2) So với thế hệ m&aacute;y trước.<br style=\"box-sizing: border-box;\">(3) K&iacute;ch thước m&agrave;n h&igrave;nh t&iacute;nh theo đường ch&eacute;o</span></p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>');
 INSERT INTO `description` VALUES (2, '2021-09-26 03:58:44', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Hộp 12 B&uacute;t Ch&igrave; 2B Si&ecirc;u R&otilde; N&eacute;t Tỳ Kh&ocirc;ng G&atilde;y Cho B&eacute;</strong> l&agrave; vật dụng kh&ocirc;ng thể thiếu khi học vẽ, học viết hay l&agrave;m to&aacute;n, l&agrave;m b&agrave;i thi.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Th&acirc;n b&uacute;t được l&agrave;m từ chất liệu gỗ chắc chắn, bền đẹp, bao gọn ruột ch&igrave; b&ecirc;n trong, gi&uacute;p cho n&eacute;t vẽ được cứng c&aacute;p</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Thiết kế gọn nhẹ, đơn giản nhưng ưa nh&igrave;n.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">M&agrave;u ch&igrave; đậm, r&otilde; n&eacute;t, mịn đẹp l&agrave; đặc trưng của ch&igrave; 2B</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Khi sử dụng, ng&ograve;i kh&ocirc;ng bị g&atilde;y vụn, &iacute;t hao, dễ x&oacute;a sạch bằng cục tẩy, đặc biệt hạn chế l&agrave;m bẩn tay v&agrave; quần &aacute;o.</p>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\">\r\n            <div style=\"box-sizing: border-box;\"><br></div>\r\n        </div>\r\n    </div>\r\n</div>');
 INSERT INTO `description` VALUES (3, '2021-09-30 06:24:04', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">T&Iacute;NH NĂNG SẢN PHẨM:<br style=\"box-sizing: border-box;\">️Sổ tay được thiết kế c&aacute;c m&agrave;u t&ocirc;ng nhẹ nh&agrave;ng, trong suốt.<br style=\"box-sizing: border-box;\">️Sổ g&aacute;y xoắn c&oacute; thể xoay được c&aacute;c trang, đặc biệt l&agrave; c&oacute; thể th&aacute;o rời để lấy giấy b&ecirc;n trong.<br style=\"box-sizing: border-box;\">️Sổ được chia mục r&otilde; r&agrave;ng, thuận tiện cho việc chia c&aacute;c đầu c&ocirc;ng việc/ m&ocirc;n học dễ d&agrave;ng hơn.<br style=\"box-sizing: border-box;\">️Sổ đi k&egrave;m với sticker ph&acirc;n loại.<br style=\"box-sizing: border-box;\">️Chất lượng giấy đạt chuẩn, ph&ugrave; hợp cho đ&ocirc;i mắt.<br style=\"box-sizing: border-box;\">️Sổ ph&ugrave; hợp cho mọi đối tượng.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">TH&Ocirc;NG TIN SẢN PHẨM:<br style=\"box-sizing: border-box;\">Sổ tay ghi ch&eacute;p A5 Deli - QHA560<br style=\"box-sizing: border-box;\">Bốn M&agrave;u: Xanh dương/Hồng/V&agrave;ng/Xanh l&aacute;<br style=\"box-sizing: border-box;\">K&iacute;ch thước: 208x145mm<br style=\"box-sizing: border-box;\">Trọng lượng giấy: 80g</p>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\"><br></div>\r\n    </div>\r\n</div>');
@@ -244,7 +239,7 @@ INSERT INTO `description` VALUES (13, '2020-06-10 13:54:39', '<p>Sau đ&acirc;y 
 INSERT INTO `description` VALUES (14, '2021-01-24 09:52:04', '<h2><span style=\"font-weight: 400;\">Ghế xếp thư gi&atilde;n k&egrave;m nệm Kachi MK232 mang lại nhiều lợi &iacute;ch sức khỏe cho bạn</span></h2>\r\n<p><em><span style=\"font-weight: 400;\">Ghế xếp thư gi&atilde;n Kachi MK232</span></em><span style=\"font-weight: 400;\"> được trang bị nệm nằm v&agrave; gối đầu cao cấp được l&agrave;m bằng chất liệu &ecirc;m &aacute;i, thấm h&uacute;t mồ h&ocirc;i tốt cho bạn cảm gi&aacute;c thoải m&aacute;i v&agrave; dễ chịu nhất khi sử dụng. Ghế c&oacute; thiết kế trang nh&atilde;, c&oacute; thể dễ d&agrave;ng tư thế theo nhu cầu sử dụng v&agrave; gấp gọn để di chuyển v&agrave; bảo quản tiện lợi.</span></p>\r\n<h3><span style=\"font-weight: 400;\">Chi tiết Ghế xếp thư gi&atilde;n k&egrave;m nệm Kachi MK232</span></h3>\r\n<h3><span style=\"font-weight: 400;\">Chất liệu</span></h3>\r\n<p><span style=\"font-weight: 400;\">Khung ghế l&agrave;m từ chất liệu th&eacute;p kh&ocirc;ng gỉ cao cấp với ồng trong phi 25 c&oacute; thể đứng vững tr&ecirc;n mọi bề mặt phẳng, tải trọng ghế đạt 300kg gi&uacute;p bạn an t&acirc;m sử dụng</span></p>\r\n<p><span style=\"font-weight: 400;\">Thiết kế khung cong khoa học n&acirc;ng đỡ cơ thể tạo cảm gi&aacute;c nhẹ nh&agrave;ng.&nbsp; Khả năng điều chỉnh độ nghi&ecirc;ng lớn cho người nằm thẳng lưng thoải m&aacute;i như tr&ecirc;n giường của m&igrave;nh.</span></p>\r\n<p><span style=\"font-weight: 400;\">Ghế được sơn tĩnh điện 7 lớp cho khả năng chống oxy h&oacute;a, bảo vệ phần th&eacute;p trong v&agrave; chống trầy xước</span></p>\r\n<p><span style=\"font-weight: 400;\">C&aacute;c khớp trượt v&agrave; tay vịn l&agrave;m bằng nhựa PP vận h&agrave;nh nhẹ nh&agrave;ng được thiết kế ngay b&ecirc;n dưới tay cầm.</span></p>\r\n<p><span style=\"font-weight: 400;\">Phần nệm l&agrave;m từ chất liệu Textilen với mặt nệm c&oacute; c&aacute;c lỗ tho&aacute;ng kh&iacute;, bền chắc, mỏng nhẹ, th&ocirc;ng tho&aacute;ng, chống thấm nước, hạn chế b&aacute;m bụi dễ vệ sinh bằng c&aacute;ch giặt tay hoặc m&aacute;y. Rất ph&ugrave; hợp với thời tiết Việt Nam</span></p>\r\n<h3><span style=\"font-weight: 400;\">Dễ d&agrave;ng điều chỉnh độ nghi&ecirc;ng ph&ugrave; hợp với tư thế nghỉ ngơi</span></h3>\r\n<p><em><span style=\"font-weight: 400;\">Ghế xếp&nbsp; thư gi&atilde;n Kachi MK232</span></em><span style=\"font-weight: 400;\"> c&oacute; thể chỉnh độ nghi&ecirc;ng lớn 170 độ, diện t&iacute;ch nệm nằm rộng 65cm v&agrave; độ cao ch&acirc;n ghế 40cm ph&ugrave; hợp sử dụng cho mọi đối tượng. Dễ d&agrave;ng thay đổi tư thế theo nhu cầu sử dụng của người d&ugrave;ng . </span><em><span style=\"font-weight: 400;\">Sử dụng ghế thư gi&atilde;n Kachi</span></em><span style=\"font-weight: 400;\"> gi&uacute;p bạn đẩy l&ugrave;i c&aacute;c biểu hiện thấp khớp, đau đầu, nhức mỏi cơ nhờ tư thế nằm chuẩn v&agrave; thoải m&aacute;i.</span></p>\r\n<p><span style=\"font-weight: 400;\">C&aacute;c khợp nối được gia c&ocirc;ng tỉ mỉ chắc chắn, n&acirc;ng th&ecirc;m độ bền cho chiếc ghế thư gi&atilde;n n&agrave;y</span></p>\r\n<h3><span style=\"font-weight: 400;\">K&iacute;ch thước sử dụng lớn</span></h3>\r\n<p><span style=\"font-weight: 400;\">Ghế c&oacute; k&iacute;ch thước sử dụng lớn 65&times; 180&times; 40cm để bạn nằm duỗi ch&acirc;n thoải m&aacute;i, ph&ugrave; hợp với nhiều mục đ&iacute;ch sử dụng như nằm nghe nhạc, đọc s&aacute;ch, ngủ trưa,</span></p>\r\n<h2><span style=\"font-weight: 400;\">Lợi &iacute;ch của Ghế xếp thư gi&atilde;n k&egrave;m nệm Kachi MK232</span></h2>\r\n<p><span style=\"font-weight: 400;\">Tốt cho sức khỏe người gi&agrave;</span></p>\r\n<p><span style=\"font-weight: 400;\">Gi&uacute;p c&aacute;c mẹ bầu thư gi&atilde;n trong thời gian thai kỳ</span></p>\r\n<p><span style=\"font-weight: 400;\">Bạn c&oacute; thể mang đi du lịch hoặc đặt tại s&acirc;n vườn, s&acirc;n thượng để thư gi&atilde;n</span></p>\r\n<p><span style=\"font-weight: 400;\">Rất th&iacute;ch hợp cho d&acirc;n văn ph&ograve;ng cần một giấc ngủ ngắn nhưng chất lượng</span></p>\r\n<h2><span style=\"font-weight: 400;\">Th&ocirc;ng số kỹ thuật</span></h2>\r\n<p><span style=\"font-weight: 400;\">Model: MK232</span></p>\r\n<p><span style=\"font-weight: 400;\">M&agrave;u sắc nệm: M&agrave;u x&aacute;m đậm</span></p>\r\n<p><span style=\"font-weight: 400;\">Chất liệu: Vải Texilent, Khung th&eacute;p</span></p>\r\n<p><span style=\"font-weight: 400;\">K&iacute;ch thước sản phẩm: 175 x 66 x 110 cm</span></p>\r\n<p><span style=\"font-weight: 400;\">K&iacute;ch thước đ&oacute;ng th&ugrave;ng: 95 x 14.5 x 68cm</span></p>\r\n<p><span style=\"font-weight: 400;\">Khối lượng (N.w): 8.2kg</span></p>\r\n<p><span style=\"font-weight: 400;\">Khối lượng (G.w): 9.2kg</span></p>\r\n<p><span style=\"font-weight: 400;\">Xuất xứ thương hiệu: Việt Nam</span></p>\r\n<p><span style=\"font-weight: 400;\">Sản xuất tại: Trung Quốc</span></p>\r\n<p>&nbsp;</p>');
 INSERT INTO `description` VALUES (15, '2021-02-05 12:08:50', '<h5><strong>Thiết kế nhỏ gọn, trang nh&atilde;</strong></h5>\r\n<p><span style=\"font-weight: 400;\">M&aacute;y Lạnh Toshiba Inverter 1 HP RAS-H10D2KCVG-V với kiểu d&aacute;ng nhỏ gọn c&ugrave;ng t&ocirc;ng m&agrave;u s&aacute;ng trắng trang nh&atilde;, dễ d&agrave;ng lắp đặt trong căn nh&agrave; của bạn. M&aacute;y lạnh c&ocirc;ng suất 1 HP ph&ugrave; hợp cho những kh&ocirc;ng gian ph&ograve;ng ngủ hoặc ph&ograve;ng kh&aacute;ch c&oacute; diện t&iacute;ch nhỏ hơn 15m2.</span></p>\r\n<h5><strong>Tiết kiệm điện năng tối ưu với c&ocirc;ng nghệ Hybrid Inverter</strong></h5>\r\n<p><span style=\"font-weight: 400;\">M&aacute;y lạnh Toshiba được trang bị c&ocirc;ng nghệ Hybrid Inverter l&agrave; giải ph&aacute;p tiết kiệm tối ưu l&ecirc;n đến 50% điện năng ti&ecirc;u thụ. B&ecirc;n cạnh đ&oacute; c&ograve;n c&oacute; thể l&agrave;m lạnh nhanh v&agrave; ổn định, gi&uacute;p m&aacute;y lạnh hoạt động bền bỉ, c&oacute; tuổi thọ cao hơn từ 2 đến 3 lần so với c&aacute;c m&aacute;y lạnh th&ocirc;ng thường. Ngo&agrave;i ra với bộ m&aacute;y n&eacute;n xoay chuyển động đều, hạn chế tiếng ồn kh&ocirc;ng mong muốn sẽ mang đến kh&ocirc;ng gian thư gi&atilde;n y&ecirc;n tĩnh cho người d&ugrave;ng.</span></p>\r\n<p><span style=\"font-weight: 400;\">Kết hợp với chế độ Eco tiết kiệm điện, khi k&iacute;ch hoạt chế độ n&agrave;y, m&aacute;y sẽ tự động tăng 1 độ C sau một giờ đầu ti&ecirc;n, sau đ&oacute; tăng th&ecirc;m 1 độ trong giờ tiếp theo v&agrave; duy tr&igrave; đến khi tắt m&aacute;y, gi&uacute;p cho người d&ugrave;ng kh&ocirc;ng bị cảm gi&aacute;c qu&aacute; lạnh khi ngủ, khiến cho bạn phải thức giấc.</span></p>\r\n<h5><strong>Chế độ l&agrave;m lạnh nhanh Hi Power</strong></h5>\r\n<p><span style=\"font-weight: 400;\">Với chế độ l&agrave;m lạnh nhanh Hi Power n&agrave;y sẽ gi&uacute;p m&aacute;y lạnh tự động điều khiển nhiệt độ ph&ograve;ng v&agrave; luồng gi&oacute; để nhiệt độ b&ecirc;n trong căn ph&ograve;ng nhanh ch&oacute;ng đạt được nhiệt độ theo c&agrave;i đặt của người d&ugrave;ng. Đặc biệt, m&aacute;y c&ograve;n được trang bị lớp phủ đặc biệt Magic Coil ngăn ngừa bụi bẩn, vi khuẩn, nấm mốc b&aacute;m v&agrave;o d&agrave;n lạnh gi&uacute;p m&aacute;y lu&ocirc;n hoạt động tối ưu v&agrave; bền bỉ, luồng kh&iacute; m&aacute;t trong l&agrave;nh hơn.</span></p>\r\n<p><span style=\"font-weight: 400;\">Đồng thời c&ocirc;ng nghệ n&agrave;y c&ograve;n c&oacute; lớp phủ Aqua tr&ecirc;n l&aacute; nh&ocirc;m c&ograve;n gi&uacute;p n&acirc;ng cao chất lượng kh&ocirc;ng kh&iacute;, d&agrave;n lạnh lu&ocirc;n được sạch sẽ, từ đ&oacute; bạn kh&ocirc;ng phải tốn nhiều thời gian, chi ph&iacute; để l&agrave;m vệ sinh d&agrave;n lạnh nhiều lần như trước m&agrave; chất lượng kh&ocirc;ng kh&iacute; thổi ra vẫn lu&ocirc;n được đảm bảo.</span></p>\r\n<h5><strong>Bộ lọc Toshiba IAQ gi&uacute;p ti&ecirc;u diệt vi khuẩn tạo n&ecirc;n kh&ocirc;ng gian trong l&agrave;nh</strong></h5>\r\n<p><span style=\"font-weight: 400;\">Bộ lọc khuẩn Toshiba IAQ bao gồm t&aacute;c nh&acirc;n Leuconostoc enzyme v&agrave; tinh thể bạc Ag+ t&igrave;m kiếm v&agrave; ti&ecirc;u diệt vi khuẩn tạo n&ecirc;n kh&ocirc;ng gian trong l&agrave;nh, đảm bảo sức khỏe cho người d&ugrave;ng. Ngo&agrave;i ra, m&aacute;y c&ograve;n c&oacute; t&iacute;nh năng tự khởi động lại khi c&oacute; điện, m&aacute;y lạnh sẽ tự động ghi nhớ c&aacute;c c&agrave;i đặt hiện tại như nhiệt độ, hướng gi&oacute;, Khi c&oacute; điện lại, m&aacute;y sẽ tự thiết lập lại c&aacute;c th&ocirc;ng số đ&atilde; ghi nhớ trước đ&oacute; m&agrave; kh&ocirc;ng cần sự can thiệp từ người d&ugrave;ng.</span></p>');
 INSERT INTO `description` VALUES (16, '2021-01-21 07:48:49', '<p><span style=\"font-weight: 400;\">Tủ bếp kết hợp với quầy bar mini đang trở th&agrave;nh xu hướng trong cuộc sống hiện đại ng&agrave;y nay bởi những thiết kế sang trọng, tinh tế g&oacute;p phần tạo n&ecirc;n vẻ đẹp, sự tiện nghi, hiện đại cho gian bếp.</span></p>\r\n<p><span style=\"font-weight: 400;\">Quầy bar mini sẽ l&agrave;m cho kh&ocirc;ng gian bếp nh&agrave; bạn tr&ocirc;ng nổi bật v&agrave; thu h&uacute;t hơn. Đ&acirc;y c&oacute; thể được xem l&agrave; một điểm nhấn thẩm mỹ tạo kh&ocirc;ng gian nh&agrave; bếp th&ecirc;m sang trọng v&agrave; tinh tế hơn.</span></p>\r\n<p><span style=\"font-weight: 400;\">Nếu để th&ecirc;m một v&agrave;i chiếc ghế th&igrave; quầy bar c&oacute; thể trở th&agrave;nh chiếc b&agrave;n nh&agrave; bếp thứ 2 để bạn ngồi ăn s&aacute;ng, bữa lỡ nhanh gọn hay để tạm c&aacute;c vật dụng nh&agrave; bếp hỗ trợ cho việc nấu ăn th&ecirc;m thuận tiện.</span></p>\r\n<p><span style=\"font-weight: 400;\">Đ&acirc;y cũng c&oacute; thể được xem l&agrave; một nơi ngồi chill, thư gi&atilde;n c&ugrave;ng bạn b&egrave; hay c&aacute;c th&agrave;nh vi&ecirc;n trong gia đ&igrave;nh sau những giờ l&agrave;m việc mệt mỏi.</span></p>');
-INSERT INTO `description` VALUES (17, '2020-03-12 00:52:02', '<p><strong>TỰ GI&Aacute;C BAO NHI&Ecirc;U, TỰ DO BẤY NHI&Ecirc;U</strong><br /><br />Theo bạn th&igrave;, thế n&agrave;o l&agrave; tự do?</p>\r\n<p>L&agrave; c&oacute; thể nằm ườn tr&ecirc;n ghế s&ocirc; pha xem phim, &ocirc;m điện thoại lướt mạng cả ng&agrave;y?</p>\r\n<p>Hay l&agrave; được ăn thoải m&aacute;i c&aacute;c thể loại đồ ăn nhanh, tr&agrave; sữa&hellip; bất chấp ảnh hưởng của ch&uacute;ng tới sức khỏe?</p>\r\n<p>Trời mưa th&igrave; tự cho ph&eacute;p bản th&acirc;n nghỉ l&agrave;m, th&iacute;ch đồ g&igrave; th&igrave; mua lu&ocirc;n đồ nấy, d&ugrave; cho chưa đến cuối th&aacute;ng đ&atilde; hết sạch tiền?<br /><br />Những điều tr&ecirc;n tr&ocirc;ng th&igrave; c&oacute; vẻ thoải m&aacute;i thật đấy, nhưng dần dần bạn sẽ nhận ra cuộc sống của m&igrave;nh ng&agrave;y c&agrave;ng mơ hồ, sợ sệt, bởi bạn kh&ocirc;ng c&oacute; SỰ LỰA CHỌN. L&atilde;ng ph&iacute; thời gian, tiền bạc v&ocirc; &iacute;ch chỉ c&agrave;ng tạo n&ecirc;n sự chậm chạp trong tư duy, bệnh tật cho cơ thể v&agrave; sự cằn cỗi trong t&acirc;m hồn m&agrave; th&ocirc;i.<br /><br />K&Yacute; LUẬT TỰ GI&Aacute;C, cuốn s&aacute;ch đ&atilde; th&agrave;nh c&ocirc;ng chỉnh đốn lối sống của h&agrave;ng triệu người trẻ Trung Quốc, sẽ gi&uacute;p bạn hiểu: &ldquo;Tự do&rdquo; thực sự kh&ocirc;ng phải l&agrave; t&ugrave;y theo &yacute; th&iacute;ch, m&agrave; l&agrave; tự m&igrave;nh l&agrave;m chủ.<br /><br />C&agrave;ng tự gi&aacute;c th&igrave; c&agrave;ng c&oacute; nhiều quyền lựa chọn. Một ng&agrave;y, hai ng&agrave;y, hay thậm ch&iacute; v&agrave;i th&aacute;ng chưa thấy g&igrave;, nhưng một năm, hai năm, 10 năm, 20 năm sau những người tự gi&aacute;c v&agrave; những người kh&ocirc;ng tự gi&aacute;c sẽ bước tr&ecirc;n những con đường ho&agrave;n to&agrave;n kh&aacute;c nhau. Bởi v&igrave; người c&agrave;ng tự gi&aacute;c c&agrave;ng hiểu m&igrave;nh thực sự muốn g&igrave;, n&ecirc;n mới kh&ocirc;ng cần l&atilde;ng ph&iacute; thời gian v&agrave; sức lực v&agrave;o những chuyện v&ocirc; nghĩa.<br /><br />Theodore Roosevelt cũng từng n&oacute;i: \"C&oacute; một kiểu phẩm chất c&oacute; thể gi&uacute;p ch&uacute;ng ta lột x&aacute;c tỏa s&aacute;ng trong cuộc đời b&igrave;nh thường. Phẩm chất đ&oacute; kh&ocirc;ng phải l&agrave; tư chất trời cho, kh&ocirc;ng phải nhờ gi&aacute;o dục, cũng kh&ocirc;ng phải IQ, m&agrave; l&agrave; SỰ TỰ GI&Aacute;C\". 99% th&agrave;nh c&ocirc;ng tr&ecirc;n thế giới n&agrave;y đều kh&ocirc;ng phải l&agrave; ngẫu nhi&ecirc;n. Ph&iacute;a sau h&agrave;o quang lu&ocirc;n l&agrave; sự ki&ecirc;n tr&igrave; tự gi&aacute;c kh&ocirc;ng ngừng nghỉ.<br /><br />KỶ LUẬT TỰ GI&Aacute;C l&agrave; trao cho m&igrave;nh quyền đặt ra quy tắc tr&ograve; chơi, c&ograve;n lười biếng l&agrave; trao quyền đặt quy tắc cho người kh&aacute;c. Bạn chọn c&aacute;i n&agrave;o?</p>');
+INSERT INTO `description` VALUES (17, '2020-03-12 00:52:02', '<p><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">KỶ LUẬT vốn l&agrave; v&aacute;n cờ bạn phải tự đấu với ch&iacute;nh m&igrave;nh. Thắng - bạn sẽ c&oacute; được &ldquo;bản năng của người mạnh mẽ nhất&rdquo;, đ&oacute; l&agrave; sự tự kiểm so&aacute;t bản th&acirc;n. Thua - bạn m&atilde;i sống trong cảm gi&aacute;c tạm bợ, nuối tiếc. C&agrave;ng dễ d&agrave;ng dung t&uacute;ng cho những th&oacute;i quen tr&igrave; ho&atilde;n bao nhi&ecirc;u, cuộc sống của bạn sẽ đi c&agrave;ng nhanh tới sự mất kiểm so&aacute;t v&agrave; thiếu quy hoạch bấy nhi&ecirc;u.</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">H&atilde;y ki&ecirc;n tr&igrave; đặt ra y&ecirc;u cầu cao với bản th&acirc;n, từ chối sự m&ecirc; hoặc của th&oacute;i t&ugrave;y tiện đồng thời thiết lập cho m&igrave;nh những th&oacute;i quen tốt trong h&agrave;nh vi thường ng&agrave;y. Sự nỗ lực sẽ lu&ocirc;n được đền đ&aacute;p xứng đ&aacute;ng nếu bạn biết c&aacute;ch đầu tư c&ocirc;ng sức v&agrave; thời gian. Bởi một ng&agrave;y n&agrave;o đ&oacute; trong tương lai, những g&igrave; bạn l&agrave;m sẽ phản chiếu đầy đủ tr&ecirc;n ch&iacute;nh con người v&agrave; cuộc đời của bạn.</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">C&Agrave;NG KỶ LUẬT, C&Agrave;NG TỰ DO - Mong rằng tại thời điểm kết th&uacute;c h&agrave;nh tr&igrave;nh với cuốn s&aacute;ch, bạn đ&atilde; l&agrave; một phi&ecirc;n bản kh&aacute;c kỷ luật hơn, nhưng tự do hơn.</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Một v&agrave;i tr&iacute;ch dẫn:</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">&ldquo;Bạn cần phải biết rằng t&igrave;nh y&ecirc;u l&agrave; hoa th&ecirc;u tr&ecirc;n gấm. C&oacute; th&igrave; tốt, kh&ocirc;ng c&oacute; cũng chẳng sao, thực sự kh&ocirc;ng đ&aacute;ng để bạn v&igrave; n&oacute; m&agrave; từ bỏ sự nghiệp, từ bỏ cơ hội thăng tiến thậm ch&iacute; l&agrave; từ bỏ cả cuộc đời vinh hoa sau n&agrave;y.&rdquo;</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">&ldquo;Những người trưởng th&agrave;nh như ch&uacute;ng ta n&ecirc;n nh&igrave;n cuộc sống rộng hơn một ch&uacute;t, ghen c&oacute; thể c&oacute;, tức giận c&oacute; thể c&oacute;. Thế nhưng, c&oacute; những cảm x&uacute;c chỉ n&ecirc;n lướt qua trong l&ograve;ng, ng&agrave;y h&ocirc;m sau ngủ dậy h&atilde;y để n&oacute; rời đi c&ugrave;ng với đ&ecirc;m đen mới l&agrave; c&aacute;ch lựa chọn tốt nhất.&rdquo;</span><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><br style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><span style=\"color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">&ldquo;Mỗi người đều c&oacute; kinh nghiệm sống kh&ocirc;ng giống nhau, y&ecirc;u cầu kh&ocirc;ng giống nhau. Điều giống nhau l&agrave; ch&uacute;ng ta đều n&ecirc;n t&igrave;m mọi c&aacute;ch trau dồi khả năng của bản th&acirc;n để sống tốt cuộc đời n&agrave;y.&rdquo;</span> </p>');
 INSERT INTO `description` VALUES (18, '2021-01-21 17:31:25', '<h5>Thiết kế chắc chắn</h5>\r\n<p><strong>Laptop Dell Vostro 3405 P132G002ABL</strong>&nbsp;được thiết kế với tone m&agrave;u đen truyền thống, c&aacute;c cạnh xung quanh được thiết kế v&aacute;t gọn lại sẽ tạo cảm gi&aacute;c thanh tho&aacute;t hơn, m&aacute;y c&oacute; trọng lượng kh&aacute; nhẹ, chỉ 1.6kg sẽ rất thuận tiện cho người dung trong việc di chuyển.&nbsp;</p>\r\n<h5>Hiệu năng đủ d&ugrave;ng</h5>\r\n<p>Dell Vostro 3405 sử dụng cpu AMD Ryzen (TM) R3 - 3250U&nbsp; 2 nh&acirc;n 4 luồng, xung nhịp 2.6Ghz up to 3.5 Ghz kết hợp với VGA AMD A PU ; Ram 8GB DDR4 2400Mhz; ổ cứng&nbsp; 1TB 5400 rpm 2.5\" SATA HDD cho hiệu quả xử l&yacute; nhanh c&aacute;c t&aacute;c vụ văn ph&ograve;ng v&agrave; ứng dụng cơ bản phổ biến.&nbsp;</p>\r\n<h5>B&agrave;n ph&iacute;m rộng r&atilde;i</h5>\r\n<p>B&agrave;n ph&iacute;m của m&aacute;y thiết kế theo kiểu chiclet với c&aacute;c ph&iacute;m rộng v&agrave; cao hơn, khoảng c&aacute;ch giữa c&aacute;c ph&iacute;m r&otilde; rang, h&agrave;nh tr&igrave;nh ph&iacute;m s&acirc;u gi&uacute;p cho việc g&otilde; ph&iacute;m trở n&ecirc;n dễ d&agrave;ng hơn.&nbsp;</p>\r\n<p>Touchpad rộng r&atilde;i, cho phản ứng nhanh v&agrave; ch&iacute;nh x&aacute;c với c&aacute;c thao t&aacute;c vuốt, cuộn, k&eacute;o.</p>\r\n<h5>M&agrave;n h&igrave;nh sắc n&eacute;t</h5>\r\n<p>M&agrave;n h&igrave;nh của V3405 c&oacute; k&iacute;ch thước 14.0-inch, độ ph&acirc;n giải 14.0-inch FHD (1920x1080) chống ch&oacute;i, LED Backlight với viền m&agrave;n h&igrave;nh hẹp 2 gi&uacute;p cho kh&ocirc;ng gian l&agrave;m việc rộng r&atilde;i hơn v&agrave; thoải m&aacute;i hơn khi l&agrave;m việc trong m&ocirc;i trường &aacute;nh s&aacute;ng ngo&agrave;i trời.&nbsp;</p>\r\n<h5>Cổng kết nối đa dạng</h5>\r\n<p>C&aacute;c kết nối kh&ocirc;ng d&acirc;y v&agrave; c&oacute; d&acirc;y tr&ecirc;n Vostro sẽ gi&uacute;p bạn thuận tiện kết nối với c&aacute;c thiết bị kh&aacute;c, hỗ trợ tốt nhất cho việc học tập v&agrave; l&agrave;m việc của người dung.</p>\r\n<p>M&aacute;y được thiết kế c&aacute;c cổng kết nối&nbsp; HDMI; USB 2.0; 2 USB 3.1; 1 LAN RJ 45; 1 SD card reader; 1 jack 3.5mm</p>\r\n<p>Kết nối kh&ocirc;ng d&acirc;y 802.11ac 1x1 v&agrave; Bluetooth</p>');
 INSERT INTO `description` VALUES (19, '2021-07-13 00:42:22', '<p><em><span style=\"font-weight: 400;\">Bộ M&agrave;u Nước Solid Water Color Cao Cấp 12/18/24/36 M&agrave;u - Tặng K&egrave;m 2 B&uacute;t Nước, 2 M&uacute;t, 1 Palette - Chuy&ecirc;n D&ugrave;ng Cho Học Sinh, Sinh Vi&ecirc;n, Vẽ Chuy&ecirc;n Nghiệp - H&agrave;ng Ch&iacute;nh H&atilde;ng - VinBuy.</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">&nbsp;Bộ sản phẩm th&iacute;ch hợp cho d&acirc;n chuy&ecirc;n dụng cũng như mới bắt đầu tập vẽ, học sinh, sinh vi&ecirc;n, vẽ chuy&ecirc;n nghiệp</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">Bộ m&agrave;u nước hộp bắt mắt c&oacute; thể d&ugrave;ng l&agrave;m qu&agrave; tặng, biếu v&ocirc; c&ugrave;ng tinh tế</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">Chất m&agrave;u tự nhi&ecirc;n, kh&ocirc;ng chứa chất phụ gia</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">Gam m&agrave;u trầm ấm, tươi s&aacute;ng</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">Khả năng pha trộn v&agrave; loang m&agrave;u ho&agrave;n hảo</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">M&agrave;u c&oacute; nồng độ hạt sắc tố cao, chất kết d&iacute;nh l&agrave; loại tự nhi&ecirc;n</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">K&iacute;ch thước nhỏ gọn, xinh xắn. Shop cung cấp 4 bộ đầy đủ m&agrave;u sắc : 18/24/36 m&agrave;u</span></em></p>\r\n<p><em><span style=\"font-weight: 400;\">Tặng k&egrave;m 2 b&uacute;t nước + 1 palette + 2 miếng m&uacute;t rất tiện dụng. Bộ 12 m&agrave;u: 1 b&uacute;t nước + 1 m&uacute;t</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">M&agrave;u n&eacute;n đẹp, nhiều m&agrave;u sắc bắt mắt</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">Chất m&agrave;u tự nhi&ecirc;n, kh&ocirc;ng chứa chất phụ gia</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">Khả năng pha trộn v&agrave; loang m&agrave;u ho&agrave;n hảo</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">M&agrave;u c&oacute; nồng độ hạt sắc tố cao, chất kết d&iacute;nh l&agrave; loại tự nhi&ecirc;n</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">K&iacute;ch thước nhỏ gọn, xinh xắn</span></em></p>\r\n<p style=\"text-align: center;\"><em><span style=\"font-weight: 400;\">Hộp đựng xinh xắn, đ&aacute;ng y&ecirc;u</span></em></p>');
 INSERT INTO `description` VALUES (20, '2020-10-29 20:19:49', '<p>T&acirc;m L&yacute; Học H&agrave;nh Vi</p>\r\n<p>Cuốn s&aacute;ch gi&uacute;p bạn thấu hiểu bản th&acirc;n m&igrave;nh v&agrave; t&acirc;m l&yacute; những người xung quanh!</p>\r\n<p>Được chấp b&uacute;t bởi bậc thầy t&acirc;m l&yacute; h&agrave;ng đầu Trung Quốc Khương Nguy.<br /><br />T&acirc;m l&yacute; học theo chủ nghĩa h&agrave;nh vi ph&aacute;t triển đến đỉnh cao v&agrave;o những năm 1920 của thế kỷ XX tại Mỹ, giữ vị tr&iacute; chủ đạo trong lĩnh vực t&acirc;m l&yacute; học trong suốt ba mươi năm sau đ&oacute; tại đất nước n&agrave;y.<br /><br />Kh&ocirc;ng chỉ l&agrave; một bộ m&ocirc;n khoa học trong ph&ograve;ng thực nghiệm, m&agrave; quan trọng hơn, những l&yacute; luận của t&acirc;m l&yacute; học h&agrave;nh vi gi&uacute;p con người tự nh&igrave;n nhận bản th&acirc;n, tự điều chỉnh t&acirc;m l&yacute;, đồng thời th&ocirc;ng qua h&agrave;nh vi để nắm bắt v&agrave; thấu hiểu t&acirc;m l&yacute;, đồng thời th&ocirc;ng qua h&agrave;nh vi để nắm bắt v&agrave; thấu hiểu t&acirc;m l&yacute; của những người xung quanh.<br /><br />H&agrave;nh vi ch&iacute;nh l&agrave; tấm gương phản chiếu t&acirc;m l&yacute; của con người, qua đ&oacute;, ch&uacute;ng ta tự soi chiếu bản th&acirc;n, học c&aacute;ch chung sống h&ograve;a thuận với ch&iacute;nh m&igrave;nh, b&ecirc;n cạnh đ&oacute; cũng c&oacute; thể hiểu r&otilde; người kh&aacute;c v&agrave; thiết lập mối quan hệ tốt đẹp trong x&atilde; hội.<br /><br />Khi mỗi người trong ch&uacute;ng ta đều học được c&aacute;ch trực tiếp đối diện với bản chất thật sự trong t&acirc;m hồn, vậy việc trở th&agrave;nh người thầy cho ch&iacute;nh m&igrave;nh cũng kh&ocirc;ng c&ograve;n l&agrave; mơ ước xa vời nữa.</p>');
@@ -268,28 +263,26 @@ INSERT INTO `description` VALUES (37, '2020-03-19 08:21:22', '<p style=\"box-siz
 INSERT INTO `description` VALUES (38, '2020-08-06 23:05:48', '<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Ch&uacute; th&iacute;ch:</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Vui l&ograve;ng cho ph&eacute;p 1-3mm kh&aacute;c nhau do đo thủ c&ocirc;ng.</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Do m&agrave;n h&igrave;nh hiển thị kh&aacute;c nhau v&agrave; &aacute;nh s&aacute;ng kh&aacute;c nhau, h&igrave;nh ảnh c&oacute; thể kh&ocirc;ng phản &aacute;nh m&agrave;u sắc thực tế của vật phẩm. Cảm ơn.</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">12 b&uacute;t dạ quang / Hộp</span></strong></h4>');
 INSERT INTO `description` VALUES (39, '2020-08-26 15:46:52', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">CHI TIẾT SẢN PHẨM GỌT B&Uacute;T CH&Igrave; QUAY TAY CUTE</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">M&aacute;y gọt b&uacute;t ch&igrave; bằng cơ chế quay tay quay. Thiết kế th&ocirc;ng minh, chỉ cần cho b&uacute;t v&agrave;o lỗ v&agrave; quay tay l&agrave; gọt nhanh, gọn.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Kiểu d&aacute;ng nhỏ nhắn, đơn giản, dễ sử dụng, an to&agrave;n.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Lưỡi dao kim loại gọt đầu ch&igrave; nhọn v&agrave; kh&ocirc;ng l&agrave;m g&atilde;y ng&ograve;i. Chất liệu nhựa an to&agrave;n, kh&ocirc;ng độc hại, chịu lực tốt.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">C&oacute; khay chứa m&ugrave;n c&oacute; thể th&aacute;o ra vệ sinh, rất đơn giản v&agrave; sạch sẽ.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Gọt b&uacute;t ch&igrave; quay tay l&agrave; sản phẩm được thiết kế với h&igrave;nh dạng ngộ nghĩ, đ&aacute;ng y&ecirc;u kết hợp c&ugrave;ng m&agrave;u sắc sinh động, nổi bật tạo cho bạn cảm gi&aacute;c th&iacute;ch th&uacute; v&agrave; hứng th&uacute; hơn khi sử dụng.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">M&agrave;u Sắc: M&agrave;u Hồng, M&agrave;u Xanh L&aacute;, M&agrave;u Xanh Da Trời, M&agrave;u T&iacute;m</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">K&iacute;ch thước: 4*5*7 cm</p>');
 INSERT INTO `description` VALUES (40, '2020-11-03 17:18:17', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Hộp 12 b&uacute;t ch&igrave; 2B Foska QB043(2B) được nhập khẩu v&agrave; ph&acirc;n phối bởi C&ocirc;ng ty cổ phần Fuhaco Việt Nam.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Th&ocirc;ng số kỹ thuật:</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Kiểu: B&uacute;t ch&igrave; ti&ecirc;u chuẩn, B&uacute;t ch&igrave; vẽ</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- M&agrave;u ch&igrave;: Đen</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Vật liệu cơ thể: Gỗ</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Bao b&igrave;: 12 chiếc/ hộp</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Sử dụng: B&uacute;t ch&igrave; văn ph&ograve;ng &amp; trường học</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Thương hiệu: Foska</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- M&atilde; sản phẩm: QB043</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Sử dụng: trường học, văn ph&ograve;ng, quảng c&aacute;o, khuyến m&atilde;i</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- H&igrave;nh dạng: lục gi&aacute;c</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Xuất xứ: Trung Quốc</p>');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for historyauc
 -- ----------------------------
 DROP TABLE IF EXISTS `historyauc`;
-CREATE TABLE `historyauc` (
+CREATE TABLE `historyauc`  (
   `aucTime` datetime NOT NULL,
-  `UID` int(11) NOT NULL,
-  `proID` int(11) NOT NULL,
-  `price` decimal(15,2) DEFAULT NULL,
-  PRIMARY KEY (`aucTime`,`UID`,`proID`) USING BTREE,
-  KEY `fk_historyAuc_users` (`UID`) USING BTREE,
-  KEY `fk_historyAuc_product` (`proID`) USING BTREE,
-  CONSTRAINT `fk_historyAuc_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`),
-  CONSTRAINT `fk_historyAuc_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `UID` int NOT NULL,
+  `proID` int NOT NULL,
+  `price` decimal(15, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`aucTime`, `UID`, `proID`) USING BTREE,
+  INDEX `fk_historyAuc_users`(`UID` ASC) USING BTREE,
+  INDEX `fk_historyAuc_product`(`proID` ASC) USING BTREE,
+  CONSTRAINT `fk_historyAuc_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_historyAuc_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of historyauc
 -- ----------------------------
-BEGIN;
 INSERT INTO `historyauc` VALUES ('2019-01-05 00:34:47', 6, 35, 1600.00);
 INSERT INTO `historyauc` VALUES ('2020-04-26 16:09:40', 7, 33, 1800.00);
 INSERT INTO `historyauc` VALUES ('2020-09-04 23:51:33', 11, 33, 2400.00);
@@ -490,194 +483,184 @@ INSERT INTO `historyauc` VALUES ('2021-12-29 17:55:40', 7, 1, 3300.00);
 INSERT INTO `historyauc` VALUES ('2021-12-31 03:09:27', 9, 1, 3600.00);
 INSERT INTO `historyauc` VALUES ('2021-12-31 10:29:06', 7, 17, 4100.00);
 INSERT INTO `historyauc` VALUES ('2022-01-02 13:05:29', 11, 1, 3900.00);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for product
 -- ----------------------------
 DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
-  `proID` int(11) NOT NULL AUTO_INCREMENT,
-  `typID` int(11) DEFAULT NULL,
-  `proName` varchar(150) DEFAULT NULL,
-  `ownerUID` int(11) DEFAULT NULL,
-  `startPrice` decimal(15,2) DEFAULT NULL,
-  `buyNow` decimal(15,2) DEFAULT NULL,
-  `startDate` datetime DEFAULT NULL,
-  `endDate` datetime DEFAULT NULL,
-  `autoExtend` bit(1) DEFAULT b'1',
-  `stepPrice` decimal(15,2) DEFAULT NULL,
-  `allowBadBidde` bit(1) DEFAULT b'1',
-  `allowNewBiddle` bit(1) DEFAULT b'1',
-  `BidCount` int(255) unsigned DEFAULT '0',
+CREATE TABLE `product`  (
+  `proID` int NOT NULL AUTO_INCREMENT,
+  `typID` int NULL DEFAULT NULL,
+  `proName` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ownerUID` int NULL DEFAULT NULL,
+  `startPrice` decimal(15, 2) NULL DEFAULT NULL,
+  `buyNow` decimal(15, 2) NULL DEFAULT NULL,
+  `startDate` datetime NULL DEFAULT NULL,
+  `endDate` datetime NULL DEFAULT NULL,
+  `autoExtend` tinyint(1) NULL DEFAULT 1,
+  `stepPrice` decimal(15, 2) NULL DEFAULT NULL,
+  `allowBadBidde` tinyint(1) NULL DEFAULT 1,
+  `allowNewBiddle` tinyint(1) NULL DEFAULT 1,
+  `BidCount` int UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`proID`) USING BTREE,
-  KEY `fk_product_type` (`typID`) USING BTREE,
-  CONSTRAINT `fk_product_type` FOREIGN KEY (`typID`) REFERENCES `type` (`typID`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  INDEX `fk_product_type`(`typID` ASC) USING BTREE,
+  CONSTRAINT `fk_product_type` FOREIGN KEY (`typID`) REFERENCES `type` (`typID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-BEGIN;
-INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 5000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (2, 6, 'Hộp 12 Bút Chì 2B', 3, 1600.00, 8000.00, '2021-09-26 03:58:44', '2022-01-24 02:40:13', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (3, 6, 'Sổ Tay Ghi Chép 60 Trang Gáy Lò Xo A5 Deli - Xanh Dương/Hồng/Vàng/Xanh Lá', 4, 1400.00, 9300.00, '2021-09-30 06:24:04', '2022-11-01 19:03:36', b'1', 50.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (4, 6, 'Combo 5-10-20 Bút Bi Thiên Long TL-027 - Mực Xanh/Đen/Đỏ/Tím', 2, 1800.00, 8500.00, '2021-03-24 18:34:09', '2022-05-26 00:23:35', b'0', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (5, 4, 'Giường Ngủ Pallet Gỗ Thông OCHU - Nancy Bed - Natural', 1, 1400.00, 8900.00, '2021-05-07 18:26:41', '2022-07-17 13:11:18', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (6, 5, 'Không Bao Giờ Là Thất Bại - Tất Cả Là Thử Thách (Ấn Bản Cập Nhật Đầy Đủ Nhất)(Bìa Cứng)', 1, 2000.00, 9300.00, '2021-05-14 02:41:22', '2022-03-13 09:53:18', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (7, 5, 'Sách Muôn Kiếp Nhân Sinh Tặng Bookmark', 3, 1000.00, 7500.00, '2021-06-24 07:05:48', '2022-03-26 15:36:50', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (8, 4, 'TỦ GIÀY THÔNG MINH 3 KHOANG 9 TẦNG - KHÔNG ẨM MỐC, MỐI MỌT', 4, 1600.00, 7300.00, '2021-07-10 11:48:50', '2022-06-19 03:45:09', b'1', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (9, 2, 'Máy tính xách tay Laptop Dell Latitude 3420 (Intel Core i5-1135G7 | 14 Inch | RAM 8GB | 256GB SSD NVMe | Intel Iris Xe Graphics | Fedora Os)', 2, 2000.00, 8500.00, '2021-04-18 03:29:03', '2022-03-30 19:03:47', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (10, 1, 'Máy giặt LG Inverter 8.5 kg FV1408S4W', 7, 1800.00, 9600.00, '2021-01-11 09:19:56', '2022-07-10 19:17:33', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (11, 6, 'Bộ 6 Bút Dạ Quang, Bút Highlight Màu Cực Đẹp', 7, 1200.00, 6400.00, '2021-09-12 00:56:07', '2022-12-21 17:16:04', b'1', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (12, 1, 'Máy giặt LG Inverter 11.5kg T2351VSAB', 1, 1000.00, 6600.00, '2021-06-05 06:13:13', '2022-04-26 08:58:59', b'1', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (13, 6, 'Bảng viết, bảng vẽ điện tử thông minh tự động xóa cho bé - Giao màu ngẫu nhiên', 1, 1600.00, 6700.00, '2020-06-10 13:54:39', '2022-06-13 06:49:11', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (14, 4, 'Ghế xếp thư giãn cao cấp kèm đệm Kachi MK232 - Ghế xếp thông minh văn phòng - Trọng tải 300kg', 7, 1300.00, 7200.00, '2021-01-24 09:52:04', '2022-03-05 20:15:50', b'0', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (15, 1, 'Máy Lạnh Toshiba Inverter 1 HP', 4, 1100.00, 7700.00, '2021-02-05 12:08:50', '2022-01-30 13:40:00', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (16, 4, 'Quầy Bar Mini Gỗ, Bàn Bếp Cao Cấp Có Ngăn Tủ Để Đồ Decor Đẹp - Giao màu ngẫu nhiên', 3, 1200.00, 6500.00, '2021-01-21 07:48:49', '2022-02-22 16:04:31', b'1', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (17, 5, 'Kỷ Luật Tự Giác (Tặng Kèm Bookmark )', 2, 1500.00, 9000.00, '2020-03-12 00:52:02', '2022-07-28 04:45:19', b'1', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (18, 2, 'Laptop Dell Vostro 3405 P132G002ABL (AMD R3-3250U/ 8GB DDR4/ HDD 1Tb/ 14 FHD/ Win11 + Office2021) - Hàng Chính Hãng', 2, 1800.00, 9400.00, '2021-01-21 17:31:25', '2022-03-20 21:03:52', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (19, 6, 'Bộ Màu Nước Solid Water Color Cao Cấp 12/18/24/36 Màu - Tặng Kèm 2 Bút Nước, 2 Mút, 1 Palette - Chuyên Dùng Cho Học Sinh, Sinh Viên, Vẽ Chuyên Nghiệp ', 4, 1800.00, 9500.00, '2021-07-13 00:42:22', '2022-12-07 12:35:09', b'0', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (20, 5, 'Tâm Lý Học Hành Vi (Tặng Kèm 1 Bookmark )', 3, 1800.00, 5300.00, '2020-10-29 20:19:49', '2022-04-29 15:09:17', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (21, 3, 'Bộ Dụng Cụ Nhà Bếp Lock&Lock CKT415', 1, 1700.00, 5300.00, '2020-09-30 17:29:49', '2022-03-31 00:43:15', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (22, 3, 'Khay Inox 304 Cao Cấp Đựng Đồ Đa Năng Hình Chữ Nhật Gác Bồn Rửa Bát Tiện Dụng', 4, 1700.00, 5500.00, '2020-05-08 18:43:23', '2022-05-19 08:08:43', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (23, 4, 'Tủ Kệ Sách Đứng Đa Năng 5 Tầng Hiện Đại BAYA Sund Chất Liệu Gỗ MFC Chắc Chắn Thiết Kế Hình Chữ Nhật Nhiều Màu Sắc Tối Giản Trang Nhã', 4, 1300.00, 7500.00, '2020-03-26 14:13:59', '2022-03-14 08:44:57', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (24, 5, 'Combo 2 Tập: Ngỡ Chỉ Là Thoáng Qua Mà Một Đời Thương Nhớ', 2, 2000.00, 7000.00, '2020-11-23 17:49:16', '2022-08-14 01:41:16', b'0', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (25, 1, 'Máy Lạnh LG Inverter 1.5 HP V13APF', 2, 1900.00, 8300.00, '2020-11-20 14:11:24', '2022-03-15 05:57:50', b'1', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (26, 2, 'Laptop HP 15s-fq2602TU 4B6D3PA (Core i5-1135G7/ 8GB DDR4 2666MHz/ 256GB M.2 PCIe NVMe/ 15.6 HD/ Win11) - Hàng Chính Hãng', 3, 1300.00, 7400.00, '2020-10-23 06:00:32', '2022-11-25 01:32:17', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (27, 3, 'Giá Để Giẻ Rửa Bát, Nước Rửa Chén Đa Năng Inox 304', 4, 1500.00, 5200.00, '2020-03-19 22:30:29', '2022-09-10 18:51:10', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (28, 2, 'Laptop Asus ExpertBook B1400CEAE-EK3724 (Core i5-1135G7/ 8GB DDR4/ 256GB SSD/ 14FHD/ DOS) - Hàng Chính Hãng', 7, 1700.00, 9700.00, '2020-05-06 17:19:03', '2022-06-08 13:25:29', b'0', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (29, 1, 'Tủ Lạnh Aqua 130 lít AQR-T150FA-BS', 3, 1000.00, 7500.00, '2020-04-08 15:02:50', '2022-10-30 13:20:44', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (30, 4, 'Kệ để giày dép mini 3 tầng 42 x 20 x 58 cm Chấn Thuận Thành đa năng, nhỏ gọn, có thể tháo rời, hàng Việt Nam chất lượng cao (KDN3T20) nhiều màu', 4, 1400.00, 9100.00, '2020-03-23 09:27:39', '2022-08-08 07:09:26', b'1', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (31, 3, 'Lọ đựng gia vị, dầu ăn, nước chấm bằng thủy tinh trong suốt kèm muỗng tiện lợi', 3, 1100.00, 5400.00, '2020-08-06 23:05:48', '2022-05-25 03:44:23', b'1', 200.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (32, 3, 'Máy xay tỏi ớt bằng tay Lock&Lock (Nhiều kích cỡ) - Hàng chính hãng, lực nghiền mạnh với 3 lưỡi dao thép không gỉ', 2, 1100.00, 9700.00, '2020-07-31 10:51:03', '2022-12-04 01:21:08', b'0', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (33, 2, 'Laptop Dell Inspiron 5410 P143G001ASL (Core i5-11320H/ 8GB DDR4/ 512GB SSD/ 14 FHD/ Win10 + Office) - Hàng Chính Hãng', 4, 1700.00, 8400.00, '2020-03-19 08:21:22', '2022-09-19 19:55:28', b'1', 100.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (34, 5, 'Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội', 1, 1000.00, 9000.00, '2020-10-26 02:33:22', '2022-12-30 17:45:00', b'0', 200.00, b'0', b'1', 5);
-INSERT INTO `product` VALUES (35, 3, 'Kẹp Gắp Đồ Ăn Bằng Inox', 3, 1500.00, 9100.00, '2020-08-26 15:46:52', '2022-11-24 03:44:18', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (36, 1, 'Máy giặt Electrolux Inverter 10 kg EWF1024BDWA', 2, 1900.00, 5500.00, '2020-11-03 17:18:17', '2022-08-26 18:23:49', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (37, 6, 'Bảng học sinh, bảng 2 mặt, học chữ cái mặt viết phấn và mặt viết bút lông xóa được.', 1, 1700.00, 7200.00, '2020-03-19 08:21:22', '2021-07-13 00:42:22', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (38, 6, 'Bộ bút dạ vẽ nghệ thuật HK Milkliner 12 Màu da dụng chất lượng cao PEN001', 1, 1800.00, 6000.00, '2020-08-06 23:05:48', '2021-09-12 00:56:07', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (39, 6, 'Gọt bút chì quay tay in hình ngộ nghĩnh', 1, 1300.00, 9200.00, '2020-08-26 15:46:52', '2021-06-05 06:13:13', b'1', 100.00, b'1', b'1', 5);
-INSERT INTO `product` VALUES (40, 6, 'Hộp 12 bút chì 2B Foska QB043', 1, 1200.00, 7000.00, '2020-11-03 17:18:17', '2021-07-10 11:48:50', b'1', 100.00, b'1', b'1', 5);
-COMMIT;
+INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 5000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (2, 6, 'Hộp 12 Bút Chì 2B', 3, 1600.00, 8000.00, '2021-09-26 03:58:44', '2022-01-24 02:40:13', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (3, 6, 'Sổ Tay Ghi Chép 60 Trang Gáy Lò Xo A5 Deli - Xanh Dương/Hồng/Vàng/Xanh Lá', 4, 1400.00, 9300.00, '2021-09-30 06:24:04', '2022-11-01 19:03:36', 1, 50.00, 0, 1, 5);
+INSERT INTO `product` VALUES (4, 6, 'Combo 5-10-20 Bút Bi Thiên Long TL-027 - Mực Xanh/Đen/Đỏ/Tím', 2, 1800.00, 8500.00, '2021-03-24 18:34:09', '2022-05-26 00:23:35', 0, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (5, 4, 'Giường Ngủ Pallet Gỗ Thông OCHU - Nancy Bed - Natural', 1, 1400.00, 8900.00, '2021-05-07 18:26:41', '2022-07-17 13:11:18', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (6, 5, 'Không Bao Giờ Là Thất Bại - Tất Cả Là Thử Thách (Ấn Bản Cập Nhật Đầy Đủ Nhất)(Bìa Cứng)', 1, 2000.00, 9300.00, '2021-05-14 02:41:22', '2022-03-13 09:53:18', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (7, 5, 'Sách Muôn Kiếp Nhân Sinh Tặng Bookmark', 3, 1000.00, 7500.00, '2021-06-24 07:05:48', '2022-03-26 15:36:50', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (8, 4, 'TỦ GIÀY THÔNG MINH 3 KHOANG 9 TẦNG - KHÔNG ẨM MỐC, MỐI MỌT', 4, 1600.00, 7300.00, '2021-07-10 11:48:50', '2022-06-19 03:45:09', 1, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (9, 2, 'Máy tính xách tay Laptop Dell Latitude 3420 (Intel Core i5-1135G7 | 14 Inch | RAM 8GB | 256GB SSD NVMe | Intel Iris Xe Graphics | Fedora Os)', 2, 2000.00, 8500.00, '2021-04-18 03:29:03', '2022-03-30 19:03:47', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (10, 1, 'Máy giặt LG Inverter 8.5 kg FV1408S4W', 7, 1800.00, 9600.00, '2021-01-11 09:19:56', '2022-07-10 19:17:33', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (11, 6, 'Bộ 6 Bút Dạ Quang, Bút Highlight Màu Cực Đẹp', 7, 1200.00, 6400.00, '2021-09-12 00:56:07', '2022-12-21 17:16:04', 1, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (12, 1, 'Máy giặt LG Inverter 11.5kg T2351VSAB', 1, 1000.00, 6600.00, '2021-06-05 06:13:13', '2022-04-26 08:58:59', 1, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (13, 6, 'Bảng viết, bảng vẽ điện tử thông minh tự động xóa cho bé - Giao màu ngẫu nhiên', 1, 1600.00, 6700.00, '2020-06-10 13:54:39', '2022-06-13 06:49:11', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (14, 4, 'Ghế xếp thư giãn cao cấp kèm đệm Kachi MK232 - Ghế xếp thông minh văn phòng - Trọng tải 300kg', 7, 1300.00, 7200.00, '2021-01-24 09:52:04', '2022-03-05 20:15:50', 0, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (15, 1, 'Máy Lạnh Toshiba Inverter 1 HP', 4, 1100.00, 7700.00, '2021-02-05 12:08:50', '2022-01-30 13:40:00', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (16, 4, 'Quầy Bar Mini Gỗ, Bàn Bếp Cao Cấp Có Ngăn Tủ Để Đồ Decor Đẹp - Giao màu ngẫu nhiên', 3, 1200.00, 6500.00, '2021-01-21 07:48:49', '2022-02-22 16:04:31', 1, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (17, 5, 'Càng Kỷ Luật, Càng Tự Do', 2, 1500.00, 9000.00, '2020-03-12 00:52:02', '2022-07-28 04:45:19', 1, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (18, 2, 'Laptop Dell Vostro 3405 P132G002ABL (AMD R3-3250U/ 8GB DDR4/ HDD 1Tb/ 14 FHD/ Win11 + Office2021) - Hàng Chính Hãng', 2, 1800.00, 9400.00, '2021-01-21 17:31:25', '2022-03-20 21:03:52', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (19, 6, 'Bộ Màu Nước Solid Water Color Cao Cấp 12/18/24/36 Màu - Tặng Kèm 2 Bút Nước, 2 Mút, 1 Palette - Chuyên Dùng Cho Học Sinh, Sinh Viên, Vẽ Chuyên Nghiệp ', 4, 1800.00, 9500.00, '2021-07-13 00:42:22', '2022-12-07 12:35:09', 0, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (20, 5, 'Tâm Lý Học Hành Vi (Tặng Kèm 1 Bookmark )', 3, 1800.00, 5300.00, '2020-10-29 20:19:49', '2022-04-29 15:09:17', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (21, 3, 'Bộ Dụng Cụ Nhà Bếp Lock&Lock CKT415', 1, 1700.00, 5300.00, '2020-09-30 17:29:49', '2022-03-31 00:43:15', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (22, 3, 'Khay Inox 304 Cao Cấp Đựng Đồ Đa Năng Hình Chữ Nhật Gác Bồn Rửa Bát Tiện Dụng', 4, 1700.00, 5500.00, '2020-05-08 18:43:23', '2022-05-19 08:08:43', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (23, 4, 'Tủ Kệ Sách Đứng Đa Năng 5 Tầng Hiện Đại BAYA Sund Chất Liệu Gỗ MFC Chắc Chắn Thiết Kế Hình Chữ Nhật Nhiều Màu Sắc Tối Giản Trang Nhã', 4, 1300.00, 7500.00, '2020-03-26 14:13:59', '2022-03-14 08:44:57', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (24, 5, 'Combo 2 Tập: Ngỡ Chỉ Là Thoáng Qua Mà Một Đời Thương Nhớ', 2, 2000.00, 7000.00, '2020-11-23 17:49:16', '2022-08-14 01:41:16', 0, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (25, 1, 'Máy Lạnh LG Inverter 1.5 HP V13APF', 2, 1900.00, 8300.00, '2020-11-20 14:11:24', '2022-03-15 05:57:50', 1, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (26, 2, 'Laptop HP 15s-fq2602TU 4B6D3PA (Core i5-1135G7/ 8GB DDR4 2666MHz/ 256GB M.2 PCIe NVMe/ 15.6 HD/ Win11) - Hàng Chính Hãng', 3, 1300.00, 7400.00, '2020-10-23 06:00:32', '2022-11-25 01:32:17', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (27, 3, 'Giá Để Giẻ Rửa Bát, Nước Rửa Chén Đa Năng Inox 304', 4, 1500.00, 5200.00, '2020-03-19 22:30:29', '2022-09-10 18:51:10', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (28, 2, 'Laptop Asus ExpertBook B1400CEAE-EK3724 (Core i5-1135G7/ 8GB DDR4/ 256GB SSD/ 14FHD/ DOS) - Hàng Chính Hãng', 7, 1700.00, 9700.00, '2020-05-06 17:19:03', '2022-06-08 13:25:29', 0, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (29, 1, 'Tủ Lạnh Aqua 130 lít AQR-T150FA-BS', 3, 1000.00, 7500.00, '2020-04-08 15:02:50', '2022-10-30 13:20:44', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (30, 4, 'Kệ để giày dép mini 3 tầng 42 x 20 x 58 cm Chấn Thuận Thành đa năng, nhỏ gọn, có thể tháo rời, hàng Việt Nam chất lượng cao (KDN3T20) nhiều màu', 4, 1400.00, 9100.00, '2020-03-23 09:27:39', '2022-08-08 07:09:26', 1, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (31, 3, 'Lọ đựng gia vị, dầu ăn, nước chấm bằng thủy tinh trong suốt kèm muỗng tiện lợi', 3, 1100.00, 5400.00, '2020-08-06 23:05:48', '2022-05-25 03:44:23', 1, 200.00, 1, 1, 5);
+INSERT INTO `product` VALUES (32, 3, 'Máy xay tỏi ớt bằng tay Lock&Lock (Nhiều kích cỡ) - Hàng chính hãng, lực nghiền mạnh với 3 lưỡi dao thép không gỉ', 2, 1100.00, 9700.00, '2020-07-31 10:51:03', '2022-12-04 01:21:08', 0, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (33, 2, 'Laptop Dell Inspiron 5410 P143G001ASL (Core i5-11320H/ 8GB DDR4/ 512GB SSD/ 14 FHD/ Win10 + Office) - Hàng Chính Hãng', 4, 1700.00, 8400.00, '2020-03-19 08:21:22', '2022-09-19 19:55:28', 1, 100.00, 0, 1, 5);
+INSERT INTO `product` VALUES (34, 5, 'Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội', 1, 1000.00, 9000.00, '2020-10-26 02:33:22', '2022-12-30 17:45:00', 0, 200.00, 0, 1, 5);
+INSERT INTO `product` VALUES (35, 3, 'Kẹp Gắp Đồ Ăn Bằng Inox', 3, 1500.00, 9100.00, '2020-08-26 15:46:52', '2022-11-24 03:44:18', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (36, 1, 'Máy giặt Electrolux Inverter 10 kg EWF1024BDWA', 2, 1900.00, 5500.00, '2020-11-03 17:18:17', '2022-08-26 18:23:49', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (37, 6, 'Bảng học sinh, bảng 2 mặt, học chữ cái mặt viết phấn và mặt viết bút lông xóa được.', 1, 1700.00, 7200.00, '2020-03-19 08:21:22', '2021-07-13 00:42:22', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (38, 6, 'Bộ bút dạ vẽ nghệ thuật HK Milkliner 12 Màu da dụng chất lượng cao PEN001', 1, 1800.00, 6000.00, '2020-08-06 23:05:48', '2021-09-12 00:56:07', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (39, 6, 'Gọt bút chì quay tay in hình ngộ nghĩnh', 1, 1300.00, 9200.00, '2020-08-26 15:46:52', '2021-06-05 06:13:13', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (40, 6, 'Hộp 12 bút chì 2B Foska QB043', 1, 1200.00, 7000.00, '2020-11-03 17:18:17', '2021-07-10 11:48:50', 1, 100.00, 1, 1, 5);
 
 -- ----------------------------
 -- Table structure for rating
 -- ----------------------------
 DROP TABLE IF EXISTS `rating`;
-CREATE TABLE `rating` (
-  `UIDRater` int(11) NOT NULL,
-  `UID` int(11) NOT NULL,
-  `proID` int(11) NOT NULL,
-  `content` longtext,
-  `Type` int(11) DEFAULT NULL,
-  PRIMARY KEY (`UIDRater`,`UID`,`proID`) USING BTREE,
-  KEY `fk_rating_users` (`UID`) USING BTREE,
-  KEY `fk_rating_product` (`proID`) USING BTREE,
-  CONSTRAINT `fk_rating_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`),
-  CONSTRAINT `fk_rating_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `rating`  (
+  `UIDRater` int NOT NULL,
+  `UID` int NOT NULL,
+  `proID` int NOT NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `Type` int NULL DEFAULT NULL,
+  PRIMARY KEY (`UIDRater`, `UID`, `proID`) USING BTREE,
+  INDEX `fk_rating_users`(`UID` ASC) USING BTREE,
+  INDEX `fk_rating_product`(`proID` ASC) USING BTREE,
+  CONSTRAINT `fk_rating_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_rating_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rating
 -- ----------------------------
-BEGIN;
 INSERT INTO `rating` VALUES (1, 10, 37, 'Cám ơn', 1);
 INSERT INTO `rating` VALUES (1, 10, 39, 'Người thăng không thanh toán', 0);
 INSERT INTO `rating` VALUES (1, 10, 40, 'Xin lỗi quý khách', 1);
 INSERT INTO `rating` VALUES (10, 1, 37, 'Sản phẩm tốt', 1);
 INSERT INTO `rating` VALUES (10, 1, 40, 'Sản phẩm lỗi', 0);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sessions
 -- ----------------------------
 DROP TABLE IF EXISTS `sessions`;
-CREATE TABLE `sessions` (
+CREATE TABLE `sessions`  (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int(11) unsigned NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `expires` int UNSIGNED NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL,
+  PRIMARY KEY (`session_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-BEGIN;
-INSERT INTO `sessions` VALUES ('biCHw2hPCdLak9iTb4DaGFCt_jqzZMTX', 1641753428, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
-COMMIT;
+INSERT INTO `sessions` VALUES ('TrNVSe6iSde-iHXWoyL-_Mmi-zNPmV-u', 1641841474, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
+INSERT INTO `sessions` VALUES ('WooVl3ISmoV1Ic5gKuGjT0LN4J1DCpCt', 1641910071, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
+INSERT INTO `sessions` VALUES ('u_pP5_UguAx3vYnXe9S78F6w-chTnYM5', 1641832794, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
 
 -- ----------------------------
 -- Table structure for type
 -- ----------------------------
 DROP TABLE IF EXISTS `type`;
-CREATE TABLE `type` (
-  `typID` int(11) NOT NULL AUTO_INCREMENT,
-  `catID` int(11) DEFAULT NULL,
-  `typName` varchar(50) DEFAULT NULL,
+CREATE TABLE `type`  (
+  `typID` int NOT NULL AUTO_INCREMENT,
+  `catID` int NULL DEFAULT NULL,
+  `typName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`typID`) USING BTREE,
-  KEY `fk_type_category` (`catID`) USING BTREE,
-  CONSTRAINT `fk_type_category` FOREIGN KEY (`catID`) REFERENCES `category` (`catID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  INDEX `fk_type_category`(`catID` ASC) USING BTREE,
+  CONSTRAINT `fk_type_category` FOREIGN KEY (`catID`) REFERENCES `category` (`catID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of type
 -- ----------------------------
-BEGIN;
 INSERT INTO `type` VALUES (1, 1, 'Thiết bị điện lạnh');
 INSERT INTO `type` VALUES (2, 1, 'Máy tính');
 INSERT INTO `type` VALUES (3, 2, 'Dụng cụ nhà bếp');
 INSERT INTO `type` VALUES (4, 2, 'Nội thất');
 INSERT INTO `type` VALUES (5, 3, 'Sách tiếng Việt');
 INSERT INTO `type` VALUES (6, 3, 'Văn phòng phẩm');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for upseller
 -- ----------------------------
 DROP TABLE IF EXISTS `upseller`;
-CREATE TABLE `upseller` (
-  `UID` int(11) NOT NULL,
-  `isAcpt` bit(1) DEFAULT b'0',
+CREATE TABLE `upseller`  (
+  `UID` int NOT NULL,
+  `isAcpt` tinyint(1) NULL DEFAULT 0,
   `askDate` datetime NOT NULL,
   PRIMARY KEY (`UID`) USING BTREE,
-  CONSTRAINT `fk_upSeller_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  CONSTRAINT `fk_upSeller_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of upseller
 -- ----------------------------
-BEGIN;
-INSERT INTO `upseller` VALUES (1, b'1', '2020-06-07 13:43:42');
-INSERT INTO `upseller` VALUES (2, b'1', '2020-03-10 13:46:15');
-INSERT INTO `upseller` VALUES (3, b'1', '2020-04-05 13:47:02');
-INSERT INTO `upseller` VALUES (4, b'1', '2020-03-17 13:48:57');
-INSERT INTO `upseller` VALUES (7, b'1', '2020-05-03 13:49:37');
-INSERT INTO `upseller` VALUES (8, b'0', '2022-01-05 13:43:08');
-INSERT INTO `upseller` VALUES (10, b'0', '2022-01-07 14:49:57');
-COMMIT;
+INSERT INTO `upseller` VALUES (1, 1, '2020-06-07 13:43:42');
+INSERT INTO `upseller` VALUES (2, 1, '2020-03-10 13:46:15');
+INSERT INTO `upseller` VALUES (3, 1, '2020-04-05 13:47:02');
+INSERT INTO `upseller` VALUES (4, 1, '2020-03-17 13:48:57');
+INSERT INTO `upseller` VALUES (7, 1, '2020-05-03 13:49:37');
+INSERT INTO `upseller` VALUES (8, 0, '2022-01-05 13:43:08');
+INSERT INTO `upseller` VALUES (10, 0, '2022-01-07 14:49:57');
 
 -- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `UID` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `password` char(60) DEFAULT NULL,
-  `name` varchar(150) DEFAULT NULL,
-  `addr` varchar(200) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `type` int(11) DEFAULT NULL,
-  `good` int(11) DEFAULT NULL,
-  `dislike` int(11) DEFAULT NULL,
+CREATE TABLE `users`  (
+  `UID` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` char(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `addr` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dob` date NULL DEFAULT NULL,
+  `type` int NULL DEFAULT NULL,
+  `good` int NULL DEFAULT NULL,
+  `dislike` int NULL DEFAULT NULL,
   PRIMARY KEY (`UID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-BEGIN;
 INSERT INTO `users` VALUES (1, 'dmnhat19@clc.fitus.edu.vn', '$2b$10$yGpsTRGAk.HjgcfRDnL76.ibfrpR13o1/eoN/cBu4MmaOAHL08YUW', 'Đỗ Minh Nhật', 'TP. HCM', '2001-11-04', 1, 123, 4);
 INSERT INTO `users` VALUES (2, 'fregregory@gmail.com', '$2b$10$R97KJWuA49IuTtGJW.BjVun/tsiN4G2LTD1GTL07rqolXRZZxVgEO', 'Gregory Freeman', '326 Whitehouse Lane, Huntingdon Rd', '1992-02-17', 1, 50, 10);
 INSERT INTO `users` VALUES (3, 'rogerfrank@outlook.com', '$2b$10$y4tVVp9cIeb0wLLeuqztvu4szMtHgT6w22uoQx..KGOSEpdPQbTKK', 'Frank Rogers', 'No.855, Dongsan Road, Erxianqiao, Chenghua District', '1995-01-07', 1, 75, 5);
@@ -691,23 +674,21 @@ INSERT INTO `users` VALUES (10, 'kcoleman@outlook.com', '$2b$10$X2ELpjGguXtIWVNq
 INSERT INTO `users` VALUES (11, 'hgrant@yahoo.com', '$2b$10$e/T4.Abh57NPh5fBwCFH3uCwiCItns91rBhXX1iu4tQg6xXCeQxDu', 'Herbert Grant', '1-6-8, Marunouchi, Chiyoda-ku', '2000-07-20', 2, 45, 1);
 INSERT INTO `users` VALUES (12, 'emilyhahaha@gmail.com', '$2b$10$YS5210oyxMNtxnh51CQFWuX.BPLg2i7mZbQvtdTs46aUuSGXr1Y6G', 'Emily Hai', '124 2nd Zhongshan Road, Yuexiu District', '2003-07-24', 2, 14, 1);
 INSERT INTO `users` VALUES (27, 'admin@gmail.com', '$2b$10$nnUZGF9kijyINy8XzmNA7OA9dZsTP2GVRsuGMBIXRwvPPwuQ2ZLHC', 'Louise Jonson', '88 W Ring Rd, Buji Town, Longgang', '1990-07-11', 0, NULL, NULL);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for watchlist
 -- ----------------------------
 DROP TABLE IF EXISTS `watchlist`;
-CREATE TABLE `watchlist` (
-  `UID` int(11) NOT NULL,
-  `proID` int(11) NOT NULL,
-  PRIMARY KEY (`UID`,`proID`) USING BTREE,
-  CONSTRAINT `fk_watchList_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `watchlist`  (
+  `UID` int NOT NULL,
+  `proID` int NOT NULL,
+  PRIMARY KEY (`UID`, `proID`) USING BTREE,
+  CONSTRAINT `fk_watchList_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of watchlist
 -- ----------------------------
-BEGIN;
 INSERT INTO `watchlist` VALUES (1, 14);
 INSERT INTO `watchlist` VALUES (3, 28);
 INSERT INTO `watchlist` VALUES (4, 28);
@@ -793,29 +774,26 @@ INSERT INTO `watchlist` VALUES (12, 13);
 INSERT INTO `watchlist` VALUES (12, 22);
 INSERT INTO `watchlist` VALUES (12, 29);
 INSERT INTO `watchlist` VALUES (12, 36);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for winauction
 -- ----------------------------
 DROP TABLE IF EXISTS `winauction`;
-CREATE TABLE `winauction` (
-  `proID` int(11) NOT NULL,
-  `UID` int(11) DEFAULT NULL,
-  `winPrice` decimal(15,2) DEFAULT NULL,
+CREATE TABLE `winauction`  (
+  `proID` int NOT NULL,
+  `UID` int NULL DEFAULT NULL,
+  `winPrice` decimal(15, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`proID`) USING BTREE,
-  CONSTRAINT `fk_winAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  CONSTRAINT `fk_winAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of winauction
 -- ----------------------------
-BEGIN;
 INSERT INTO `winauction` VALUES (37, 10, 5600.00);
 INSERT INTO `winauction` VALUES (38, 10, 4500.00);
 INSERT INTO `winauction` VALUES (39, 10, 8500.00);
 INSERT INTO `winauction` VALUES (40, 10, 5600.00);
-COMMIT;
 
 -- ----------------------------
 -- Triggers structure for table historyauc

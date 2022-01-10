@@ -148,6 +148,8 @@ router.get('/category/:catID/type/:typeID', async function (req, res) {
 router.get('/detail/:id', async function (req, res){
     const proID = req.params.id;
     const product = await detailModel.findById(proID);
+    const description = await detailModel.getDescription(proID);
+    const relatePros = await detailModel.findRelateProduct(product.proID, product.typID, 5);
     const historyBid = await detailModel.findHistoryBid(proID);
     const currentPrice = historyBid.pop();
     historyBid.push(currentPrice);
@@ -155,8 +157,8 @@ router.get('/detail/:id', async function (req, res){
     if (product === null) {
         return res.redirect('/');
     }
-    // console.log(currentBidder);
-    res.render('vwProduct/productDetail', { product, historyBid, currentPrice, currentBidder });
+    console.log(product.proID);
+    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
 })
 
 

@@ -8,6 +8,18 @@ export default {
 
         return list[0][0];
     },
+    async getDescription(proID) {
+        const list = await knex.raw('SELECT d.* FROM product p JOIN description d ON p.proID = d.proID WHERE p.proID = ' + proID);
+        if (list.length === 0)
+            return null;
+
+        return list[0];
+    },
+    async findRelateProduct(proID, typID, n) {
+        const list = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
+            'SELECT h2.proID,MAX(h2.price) AS price FROM historyauc h2 JOIN currentauction c ON h2.UID=c.UID WHERE c.isBlock !=1 GROUP BY h2.proID) t1 ON t1.proID=h.proID AND h.price=t1.price JOIN users u ON h.UID=u.UID WHERE p.endDate> NOW() AND p.typID = ' + typID + ' AND p.proID <> ' + proID + ' ORDER BY p.endDate ASC LIMIT '+ n)
+        return list[0];
+    },
     async findHistoryBid(proID) {
         const list = await knex.raw('SELECT h.price, h.aucTime, u.* FROM historyauc h JOIN users u ON h.UID = u.UID WHERE h.proID = ' + proID);
         if (list.length === 0)
