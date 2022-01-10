@@ -50,7 +50,7 @@
                             <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                    <div class="tab-content limit-height-tab">
                         <div class="tab-pane show active fade" id="bid-his-tab">
                             <table class="purchasing-table">
                                 <thead>
@@ -147,10 +147,10 @@
                 <div class="col-lg-6">
                     <div class="auction-time-container">
                         <h5 class="auction-time">Bắt đầu từ:</h5>
-                        <h3 class="auction-time">{{format_date product.startDate}}</h3>
+                        <h4 class="auction-time">{{format_date product.startDate}}</h4>
                         <hr>
                         <h5 class="auction-time">Kết thúc vào:</h5>
-                        <h3 class="auction-time">{{format_date product.endDate}}</h3>
+                        <h4 class="auction-time">{{format_date product.endDate}}</h4>
                         <div class="auction-time auto-extends container-fluid">
                         {{#if (equal autoExtend 1)}}
                             <i class="fa fa-question-circle-o"></i>
