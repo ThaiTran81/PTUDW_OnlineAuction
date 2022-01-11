@@ -2,9 +2,9 @@ import fn from 'knex';
 
 export const connectionInfo = {
     host: 'localhost',
-    port: 3306,
+    port: 8889,
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'auction_online_db'
 };
 

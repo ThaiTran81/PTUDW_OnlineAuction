@@ -18,7 +18,7 @@
 							<div>
 								<a href="/admin/category/{{catID}}" class="btn btn-outline-primary rounded-pill"><i
 										class="fa fa-pencil-square-o"></i> </a>
-								<a class="btn btn-outline-danger rounded-pill"><i class="fa fa-trash"></i> </a>
+								<a class="btn btn-outline-danger rounded-pill del-btn" data-cat="{{catID}}"><i class="fa fa-trash"></i> </a>
 							</div>
 
 						</li>
@@ -48,17 +48,41 @@
 							'catName': catName
 						}
 					}).then(function (res) {
-						$('.list-group').prepend("<li class='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>" +
-								"<a href='/admin/category/" + res.catID + "'>" +
-								catName + "</a>" +
-								"<div>" +
-								"<a href='/admin/category/" + res.catID + "' class='btn btn-outline-primary rounded-pill'>" +
-								"<i class='fa fa-pencil-square-o'></i> </a>" +
-								"<a class='btn btn-outline-danger rounded-pill'><i class='fa fa-trash'></i> </a>" +
-								"</div>" +
-								"</li>")
+						// $('.list-group').prepend("<li class='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>" +
+						// 		"<a href='/admin/category/" + res.catID + "'>" +
+						// 		catName + "</a>" +
+						// 		"<div>" +
+						// 		"<a href='/admin/category/" + res.catID + "' class='btn btn-outline-primary rounded-pill'>" +
+						// 		"<i class='fa fa-pencil-square-o'></i> </a>" +
+						// 		"<a class='btn btn-outline-danger rounded-pill'><i class='fa fa-trash'></i> </a>" +
+						// 		"</div>" +
+						// 		"</li>");
+                        location.reload();
 					})
 				}
+			});
+			$('.del-btn').click(function (){
+              	const catID = $(this).attr('data-cat');
+				axios({
+					method: 'post',
+					url: '/admin/category/delete',
+					data: {
+						'catID': catID
+					}
+				}).then(function (res){
+                    if(res.data ==='success')
+					{
+						$("<div class='alert alert-success row position-absolute w-50'role='alert' style='z-index: 5'> Xoá thành công </div>").insertBefore('.row').delay(1000).fadeOut(1000);
+						location.reload();
+                    }
+                    else{
+						$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 5'> Không thể xoá danh mục đang chứa sản phẩm</div>").insertBefore('.row').delay(1000).fadeOut(1000);
+					}
+				})
+				.catch(function (){
+					$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 5'> Có lỗi xảy ra, thao tác không thành công</div>").insertBefore('.row').delay(1000).fadeOut(1000);
+
+				})
 			})
 		})
 	</script>
