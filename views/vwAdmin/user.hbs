@@ -1,0 +1,93 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body p-3">
+				<div class="input-group">
+					<input type="text" class="form-control" id="cat-input"
+						   placeholder="Tìm kiếm theo tên, id người dùng"
+						   aria-label="Recipient's username with two button addons" value="{{catName}}">
+					<button class="btn btn-outline-primary" type="button"><i
+							class="fa fa-search"></i> Tìm kiếm
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	{{#each users}}
+		<div class="col-sm-12 col-md-4">
+			<div class="card">
+				<div class="card-body p-4">
+					<div class="tr-item justify-content-start card-title mb-0">
+						<div class="tr-icon tr-card-icon tr-card-bg-primary text-primary">
+							<i data-feather="user"></i>
+						</div>
+						<div class="tr-text">
+							<a href="#"><h4>{{name}}</h4></a>
+							<p>ID: #{{UID}}</p>
+						</div>
+					</div>
+					<div class="divider mt-3 mb-2"></div>
+					<p class="card-text">
+						<span class="text-black-50"><i class="fa fa-user-circle"></i>  Loại tài khoản: </span>
+						{{#if (equal type 1)}}
+							<span class="badge bg-success fs-6">{{account_type type}}</span>
+						{{else}}
+							<span class="badge bg-warning fs-6">{{account_type type}}</span>
+						{{/if}}
+
+					</p>
+					<p class="card-text">
+						<span class="text-black-50"><i class="fa fa-calendar"></i> Ngày sinh: </span> {{format_dob2
+							dob}}
+					</p>
+					<p class="card-text">
+						<span class="text-black-50"><i class="fa fa-paper-plane"></i> Email: </span>{{email}}
+					</p>
+					<p class="card-text float-start me-3">
+						<span class="text-success"><i class="fa fa-thumbs-up"></i> Like: </span> <span
+							class="text-success fs-6">{{good}}</span>
+					</p>
+					<p class="card-text">
+						<span class="text-danger"><i class="fa fa-thumbs-down"></i> Dislike: </span> <span
+							class="text-danger fs-6">{{dislike}}</span>
+					</p>
+					<div class="float-end">
+						{{#if (equal type 1)}}
+							<a class="btn btn-outline-danger">Hạ cấp</a>
+						{{else}}
+							<a class="btn btn-outline-warning">Nâng cấp</a>
+						{{/if}}
+
+						<a class="btn btn-danger"><i class="fa fa-lock"></i> Khoá</a>
+						<a class="btn btn-primary"><i class="fa fa-eye"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+
+</div>
+
+<div class="row">
+	<ul class="pagination justify-content-center">
+		<li class="page-item">
+			<a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		{{#each pageNumbers}}
+			{{# if isCurrent}}
+				<li class="page-item active"><a class="page-link" href="/admin/user?page={{value}}">{{value}}</a></li>
+			{{else}}
+				<li class="page-item"><a class="page-link" href="/admin/user?page={{value}}">{{value}}</a></li>
+			{{/if}}
+		{{/each}}
+		<li class="page-item">
+			<a class="page-link" href="" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</div>

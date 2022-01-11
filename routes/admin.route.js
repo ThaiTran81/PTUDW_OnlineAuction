@@ -52,6 +52,27 @@ router.get('/category/:catID', async function (req, res) {
     res.render('vwAdmin/categoryEdit', {catID, catName, types, layout: 'adminMain', selected: 3});
 });
 
+router.get('/user', async function (req, res){
+    const limit = 9;
+    const page = req.query.page || 1;
+    const offset = (page - 1) * limit;
+
+    const total = await accountModel.countAllUser();
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= nPages; i++) {
+        pageNumbers.push({
+            value: i,
+            isCurrent: +page === i
+        });
+    }
+    const lst = await accountModel.findPageUser(limit, offset);
+
+    res.render('vwAdmin/user', {pageNumbers, users: lst ,layout: 'adminMain', selected: 2});
+})
+
 router.post('/category/update', async function (req, res){
     const catID = req.body.catID;
     const catName = req.body.catName;

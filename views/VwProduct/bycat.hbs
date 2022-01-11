@@ -13,6 +13,11 @@
 									{{selectedCate.catName}}
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									{{#unless (equal selectedCate.catID '')}}
+										<li><a class="dropdown-item"
+											   href="/product/category/">Tất cả</a>
+										</li>
+									{{/unless}}
 									{{#each lstCategories}}
 										<li><a class="dropdown-item"
 											   href="/product/category/{{this.catID}}">{{this.catName}}</a></li>
@@ -32,6 +37,7 @@
 											   href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a>
 										</li>
 									{{/each}}
+
 								</ul>
 							</div>
 
@@ -120,13 +126,13 @@
 			{{#each pageNumbers}}
 				{{#if this.isCurrent}}
 					<li class="page-active">
-						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
+						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
 						{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
-						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}" class="">
+						<a href="/product/category/{{../selectedCate.catID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
 						{{this.value}}
 						</a>
 					</li>

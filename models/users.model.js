@@ -30,5 +30,12 @@ export default {
     },
     removeFromWaitSeller(uid){
         return knex('upSeller').where('UID',uid).delete().returning('UID');
+    },
+    findPageUser(limit, offset){
+        return knex('users').where('type','>',0).limit(limit).offset(offset);
+    },
+    async countAllUser(){
+        const lst = await knex('users').where('type','>',0).count({amount: 'UID'});
+        return lst[0].amount;
     }
 }

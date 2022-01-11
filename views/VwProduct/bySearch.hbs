@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="headingWh mb-2 mb-md-4">Discover</h2>
+				<h2 class="headingWh mb-2 mb-md-4">Danh sách sản phẩm đấu giá</h2>
 				<div class="filters d-none d-md-block">
 					<div class="filtertop">
 						<div class="filterLeft">
@@ -13,6 +13,11 @@
 									{{selectedCate.catName}}
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									{{#unless (equal selectedCate.catID '')}}
+										<li><a class="dropdown-item"
+											   href="/product/category/">Tất cả</a>
+										</li>
+									{{/unless}}
 									{{#each lstCategories}}
 										<li><a class="dropdown-item"
 											   href="/product/category/{{this.catID}}">{{this.catName}}</a></li>
@@ -21,15 +26,27 @@
 							</div>
 
 							<div class="btn-group">
-								<button class="filterbtn dropdown-toggle text-start" type="button"
-										id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-									{{selectedType.typName}}
-								</button>
-
+								{{#if selectedType}}
+									<button class="filterbtn dropdown-toggle text-start" type="button"
+											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+										{{selectedType.typName}}
+									</button>
+								{{else}}
+									<button class="filterbtn dropdown-toggle text-start" type="button"
+											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+										Tất cả
+									</button>
+								{{/if}}
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<li><a class="dropdown-item" href="/product/category/{{selectedCate.catID}}">Tất cả</a></li>
+									{{#if selectedType.typID}}
+										<li><a class="dropdown-item"
+											   href="/product?keyword={{keyword}}&catID={{selectedCate.catID}}&sort={{selectedSort}}&typID=&page={{page}}">Tất cả</a>
+										</li>
+									{{/if}}
 									{{#each types}}
-										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a></li>
+										<li><a class="dropdown-item"
+											   href="/product?keyword={{../keyword}}&catID={{../selectedCate.catID}}&sort={{../selectedSort}}&typID={{typID}}&page={{../page}}">{{this.typName}}</a>
+										</li>
 									{{/each}}
 								</ul>
 							</div>
@@ -48,16 +65,13 @@
 									{{#each sort}}
 										{{#unless isSelected}}
 											<li><a class="dropdown-item"
-												   href="/product/category/{{../selectedCate.catID}}/type/{{../selectedType.typID}}?sort={{value}}
+												   href="/product?keyword={{../keyword}}&catID={{../selectedCate.catID}}&sort={{value}}&typID={{../selectedType.typID}}&page={{../page}}
 												">{{name}}</a></li>
 										{{/unless}}
 									{{/each}}
 								</ul>
 							</div>
-
 						</div>
-
-
 					</div>
 				</div>
 			</div>
@@ -73,7 +87,8 @@
 														   alt="img"></div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
+											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -119,14 +134,14 @@
 			{{#each pageNumbers}}
 				{{#if this.isCurrent}}
 					<li class="page-active">
-						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
-							{{this.value}}
+						<a href="/product?keyword={{../keyword}}&catID={{../selectedCate.catID}}&sort={{../selectedSort}}&typID={{../selectedType.typID}}&page={{value}}" class="">
+						{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
-						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
-							{{this.value}}
+						<a href="/product?keyword={{../keyword}}&catID={{../selectedCate.catID}}&sort={{../selectedSort}}&typID={{../selectedType.typID}}&page={{value}}" class="">
+						{{this.value}}
 						</a>
 					</li>
 				{{/if}}
@@ -141,7 +156,7 @@
 		<div class="row d-block d-md-none">
 			<div class="col-md-12 text-center">
 				<button type="button" class="btn btnlightblue filterbtnsm" data-bs-toggle="modal"
-						data-bs-target="#filterModal">Filter
+						data-bs-target="#filterModal">Lọc
 				</button>
 			</div>
 		</div>

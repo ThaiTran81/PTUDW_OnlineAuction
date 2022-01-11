@@ -40,17 +40,17 @@
 									<ul class="navbar-nav d-flex flex-column mr-auto mb-2 mb-lg-0">
                                         <li>
 											<div class="searchform search-res">
-												<form>
+												<form method="get" class="search-form" action="/product">
 													<div class="categori-style">
-														<select class="nice-select-style" aria-label="Default select example">
-															<option value="-1" selected>Tất cả</option>
+														<select class="nice-select-style" name="catID" aria-label="Default select example">
+															<option value="" selected>Tất cả</option>
 															{{#each lcCategories}}
 															<option value="{{this.catID}}">{{this.catName}}</option>
 															{{/each}}
 														</select>
 													</div>
-													<div class="search-box">
-														<input type="text" name="SearchItem" placeholder="Tìm kiếm sản phẩm">
+													<div action="/product" class="search-box" method="get">
+														<input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm">
 													</div>
 							    				</form>
 											</div>
@@ -98,8 +98,8 @@
 											   data-bs-toggle="dropdown"
 											   data-bs-auto-close="outside">Danh mục</a>
 											<ul class="dropdown-menu shadow">
-												<!--<li><a class="dropdown-item"-->
-												<!--	   href="category/">Tất cả</a></li>-->
+												<li><a class="dropdown-item"
+													   href="/product/category/">Tất cả</a></li>
 												{{#each lcCategories}}
 													<!--<li class="active"><a class="dropdown-item" href="homestyle1.html">Style-->
 													<!--	1</a></li>-->
@@ -114,19 +114,20 @@
 								</div>
 							</nav>
                             <div class="searchform">
-								<form>
+								<form method="get" class="search-form" action="/product">
 									<div class="categori-style">
-										<select class="nice-select-style" aria-label="Default select example">
-											<option value="-1" selected>Tất cả</option>
+										<select class="nice-select-style" name="catID" aria-label="Default select example">
+											<option value="" selected>Tất cả</option>
 											{{#each lcCategories}}
 											<option value="{{this.catID}}">{{this.catName}}</option>
 											{{/each}}
 										</select>
 									</div>
-									<div class="search-box">
-										<input type="text" name="SearchItem" placeholder="Tìm kiếm sản phẩm">
+									<div action="/product" class="search-box" method="get">
+										<input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm">
 									</div>
-							    </form>
+
+								</form>
 							</div>
 							<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
 									data-bs-target="#navbar-content">
