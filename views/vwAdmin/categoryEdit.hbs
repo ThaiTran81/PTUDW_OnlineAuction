@@ -1,0 +1,172 @@
+<div class="row" id="headerCat">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Chỉnh sửa danh mục <span class="text-primary">{{catName}}</span></h5>
+				<div class="input-group">
+					<input type="text" class="form-control" id="cat-input" placeholder="Danh mục cấp 1"
+						   aria-label="Recipient's username with two button addons" value="{{catName}}">
+					<button class="btn btn-outline-danger" id="del-cat-btn" data-cat="{{catID}}" type="button"><i
+							class="fa fa-close"></i> Xoá
+					</button>
+					<button class="btn btn-outline-primary" id="update-cat-btn" data-cat="{{catID}}" type="button"><i
+							class="fa fa-check"></i> Cập nhật
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Danh sách các danh mục con của <span class="text-primary">{{catName}}</span></h5>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Thêm danh mục con"
+						   aria-label="Thêm danh mục mới" id="add-txt">
+					<button class="btn btn-success" id="add-btn" data-cat="{{catID}}" type="button"><i
+							class="fa fa-plus"></i> Thêm
+					</button>
+				</div>
+				<div class="divider"></div>
+				{{#each types}}
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Danh mục cấp 2"
+							   aria-label="Recipient's username with two button addons" data-type="{{typID}}"
+							   value="{{typName}}">
+						<button class="btn btn-outline-danger del-btn" data-cat="{{../catID}}" data-type="{{typID}}"
+								type="button"><i class="fa fa-close"></i> Xoá
+						</button>
+						<button class="btn btn-outline-primary update-btn" data-type="{{typID}}" data-cat="{{../catID}}"
+								type="button"><i class="fa fa-check"></i> Cập
+							nhật
+						</button>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{{#section 'js'}}
+	<script>
+		$(document).ready(function () {
+			$('#del-cat-btn').click(function () {
+				const catID = $(this).attr('data-cat');
+				axios({
+					method: 'post',
+					url: '/admin/category/delete',
+					data: {
+						'catID': catID
+					}
+				}).then(function (res) {
+					if (res.data === 'success') {
+						$("<div class='alert alert-success row position-absolute w-50'role='alert' style='z-index: 5'> Xoá thành công </div>").insertBefore('#headerCat').delay(1000).fadeOut(1000);
+						window.location.replace("/admin/category");
+						window.location.href = "/admin/category";
+					} else {
+						$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 5'> Không thể xoá danh mục đang chứa sản phẩm</div>").insertBefore('#headerCat').delay(1000).fadeOut(1000);
+					}
+				}).catch(function () {
+					$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 5'> Có lỗi xảy ra, thao tác không thành công</div>").insertBefore('#headerCat').delay(1000).fadeOut(1000);
+				})
+			});
+
+			$('#update-cat-btn').click(function () {
+				const catID = $(this).attr('data-cat');
+				const catName = $('#cat-input').val();
+				if (catName === '') {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Tên danh mục không được bỏ trống </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+				} else {
+					axios({
+						method: 'post',
+						url: '/admin/category/update',
+						data: {
+							'catID': catID,
+							'catName': catName
+						}
+					}).then(function (res) {
+						if (res.data === 'success') {
+							$("<div class='alert alert-success row position-absolute w-50'role='alert' style='z-index: 5'> Cập nhật thành công </div>").insertBefore('#headerCat').delay(1000).fadeOut(1000);
+							location.reload();
+						}
+					}).catch(function () {
+						$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 5'> Có lỗi xảy ra, thao tác không thành công</div>").insertBefore('#headerCat').delay(1000).fadeOut(1000);
+					})
+				}
+
+			});
+
+
+			$('#add-btn').click(function () {
+				const typName = $('#add-txt').val();
+				const catID = $(this).attr('data-cat');
+				if (typName === "") {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Tên danh mục không được bỏ trống </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+				} else {
+					axios({
+						method: 'post',
+						url: '/admin/category/type/add',
+						data: {
+							catID,
+							typName
+						}
+					}).then(function (res) {
+						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thêm thành công </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+						location.reload();
+					}).catch(function () {
+						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Có lỗi xảy ra, vui lòng thử lại sau </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+					})
+				}
+			});
+
+			$('.del-btn').click(function () {
+				const catID = $(this).attr('data-cat');
+				const typID = $(this).attr('data-type');
+				axios({
+					method: 'post',
+					url: '/admin/category/type/delete',
+					data: {
+						catID,
+						typID
+					}
+				}).then(function (res) {
+					if (res.data === 'success') {
+						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Xoá thành công </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+						location.reload();
+					} else {
+						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Không thể xoá danh mục đang chứa sản phẩm</div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+					}
+				}).catch(function () {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Có lỗi xảy ra, vui lòng thử lại sau </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+				})
+
+			});
+
+			$('.update-btn').click(function () {
+				const catID = $(this).attr('data-cat');
+				const typID = $(this).attr('data-type');
+				const value = $("[data-type=" + typID + "]").val();
+				axios({
+					method: 'post',
+					url: '/admin/category/type/update',
+					data: {
+						catID,
+						typID,
+						'typName': value
+					}
+				}).then(function (res) {
+					$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Cập nhật thành công </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+					location.reload();
+				}).catch(function () {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Có lỗi xảy ra, vui lòng thử lại sau </div>").insertBefore('#headerCat').delay(1000).fadeOut(3000);
+				})
+			})
+
+
+		})
+	</script>
+{{/section}}

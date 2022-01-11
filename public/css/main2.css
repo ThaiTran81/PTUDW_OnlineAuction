@@ -24,7 +24,6 @@ header{
 .searchform .categori-style {
     min-width: 130px;
     margin-right: 20px;
-    position: relative;
 }
 
 .searchform .categori-style .nice-select-style {
@@ -35,7 +34,7 @@ header{
 }
 
 .searchform input {
-    width: 160% !important;
+    width: 200% !important;
     font-size: 13px;
     color: #999;
     border: none;
@@ -119,4 +118,57 @@ header{
 
 .createTime{
     font-size: 0.75rem;
+}
+
+.search-res {
+    display: none;
+}
+
+/* 768 --> co khung search */
+@media (max-width: 767px) {
+    .searchform {
+        display: none !important;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+    .searchform form input {
+        width: 100% !important;
+        padding-left: 200px !important;
+    }
+    .search-res {
+        display: block !important;
+    }
+    .nav-item-res {
+        display: block !important;
+        margin-bottom: 20px !important;
+    }
+    .login-res {
+        display: block !important;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 1150px){
+    .login {
+        display: none !important;
+    }
+    .nav-item-res {
+        display: block !important;
+        margin-bottom: 20px !important;
+    }
+    .login-res {
+        display: block !important;
+    }
+    .searchform form input {
+        width: 130% !important;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1199px){
+    .login {
+        margin-right: 30px !important;
+    }
+    .search-res {
+        display: none !important;
+    }
 }

@@ -41,7 +41,7 @@
 								<a class="nav-link" id="sidebar-toggle" href="#"><i data-feather="arrow-left"></i></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Về trang chủ</a>
+								<a class="nav-link" href="/">Về trang chủ</a>
 							</li>
 						</ul>
 					</div>
@@ -67,17 +67,18 @@
 					<li class="sidebar-title">
 						Người dùng
 					</li>
-					<li class="active-page">
-						<a href="index.html"><i data-feather="user-plus"></i>Duyệt yêu cầu seller</a>
+
+					<li class="{{#if (equal selected 1)}}active-page{{/if}}">
+						<a href="/admin"><i data-feather="user-plus"></i>Duyệt yêu cầu seller</a>
 					</li>
-					<li>
-						<a href="index.html"><i data-feather="users"></i>Người dùng</a>
+					<li class="{{#if (equal selected 2)}}active-page{{/if}}">
+						<a href="/admin/user"><i data-feather="users"></i>Người dùng</a>
 					</li>
 					<li class="sidebar-title">
 						Danh mục
 					</li>
-					<li>
-						<a href="email.html"><i data-feather="inbox"></i>Quản lý danh mục</a>
+					<li class="{{#if (equal selected 3)}}active-page{{/if}}">
+						<a href="/admin/category"><i data-feather="inbox"></i>Quản lý danh mục</a>
 					</li>
 				</ul>
 			</div>
