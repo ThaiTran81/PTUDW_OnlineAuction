@@ -46,9 +46,11 @@
                         <li>
                             <a href="#bid-his-tab" class="active" data-toggle="tab">Lịch sử đấu giá</a>
                         </li>
+                        {{#if (equal authUser.UID product.ownerUID)}}
                         <li>
                             <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
                         </li>
+                        {{/if}}
                     </ul>
                     <div class="tab-content limit-height-tab">
                         <div class="tab-pane show active fade" id="bid-his-tab">
@@ -152,7 +154,7 @@
                         <h5 class="auction-time">Kết thúc vào:</h5>
                         <h4 class="auction-time">{{format_date product.endDate}}</h4>
                         <div class="auction-time auto-extends container-fluid">
-                        {{#if (equal autoExtend 1)}}
+                        {{#if (equal product.autoExtend 1)}}
                             <i class="fa fa-question-circle-o"></i>
                             Thời gian của buổi đấu giá này sẽ tự động gia hạn
                         {{/if}}

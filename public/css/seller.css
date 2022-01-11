@@ -88,10 +88,6 @@
     margin-top: auto;
 }
 
-.evaluate-btn {
-    margin-right: 10%;
-}
-
 .product-pagination {
     margin: 4%;
 }
@@ -217,8 +213,12 @@
     color: #fff;
     font-weight: 500;
     font-size: 20px;
-    background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
+    background: -webkit-linear-gradient(147deg, #3da9f5 0%, #683df5 100%);
     box-shadow: -1.04px 4.891px 20px 0px rgb(69 49 183 / 50%);
+}
+
+#submit-btt:hover {
+    background: -webkit-linear-gradient(147deg, #683df5 0%, #3da9f5 100%);
 }
 
 /* Footer */

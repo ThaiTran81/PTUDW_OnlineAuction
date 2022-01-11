@@ -256,8 +256,7 @@ router.get('/detail/:id', async function (req, res) {
     if (product === null) {
         return res.redirect('/');
     }
-    console.log(product.proID);
-    res.render('vwProduct/productDetail', {product, relatePros, description, historyBid, currentPrice, currentBidder});
+    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
 })
 
 
