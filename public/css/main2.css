@@ -186,3 +186,17 @@ header{
         padding-right: 100px;
     }
 }
+
+.badge-new{
+    padding: 4px 8px;
+    width: auto;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.createTime{
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}

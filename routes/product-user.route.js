@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', async function (req, res) {
     const keyword = req.query.keyword;
-    const catID = req.query.catID || null;
+    let catID = req.query.catID || null;
     const typID = req.query.typID || null;
     const sort = req.query.sort || 'timeDesc'
     let page = req.query.page || 1;
@@ -19,7 +19,8 @@ router.get('/', async function (req, res) {
     let lstType;
     let selectedType;
 
-    if (keyword.length===0) {
+    if (keyword.trim().length===0) {
+        if( catID===null) catID='';
         res.redirect('/product/category/' + catID);
     }
 
@@ -60,7 +61,7 @@ router.get('/', async function (req, res) {
     for (let i = 0; i < filter.length; i++) {
         filter[i].isSelected = sort === filter[i].value;
     }
-    let keyword_format = keyword.replace(' ',' +');
+    let keyword_format = keyword.trim().replace('  ',' ').replace(' ',' +');
     switch (sort) {
         case "timeDesc":
             list = await productModel.findPageBySearch(keyword_format,catID, typID,'DESC', 'time',limit,offset);

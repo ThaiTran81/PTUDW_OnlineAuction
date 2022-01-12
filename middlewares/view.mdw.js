@@ -34,6 +34,15 @@ export default function (app) {
                 return moment(date).format('LLL');
                 // return  new Date(date).toISOString().replace(/T/, ' ').replace(/\..+/, '');
             },
+            format_new(date) {
+                moment.locale('vi');
+                return moment(date).fromNow();
+            },
+            is_new(date) {
+                const timeago = moment().diff(date, 'minutes');
+                return timeago < 60;
+
+            },
             format_name(name) {
                 return '**** ' + name.split(' ').pop();
             },
