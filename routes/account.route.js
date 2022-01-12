@@ -78,8 +78,20 @@ router.post('/verify-otp', async function (req,res){
         password: req.body.password,
         type: req.body.type
     }
-    await userModel.add(user);
-    // res.render('vwAccount/submitOtp',{layout: false});
+    const otp = req.body.otp;
+    const confirm = await otpModel.findOtp(user.email);
+    console.log(confirm);
+    if(confirm.otp === otp){
+        await userModel.add(user);
+        res.render('vwAccount/signin',{layout: false, successMsg: 'Đăng ký thành công, hãy thử đăng nhập'});
+    }
+    else{
+        return res.render('vwAccount/signup', {
+            layout: false,
+            failMsg: "Đăng ký thất bại, mã otp không đúng "
+        });
+    }
+
 })
 
 router.post('/sign-in', async function (req, res) {
