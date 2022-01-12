@@ -145,5 +145,17 @@ export default {
             return null;
 
         return list[0][0];
+    },
+    async findPageBySearch(keyword, catID, typID, sort, sortBy, limit, offset ){
+        const list = await knex.raw(`CALL textSearch('${keyword}',${catID},${typID},${limit},${offset},'${sort}','${sortBy}')`);
+        if(list.length ===0)
+            return null;
+        return list[0][0];
+    },
+    async countBySearch(keyword, catID, typID){
+        const list = await knex.raw(`CALL textSearchCount('${keyword}',${catID},${typID})`);
+        if(list.length === 0)
+            return null;
+        return list[0][0][0].amount;
     }
 }

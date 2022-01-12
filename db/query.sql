@@ -233,3 +233,7 @@ SET type = 1 WHERE UID = 1
 DELETE FROM upseller WHERE UID = 1
 
 SELECT * FROM upseller
+
+
+CALL textSearch('Máy hãng',1,2,12,0,'ASC','price');
+CALL textSearchCount('máy chính tay chì',NULL,NULL);

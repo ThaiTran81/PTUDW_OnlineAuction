@@ -15,12 +15,12 @@
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									{{#unless (equal selectedCate.catID '')}}
 										<li><a class="dropdown-item"
-											   href="/product/category/">Tất cả</a>
+											   href="/product?keyword={{keyword}}&catID=&sort={{selectedSort}}&typID=&page={{page}}">Tất cả</a>
 										</li>
 									{{/unless}}
 									{{#each lstCategories}}
 										<li><a class="dropdown-item"
-											   href="/product/category/{{this.catID}}">{{this.catName}}</a></li>
+											   href="/product?keyword={{../keyword}}&catID={{catID}}&sort={{../selectedSort}}&typID=&page={{../page}}">{{this.catName}}</a></li>
 									{{/each}}
 								</ul>
 							</div>

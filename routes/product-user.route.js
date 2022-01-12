@@ -8,13 +8,14 @@ const router = express.Router();
 
 router.get('/', async function (req, res) {
     const keyword = req.query.keyword;
-    const catID = req.query.catID;
-    const typID = req.query.typID;
+    const catID = req.query.catID || null;
+    const typID = req.query.typID || null;
     const sort = req.query.sort || 'timeDesc'
-    const page = req.query.page || 0;
+    let page = req.query.page || 1;
     let selectedCate = {'catID': '', 'catName': 'Tất cả'};
     let nCategories = [];
     const lst = res.locals.lcCategories;
+    let filter = res.locals.sort;
     let lstType;
     let selectedType;
 
@@ -30,6 +31,21 @@ router.get('/', async function (req, res) {
         }
     }
 
+    const limit = 12;
+    const offset = (page - 1) * limit;
+
+    const total = await productModel.countBySearch(keyword,catID, typID);
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= nPages; i++) {
+        pageNumbers.push({
+            value: i,
+            isCurrent: +page === i
+        });
+    }
+
     if (selectedCate !== '') {
         lstType = await categoryModel.findAllTypeByCat(catID);
         for (let i = 0; i < lstType.length; i++) {
@@ -39,14 +55,37 @@ router.get('/', async function (req, res) {
             }
         }
     }
+    let list=null;
+
+    for (let i = 0; i < filter.length; i++) {
+        filter[i].isSelected = sort === filter[i].value;
+    }
+    let keyword_format = keyword.replace(' ',' +');
+    switch (sort) {
+        case "timeDesc":
+            list = await productModel.findPageBySearch(keyword_format,catID, typID,'DESC', 'time',limit,offset);
+            break;
+        case "timeAsc":
+            list = await productModel.findPageBySearch(keyword_format,catID, typID,'ASC', 'time',limit,offset);
+            break;
+        case "priceAsc":
+            list = await productModel.findPageBySearch(keyword_format,catID, typID,'ASC', 'price',limit,offset);
+            break;
+        case "priceDesc":
+            list = await productModel.findPageBySearch(keyword_format,catID, typID,'DESC', 'price',limit,offset);
+            break;
+    }
 
     res.render('vwProduct/bySearch', {
+        empty: list===null,
+        products: list,
         lstCategories: nCategories,
         selectedCate,
         selectedType,
         selectedSort: sort,
         keyword,
-        types: lstType
+        types: lstType,
+        pageNumbers
     })
 })
 
