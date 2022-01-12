@@ -4,6 +4,12 @@
 
 {{#section 'js'}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> <script src="/public/js/detail_body.js"></script>
+    <script src="https://cdn.tiny.cloud/1/zl91lwryeczyn2jhzji60m8ccauunch925epicw56btc5pa2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
 {{/section}}
 
 <div class="body-content">
@@ -39,64 +45,6 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
-            <div class="dashboard-widget">
-                <div class="dashboard-purchasing-tabs">
-                    <ul class="nav-tabs nav">
-                        <li>
-                            <a href="#bid-his-tab" class="active" data-toggle="tab">Lịch sử đấu giá</a>
-                        </li>
-                        {{#if (equal authUser.UID product.ownerUID)}}
-                        <li>
-                            <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
-                        </li>
-                        {{/if}}
-                    </ul>
-                    <div class="tab-content limit-height-tab">
-                        <div class="tab-pane show active fade" id="bid-his-tab">
-                            <table class="purchasing-table">
-                                <thead>
-                                    <th>Thời điểm</th>
-                                    <th>Người mua</th>
-                                    <th>Giá</th>
-                                </thead>
-                                <tbody>
-                                {{#each historyBid}}
-                                    <tr>
-                                        <td data-purchase="bid-time">{{format_date this.aucTime}}</td>
-                                        <td data-purchase="bidder">{{format_name this.name}}</td>
-                                        <td data-purchase="bid-price">{{format_number this.price}}</td>
-                                    </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane show fade" id="bidder-tab">
-                            <table class="purchasing-table">
-                                <thead>
-                                    <th>Người mua</th>
-                                    <th>Điểm đánh giá</th>
-                                    <th>Được phép đấu giá</th>
-                                </thead>
-                                <tbody>
-                                {{#each currentBidder}}
-                                    <tr>
-                                        <td data-purchase="bidder">{{format_name this.name}}</td>
-                                        <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
-                                        <td data-purchase="">
-                                        {{#if (equal isBlock 0)}}
-                                            <i class="participate-bidder green-text fa fa-check-circle"></i>
-                                        {{else}}
-                                            <i class="participate-bidder red-text fa fa-minus-circle"></i>
-                                        {{/if}}
-                                        </td>
-                                    </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="product-current-information col-lg-7">
@@ -153,12 +101,16 @@
                         <hr>
                         <h5 class="auction-time">Kết thúc vào:</h5>
                         <h4 class="auction-time">{{format_date product.endDate}}</h4>
-                        <div class="auction-time auto-extends container-fluid">
                         {{#if (equal product.autoExtend 1)}}
-                            <i class="fa fa-question-circle-o"></i>
-                            Thời gian của buổi đấu giá này sẽ tự động gia hạn
+                            <div class="auction-time auto-extends container-fluid">
+                                <i class="fa fa-question-circle-o"></i>
+                                Thời gian của buổi đấu giá này sẽ tự động gia hạn
+                            </div>
+                        {{else}}
+                            <div class="auction-time auto-extends container-fluid " style="color: #ebf2ff">
+                                a
+                            </div>
                         {{/if}}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -167,7 +119,7 @@
                     <div class="search-icon">
                         <img src="/public/images/bid.png" alt="product">
                     </div>
-                    <input type="text" class="bg-light" placeholder="Enter you maximum bid amount">
+                    <input type="text" class="price-input bg-light" placeholder="Enter you maximum bid amount">
                     <button type="submit" class="submit-bid-button auto-submit-bid-button">Ra giá</button>
                 </form>
             </div>
@@ -180,11 +132,15 @@
     <!-- Main product information end -->
 
     <div class="middle container-fluid row">
-        <div class="col-lg-1"></div>
         <!-- Description start -->
-        <div class="description-container container-fluid col-lg-10" style="margin-left: 0">
-            <div class="description-header">
-                <h2>Mô tả sản phẩm</h2>
+        <div class="description-container container-fluid col-lg-8" style="margin-left: 0">
+            <div class="description-content">
+                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2.5%">
+                    <h1>Mô tả sản phẩm</h1>
+                    {{#if (equal authUser.UID product.ownerUID)}}
+                    <button class="btn-primary p-1 rounded-3">Bổ sung mô tả</button>
+                    {{/if}}
+                </div>
                 {{#each description}}
                     <div class="mt-2 p-3">
                         <div>
@@ -197,9 +153,70 @@
                     </div>
                 {{/each}}
             </div>
+<!--            <p class="read-more"><a href="#" class="read-more-btn"></a></p>-->
         </div>
-        <div class="col-lg-2"></div>
         <!-- Description end -->
+        <div class="dashboard-widget col-lg-4">
+            <div class="dashboard-purchasing-tabs">
+                <ul class="nav-tabs nav">
+                    <li>
+                        <a href="#bid-his-tab" class="active" data-toggle="tab">Lịch sử đấu giá</a>
+                    </li>
+                    {{#if (equal authUser.UID product.ownerUID)}}
+                        <li>
+                            <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
+                        </li>
+                    {{/if}}
+                </ul>
+                <div class="tab-content limit-height-tab">
+                    <div class="tab-pane show active fade" id="bid-his-tab">
+                        <table class="purchasing-table">
+                            <thead>
+                            <th>Thời điểm</th>
+                            <th>Người mua</th>
+                            <th>Giá</th>
+                            </thead>
+                            <tbody>
+                            {{#each historyBid}}
+                                <tr>
+                                    <td data-purchase="bid-time">{{format_date this.aucTime}}</td>
+                                    <td data-purchase="bidder">{{format_name this.name}}</td>
+                                    <td data-purchase="bid-price">{{format_number this.price}}</td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{#if (equal authUser.UID product.ownerUID)}}
+                        <div class="tab-pane show fade" id="bidder-tab">
+                            <table class="purchasing-table">
+                                <thead>
+                                <th>Người mua</th>
+                                <th>Điểm đánh giá</th>
+                                <th></th>
+                                </thead>
+                                <tbody>
+                                {{#each currentBidder}}
+                                    <tr>
+                                        <td data-purchase="bidder">{{format_name this.name}}</td>
+                                        <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
+                                        <td data-purchase="">
+                                            <button class="btn-outline-danger p-1 rounded-3">Từ chối</button>
+                                                <!--                                        {{#if (equal isBlock 0)}}-->
+                                            <!--                                            <i class="participate-bidder green-text fa fa-check-circle"></i>-->
+                                                <!--                                        {{else}}-->
+                                            <!--                                            <i class="participate-bidder red-text fa fa-minus-circle"></i>-->
+                                                <!--                                        {{/if}}-->
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -259,4 +276,15 @@
         </div>
     </div>
     <!-- Related product end -->
+</div>
+<div id="model-box" class="w-100 h-100">
+    <div class="model-background w-100 h-100"></div>
+    <div class="description-additional-form">
+        <h3 class="text-center m-3">Bổ Sung Mô Tả</h3>
+        <div class="description-form p-3" style="height: 50% !important;">
+            <form method="post">
+                <textarea id="mytextarea"></textarea>
+            </form>
+        </div>
+    </div>
 </div>

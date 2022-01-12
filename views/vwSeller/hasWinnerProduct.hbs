@@ -1,0 +1,214 @@
+{{#section 'css'}}
+    <link href="/public/css/seller.css" rel="stylesheet" type="text/css">
+{{/section}}
+
+{{#section 'js'}}
+    <script src="/public/js/seller.js"></script>
+    <script src="https://cdn.tiny.cloud/1/zl91lwryeczyn2jhzji60m8ccauunch925epicw56btc5pa2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
+{{/section}}
+
+<div class="body-content" style="margin-top: 80px">
+
+    <!-- Start dashboard -->
+    <div id="dashboard" class="container-fluid row">
+        <div class="col-lg-1"></div>
+
+        <!-- Start dashboard sidebar -->
+        <div id="side-bar" class="col-lg-3" style="margin-right: 2%">
+            <div class="sidebar-header">
+                <h1>{{authUser.name}}</h1>
+                <h6 class="personal-email">{{authUser.email}}</h6>
+            </div>
+            <a href="#post-product-form">
+                <button class="sidebar-btt">Đăng sản phẩm đấu giá</button>
+            </a>
+            <a href="/seller/current-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đang bán đấu giá</button>
+            </a>
+            <a href="/seller/has-buyer-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đã có người mua</button>
+            </a>
+            <a href="/seller/has-winner-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đã có người thắng</button>
+            </a>
+        </div>
+        <!-- End dashboard sidebar -->
+
+        <!-- Start dashboard has winner auction content -->
+        <div class="side-bar-content has-winner-auction-content col-lg-7">
+            <div class="sb-content-header">
+                <h3 class="text-center">Sản phẩm đã có người thắng</h3>
+            </div>
+            <div class="row mt-3 mt-md-5 align-items-stretch">
+                {{#each this.products}}
+                    <div class="col-md-4 mb-4">
+                        <div class="aboutitem">
+                            <div class="aboutitemImg"><img class="img-fluid"
+                                                           src="/public/images/product/{{proID}}/thumb.png"
+                                                           alt="img"></div>
+                            <div class="bgdarkbluecolor aboutitemcnt">
+                                <div class="itemtitlecode">
+                                    <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+                                    <h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
+                                </div>
+                                <div class="product-price mb-auto">
+                                    <div class="card-content">
+                                        <div class="card-content-value green-text">
+                                            <i class="icon mx-2 fa fa-gavel"></i>
+                                            <span class="current-bid">{{format_number price}}</span>
+                                        </div>
+                                        <span>
+                                        <span class="card-content-value textgraycolor">Đã đấu</span>
+                                        <span class="total-bids">{{BidCount}} Lượt</span>
+                                    </span>
+                                    </div>
+                                    <div class="card-content">
+                                    <span class="card-content-value" style="color: #ffb20f">
+                                        <i class="icon mx-2 fa fa-trophy"></i>
+                                        <div class="current-bid">{{format_name name}}</div>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="createTime"><i>{{format_date startDate}}</i></div>
+                                <div class="card-bottom mt-1 d-flex justify-content-end">
+                                    <a class="btn btn-sm btn-primary" href="" role="button">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
+                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <ul class="pagination justify-content-center">
+                <li>
+                    <a href="" class="">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </a>
+                </li>
+                {{#each pageNumbers}}
+                    {{#if this.isCurrent}}
+                        <li class="page-active">
+                            <a href="/seller/has-winner-product/{{../authUser.UID}}?page={{this.value}}" class="">
+                            {{this.value}}
+                            </a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="/seller/has-winner-product/{{../authUser.UID}}?page={{this.value}}" class="">
+                            {{this.value}}
+                            </a>
+                        </li>
+                    {{/if}}
+                {{/each}}
+
+                <li>
+                    <a href="" class="">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- End dashboard has winner auction content -->
+    </div>
+    <!-- End dashboard -->
+
+
+    <!-- Start post product session -->
+    <div id="post-product-form" class="container-fluid row">
+        <div class="col-lg-1"></div>
+        <div class="form-container col-lg-10" style="margin: 6% 0">
+            <div class="form-section">
+                <div class="form-header">
+                    <h1>Đăng sản phẩm đấu giá</h1>
+                </div>
+                <div class="form-content row">
+                    <div class="text-section col-lg-6">
+                        <ul>
+                            <li class="text-section-item">
+                                <h5>Tên sản phẩm</h5>
+                                <input type="text" id="productName" class="text-field title" name="productName" required>
+                            </li>
+                            <li class="text-section-item">
+                                <h5>Chọn loại sản phẩm</h5>
+                                <select id="category" name="category" class="text-field product-dropdown">
+                                    <option value="cat1">Category 1</option>
+                                    <option value="cat2">Category 2</option>
+                                    <option value="cat3">Category 3</option>
+                                    <option value="cat4">Category 4</option>
+                                    <option value="cat5">Category 5</option>
+                                </select>
+                                <select id="product-type" name="product-type" class="text-field product-dropdown">
+                                    <option value="ty1">Type 1</option>
+                                    <option value="ty2">Type 2</option>
+                                    <option value="ty3">Type 3</option>
+                                    <option value="ty4">Type 4</option>
+                                    <option value="ty5">Type 5</option>
+                                </select>
+                            </li>
+                            <li class="text-section-item">
+                                <h5>Giá Khởi điểm & Bước giá</h5>
+                                <div class="bid-price">
+                                    <input type="text" id="startPrice" class="text-field" name="startPrice" placeholder="Start Price" required>
+                                    <input type="text" id="stepPrice" class="text-field" name="stepPrice" placeholder="Step Price" required>
+                                </div>
+                            </li>
+                            <li class="text-section-item">
+                                <h5>Giá mua ngay</h5>
+                                <input type="text" id="orgPrice" class="text-field title" name="orgPrice">
+                            </li>
+                            <li class="text-section-item">
+                                <h5>Mô tả sản phẩm</h5>
+                                <div class="description-form">
+                                    <form method="post">
+                                        <textarea id="mytextarea"></textarea>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="text-section-item">
+                                <h5>Thời điểm kết thúc</h5>
+                                <div class="date-input-container">
+                                    <input type="datetime-local" id="endTime" class="text-field" name="endTime">
+                                    <div style="float: right">
+                                        <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
+                                        <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="image-section col-lg 4">
+                        <h5>Ảnh sản phẩm</h5>
+                        <!-- Upload image input-->
+                        <div class="input-group mb-3 px-2 py-2 rounded bg-white shadow-sm">
+                            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" multiple>
+                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                            <div class="input-group-append">
+                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                            </div>
+                        </div>
+                        <!-- Uploaded image area-->
+                        <p class="font-italic text-black-50 text-center">The image uploaded will be rendered inside the box below.</p>
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                    </div>
+                </div>
+                <div class="submit-secsion">
+                    <button id="submit-btt" name="submitProduct">Đăng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <!-- End post product session -->
+    <div class="footer container-fluid">
+
+    </div>
+</div>

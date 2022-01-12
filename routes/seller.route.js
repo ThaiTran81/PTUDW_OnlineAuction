@@ -4,54 +4,87 @@ import sellerModel from "../models/seller.model.js"
 
 const router = express.Router();
 
-router.get('/:id', async function(req, res){
+router.get('/current-product/:id', async function(req, res){
     const UID = req.params.id;
-    const curPros = await sellerModel.findAllCurrentProduct(UID);
-    const winPros = await sellerModel.findAllHasWinnerProduct(UID);
-    const user = await usersModel.findUserByUID(UID);
+    const pros = await sellerModel.findAllCurrentProduct(UID);
 
     const limit = 6;
+    const page = req.query.page || 1;
+    const offset = (page - 1) * limit;
 
-    const curProPage = req.query.curProPage || 1;
-    const curProOffset = (curProPage - 1) * limit;
+    const total = await pros.length;
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
 
-    const totalCurPros = curPros.length;
-    let nCurProPages = Math.floor(totalCurPros / limit);
-    if (totalCurPros % limit > 0) nCurProPages++;
-
-    const curProPageNumbers = [];
-    for (let i = 1; i <= nCurProPages; i++) {
-        curProPageNumbers.push({
+    const pageNumbers = [];
+    for (let i = 1; i <= nPages; i++) {
+        pageNumbers.push({
             value: i,
-            isCurrent: +curProPage === i
+            isCurrent: +page === i
         });
     }
 
-    const curProlist = await sellerModel.findCurrentProductByPage(UID, limit, curProOffset);
+    const list = await sellerModel.findCurrentProductByPage(UID, limit, offset);
 
-    const winProPage = req.query.winProPage || 1;
-    const winProOffset = (winProPage - 1) * limit;
+    res.render('vwSeller/currentProduct', {
+        products: list,
+        pageNumbers
+    });
+});
 
-    const totalWinPros = winPros.length;
-    let nWinProPages = Math.floor(totalWinPros / limit);
-    if (totalWinPros % limit > 0) nWinProPages++;
+router.get('/has-winner-product/:id', async function(req, res){
+    const UID = req.params.id;
+    const pros = await sellerModel.findAllHasWinnerProduct(UID);
 
-    const winProPageNumbers = [];
-    for (let i = 1; i <= nWinProPages; i++) {
-        winProPageNumbers.push({
+    const limit = 6;
+    const page = req.query.page || 1;
+    const offset = (page - 1) * limit;
+
+    const total = await pros.length;
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= nPages; i++) {
+        pageNumbers.push({
             value: i,
-            isCurrent: +winProPage === i
+            isCurrent: +page === i
         });
     }
 
-    const winProlist = await sellerModel.findHasWinnerProductByPage(UID, limit, winProOffset);
+    const list = await sellerModel.findHasWinnerProductByPage(UID, limit, offset);
 
-    res.render('vwSeller/seller', {
-        user,
-        curProducts: curProlist,
-        winProducts: winProlist,
-        curProPageNumbers,
-        winProPageNumbers
+    res.render('vwSeller/hasWinnerProduct', {
+        products: list,
+        pageNumbers
+    });
+});
+
+router.get('/has-buyer-product/:id', async function(req, res){
+    const UID = req.params.id;
+    const pros = await sellerModel.findAllHasWinnerProduct(UID);
+
+    const limit = 6;
+    const page = req.query.page || 1;
+    const offset = (page - 1) * limit;
+
+    const total = await pros.length;
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
+
+    const pageNumbers = [];
+    for (let i = 1; i <= nPages; i++) {
+        pageNumbers.push({
+            value: i,
+            isCurrent: +page === i
+        });
+    }
+
+    const list = await sellerModel.findHasWinnerProductByPage(UID, limit, offset);
+
+    res.render('vwSeller/hasBuyerProduct', {
+        products: list,
+        pageNumbers
     });
 });
 

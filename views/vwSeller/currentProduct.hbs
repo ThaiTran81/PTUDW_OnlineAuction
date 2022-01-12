@@ -19,25 +19,33 @@
         <div class="col-lg-1"></div>
 
         <!-- Start dashboard sidebar -->
-        <div id="side-bar" class="col-lg-3">
+        <div id="side-bar" class="col-lg-3" style="margin-right: 2%">
             <div class="sidebar-header">
-                <h1>{{user.name}}</h1>
-                <h6 class="personal-email">{{user.email}}</h6>
+                <h1>{{authUser.name}}</h1>
+                <h6 class="personal-email">{{authUser.email}}</h6>
             </div>
-            <button class="sidebar-btt">Đăng sản phẩm đấu giá</button>
-            <button class="sidebar-btt" onclick="showAuctionList(1)">Sản phẩm đang bán đấu giá</button>
-            <button class="sidebar-btt" onclick="showAuctionList(2)">Sản phẩm đã có người thắng</button>
+            <a href="#post-product-form">
+                <button class="sidebar-btt">Đăng sản phẩm đấu giá</button>
+            </a>
+            <a href="/seller/current-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đang bán đấu giá</button>
+            </a>
+            <a href="/seller/has-buyer-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đã có người mua</button>
+            </a>
+            <a href="/seller/has-winner-product/{{authUser.UID}}">
+                <button class="sidebar-btt">Sản phẩm đã có người thắng</button>
+            </a>
         </div>
         <!-- End dashboard sidebar -->
-        <div class="col-lg-1"></div>
 
         <!-- Start dashboard current auction content -->
-        <div class="side-bar-content current-auction-content col-lg-6">
+        <div class="side-bar-content current-auction-content col-lg-7">
             <div class="sb-content-header">
                 <h3 class="text-center">Sản phẩm đang bán đấu giá</h3>
             </div>
             <div class="row mt-3 mt-md-5 align-items-stretch">
-                {{#each this.curProducts}}
+                {{#each this.products}}
                     <div class="col-md-4 mb-4">
                         <div class="aboutitem">
                             <div class="aboutitemImg"><img class="img-fluid"
@@ -87,16 +95,16 @@
                         <ion-icon name="arrow-back-outline"></ion-icon>
                     </a>
                 </li>
-                {{#each curProPageNumbers}}
+                {{#each pageNumbers}}
                     {{#if this.isCurrent}}
                         <li class="page-active">
-                            <a href="/seller/{{../user.UID}}?curProPage={{this.value}}" class="">
+                            <a href="/seller/current-product/{{../authUser.UID}}?page={{this.value}}" class="">
                             {{this.value}}
                             </a>
                         </li>
                     {{else}}
                         <li>
-                            <a href="/seller/{{../user.UID}}?curProPage={{this.value}}" class="">
+                            <a href="/seller/current-product/{{../authUser.UID}}?page={{this.value}}" class="">
                             {{this.value}}
                             </a>
                         </li>
@@ -111,85 +119,6 @@
             </ul>
         </div>
         <!-- End dashboard current auction content -->
-        <!-- Start dashboard has winner auction content -->
-        <div class="side-bar-content has-winner-auction-content col-lg-6">
-            <div class="sb-content-header">
-                <h3 class="text-center">Sản phẩm đã có người thắng</h3>
-            </div>
-            <div class="row mt-3 mt-md-5 align-items-stretch">
-                {{#each this.winProducts}}
-                    <div class="col-md-4 mb-4">
-                        <div class="aboutitem">
-                            <div class="aboutitemImg"><img class="img-fluid"
-                                                           src="/public/images/product/{{proID}}/thumb.png"
-                                                           alt="img"></div>
-                            <div class="bgdarkbluecolor aboutitemcnt">
-                                <div class="itemtitlecode">
-                                    <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
-                                    <h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
-                                </div>
-                                <div class="product-price mb-auto">
-                                    <div class="card-content">
-                                        <div class="card-content-value green-text">
-                                            <i class="icon mx-2 fa fa-gavel"></i>
-                                            <span class="current-bid">{{format_number price}}</span>
-                                        </div>
-                                        <span>
-                                        <span class="card-content-value textgraycolor">Đã đấu</span>
-                                        <span class="total-bids">{{BidCount}} Lượt</span>
-                                    </span>
-                                    </div>
-                                    <div class="card-content">
-                                    <span class="card-content-value" style="color: #ffb20f">
-                                        <i class="icon mx-2 fa fa-trophy"></i>
-                                        <div class="current-bid">{{format_name name}}</div>
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="createTime"><i>{{format_date startDate}}</i></div>
-                                <div class="card-bottom mt-1 d-flex justify-content-end">
-                                    <a class="btn btn-sm btn-primary" href="" role="button">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
-                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
-            <ul class="pagination justify-content-center">
-                <li>
-                    <a href="" class="">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
-                    </a>
-                </li>
-                {{#each winProPageNumbers}}
-                    {{#if this.isCurrent}}
-                        <li class="page-active">
-                            <a href="/seller/{{../user.UID}}?winProPage={{this.value}}" class="">
-                            {{this.value}}
-                            </a>
-                        </li>
-                    {{else}}
-                        <li>
-                            <a href="/seller/{{../user.UID}}?winProPage={{this.value}}" class="">
-                            {{this.value}}
-                            </a>
-                        </li>
-                    {{/if}}
-                {{/each}}
-
-                <li>
-                    <a href="" class="">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- End dashboard has winner auction content -->
     </div>
     <!-- End dashboard -->
 
@@ -197,7 +126,7 @@
     <!-- Start post product session -->
     <div id="post-product-form" class="container-fluid row">
         <div class="col-lg-1"></div>
-        <div class="form-container col-lg-10">
+        <div class="form-container col-lg-10" style="margin: 6% 0">
             <div class="form-section">
                 <div class="form-header">
                     <h1>Đăng sản phẩm đấu giá</h1>
@@ -246,17 +175,19 @@
                                 </div>
                             </li>
                             <li class="text-section-item">
-                                <h5>Thời điểm kết thúc kết thúc</h5>
+                                <h5>Thời điểm kết thúc</h5>
                                 <div class="date-input-container">
                                     <input type="datetime-local" id="endTime" class="text-field" name="endTime">
-                                    <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
-                                    <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
+                                    <div style="float: right">
+                                        <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
+                                        <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="image-section col-lg 4">
-                        <h5>Ảnh sản phảm</h5>
+                        <h5>Ảnh sản phẩm</h5>
                         <!-- Upload image input-->
                         <div class="input-group mb-3 px-2 py-2 rounded bg-white shadow-sm">
                             <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" multiple>
