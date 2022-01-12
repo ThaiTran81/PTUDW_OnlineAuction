@@ -172,3 +172,17 @@ header{
         display: none !important;
     }
 }
+
+@media (max-width: 1199px) {
+    .intro-bg{
+        display: none;
+    }
+    .intro-text {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .intro-text h5 {
+        padding-right: 100px;
+    }
+}
