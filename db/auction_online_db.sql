@@ -11,7 +11,7 @@
  Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 10/01/2022 21:15:59
+ Date: 12/01/2022 20:54:35
 */
 
 SET NAMES utf8mb4;
@@ -57,6 +57,7 @@ CREATE TABLE `currentauction`  (
 INSERT INTO `currentauction` VALUES (1, 14, 0, 4500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (2, 11, 0, 1800.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (3, 28, 0, 4800.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (4, 28, 0, 8500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 5, 0, 4400.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 11, 0, 4200.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 13, 0, 2700.00, NULL, 0);
@@ -65,8 +66,8 @@ INSERT INTO `currentauction` VALUES (5, 18, 0, 3000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 20, 0, 3000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 23, 0, 2100.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 27, 0, 3900.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (5, 30, 0, 7700.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (5, 32, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 30, 0, 8700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (5, 32, 0, 7200.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 33, 0, 5000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 34, 0, 5900.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (5, 36, 0, 5000.00, NULL, 0);
@@ -84,7 +85,7 @@ INSERT INTO `currentauction` VALUES (6, 20, 0, 5000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 23, 0, 3300.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 24, 0, 5000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 25, 0, 2300.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (6, 28, 0, 8000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (6, 28, 0, 9000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 31, 0, 2300.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 33, 0, 4000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (6, 34, 0, 2300.00, NULL, 0);
@@ -128,7 +129,7 @@ INSERT INTO `currentauction` VALUES (8, 28, 0, 5400.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 29, 0, 5200.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 30, 0, 2400.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 31, 0, 3900.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (8, 32, 0, 4700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (8, 32, 0, 6400.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 35, 0, 5200.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 36, 0, 4800.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (8, 38, 0, 4400.00, NULL, 0);
@@ -147,9 +148,9 @@ INSERT INTO `currentauction` VALUES (9, 21, 0, 2700.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 24, 0, 2600.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 26, 0, 4500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 29, 0, 2900.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (9, 30, 0, 8000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 30, 0, 8500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 31, 0, 4500.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (9, 32, 0, 5200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (9, 32, 0, 7500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 33, 0, 3300.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 34, 0, 6000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (9, 35, 0, 6000.00, NULL, 0);
@@ -172,8 +173,10 @@ INSERT INTO `currentauction` VALUES (10, 25, 0, 5500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (10, 26, 0, 2800.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (10, 37, 0, 6000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (10, 38, 0, 5000.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (10, 39, 0, 8400.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 39, 0, 8900.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (10, 40, 0, 6000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 41, 0, 8200.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (10, 42, 0, 9100.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (11, 1, 0, 4000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (11, 5, 0, 5000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (11, 6, 0, 3800.00, NULL, 0);
@@ -206,7 +209,7 @@ INSERT INTO `currentauction` VALUES (12, 27, 0, 3300.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 29, 0, 6000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 34, 0, 3500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 36, 0, 4200.00, NULL, 0);
-INSERT INTO `currentauction` VALUES (12, 39, 0, 8700.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (12, 39, 0, 9000.00, NULL, 0);
 
 -- ----------------------------
 -- Table structure for description
@@ -263,6 +266,8 @@ INSERT INTO `description` VALUES (37, '2020-03-19 08:21:22', '<p style=\"box-siz
 INSERT INTO `description` VALUES (38, '2020-08-06 23:05:48', '<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Ch&uacute; th&iacute;ch:</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Vui l&ograve;ng cho ph&eacute;p 1-3mm kh&aacute;c nhau do đo thủ c&ocirc;ng.</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">Do m&agrave;n h&igrave;nh hiển thị kh&aacute;c nhau v&agrave; &aacute;nh s&aacute;ng kh&aacute;c nhau, h&igrave;nh ảnh c&oacute; thể kh&ocirc;ng phản &aacute;nh m&agrave;u sắc thực tế của vật phẩm. Cảm ơn.</span></strong></h4>\r\n<h4 style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\"><span style=\"box-sizing: border-box; color: rgb(128, 0, 0);\">12 b&uacute;t dạ quang / Hộp</span></strong></h4>');
 INSERT INTO `description` VALUES (39, '2020-08-26 15:46:52', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">CHI TIẾT SẢN PHẨM GỌT B&Uacute;T CH&Igrave; QUAY TAY CUTE</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">M&aacute;y gọt b&uacute;t ch&igrave; bằng cơ chế quay tay quay. Thiết kế th&ocirc;ng minh, chỉ cần cho b&uacute;t v&agrave;o lỗ v&agrave; quay tay l&agrave; gọt nhanh, gọn.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Kiểu d&aacute;ng nhỏ nhắn, đơn giản, dễ sử dụng, an to&agrave;n.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Lưỡi dao kim loại gọt đầu ch&igrave; nhọn v&agrave; kh&ocirc;ng l&agrave;m g&atilde;y ng&ograve;i. Chất liệu nhựa an to&agrave;n, kh&ocirc;ng độc hại, chịu lực tốt.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">C&oacute; khay chứa m&ugrave;n c&oacute; thể th&aacute;o ra vệ sinh, rất đơn giản v&agrave; sạch sẽ.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">Gọt b&uacute;t ch&igrave; quay tay l&agrave; sản phẩm được thiết kế với h&igrave;nh dạng ngộ nghĩ, đ&aacute;ng y&ecirc;u kết hợp c&ugrave;ng m&agrave;u sắc sinh động, nổi bật tạo cho bạn cảm gi&aacute;c th&iacute;ch th&uacute; v&agrave; hứng th&uacute; hơn khi sử dụng.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">M&agrave;u Sắc: M&agrave;u Hồng, M&agrave;u Xanh L&aacute;, M&agrave;u Xanh Da Trời, M&agrave;u T&iacute;m</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px;\">K&iacute;ch thước: 4*5*7 cm</p>');
 INSERT INTO `description` VALUES (40, '2020-11-03 17:18:17', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Hộp 12 b&uacute;t ch&igrave; 2B Foska QB043(2B) được nhập khẩu v&agrave; ph&acirc;n phối bởi C&ocirc;ng ty cổ phần Fuhaco Việt Nam.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Th&ocirc;ng số kỹ thuật:</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Kiểu: B&uacute;t ch&igrave; ti&ecirc;u chuẩn, B&uacute;t ch&igrave; vẽ</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- M&agrave;u ch&igrave;: Đen</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Vật liệu cơ thể: Gỗ</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Bao b&igrave;: 12 chiếc/ hộp</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Sử dụng: B&uacute;t ch&igrave; văn ph&ograve;ng &amp; trường học</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Thương hiệu: Foska</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- M&atilde; sản phẩm: QB043</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Sử dụng: trường học, văn ph&ograve;ng, quảng c&aacute;o, khuyến m&atilde;i</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- H&igrave;nh dạng: lục gi&aacute;c</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">- Xuất xứ: Trung Quốc</p>');
+INSERT INTO `description` VALUES (41, '2021-01-21 18:38:05', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống</strong><br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống l&agrave; cuốn s&aacute;ch giới thiệu tới bạn đọc chi&ecirc;m tinh l&agrave; g&igrave; th&ocirc;ng qua c&aacute;c định nghĩa, m&ocirc; tả lịch sử chi&ecirc;m tinh v&agrave; giải th&iacute;ch những ngộ nhận nhiều người mắc phải khi n&oacute;i về chủ đề n&agrave; Quan trọng hơn, cuốn s&aacute;ch hướng dẫn bạn đọc ứng dụng chi&ecirc;m tinh v&agrave;o mọi kh&iacute;a cạnh của đời sống.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Loại chi&ecirc;m tinh được thực h&agrave;nh ng&agrave;y nay, dựa tr&ecirc;n kh&aacute;i niệm về bản đồ sao, bắt nguồn từ Hy Lạp v&agrave; Babylon cổ đại. Bản đồ sao l&agrave; h&igrave;nh ảnh c&aacute;ch điệu của bầu trời, được vẽ cho một thời gian v&agrave; địa điểm cụ thể. Đ&oacute; l&agrave; h&igrave;nh ảnh tổng thể về bạn. Những biểu tượng tr&ecirc;n đ&oacute; m&ocirc; tả cả trạng th&aacute;i b&ecirc;n trong nội t&acirc;m lẫn t&igrave;nh huống b&ecirc;n ngo&agrave;i cuộc sống, lịch sử v&agrave; kinh nghiệm c&aacute; nh&acirc;n của bạn tr&ecirc;n mọi cấp độ, từ thể chất tới t&acirc;m l&yacute;. Bằng c&aacute;ch n&agrave;y hay c&aacute;ch kh&aacute;c, mọi thứ về con người bạn, những g&igrave; bạn l&agrave;m đều được chứa đựng trong bức tranh sống động n&agrave;y.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Cuốn s&aacute;ch n&agrave;y hướng dẫn bạn mở kh&oacute;a bản đồ sao bằng c&aacute;ch t&igrave;m hiểu t&aacute;c động c&aacute;c v&igrave; sao l&ecirc;n vạn vật, nắm bắt những quy tắc cốt l&otilde;i v&agrave; c&aacute;ch ứng dụng chi&ecirc;m tinh v&agrave;o đời sống, từ những vấn đề b&igrave;nh thường nhất tới những g&igrave; mang &yacute; nghĩa s&acirc;u sắc nhất v&agrave; định h&igrave;nh tiến tr&igrave;nh cuộc đời bạn. V&agrave;o những l&uacute;c quan trọng của cuộc đời như thay đổi chỗ l&agrave;m, lập gia đ&igrave;nh, gặp kh&oacute; khăn t&agrave;i ch&iacute;nh&hellip; bạn c&oacute; thể coi n&oacute; như một chỉ dẫn hữu &iacute;ch. Từ bản đồ sao, bạn đọc sẽ được học c&aacute;ch diễn giải c&aacute;c cung Ho&agrave;ng đạo, c&aacute;c h&agrave;nh tinh v&agrave; c&aacute;c nh&agrave; trong chi&ecirc;m tinh để hiểu bản th&acirc;n hơn. Qua những lời khuy&ecirc;n thiết thực v&agrave; c&aacute;c trường hợp tham khảo, bạn sẽ kh&aacute;m ph&aacute; c&aacute;ch nu&ocirc;i dưỡng những mối quan hệ, đương đầu với những kh&oacute; khăn v&agrave; nhiều hơn thế nữa.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Với lời văn s&uacute;c t&iacute;ch, dễ hiểu, khoa học v&agrave; phần minh họa sống động, thu h&uacute;t, Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống cung cấp c&aacute;c kiến thức cơ bản v&agrave; nền tảng, sẽ khiến độc giả ho&agrave;n to&agrave;n ch&igrave;m đắm v&agrave; hứng th&uacute; đ&agrave;o s&acirc;u v&agrave;o chi&ecirc;m tinh học. Cuốn s&aacute;ch được viết bởi Carole Taylor, hiện l&agrave; Gi&aacute;m đốc Nghi&ecirc;n cứu tại Khoa Nghi&ecirc;n cứu Chi&ecirc;m tinh học v&agrave; l&agrave; c&acirc;y b&uacute;t uy t&iacute;n trong cộng đồng chi&ecirc;m tinh.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Nhận x&eacute;t về t&aacute;c phẩm:</strong></p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">&ldquo;Cuốn s&aacute;ch kỳ diệu n&agrave;y sẽ đưa ta du h&agrave;nh qua to&agrave;n bộ miền đất chi&ecirc;m tinh&hellip; Lời văn s&uacute;c t&iacute;ch, dễ hiểu v&agrave; phần minh họa sống động, thu h&uacute;t sẽ khiến độc giả ho&agrave;n to&agrave;n ch&igrave;m đắm. Nến, đ&aacute; chi&ecirc;m tinh v&agrave; quyển s&aacute;ch n&agrave;y l&agrave; những g&igrave; m&agrave; bất kỳ ai y&ecirc;u th&iacute;ch chi&ecirc;m tinh đều kh&ocirc;ng thể thiếu được.&rdquo;<br style=\"box-sizing: border-box;\">- B&aacute;o Elite Daily<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">&ldquo;Cuốn s&aacute;ch n&agrave;y sẽ tạo cho độc giả hứng th&uacute; đ&agrave;o s&acirc;u v&agrave;o chi&ecirc;m tinh học nghi&ecirc;m t&uacute;c. Một quyển s&aacute;ch cơ bản v&agrave; nền tảng, c&oacute; gi&aacute; trị tham khảo hơn đa phần kiến thức chi&ecirc;m tinh từ c&aacute;c app điện thoại, video tr&ecirc;n Youtube hay c&aacute;c b&agrave;i viết tr&ecirc;n Instagram m&agrave; ta vẫn thỉnh thoảng lướt qua.&rdquo;<br style=\"box-sizing: border-box;\">- Chi&ecirc;m tinh gia Tim Burness<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Th&ocirc;ng tin t&aacute;c giả: Hiện đang giữ chức Gi&aacute;m đốc Nghi&ecirc;n cứu tại Khoa Nghi&ecirc;n cứu Chi&ecirc;m tinh học v&agrave; từng l&agrave; bi&ecirc;n tập vi&ecirc;n cho chuy&ecirc;n san của Hiệp hội Chi&ecirc;m tinh học Vương quốc Anh, t&aacute;c giả Carole Taylor l&agrave; một c&acirc;y b&uacute;t uy t&iacute;n trong cộng đồng chi&ecirc;m tinh. Bằng lối tr&igrave;nh b&agrave;y kiến thức thực tiễn, dễ d&agrave;ng tiếp cận, Taylor sẽ hướng dẫn độc giả vận dụng sự th&ocirc;ng th&aacute;i của bộ m&ocirc;n chi&ecirc;m tinh học cổ xưa v&agrave;o qu&aacute; tr&igrave;nh tự nhận thức v&agrave; giải quyết những vấn đề của bản th&acirc;n trong c&aacute;c giai đoạn quan trọng của cuộc đời, như khi thay đổi chỗ l&agrave;m, lập gia đ&igrave;nh hay gặp kh&oacute; khăn t&agrave;i ch&iacute;nh.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Với nội dung mạch lạc, khoa học c&ugrave;ng h&igrave;nh ảnh minh họa cuốn h&uacute;t v&agrave; truyền cảm hứng, Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống l&agrave; quyển cẩm nang cần thiết cho mọi độc giả quan t&acirc;m tới chi&ecirc;m tinh học.</p>');
+INSERT INTO `description` VALUES (42, '2021-01-08 00:58:34', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">ỔN ĐỊNH HAY TỰ DO (Y&ecirc;n ổn bạn th&iacute;ch kh&ocirc;ng cho bạn được cuộc đời như mong muốn) - cuốn s&aacute;ch Best-seller d&agrave;nh cho thế hệ GEN Z, tiếp nối H&atilde;y khiến tương lai biết ơn v&igrave; hiện tại bạn đ&atilde; cố gắng hết m&igrave;nh.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Dưới g&oacute;c nh&igrave;n thực tế c&ugrave;ng giọng văn v&ocirc; c&ugrave;ng thẳng thắn, sắc sảo, nữ nh&agrave; văn đ&atilde; thức tỉnh h&agrave;ng vạn thanh ni&ecirc;n Trung Quốc:</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Mơ mộng viển v&ocirc;ng - đơn giản l&agrave; kh&ocirc;ng c&oacute; khả năng thực hiện ước mơ</li>\r\n    <li style=\"box-sizing: border-box;\">Nếu như kh&ocirc;ng c&oacute; đ&iacute;ch đến, th&igrave; gi&oacute; phương n&agrave;o cũng l&agrave; ngược chiều</li>\r\n    <li style=\"box-sizing: border-box;\">Khi t&acirc;m th&aacute;i thay đổi, &aacute;p lực sẽ biến th&agrave;nh động lực</li>\r\n    <li style=\"box-sizing: border-box;\">Th&agrave;nh c&ocirc;ng chỉ ưu &aacute;i cho những người dũng cảm</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Xuy&ecirc;n suốt 300 trang s&aacute;ch, bạn sẽ c&oacute; được hơn 56 b&agrave;i học gi&aacute; trị kh&aacute;c cho bản th&acirc;n:</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Cuốn s&aacute;ch truyền động lực tới bạn: d&aacute;m ước mơ cũng d&aacute;m biến ước mơ th&agrave;nh hiện thực</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&iacute;ch lệ bạn theo đuổi đến c&ugrave;ng sự nỗ lực để đạt được th&agrave;nh tựu tối ưu</li>\r\n    <li style=\"box-sizing: border-box;\">Truyền cảm hứng để sống v&agrave; l&agrave;m theo những g&igrave; m&igrave;nh muốn</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&ocirc;ng qu&ecirc;n nhắc nhở bạn về sức mạnh của th&aacute;i độ mềm mỏng: vừa biết khoan dung cho người kh&aacute;c, vừa biết c&uacute;i m&igrave;nh khi&ecirc;m tốn</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Được viết ra với mục đ&iacute;ch song h&agrave;nh c&ugrave;ng những người trẻ v&igrave; vậy m&agrave; cuốn s&aacute;ch đặc biệt ph&ugrave; hợp d&agrave;nh cho thế hệ GEN Z v&agrave; cuối GEN Y - l&agrave; những người trẻ</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Đứng trước ngưỡng cửa chọn trường, chọn ng&agrave;nh, chọn hướng đi theo đuổi đam m&ecirc;</li>\r\n    <li style=\"box-sizing: border-box;\">Loay hoay v&agrave; mệt mỏi với c&ocirc;ng việc văn ph&ograve;ng 8 tiếng nhưng kh&ocirc;ng biết l&agrave;m sao để thay đổi</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&ocirc;ng c&oacute; động lực sống, học tập v&agrave; l&agrave;m việc. Lu&ocirc;n hoang mang v&agrave; mơ hồ khi nghĩ về tương lai.</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Tr&iacute;ch dẫn lời khuy&ecirc;n đắt gi&aacute; nhất trong cuốn s&aacute;ch: &quot;Nh&acirc;n l&uacute;c c&ograve;n trẻ, ch&uacute;ng ta h&atilde;y cố gắng chạy thật nhanh, l&agrave;m nhiều hơn những g&igrave; bạn muốn l&agrave;m, phấn đấu kh&ocirc;ng ngừng tiến l&ecirc;n, tin tưởng bản th&acirc;n trong tương lai nhất định sẽ c&oacute; một cuộc sống tuyệt vời.&quot;</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Vậy n&ecirc;n ỔN ĐỊNH hay TỰ DO? - bạn h&atilde;y ki&ecirc;n định lựa chọn</p>');
 
 -- ----------------------------
 -- Table structure for historyauc
@@ -432,6 +437,8 @@ INSERT INTO `historyauc` VALUES ('2021-10-07 12:09:57', 9, 14, 4600.00);
 INSERT INTO `historyauc` VALUES ('2021-10-07 23:05:38', 12, 2, 1700.00);
 INSERT INTO `historyauc` VALUES ('2021-10-08 14:50:55', 9, 18, 4400.00);
 INSERT INTO `historyauc` VALUES ('2021-10-10 08:57:04', 10, 27, 4100.00);
+INSERT INTO `historyauc` VALUES ('2021-10-12 20:43:05', 5, 30, 8600.00);
+INSERT INTO `historyauc` VALUES ('2021-10-12 20:50:25', 12, 39, 9000.00);
 INSERT INTO `historyauc` VALUES ('2021-10-13 08:56:26', 9, 32, 4800.00);
 INSERT INTO `historyauc` VALUES ('2021-10-14 00:18:53', 12, 13, 3300.00);
 INSERT INTO `historyauc` VALUES ('2021-10-14 02:30:37', 9, 12, 3200.00);
@@ -450,6 +457,7 @@ INSERT INTO `historyauc` VALUES ('2021-11-08 14:48:07', 10, 2, 2400.00);
 INSERT INTO `historyauc` VALUES ('2021-11-11 20:14:38', 7, 21, 4100.00);
 INSERT INTO `historyauc` VALUES ('2021-11-11 22:12:09', 11, 11, 2500.00);
 INSERT INTO `historyauc` VALUES ('2021-11-12 20:15:29', 5, 32, 5300.00);
+INSERT INTO `historyauc` VALUES ('2021-11-12 20:38:06', 4, 28, 7900.00);
 INSERT INTO `historyauc` VALUES ('2021-11-13 17:32:33', 9, 31, 2500.00);
 INSERT INTO `historyauc` VALUES ('2021-11-14 07:59:55', 10, 25, 4500.00);
 INSERT INTO `historyauc` VALUES ('2021-11-15 21:22:45', 6, 20, 4600.00);
@@ -461,6 +469,7 @@ INSERT INTO `historyauc` VALUES ('2021-11-24 06:18:21', 10, 3, 3200.00);
 INSERT INTO `historyauc` VALUES ('2021-11-24 13:50:22', 7, 19, 3600.00);
 INSERT INTO `historyauc` VALUES ('2021-11-25 14:54:44', 8, 3, 2900.00);
 INSERT INTO `historyauc` VALUES ('2021-11-26 21:38:06', 9, 4, 3400.00);
+INSERT INTO `historyauc` VALUES ('2021-11-27 20:45:45', 8, 32, 5800.00);
 INSERT INTO `historyauc` VALUES ('2021-11-29 22:16:29', 8, 4, 4000.00);
 INSERT INTO `historyauc` VALUES ('2021-11-30 08:42:30', 6, 8, 4000.00);
 INSERT INTO `historyauc` VALUES ('2021-11-30 22:27:50', 12, 12, 4000.00);
@@ -469,6 +478,8 @@ INSERT INTO `historyauc` VALUES ('2021-12-01 23:06:59', 7, 2, 3100.00);
 INSERT INTO `historyauc` VALUES ('2021-12-02 11:57:07', 9, 19, 4100.00);
 INSERT INTO `historyauc` VALUES ('2021-12-07 06:12:27', 8, 3, 3400.00);
 INSERT INTO `historyauc` VALUES ('2021-12-11 01:11:37', 8, 31, 3300.00);
+INSERT INTO `historyauc` VALUES ('2021-12-12 20:38:17', 6, 28, 8600.00);
+INSERT INTO `historyauc` VALUES ('2021-12-12 20:45:54', 5, 32, 6500.00);
 INSERT INTO `historyauc` VALUES ('2021-12-13 09:26:04', 7, 7, 4000.00);
 INSERT INTO `historyauc` VALUES ('2021-12-14 05:42:14', 10, 8, 5600.00);
 INSERT INTO `historyauc` VALUES ('2021-12-15 09:09:54', 8, 9, 5000.00);
@@ -483,6 +494,9 @@ INSERT INTO `historyauc` VALUES ('2021-12-29 17:55:40', 7, 1, 3300.00);
 INSERT INTO `historyauc` VALUES ('2021-12-31 03:09:27', 9, 1, 3600.00);
 INSERT INTO `historyauc` VALUES ('2021-12-31 10:29:06', 7, 17, 4100.00);
 INSERT INTO `historyauc` VALUES ('2022-01-02 13:05:29', 11, 1, 3900.00);
+INSERT INTO `historyauc` VALUES ('2022-01-04 20:46:02', 9, 32, 7300.00);
+INSERT INTO `historyauc` VALUES ('2022-01-12 20:34:50', 10, 41, 8200.00);
+INSERT INTO `historyauc` VALUES ('2022-01-12 20:35:12', 10, 42, 9100.00);
 
 -- ----------------------------
 -- Table structure for product
@@ -502,54 +516,59 @@ CREATE TABLE `product`  (
   `allowBadBidde` tinyint(1) NULL DEFAULT 1,
   `allowNewBiddle` tinyint(1) NULL DEFAULT 1,
   `BidCount` int UNSIGNED NULL DEFAULT 0,
+  `buyUID` int NULL DEFAULT -1,
+  `isRated` tinyint NULL DEFAULT 0,
   PRIMARY KEY (`proID`) USING BTREE,
   INDEX `fk_product_type`(`typID` ASC) USING BTREE,
+  FULLTEXT INDEX `proName`(`proName`),
   CONSTRAINT `fk_product_type` FOREIGN KEY (`typID`) REFERENCES `type` (`typID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 5000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (2, 6, 'Hộp 12 Bút Chì 2B', 3, 1600.00, 8000.00, '2021-09-26 03:58:44', '2022-01-24 02:40:13', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (3, 6, 'Sổ Tay Ghi Chép 60 Trang Gáy Lò Xo A5 Deli - Xanh Dương/Hồng/Vàng/Xanh Lá', 4, 1400.00, 9300.00, '2021-09-30 06:24:04', '2022-11-01 19:03:36', 1, 50.00, 0, 1, 5);
-INSERT INTO `product` VALUES (4, 6, 'Combo 5-10-20 Bút Bi Thiên Long TL-027 - Mực Xanh/Đen/Đỏ/Tím', 2, 1800.00, 8500.00, '2021-03-24 18:34:09', '2022-05-26 00:23:35', 0, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (5, 4, 'Giường Ngủ Pallet Gỗ Thông OCHU - Nancy Bed - Natural', 1, 1400.00, 8900.00, '2021-05-07 18:26:41', '2022-07-17 13:11:18', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (6, 5, 'Không Bao Giờ Là Thất Bại - Tất Cả Là Thử Thách (Ấn Bản Cập Nhật Đầy Đủ Nhất)(Bìa Cứng)', 1, 2000.00, 9300.00, '2021-05-14 02:41:22', '2022-03-13 09:53:18', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (7, 5, 'Sách Muôn Kiếp Nhân Sinh Tặng Bookmark', 3, 1000.00, 7500.00, '2021-06-24 07:05:48', '2022-03-26 15:36:50', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (8, 4, 'TỦ GIÀY THÔNG MINH 3 KHOANG 9 TẦNG - KHÔNG ẨM MỐC, MỐI MỌT', 4, 1600.00, 7300.00, '2021-07-10 11:48:50', '2022-06-19 03:45:09', 1, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (9, 2, 'Máy tính xách tay Laptop Dell Latitude 3420 (Intel Core i5-1135G7 | 14 Inch | RAM 8GB | 256GB SSD NVMe | Intel Iris Xe Graphics | Fedora Os)', 2, 2000.00, 8500.00, '2021-04-18 03:29:03', '2022-03-30 19:03:47', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (10, 1, 'Máy giặt LG Inverter 8.5 kg FV1408S4W', 7, 1800.00, 9600.00, '2021-01-11 09:19:56', '2022-07-10 19:17:33', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (11, 6, 'Bộ 6 Bút Dạ Quang, Bút Highlight Màu Cực Đẹp', 7, 1200.00, 6400.00, '2021-09-12 00:56:07', '2022-12-21 17:16:04', 1, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (12, 1, 'Máy giặt LG Inverter 11.5kg T2351VSAB', 1, 1000.00, 6600.00, '2021-06-05 06:13:13', '2022-04-26 08:58:59', 1, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (13, 6, 'Bảng viết, bảng vẽ điện tử thông minh tự động xóa cho bé - Giao màu ngẫu nhiên', 1, 1600.00, 6700.00, '2020-06-10 13:54:39', '2022-06-13 06:49:11', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (14, 4, 'Ghế xếp thư giãn cao cấp kèm đệm Kachi MK232 - Ghế xếp thông minh văn phòng - Trọng tải 300kg', 7, 1300.00, 7200.00, '2021-01-24 09:52:04', '2022-03-05 20:15:50', 0, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (15, 1, 'Máy Lạnh Toshiba Inverter 1 HP', 4, 1100.00, 7700.00, '2021-02-05 12:08:50', '2022-01-30 13:40:00', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (16, 4, 'Quầy Bar Mini Gỗ, Bàn Bếp Cao Cấp Có Ngăn Tủ Để Đồ Decor Đẹp - Giao màu ngẫu nhiên', 3, 1200.00, 6500.00, '2021-01-21 07:48:49', '2022-02-22 16:04:31', 1, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (17, 5, 'Càng Kỷ Luật, Càng Tự Do', 2, 1500.00, 9000.00, '2020-03-12 00:52:02', '2022-07-28 04:45:19', 1, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (18, 2, 'Laptop Dell Vostro 3405 P132G002ABL (AMD R3-3250U/ 8GB DDR4/ HDD 1Tb/ 14 FHD/ Win11 + Office2021) - Hàng Chính Hãng', 2, 1800.00, 9400.00, '2021-01-21 17:31:25', '2022-03-20 21:03:52', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (19, 6, 'Bộ Màu Nước Solid Water Color Cao Cấp 12/18/24/36 Màu - Tặng Kèm 2 Bút Nước, 2 Mút, 1 Palette - Chuyên Dùng Cho Học Sinh, Sinh Viên, Vẽ Chuyên Nghiệp ', 4, 1800.00, 9500.00, '2021-07-13 00:42:22', '2022-12-07 12:35:09', 0, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (20, 5, 'Tâm Lý Học Hành Vi (Tặng Kèm 1 Bookmark )', 3, 1800.00, 5300.00, '2020-10-29 20:19:49', '2022-04-29 15:09:17', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (21, 3, 'Bộ Dụng Cụ Nhà Bếp Lock&Lock CKT415', 1, 1700.00, 5300.00, '2020-09-30 17:29:49', '2022-03-31 00:43:15', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (22, 3, 'Khay Inox 304 Cao Cấp Đựng Đồ Đa Năng Hình Chữ Nhật Gác Bồn Rửa Bát Tiện Dụng', 4, 1700.00, 5500.00, '2020-05-08 18:43:23', '2022-05-19 08:08:43', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (23, 4, 'Tủ Kệ Sách Đứng Đa Năng 5 Tầng Hiện Đại BAYA Sund Chất Liệu Gỗ MFC Chắc Chắn Thiết Kế Hình Chữ Nhật Nhiều Màu Sắc Tối Giản Trang Nhã', 4, 1300.00, 7500.00, '2020-03-26 14:13:59', '2022-03-14 08:44:57', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (24, 5, 'Combo 2 Tập: Ngỡ Chỉ Là Thoáng Qua Mà Một Đời Thương Nhớ', 2, 2000.00, 7000.00, '2020-11-23 17:49:16', '2022-08-14 01:41:16', 0, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (25, 1, 'Máy Lạnh LG Inverter 1.5 HP V13APF', 2, 1900.00, 8300.00, '2020-11-20 14:11:24', '2022-03-15 05:57:50', 1, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (26, 2, 'Laptop HP 15s-fq2602TU 4B6D3PA (Core i5-1135G7/ 8GB DDR4 2666MHz/ 256GB M.2 PCIe NVMe/ 15.6 HD/ Win11) - Hàng Chính Hãng', 3, 1300.00, 7400.00, '2020-10-23 06:00:32', '2022-11-25 01:32:17', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (27, 3, 'Giá Để Giẻ Rửa Bát, Nước Rửa Chén Đa Năng Inox 304', 4, 1500.00, 5200.00, '2020-03-19 22:30:29', '2022-09-10 18:51:10', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (28, 2, 'Laptop Asus ExpertBook B1400CEAE-EK3724 (Core i5-1135G7/ 8GB DDR4/ 256GB SSD/ 14FHD/ DOS) - Hàng Chính Hãng', 7, 1700.00, 9700.00, '2020-05-06 17:19:03', '2022-06-08 13:25:29', 0, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (29, 1, 'Tủ Lạnh Aqua 130 lít AQR-T150FA-BS', 3, 1000.00, 7500.00, '2020-04-08 15:02:50', '2022-10-30 13:20:44', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (30, 4, 'Kệ để giày dép mini 3 tầng 42 x 20 x 58 cm Chấn Thuận Thành đa năng, nhỏ gọn, có thể tháo rời, hàng Việt Nam chất lượng cao (KDN3T20) nhiều màu', 4, 1400.00, 9100.00, '2020-03-23 09:27:39', '2022-08-08 07:09:26', 1, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (31, 3, 'Lọ đựng gia vị, dầu ăn, nước chấm bằng thủy tinh trong suốt kèm muỗng tiện lợi', 3, 1100.00, 5400.00, '2020-08-06 23:05:48', '2022-05-25 03:44:23', 1, 200.00, 1, 1, 5);
-INSERT INTO `product` VALUES (32, 3, 'Máy xay tỏi ớt bằng tay Lock&Lock (Nhiều kích cỡ) - Hàng chính hãng, lực nghiền mạnh với 3 lưỡi dao thép không gỉ', 2, 1100.00, 9700.00, '2020-07-31 10:51:03', '2022-12-04 01:21:08', 0, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (33, 2, 'Laptop Dell Inspiron 5410 P143G001ASL (Core i5-11320H/ 8GB DDR4/ 512GB SSD/ 14 FHD/ Win10 + Office) - Hàng Chính Hãng', 4, 1700.00, 8400.00, '2020-03-19 08:21:22', '2022-09-19 19:55:28', 1, 100.00, 0, 1, 5);
-INSERT INTO `product` VALUES (34, 5, 'Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội', 1, 1000.00, 9000.00, '2020-10-26 02:33:22', '2022-12-30 17:45:00', 0, 200.00, 0, 1, 5);
-INSERT INTO `product` VALUES (35, 3, 'Kẹp Gắp Đồ Ăn Bằng Inox', 3, 1500.00, 9100.00, '2020-08-26 15:46:52', '2022-11-24 03:44:18', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (36, 1, 'Máy giặt Electrolux Inverter 10 kg EWF1024BDWA', 2, 1900.00, 5500.00, '2020-11-03 17:18:17', '2022-08-26 18:23:49', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (37, 6, 'Bảng học sinh, bảng 2 mặt, học chữ cái mặt viết phấn và mặt viết bút lông xóa được.', 1, 1700.00, 7200.00, '2020-03-19 08:21:22', '2021-07-13 00:42:22', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (38, 6, 'Bộ bút dạ vẽ nghệ thuật HK Milkliner 12 Màu da dụng chất lượng cao PEN001', 1, 1800.00, 6000.00, '2020-08-06 23:05:48', '2021-09-12 00:56:07', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (39, 6, 'Gọt bút chì quay tay in hình ngộ nghĩnh', 1, 1300.00, 9200.00, '2020-08-26 15:46:52', '2021-06-05 06:13:13', 1, 100.00, 1, 1, 5);
-INSERT INTO `product` VALUES (40, 6, 'Hộp 12 bút chì 2B Foska QB043', 1, 1200.00, 7000.00, '2020-11-03 17:18:17', '2021-07-10 11:48:50', 1, 100.00, 1, 1, 5);
+INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 5000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (2, 6, 'Hộp 12 Bút Chì 2B', 3, 1600.00, 8000.00, '2021-09-26 03:58:44', '2022-01-24 02:40:13', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (3, 6, 'Sổ Tay Ghi Chép 60 Trang Gáy Lò Xo A5 Deli - Xanh Dương/Hồng/Vàng/Xanh Lá', 4, 1400.00, 9300.00, '2021-09-30 06:24:04', '2022-11-01 19:03:36', 1, 50.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (4, 6, 'Combo 5-10-20 Bút Bi Thiên Long TL-027 - Mực Xanh/Đen/Đỏ/Tím', 2, 1800.00, 8500.00, '2021-03-24 18:34:09', '2022-05-26 00:23:35', 0, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (5, 4, 'Giường Ngủ Pallet Gỗ Thông OCHU - Nancy Bed - Natural', 1, 1400.00, 8900.00, '2021-05-07 18:26:41', '2022-07-17 13:11:18', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (6, 5, 'Không Bao Giờ Là Thất Bại - Tất Cả Là Thử Thách (Ấn Bản Cập Nhật Đầy Đủ Nhất)(Bìa Cứng)', 1, 2000.00, 9300.00, '2021-05-14 02:41:22', '2022-03-13 09:53:18', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (7, 5, 'Sách Muôn Kiếp Nhân Sinh Tặng Bookmark', 3, 1000.00, 7500.00, '2021-06-24 07:05:48', '2022-03-26 15:36:50', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (8, 4, 'TỦ GIÀY THÔNG MINH 3 KHOANG 9 TẦNG - KHÔNG ẨM MỐC, MỐI MỌT', 4, 1600.00, 7300.00, '2021-07-10 11:48:50', '2022-06-19 03:45:09', 1, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (9, 2, 'Máy tính xách tay Laptop Dell Latitude 3420 (Intel Core i5-1135G7 | 14 Inch | RAM 8GB | 256GB SSD NVMe | Intel Iris Xe Graphics | Fedora Os)', 2, 2000.00, 8500.00, '2021-04-18 03:29:03', '2022-03-30 19:03:47', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (10, 1, 'Máy giặt LG Inverter 8.5 kg FV1408S4W', 7, 1800.00, 9600.00, '2021-01-11 09:19:56', '2022-07-10 19:17:33', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (11, 6, 'Bộ 6 Bút Dạ Quang, Bút Highlight Màu Cực Đẹp', 7, 1200.00, 6400.00, '2021-09-12 00:56:07', '2022-12-21 17:16:04', 1, 100.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (12, 1, 'Máy giặt LG Inverter 11.5kg T2351VSAB', 1, 1000.00, 6600.00, '2021-06-05 06:13:13', '2022-04-26 08:58:59', 1, 100.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (13, 6, 'Bảng viết, bảng vẽ điện tử thông minh tự động xóa cho bé - Giao màu ngẫu nhiên', 1, 1600.00, 6700.00, '2020-06-10 13:54:39', '2022-06-13 06:49:11', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (14, 4, 'Ghế xếp thư giãn cao cấp kèm đệm Kachi MK232 - Ghế xếp thông minh văn phòng - Trọng tải 300kg', 7, 1300.00, 7200.00, '2021-01-24 09:52:04', '2022-03-05 20:15:50', 0, 100.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (15, 1, 'Máy Lạnh Toshiba Inverter 1 HP', 4, 1100.00, 7700.00, '2021-02-05 12:08:50', '2022-01-30 13:40:00', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (16, 4, 'Quầy Bar Mini Gỗ, Bàn Bếp Cao Cấp Có Ngăn Tủ Để Đồ Decor Đẹp - Giao màu ngẫu nhiên', 3, 1200.00, 6500.00, '2021-01-21 07:48:49', '2022-02-22 16:04:31', 1, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (17, 5, 'Càng Kỷ Luật, Càng Tự Do', 2, 1500.00, 9000.00, '2020-03-12 00:52:02', '2022-07-28 04:45:19', 1, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (18, 2, 'Laptop Dell Vostro 3405 P132G002ABL (AMD R3-3250U/ 8GB DDR4/ HDD 1Tb/ 14 FHD/ Win11 + Office2021) - Hàng Chính Hãng', 2, 1800.00, 9400.00, '2021-01-21 17:31:25', '2022-03-20 21:03:52', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (19, 6, 'Bộ Màu Nước Solid Water Color Cao Cấp 12/18/24/36 Màu - Tặng Kèm 2 Bút Nước, 2 Mút, 1 Palette - Chuyên Dùng Cho Học Sinh, Sinh Viên, Vẽ Chuyên Nghiệp ', 4, 1800.00, 9500.00, '2021-07-13 00:42:22', '2022-12-07 12:35:09', 0, 100.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (20, 5, 'Tâm Lý Học Hành Vi (Tặng Kèm 1 Bookmark )', 3, 1800.00, 5300.00, '2020-10-29 20:19:49', '2022-04-29 15:09:17', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (21, 3, 'Bộ Dụng Cụ Nhà Bếp Lock&Lock CKT415', 1, 1700.00, 5300.00, '2020-09-30 17:29:49', '2022-03-31 00:43:15', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (22, 3, 'Khay Inox 304 Cao Cấp Đựng Đồ Đa Năng Hình Chữ Nhật Gác Bồn Rửa Bát Tiện Dụng', 4, 1700.00, 5500.00, '2020-05-08 18:43:23', '2022-05-19 08:08:43', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (23, 4, 'Tủ Kệ Sách Đứng Đa Năng 5 Tầng Hiện Đại BAYA Sund Chất Liệu Gỗ MFC Chắc Chắn Thiết Kế Hình Chữ Nhật Nhiều Màu Sắc Tối Giản Trang Nhã', 4, 1300.00, 7500.00, '2020-03-26 14:13:59', '2022-03-14 08:44:57', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (24, 5, 'Combo 2 Tập: Ngỡ Chỉ Là Thoáng Qua Mà Một Đời Thương Nhớ', 2, 2000.00, 7000.00, '2020-11-23 17:49:16', '2022-08-14 01:41:16', 0, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (25, 1, 'Máy Lạnh LG Inverter 1.5 HP V13APF', 2, 1900.00, 8300.00, '2020-11-20 14:11:24', '2022-03-15 05:57:50', 1, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (26, 2, 'Laptop HP 15s-fq2602TU 4B6D3PA (Core i5-1135G7/ 8GB DDR4 2666MHz/ 256GB M.2 PCIe NVMe/ 15.6 HD/ Win11) - Hàng Chính Hãng', 3, 1300.00, 7400.00, '2020-10-23 06:00:32', '2022-11-25 01:32:17', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (27, 3, 'Giá Để Giẻ Rửa Bát, Nước Rửa Chén Đa Năng Inox 304', 4, 1500.00, 5200.00, '2020-03-19 22:30:29', '2022-09-10 18:51:10', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (28, 2, 'Laptop Asus ExpertBook B1400CEAE-EK3724 (Core i5-1135G7/ 8GB DDR4/ 256GB SSD/ 14FHD/ DOS) - Hàng Chính Hãng', 7, 1700.00, 9700.00, '2020-05-06 17:19:03', '2022-06-08 13:25:29', 0, 100.00, 0, 1, 7, -1, 0);
+INSERT INTO `product` VALUES (29, 1, 'Tủ Lạnh Aqua 130 lít AQR-T150FA-BS', 3, 1000.00, 7500.00, '2020-04-08 15:02:50', '2022-10-30 13:20:44', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (30, 4, 'Kệ để giày dép mini 3 tầng 42 x 20 x 58 cm Chấn Thuận Thành đa năng, nhỏ gọn, có thể tháo rời, hàng Việt Nam chất lượng cao (KDN3T20) nhiều màu', 4, 1400.00, 9100.00, '2020-03-23 09:27:39', '2022-08-08 07:09:26', 1, 100.00, 0, 1, 6, -1, 0);
+INSERT INTO `product` VALUES (31, 3, 'Lọ đựng gia vị, dầu ăn, nước chấm bằng thủy tinh trong suốt kèm muỗng tiện lợi', 3, 1100.00, 5400.00, '2020-08-06 23:05:48', '2022-05-25 03:44:23', 1, 200.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (32, 3, 'Máy xay tỏi ớt bằng tay Lock&Lock (Nhiều kích cỡ) - Hàng chính hãng, lực nghiền mạnh với 3 lưỡi dao thép không gỉ', 2, 1100.00, 9700.00, '2020-07-31 10:51:03', '2022-12-04 01:21:08', 0, 100.00, 1, 1, 8, -1, 0);
+INSERT INTO `product` VALUES (33, 2, 'Laptop Dell Inspiron 5410 P143G001ASL (Core i5-11320H/ 8GB DDR4/ 512GB SSD/ 14 FHD/ Win10 + Office) - Hàng Chính Hãng', 4, 1700.00, 8400.00, '2020-03-19 08:21:22', '2022-09-19 19:55:28', 1, 100.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (34, 5, 'Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội', 1, 1000.00, 9000.00, '2020-10-26 02:33:22', '2022-12-30 17:45:00', 0, 200.00, 0, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (35, 3, 'Kẹp Gắp Đồ Ăn Bằng Inox', 3, 1500.00, 9100.00, '2020-08-26 15:46:52', '2022-11-24 03:44:18', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (36, 1, 'Máy giặt Electrolux Inverter 10 kg EWF1024BDWA', 2, 1900.00, 5500.00, '2020-11-03 17:18:17', '2022-08-26 18:23:49', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (37, 6, 'Bảng học sinh, bảng 2 mặt, học chữ cái mặt viết phấn và mặt viết bút lông xóa được.', 1, 1700.00, 7200.00, '2020-03-19 08:21:22', '2021-07-13 00:42:22', 1, 100.00, 1, 1, 5, -1, 1);
+INSERT INTO `product` VALUES (38, 6, 'Bộ bút dạ vẽ nghệ thuật HK Milkliner 12 Màu da dụng chất lượng cao PEN001', 1, 1800.00, 6000.00, '2020-08-06 23:05:48', '2021-09-12 00:56:07', 1, 100.00, 1, 1, 5, -1, 0);
+INSERT INTO `product` VALUES (39, 6, 'Gọt bút chì quay tay in hình ngộ nghĩnh', 1, 1300.00, 9200.00, '2020-08-26 15:46:52', '2021-06-05 06:13:13', 1, 100.00, 1, 1, 7, -1, 1);
+INSERT INTO `product` VALUES (40, 6, 'Hộp 12 bút chì 2B Foska QB043', 1, 1200.00, 7000.00, '2020-11-03 17:18:17', '2021-07-10 11:48:50', 1, 100.00, 1, 1, 5, -1, 1);
+INSERT INTO `product` VALUES (41, 5, 'Chiêm Tinh Học - Vận Dụng Trí Tuệ Về Các Vì Sao Vào Đời Sống', 1, 1600.00, 8200.00, '2021-01-21 18:38:05', '2022-02-24 14:52:54', 1, 100.00, 0, 0, 6, 10, 0);
+INSERT INTO `product` VALUES (42, 5, 'Ổn Định Hay Tự Do', 1, 1000.00, 9100.00, '2021-01-08 00:58:34', '2022-02-18 10:40:19', 0, 100.00, 1, 0, 6, 10, 0);
 
 -- ----------------------------
 -- Table structure for rating
@@ -558,13 +577,13 @@ DROP TABLE IF EXISTS `rating`;
 CREATE TABLE `rating`  (
   `UIDRater` int NOT NULL,
   `UID` int NOT NULL,
-  `proID` int NOT NULL,
+  `ratingProID` int NOT NULL,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `Type` int NULL DEFAULT NULL,
-  PRIMARY KEY (`UIDRater`, `UID`, `proID`) USING BTREE,
+  PRIMARY KEY (`UIDRater`, `UID`, `ratingProID`) USING BTREE,
   INDEX `fk_rating_users`(`UID` ASC) USING BTREE,
-  INDEX `fk_rating_product`(`proID` ASC) USING BTREE,
-  CONSTRAINT `fk_rating_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  INDEX `fk_rating_product`(`ratingProID` ASC) USING BTREE,
+  CONSTRAINT `fk_rating_product` FOREIGN KEY (`ratingProID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_rating_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -572,8 +591,8 @@ CREATE TABLE `rating`  (
 -- Records of rating
 -- ----------------------------
 INSERT INTO `rating` VALUES (1, 10, 37, 'Cám ơn', 1);
-INSERT INTO `rating` VALUES (1, 10, 39, 'Người thăng không thanh toán', 0);
-INSERT INTO `rating` VALUES (1, 10, 40, 'Xin lỗi quý khách', 1);
+INSERT INTO `rating` VALUES (1, 10, 39, 'Người thắng không thanh toán', 0);
+INSERT INTO `rating` VALUES (1, 10, 40, 'Cám ơn', 1);
 INSERT INTO `rating` VALUES (10, 1, 37, 'Sản phẩm tốt', 1);
 INSERT INTO `rating` VALUES (10, 1, 40, 'Sản phẩm lỗi', 0);
 
@@ -591,9 +610,9 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('TrNVSe6iSde-iHXWoyL-_Mmi-zNPmV-u', 1641841474, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
-INSERT INTO `sessions` VALUES ('WooVl3ISmoV1Ic5gKuGjT0LN4J1DCpCt', 1641910071, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
-INSERT INTO `sessions` VALUES ('u_pP5_UguAx3vYnXe9S78F6w-chTnYM5', 1641832794, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":false}');
+INSERT INTO `sessions` VALUES ('1iLVWLqzJiQuIohfpm2lEN6CbtnDDsWF', 1642006699, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/product/detail/4\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
+INSERT INTO `sessions` VALUES ('4mvEwFJM-HindTX0gjvFEDn7kIk9gDgJ', 1641998626, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/product/detail/16\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
+INSERT INTO `sessions` VALUES ('hxzOa3yJZyPriUgAXFSbC_eGczaQqHwS', 1642075438, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
 
 -- ----------------------------
 -- Table structure for type
@@ -783,6 +802,8 @@ CREATE TABLE `winauction`  (
   `proID` int NOT NULL,
   `UID` int NULL DEFAULT NULL,
   `winPrice` decimal(15, 2) NULL DEFAULT NULL,
+  `isRated` tinyint NULL DEFAULT 0,
+  `type` tinyint NULL DEFAULT 0,
   PRIMARY KEY (`proID`) USING BTREE,
   CONSTRAINT `fk_winAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
@@ -790,10 +811,126 @@ CREATE TABLE `winauction`  (
 -- ----------------------------
 -- Records of winauction
 -- ----------------------------
-INSERT INTO `winauction` VALUES (37, 10, 5600.00);
-INSERT INTO `winauction` VALUES (38, 10, 4500.00);
-INSERT INTO `winauction` VALUES (39, 10, 8500.00);
-INSERT INTO `winauction` VALUES (40, 10, 5600.00);
+INSERT INTO `winauction` VALUES (37, 10, 5600.00, 1, 0);
+INSERT INTO `winauction` VALUES (38, 10, 4500.00, 0, 0);
+INSERT INTO `winauction` VALUES (39, 10, 8500.00, 0, 0);
+INSERT INTO `winauction` VALUES (40, 10, 5600.00, 1, 0);
+INSERT INTO `winauction` VALUES (41, 10, 8200.00, 0, 1);
+INSERT INTO `winauction` VALUES (42, 10, 9100.00, 0, 1);
+
+-- ----------------------------
+-- Procedure structure for textSearch
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `textSearch`;
+delimiter ;;
+CREATE PROCEDURE `textSearch`(keyword VARCHAR (150),
+	scatID INT,
+	stypID INT,
+	limitNum INT,
+	offsetNum INT,
+	sortOrder VARCHAR (50),
+	sortColumn VARCHAR (50))
+BEGIN
+	SELECT
+		p.*,
+		u.UID,
+		u.`name`,
+		u.email,
+		h.price
+	FROM
+		product p
+		JOIN historyauc h ON p.proID = h.proID
+		JOIN (
+		SELECT
+			h2.proID,
+			MAX( h2.price ) AS price 
+		FROM
+			historyauc h2
+			JOIN currentauction c ON h2.UID = c.UID 
+		WHERE
+			c.isBlock != 1 
+		GROUP BY
+			h2.proID 
+		) t1 ON t1.proID = h.proID 
+		AND h.price = t1.price
+		JOIN users u ON h.UID = u.UID
+		JOIN type typ ON typ.typID = p.typID 
+	WHERE
+		p.endDate > NOW() 
+		AND (
+			typ.catID = scatID 
+			OR scatID IS NULL 
+		) 
+		AND (
+			typ.typID = stypID 
+			OR stypID IS NULL 
+		) 
+		AND MATCH ( p.proName ) AGAINST ( keyword IN BOOLEAN MODE) 
+	ORDER BY
+	CASE
+			WHEN sortOrder <> 'ASC' THEN cast( NULL AS datetime ) 
+			WHEN sortColumn = 'time' THEN p.endDate 
+		END ASC,
+	CASE
+			WHEN sortOrder <> 'ASC' THEN 0
+			WHEN sortColumn = 'price' THEN h.price
+		END ASC,
+	CASE
+			WHEN sortOrder <> 'DESC' THEN cast( NULL AS datetime ) 
+			WHEN sortColumn = 'time' THEN p.endDate 
+		END DESC,
+	CASE
+			WHEN sortOrder <> 'DESC' THEN 0
+			WHEN sortColumn = 'price' THEN h.price
+		END DESC
+	LIMIT limitNum OFFSET offsetNum ;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for textSearchCount
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `textSearchCount`;
+delimiter ;;
+CREATE PROCEDURE `textSearchCount`(keyword VARCHAR (150),
+	scatID INT,
+	stypID INT)
+BEGIN
+	SELECT
+		COUNT(p.proID) as amount
+	FROM
+		product p
+		JOIN historyauc h ON p.proID = h.proID
+		JOIN (
+		SELECT
+			h2.proID,
+			MAX( h2.price ) AS price 
+		FROM
+			historyauc h2
+			JOIN currentauction c ON h2.UID = c.UID 
+		WHERE
+			c.isBlock != 1 
+		GROUP BY
+			h2.proID 
+		) t1 ON t1.proID = h.proID 
+		AND h.price = t1.price
+		JOIN users u ON h.UID = u.UID
+		JOIN type typ ON typ.typID = p.typID 
+	WHERE
+		p.endDate > NOW() 
+		AND (
+			typ.catID = scatID 
+			OR scatID IS NULL 
+		) 
+		AND (
+			typ.typID = stypID 
+			OR stypID IS NULL 
+		) 
+		AND MATCH ( p.proName ) AGAINST ( keyword IN BOOLEAN MODE);
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Triggers structure for table historyauc

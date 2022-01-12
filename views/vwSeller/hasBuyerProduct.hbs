@@ -40,7 +40,7 @@
         <!-- End dashboard sidebar -->
 
         <!-- Start dashboard has winner auction content -->
-        <div class="side-bar-content has-winner-auction-content col-lg-7">
+        <div class="side-bar-content col-lg-7">
             <div class="sb-content-header">
                 <h3 class="text-center">Sản phẩm đã có người mua</h3>
             </div>
@@ -53,7 +53,7 @@
                                                            alt="img"></div>
                             <div class="bgdarkbluecolor aboutitemcnt">
                                 <div class="itemtitlecode">
-                                    <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+                                    <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span>Đã có người mua</span></h2>
                                     <h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
                                 </div>
                                 <div class="product-price mb-auto">
@@ -74,14 +74,17 @@
                                     </span>
                                     </div>
                                 </div>
-                                <div class="createTime"><i>{{format_date startDate}}</i></div>
                                 <div class="card-bottom mt-1 d-flex justify-content-end">
-                                    <a class="btn btn-sm btn-primary" href="" role="button">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
-                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                    </a>
+                                    {{#if (equal isRated 1)}}
+                                        <a href="">Xem đánh giá</a>
+                                    {{else}}
+                                        <a class="btn btn-sm btn-primary" href="" role="button">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
+                                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                        </a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>

@@ -62,7 +62,7 @@ router.get('/has-winner-product/:id', async function(req, res){
 
 router.get('/has-buyer-product/:id', async function(req, res){
     const UID = req.params.id;
-    const pros = await sellerModel.findAllHasWinnerProduct(UID);
+    const pros = await sellerModel.findAllHasBuyerProduct(UID);
 
     const limit = 6;
     const page = req.query.page || 1;
@@ -80,7 +80,7 @@ router.get('/has-buyer-product/:id', async function(req, res){
         });
     }
 
-    const list = await sellerModel.findHasWinnerProductByPage(UID, limit, offset);
+    const list = await sellerModel.findHasBuyerProductByPage(UID, limit, offset);
 
     res.render('vwSeller/hasBuyerProduct', {
         products: list,
