@@ -3,7 +3,10 @@ import fetch from 'isomorphic-fetch';
 import bcrypt from "bcrypt";
 import userModel from "../models/users.model.js";
 import auth from "../middlewares/auth.mdw.js";
-import productModel from "../models/product.model.js"
+import productModel from "../models/product.model.js";
+import email from "../utils/email.js";
+import otpModel from"../models/otpModel.js";
+
 
 
 const router = express.Router();
@@ -47,19 +50,36 @@ router.post('/sign-up', async function (req, res) {
                     password: hash,
                     type: 2
                 }
-                await userModel.add(user);
-                return res.render('vwAccount/signin', {
+                // await userModel.add(user);
+                const otp = await otpModel.createOTP(user.email);
+                await email.sendOTP(user.email, otp);
+                return res.render('vwAccount/submitOtp', {
                     layout: false,
-                    successMsg: "Đăng ký thành công vui lòng hoàn tất đăng nhập"
+                    user
                 });
             } else {
-                // return res.send({response: "Failed"});
+                return res.render('vwAccount/signup', {
+                    layout: false,
+                    failMsg: "Đăng ký thất bại, vui lòng xác nhận lại recaptcha "
+                });
             }
         })
         .catch((error) => {
             // Some error while verify captcha
             return res.json({error});
         });
+})
+
+router.post('/verify-otp', async function (req,res){
+    const user ={
+        email: req.body.email,
+        name: req.body.name,
+        address: req.body.address,
+        password: req.body.password,
+        type: req.body.type
+    }
+    await userModel.add(user);
+    // res.render('vwAccount/submitOtp',{layout: false});
 })
 
 router.post('/sign-in', async function (req, res) {

@@ -7,6 +7,8 @@ import activate_view_middleware from './middlewares/view.mdw.js';
 import activate_route_middleware from './middlewares/routes.mdw.js';
 import activate_session_middleware from './middlewares/session.mdw.js';
 
+
+
 const app = express();
 app.use(morgan('dev'));
 

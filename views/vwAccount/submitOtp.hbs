@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Sign Up</title>
+		<meta charset="utf-8">
+		<meta name="Googlebot-News" content="noindex, nofollow">
+		<meta name="googlebot" content="noindex, nofollow">
+		<meta name="robots" content="noimageindex">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" media="all" href="/public/css/bootstrap.min.css">
+		<link rel="stylesheet" media="all" href="/public/css/slick.css">
+		<link rel="stylesheet" media="all" href="/public/css/slick-theme.css">
+		<link rel="stylesheet" media="all" href="/public/css/style.css">
+		<link rel="icon" type="image/png" sizes="28x28" href="img/favi.png">
+		<meta name="theme-color" content="#sdfsf">
+
+	</head>
+	<body class="themebgcolor">
+		<div class="circlebg1"><img class="img-fluid" src="/public/images/circlebg19.svg" alt="img"></div>
+		<!-- banner sec -->
+		<div class="bannerSec">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bannercntSec signupsec">
+							<div class="bannercnt signctn">
+								<p class="textwhitecolor w-100">Quay lại
+									<a href="/">trang chủ</a></p>
+								<br>
+								<h2 class="textwhitecolor signheading">Xác nhận OTP <span
+										class="textbluecolor">để hoàn tất đăng nhập</span></h2>
+								{{#if failMsg}}
+									<div class="alert alert-danger w-100" role="alert">
+										{{failMsg}}
+										<button type="button" class="btn-close float-end" data-bs-dismiss="alert"
+												aria-label="Close"></button>
+									</div>
+								{{/if}}
+
+								<div class="sign-from signup-form">
+									<div class="mt-2">
+										<p>Hệ thống đã gửi email cho bạn mã otp, vui lòng kiểm tra email và nhập mã otp
+											<a href="#" id="resend">Gửi lại</a></p>
+									</div>
+									<form action="/account/verify-otp" id="otpform" method="post">
+										<div class="input-box">
+											<input name="email" type="text" value="{{user.email}}" hidden>
+											<input name="address" type="text" value="{{user.address}}" hidden>
+											<input name="name" type="text" value="{{user.name}}" hidden>
+											<input name="password" type="text" value="{{user.password}}" hidden>
+											<input name="type" type="text" value="2" hidden>
+											<input type="text" name="otp" placeholder="Nhập mã OTP"
+												   class="form-input" required>
+										</div>
+										<button class="btn btnlightblue me-3 w-100" id="" type="submit">Xác nhận
+										</button>
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="/public/js/bootstrap.bundle.min.js"></script>
+		<script src="/public/js/slick.js"></script>
+		<script src="/public/js/comman.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				// alert('hello')
+				// $("#otpform").submit(function (event) {
+				// 	axios({
+				// 		method: 'post',
+				// 		url: '/user/12345',
+				// 		data: {
+				// 			firstName: 'Fred',
+				// 			lastName: 'Flintstone'
+				// 		}
+				// 	});
+				//
+				// });
+			})
+		</script>
+
+	</body>
+</html>

@@ -2,7 +2,6 @@ import express from "express";
 import productModel from "../models/product.model.js";
 import categoryModel from "../models/category.model.js";
 import detailModel from "../models/detail.model.js";
-import protectEmail from "../middlewares/protectEmail.mdw.js";
 
 const router = express.Router();
 

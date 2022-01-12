@@ -126,3 +126,4 @@ document.addEventListener('click', function (e) {
         e.target.children[0].classList.toggle('active');
     }
 })
+
