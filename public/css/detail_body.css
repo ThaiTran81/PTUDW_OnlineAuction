@@ -243,6 +243,11 @@ ul.current-higest-bidder li {
     background: transparent;
 }
 
+.price-input::placeholder {
+    color: #c0c0c0;
+    opacity: 1;
+}
+
 .product-bid-form button.custom-button {
     text-transform: capitalize;
     height: 50px;
@@ -271,13 +276,26 @@ ul.current-higest-bidder li {
     padding-top: 2%;
     padding-bottom: 1%;
     border-radius: 10px;
+    /*max-height: 580px;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
 }
+
+/*.description-container .read-more-btn {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*    margin: 0; padding: 30px 0;*/
+
+/*    background-image: linear-gradient(to bottom, transparent, #f8edeb);*/
+/*}*/
 
 /* Product Bidding session */
 
 .dashboard-purchasing-tabs {
     padding: 2%;
-    margin-top: 5%;
     background-color: azure;
     border-radius: 10px;
 }
@@ -310,7 +328,7 @@ ul.current-higest-bidder li {
     left: 0;
     right: 100%;
     top: calc(100% - 3px);
-    background: #ee4730;
+    background: #4cc9f0;
     position: absolute;
     content: "";
     -webkit-transition: all ease 0.3s;
@@ -333,8 +351,25 @@ ul.current-higest-bidder li {
     }
 }
 
+.tab-content::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+    background: #4cc9f0;
+    border-radius: 10px;
+    border: 2px solid #4cc9f0;
+}
+
+.tab-content::-webkit-scrollbar-track {
+    background: rgba(62,82,108,0.3);
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
 div.limit-height-tab {
-    height: 8rem;
+    height: 14rem;
     overflow-y: scroll;
 }
 
@@ -536,4 +571,26 @@ bottom: .5em;
 .related-auction.auction-end-time-value {
     font-weight: bold;
     font-size: 100%;
+}
+
+/*Description additional form*/
+
+#model-box {
+    z-index: 2 !important;
+    position: fixed;
+    top: 0px;
+}
+
+.model-background {
+    background-color: rgba(200,200,200,0.5);
+}
+
+.description-additional-form {
+    background-color: #fff;
+    height: 60%;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

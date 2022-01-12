@@ -1,18 +1,3 @@
-var auctionListIndex = 1;
-showAuctionList(auctionListIndex);
-
-function showAuctionList(n) {
-  var forms = document.getElementsByClassName("side-bar-content");
-  if (n == 1) {
-    forms[1].style.display = "none";
-    forms[0].style.display = "block";
-  }
-  if (n == 2) {
-    forms[0].style.display = "none";
-    forms[1].style.display = "block";
-  }
-}
-
 /*  ==========================================
     SHOW UPLOADED IMAGE
 * ========================================== */
