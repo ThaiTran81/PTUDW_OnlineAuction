@@ -11,7 +11,7 @@
  Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 12/01/2022 20:54:35
+ Date: 13/01/2022 01:19:45
 */
 
 SET NAMES utf8mb4;
@@ -567,8 +567,8 @@ INSERT INTO `product` VALUES (37, 6, 'Bảng học sinh, bảng 2 mặt, học c
 INSERT INTO `product` VALUES (38, 6, 'Bộ bút dạ vẽ nghệ thuật HK Milkliner 12 Màu da dụng chất lượng cao PEN001', 1, 1800.00, 6000.00, '2020-08-06 23:05:48', '2021-09-12 00:56:07', 1, 100.00, 1, 1, 5, -1, 0);
 INSERT INTO `product` VALUES (39, 6, 'Gọt bút chì quay tay in hình ngộ nghĩnh', 1, 1300.00, 9200.00, '2020-08-26 15:46:52', '2021-06-05 06:13:13', 1, 100.00, 1, 1, 7, -1, 1);
 INSERT INTO `product` VALUES (40, 6, 'Hộp 12 bút chì 2B Foska QB043', 1, 1200.00, 7000.00, '2020-11-03 17:18:17', '2021-07-10 11:48:50', 1, 100.00, 1, 1, 5, -1, 1);
-INSERT INTO `product` VALUES (41, 5, 'Chiêm Tinh Học - Vận Dụng Trí Tuệ Về Các Vì Sao Vào Đời Sống', 1, 1600.00, 8200.00, '2021-01-21 18:38:05', '2022-02-24 14:52:54', 1, 100.00, 0, 0, 6, 10, 0);
-INSERT INTO `product` VALUES (42, 5, 'Ổn Định Hay Tự Do', 1, 1000.00, 9100.00, '2021-01-08 00:58:34', '2022-02-18 10:40:19', 0, 100.00, 1, 0, 6, 10, 0);
+INSERT INTO `product` VALUES (41, 5, 'Chiêm Tinh Học - Vận Dụng Trí Tuệ Về Các Vì Sao Vào Đời Sống', 1, 1600.00, 8200.00, '2021-01-21 18:38:05', '2022-02-24 14:52:54', 1, 100.00, 0, 0, 1, 10, 0);
+INSERT INTO `product` VALUES (42, 5, 'Ổn Định Hay Tự Do', 1, 1000.00, 9100.00, '2021-01-08 00:58:34', '2022-02-18 10:40:19', 0, 100.00, 1, 0, 1, 10, 1);
 
 -- ----------------------------
 -- Table structure for rating
@@ -610,9 +610,7 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('1iLVWLqzJiQuIohfpm2lEN6CbtnDDsWF', 1642006699, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/product/detail/4\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
-INSERT INTO `sessions` VALUES ('4mvEwFJM-HindTX0gjvFEDn7kIk9gDgJ', 1641998626, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/product/detail/16\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
-INSERT INTO `sessions` VALUES ('hxzOa3yJZyPriUgAXFSbC_eGczaQqHwS', 1642075438, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
+INSERT INTO `sessions` VALUES ('hxzOa3yJZyPriUgAXFSbC_eGczaQqHwS', 1642097587, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/product/detail/1\",\"authUser\":{\"UID\":10,\"email\":\"kcoleman@outlook.com\",\"name\":\"Kathy Coleman\",\"addr\":\"295 Redfern St\",\"dob\":\"1996-12-27T17:00:00.000Z\",\"type\":2,\"good\":75,\"dislike\":8}}');
 
 -- ----------------------------
 -- Table structure for type
