@@ -4683,6 +4683,7 @@ textarea.form-input {
 }
 
 .product {
+    width: 100%;
     margin-top: 10px;
     background-color: #e9d8a6;
     padding: 10px;
@@ -4690,9 +4691,12 @@ textarea.form-input {
 
 }
 
+.product .row {
+    width: 100%;
+}
+
 .pro-thumb {
-    width: 70px;
-    max-height: 90px;
+    width: 120px;
 }
 
 .pro-thumb img {
@@ -4701,14 +4705,14 @@ textarea.form-input {
 }
 
 .pro-name a {
-    width: 100%;
+    /* width: 100%; */
     font-weight: 500;
     font-size: 1.2rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    min-height: 46px;
+    min-height: 1.2rem;
     margin-left: 5px;
 }
 
