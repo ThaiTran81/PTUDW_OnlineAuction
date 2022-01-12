@@ -40,7 +40,7 @@
         <!-- End dashboard sidebar -->
 
         <!-- Start dashboard has winner auction content -->
-        <div class="side-bar-content has-winner-auction-content col-lg-7">
+        <div class="side-bar-content col-lg-7">
             <div class="sb-content-header">
                 <h3 class="text-center">Sản phẩm đã có người thắng</h3>
             </div>
@@ -74,14 +74,17 @@
                                     </span>
                                     </div>
                                 </div>
-                                <div class="createTime"><i>{{format_date startDate}}</i></div>
-                                <div class="card-bottom mt-1 d-flex justify-content-end">
-                                    <a class="btn btn-sm btn-primary" href="" role="button">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
-                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                    </a>
+                                <div class="card-bottom mt-2 d-flex justify-content-end">
+                                    {{#if (equal isRated 1)}}
+                                        <a href="">Xem đánh giá</a>
+                                    {{else}}
+                                        <a class="btn btn-sm btn-primary" href="" role="button">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
+                                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                        </a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
