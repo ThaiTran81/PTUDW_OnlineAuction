@@ -48,14 +48,14 @@ const lengthOFAdđCmtBtn = Object.keys(addCmtBtn).length;
 function form(id){
     // console.log(id)
     // console.log($(`#cmt-${id}`))
-    $(`#cmt-${id}`).addClass( "show" );
+    $(`#cmt-${id}`).addClass( "show-modal" );
     $(`#btn-${id}`).addClass( "hide" );
 
 }
 function Close_form(id){
     // console.log(id)
     // console.log($(`#cmt-${id}`))
-    $(`#cmt-${id}`).removeClass( "show" );
+    $(`#cmt-${id}`).removeClass( "show-modal" );
     $(`#btn-${id}`).removeClass( "hide" );
 }
 function like(id){

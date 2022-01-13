@@ -48,6 +48,15 @@ export default function (app) {
                 return '**** ' + name.split(' ').pop();
             },
             cal_rating_point(like, dislike) {
+                if (like == 0 && dislike == 0) {
+                    return 'Người mới'
+                }
+                if (like == 0) {
+                    return '0 %'
+                }
+                if (dislike == 0) {
+                    return '100 %'
+                }
                 return Math.round((like / (dislike + like)) * 100) + ' %';
             },
             format_dob(val) {
