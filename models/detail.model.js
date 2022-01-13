@@ -55,5 +55,8 @@ export default {
             proID: bid.proID,
             price: bid.price
         });
+    },
+    async updateMaxPrice(maxPrice, proID, UID) {
+        return knex.raw('UPDATE currentauction SET maxPrice = ' + maxPrice + ' WHERE proID = ' + proID + ' AND UID = ' + UID);
     }
 }

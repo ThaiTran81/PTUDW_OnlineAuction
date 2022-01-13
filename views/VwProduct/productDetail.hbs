@@ -115,19 +115,25 @@
                     </div>
                 </div>
             </div>
+            {{#if (equal authUser.UID product.ownerUID)}}
+            {{else}}
             <div class="product-bid-area">
-                <form method="post" action="/product/detail/{{product.proID}}/bid" class="product-bid-form">
+                <form id="bid-form" method="post" action="/product/detail/{{product.proID}}/bid" class="product-bid-form">
                     <div class="search-icon">
                         <img src="/public/images/bid.png" alt="product">
                     </div>
-                    <input type="text" class="price-input bg-light" placeholder="Enter you maximum bid amount" name="price">
-                    <button type="submit" class="submit-bid-button auto-submit-bid-button">Ra giá</button>
+                    <div id="price-session" class="d-flex flex-column">
+                        <p class="fst-italic fw-light text-danger px-4">{{approvedMsg}}</p>
+                        <input type="text" class="price-input bg-light mt-1" placeholder="Enter you maximum bid amount" name="price" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>
+                    </div>
+                    <button type="submit" class="submit-bid-button auto-submit-bid-button" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Ra giá</button>
                 </form>
             </div>
             <div class="mt-3 mb-2 row d-flex justify-content-around">
                 <button type="submit" class="bottom-btt buy-now-button col-lg-5">Mua ngay: {{format_number product.buyNow}}</button>
                 <button type="submit" class="bottom-btt add-to-fav-button col-lg-5">Thêm vào danh sách yêu thích</button>
             </div>
+            {{/if}}
         </div>
     </div>
     <!-- Main product information end -->
@@ -293,7 +299,7 @@
         <h1 class=" mx-3 mt-3 mb-1">Đồng ý ra giá (số tiền) cho sản phẩm?</h1>
         <div class="form-btn d-flex justify-content-end">
             <div class="row">
-                <button class="btn btn-success col-3">Đồng ý</button>
+                <button form="bid-form" class="btn btn-success col-3">Đồng ý</button>
                 <button class="btn btn-danger col-3">Hủy</button>
             </div>
         </div>
