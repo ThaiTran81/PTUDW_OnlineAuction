@@ -28,6 +28,15 @@ export default {
             html: `Mã OTP của bạn là <strong>${otp}</strong>`,
         };
         return sgMail.send(msg);
+    },
+    sendMSG(email, subject, content){
+        const msg = {
+            to: email, // Change to your recipient
+            from: 'tranhoangthaigl@gmail.com', // Change to your verified sender
+            subject: subject,
+            html: content
+        };
+        return sgMail.send(msg);
     }
 
 }

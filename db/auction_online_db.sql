@@ -11,7 +11,7 @@
  Target Server Version : 50734
  File Encoding         : 65001
 
- Date: 13/01/2022 11:23:13
+ Date: 13/01/2022 21:17:47
 */
 
 SET NAMES utf8mb4;
@@ -521,6 +521,7 @@ CREATE TABLE `otpCode` (
 -- Records of otpCode
 -- ----------------------------
 BEGIN;
+INSERT INTO `otpCode` VALUES ('tranhoangthai2001@gmail.com', '2022-01-13 17:01:30', '155800');
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 01:00:59', '123');
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 01:14:23', '058128');
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 01:17:09', '469707');
@@ -529,6 +530,7 @@ INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:03:12', '54214
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:04:46', '448307');
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:06:07', '856966');
 INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:07:09', '385406');
+INSERT INTO `otpCode` VALUES ('vnthtpk@gmail.com', '2022-01-13 17:02:08', '999138');
 COMMIT;
 
 -- ----------------------------
@@ -615,6 +617,7 @@ CREATE TABLE `rating` (
   `ratingProID` int(11) NOT NULL,
   `content` longtext,
   `Type` int(11) DEFAULT NULL,
+  `sendTime` datetime DEFAULT NULL,
   PRIMARY KEY (`UIDRater`,`UID`,`ratingProID`) USING BTREE,
   KEY `fk_rating_users` (`UID`) USING BTREE,
   KEY `fk_rating_product` (`ratingProID`) USING BTREE,
@@ -626,11 +629,11 @@ CREATE TABLE `rating` (
 -- Records of rating
 -- ----------------------------
 BEGIN;
-INSERT INTO `rating` VALUES (1, 10, 37, 'Cám ơn', 1);
-INSERT INTO `rating` VALUES (1, 10, 39, 'Người thắng không thanh toán', 0);
-INSERT INTO `rating` VALUES (1, 10, 40, 'Cám ơn', 1);
-INSERT INTO `rating` VALUES (10, 1, 37, 'Sản phẩm tốt', 1);
-INSERT INTO `rating` VALUES (10, 1, 40, 'Sản phẩm lỗi', 0);
+INSERT INTO `rating` VALUES (1, 10, 37, 'Cám ơn', 1, '2022-01-13 15:52:32');
+INSERT INTO `rating` VALUES (1, 10, 39, 'Người thắng không thanh toán', 0, '2022-01-13 15:52:36');
+INSERT INTO `rating` VALUES (1, 10, 40, 'Cám ơn', 1, '2022-01-13 15:52:39');
+INSERT INTO `rating` VALUES (10, 1, 37, 'Sản phẩm tốt', 1, '2022-01-13 15:52:42');
+INSERT INTO `rating` VALUES (10, 1, 40, 'Sản phẩm lỗi', 0, '2022-01-13 15:52:45');
 COMMIT;
 
 -- ----------------------------
@@ -649,7 +652,7 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sessions` VALUES ('DiYsv84_Ffv7_6mNBwmRNvwcBvvVsaEU', 1642100863, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":28,\"email\":\"vnthtpk@gmail.com\",\"name\":\"Thai Tran\",\"addr\":\"district 8\",\"dob\":null,\"type\":2,\"good\":null,\"dislike\":null}}');
-INSERT INTO `sessions` VALUES ('hxzOa3yJZyPriUgAXFSbC_eGczaQqHwS', 1642075438, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4}}');
+INSERT INTO `sessions` VALUES ('_Obb_SVm0PpWsActaUNHZrSdvt_i_7GN', 1642169270, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":28,\"email\":\"vnthtpk@gmail.com\",\"name\":\"Thai Tran\",\"addr\":\"district 8\",\"dob\":null,\"type\":2,\"good\":null,\"dislike\":null,\"block\":0}}');
 COMMIT;
 
 -- ----------------------------
@@ -714,8 +717,9 @@ CREATE TABLE `users` (
   `addr` varchar(200) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
-  `good` int(11) DEFAULT NULL,
-  `dislike` int(11) DEFAULT NULL,
+  `good` int(11) unsigned DEFAULT '0',
+  `dislike` int(11) unsigned DEFAULT '0',
+  `block` tinyint(255) DEFAULT '0',
   PRIMARY KEY (`UID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
@@ -723,20 +727,20 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'dmnhat19@clc.fitus.edu.vn', '$2b$10$yGpsTRGAk.HjgcfRDnL76.ibfrpR13o1/eoN/cBu4MmaOAHL08YUW', 'Đỗ Minh Nhật', 'TP. HCM', '2001-11-04', 1, 123, 4);
-INSERT INTO `users` VALUES (2, 'fregregory@gmail.com', '$2b$10$R97KJWuA49IuTtGJW.BjVun/tsiN4G2LTD1GTL07rqolXRZZxVgEO', 'Gregory Freeman', '326 Whitehouse Lane, Huntingdon Rd', '1992-02-17', 1, 50, 10);
-INSERT INTO `users` VALUES (3, 'rogerfrank@outlook.com', '$2b$10$y4tVVp9cIeb0wLLeuqztvu4szMtHgT6w22uoQx..KGOSEpdPQbTKK', 'Frank Rogers', 'No.855, Dongsan Road, Erxianqiao, Chenghua District', '1995-01-07', 1, 75, 5);
-INSERT INTO `users` VALUES (4, 'hdorothy@gmail.com', '$2b$10$U2yAvR/YSVev58X/NisBb.vxdRpZ94l8l/rUHt5Fzeh7lHXc2Dq6i', 'Dorothy Hicks', '3-19-9 Shimizu, Kita Ward', '2001-06-05', 1, 36, 3);
-INSERT INTO `users` VALUES (5, 'ricewalte@outlook.com', '$2b$10$GdEuM8W4MKYfxFDYb3Kn2OZdBXT0S4n.R6DF4mUfR9Sq.bPXM0.zm', 'Walter Rice', '881 W Ring Rd, Buji Town, Longgang', '2001-10-12', 2, 7, 15);
-INSERT INTO `users` VALUES (6, 'andrellis03@mail.com', '$2b$10$CCe6OyBO7ImQEheOWVNNNeXDNxY8RxdP8Oo5ZSFG1rQHrxcV.G4fS', 'Andrea Ellis', '71 Abingdon Rd, Cumnor', '1998-10-24', 2, 27, 11);
-INSERT INTO `users` VALUES (7, 'jacksonl06@hotmail.com', '$2b$10$qIQLTxRNgMIyf1f9HfdXXux.tiJpCbrhIdeEdrozk2wMjVyu5zpIK', 'Louise Jackson', '648 Cannon Street', '2002-08-17', 1, 42, 5);
-INSERT INTO `users` VALUES (8, 'emilyha@gmail.com', '$2b$10$ytpkFWVufuPNyyXvmTNuguWC28s1uCdV8IEEDpvSnzWZNAsQGvgd6', 'Emily Hamilton', '816 2nd Zhongshan Road, Yuexiu District', '1996-09-10', 2, 56, 0);
-INSERT INTO `users` VALUES (9, 'jh1@icloud.com', '$2b$10$EJERl5z6sEjuBghAGIuT3uvOq.QYn8XYF7Qe5LUQOxcNkBTyW67Dm', 'Joyce Hawkins', '9 4-20 Kawagishicho, Mizuho Ward', '2000-10-01', 2, 70, 5);
-INSERT INTO `users` VALUES (10, 'kcoleman@outlook.com', '$2b$10$X2ELpjGguXtIWVNqd8V3ROOz6SRDPCWxR0mfHercnzd/fCPncaRMW', 'Kathy Coleman', '295 Redfern St', '1996-12-28', 2, 75, 8);
-INSERT INTO `users` VALUES (11, 'hgrant@yahoo.com', '$2b$10$e/T4.Abh57NPh5fBwCFH3uCwiCItns91rBhXX1iu4tQg6xXCeQxDu', 'Herbert Grant', '1-6-8, Marunouchi, Chiyoda-ku', '2000-07-20', 2, 45, 1);
-INSERT INTO `users` VALUES (12, 'emilyhahaha@gmail.com', '$2b$10$YS5210oyxMNtxnh51CQFWuX.BPLg2i7mZbQvtdTs46aUuSGXr1Y6G', 'Emily Hai', '124 2nd Zhongshan Road, Yuexiu District', '2003-07-24', 2, 14, 1);
-INSERT INTO `users` VALUES (27, 'admin@gmail.com', '$2b$10$nnUZGF9kijyINy8XzmNA7OA9dZsTP2GVRsuGMBIXRwvPPwuQ2ZLHC', 'Louise Jonson', '88 W Ring Rd, Buji Town, Longgang', '1990-07-11', 0, NULL, NULL);
-INSERT INTO `users` VALUES (28, 'vnthtpk@gmail.com', '$2b$10$hhsrNj2UD5lJxZGGaatUCegHIw7Y9r3r1nS9QQpkb5kzzOrD5Fnge', 'Thai Tran', 'district 8', NULL, 2, NULL, NULL);
+INSERT INTO `users` VALUES (1, 'dmnhat19@clc.fitus.edu.vn', '$2b$10$yGpsTRGAk.HjgcfRDnL76.ibfrpR13o1/eoN/cBu4MmaOAHL08YUW', 'Đỗ Minh Nhật', 'TP. HCM', '2001-11-04', 1, 123, 4, 0);
+INSERT INTO `users` VALUES (2, 'fregregory@gmail.com', '$2b$10$R97KJWuA49IuTtGJW.BjVun/tsiN4G2LTD1GTL07rqolXRZZxVgEO', 'Gregory Freeman', '326 Whitehouse Lane, Huntingdon Rd', '1992-02-17', 1, 50, 10, 0);
+INSERT INTO `users` VALUES (3, 'rogerfrank@outlook.com', '$2b$10$y4tVVp9cIeb0wLLeuqztvu4szMtHgT6w22uoQx..KGOSEpdPQbTKK', 'Frank Rogers', 'No.855, Dongsan Road, Erxianqiao, Chenghua District', '1995-01-07', 1, 75, 5, 0);
+INSERT INTO `users` VALUES (4, 'hdorothy@gmail.com', '$2b$10$U2yAvR/YSVev58X/NisBb.vxdRpZ94l8l/rUHt5Fzeh7lHXc2Dq6i', 'Dorothy Hicks', '3-19-9 Shimizu, Kita Ward', '2001-06-05', 1, 36, 3, 0);
+INSERT INTO `users` VALUES (5, 'ricewalte@outlook.com', '$2b$10$GdEuM8W4MKYfxFDYb3Kn2OZdBXT0S4n.R6DF4mUfR9Sq.bPXM0.zm', 'Walter Rice', '881 W Ring Rd, Buji Town, Longgang', '2001-10-12', 2, 7, 15, 0);
+INSERT INTO `users` VALUES (6, 'andrellis03@mail.com', '$2b$10$CCe6OyBO7ImQEheOWVNNNeXDNxY8RxdP8Oo5ZSFG1rQHrxcV.G4fS', 'Andrea Ellis', '71 Abingdon Rd, Cumnor', '1998-10-24', 2, 27, 11, 0);
+INSERT INTO `users` VALUES (7, 'jacksonl06@hotmail.com', '$2b$10$qIQLTxRNgMIyf1f9HfdXXux.tiJpCbrhIdeEdrozk2wMjVyu5zpIK', 'Louise Jackson', '648 Cannon Street', '2002-08-17', 1, 42, 5, 0);
+INSERT INTO `users` VALUES (8, 'emilyha@gmail.com', '$2b$10$ytpkFWVufuPNyyXvmTNuguWC28s1uCdV8IEEDpvSnzWZNAsQGvgd6', 'Emily Hamilton', '816 2nd Zhongshan Road, Yuexiu District', '1996-09-10', 2, 56, 0, 0);
+INSERT INTO `users` VALUES (9, 'jh1@icloud.com', '$2b$10$EJERl5z6sEjuBghAGIuT3uvOq.QYn8XYF7Qe5LUQOxcNkBTyW67Dm', 'Joyce Hawkins', '9 4-20 Kawagishicho, Mizuho Ward', '2000-10-01', 2, 70, 5, 0);
+INSERT INTO `users` VALUES (10, 'kcoleman@outlook.com', '$2b$10$X2ELpjGguXtIWVNqd8V3ROOz6SRDPCWxR0mfHercnzd/fCPncaRMW', 'Kathy Coleman', '295 Redfern St', '1996-12-28', 2, 75, 8, 0);
+INSERT INTO `users` VALUES (11, 'hgrant@yahoo.com', '$2b$10$e/T4.Abh57NPh5fBwCFH3uCwiCItns91rBhXX1iu4tQg6xXCeQxDu', 'Herbert Grant', '1-6-8, Marunouchi, Chiyoda-ku', '2000-07-20', 2, 45, 1, 0);
+INSERT INTO `users` VALUES (12, 'emilyhahaha@gmail.com', '$2b$10$YS5210oyxMNtxnh51CQFWuX.BPLg2i7mZbQvtdTs46aUuSGXr1Y6G', 'Emily Hai', '124 2nd Zhongshan Road, Yuexiu District', '2003-07-24', 2, 14, 1, 0);
+INSERT INTO `users` VALUES (27, 'admin@gmail.com', '$2b$10$nnUZGF9kijyINy8XzmNA7OA9dZsTP2GVRsuGMBIXRwvPPwuQ2ZLHC', 'Louise Jonson', '88 W Ring Rd, Buji Town, Longgang', '1990-07-11', 0, NULL, NULL, 0);
+INSERT INTO `users` VALUES (28, 'vnthtpk@gmail.com', '$2b$10$hhsrNj2UD5lJxZGGaatUCegHIw7Y9r3r1nS9QQpkb5kzzOrD5Fnge', 'Thai Tran', 'district 8', NULL, 2, NULL, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -839,6 +843,10 @@ INSERT INTO `watchlist` VALUES (12, 13);
 INSERT INTO `watchlist` VALUES (12, 22);
 INSERT INTO `watchlist` VALUES (12, 29);
 INSERT INTO `watchlist` VALUES (12, 36);
+INSERT INTO `watchlist` VALUES (28, 2);
+INSERT INTO `watchlist` VALUES (28, 30);
+INSERT INTO `watchlist` VALUES (28, 32);
+INSERT INTO `watchlist` VALUES (28, 36);
 COMMIT;
 
 -- ----------------------------

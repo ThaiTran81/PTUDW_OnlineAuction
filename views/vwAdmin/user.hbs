@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row search-form">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body p-3">
@@ -55,12 +55,17 @@
 					</p>
 					<div class="float-end">
 						{{#if (equal type 1)}}
-							<a class="btn btn-outline-danger">Hạ cấp</a>
-
-<!--							<a class="btn btn-outline-warning">Nâng cấp</a>-->
+							<a class="btn btn-outline-danger downgrade-btn" data-user="{{email}}">Hạ cấp</a>
 						{{/if}}
 
-						<a class="btn btn-danger"><i class="fa fa-lock"></i> Khoá</a>
+						{{#if (equal block 0)}}
+							<a class="btn btn-danger btn-lock" data-user="{{email}}"><i class="fa fa-lock"></i> Khoá</a>
+							<a class="btn btn-danger btn-unlock d-none" data-user="{{email}}"><i class="fa fa-underlock"></i> Mở khoá</a>
+						{{else}}
+							<a class="btn btn-danger btn-lock d-none" data-user="{{email}}"><i class="fa fa-lock"></i> Khoá</a>
+							<a class="btn btn-danger btn-unlock" data-user="{{email}}"><i class="fa fa-underlock"></i> Mở khoá</a>
+						{{/if}}
+
 						<a class="btn btn-primary"><i class="fa fa-eye"></i></a>
 					</div>
 				</div>
@@ -91,3 +96,83 @@
 		</li>
 	</ul>
 </div>
+
+{{#section 'js'}}
+	<script>
+		$(document).ready(function () {
+			$('.downgrade-btn').click(function () {
+				const $this = $(this);
+				const email = $this.attr('data-user');
+				axios({
+					method: 'post',
+					url: '/admin/user/downgrade',
+					data: {
+						email
+					}
+				}).then(function (res) {
+					if (res.data == 'success') {
+                        $(".downgrade-btn[data-user='"+ email +"']").addClass('d-none');
+						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+						location.reload();
+                    }
+                    else{
+						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Thao tác không thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+					}
+				}).catch(() => {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Đã có lỗi xảy ra </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+
+				});
+			});
+
+			$('.btn-lock').click(function () {
+				const $this = $(this);
+				const email = $this.attr('data-user');
+				axios({
+					method: 'post',
+					url: '/admin/user/lock',
+					data: {
+						email
+					}
+				}).then(function (res) {
+					if (res.data == 'success') {
+						$(".btn-lock[data-user='"+ email +"']").addClass('d-none');
+						$(".btn-unlock[data-user='"+ email +"']").removeClass('d-none');
+						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+						location.reload();
+					}
+					else{
+						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Thao tác không thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+					}
+				}).catch(() => {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Đã có lỗi xảy ra </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+
+				});
+			});
+
+			$('.btn-unlock').click(function () {
+				const $this = $(this);
+				const email = $this.attr('data-user');
+				axios({
+					method: 'post',
+					url: '/admin/user/unlock',
+					data: {
+						email
+					}
+				}).then(function (res) {
+					if (res.data == 'success') {
+						$(".btn-unlock[data-user='"+ email +"']").addClass('d-none');
+						$(".btn-lock[data-user='"+ email +"']").removeClass('d-none');
+						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+						location.reload();
+					}
+					else{
+						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Thao tác không thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+					}
+				}).catch(() => {
+					$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Đã có lỗi xảy ra </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
+
+				});
+			})
+		})
+	</script>
+{{/section}}

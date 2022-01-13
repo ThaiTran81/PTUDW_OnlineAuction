@@ -98,6 +98,10 @@ router.post('/sign-in', async function (req, res) {
     if (user === null) {
         return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản hoặc mật khẩu không đúng'});
     }
+
+    if(user.block === 1){
+        return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản đã bị khoá, vui lòng liên hệ Admin'})
+    }
     const ret = bcrypt.compareSync(req.body.password, user.password);
     if (ret === false) {
         return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản hoặc mật khẩu không đúng'});
