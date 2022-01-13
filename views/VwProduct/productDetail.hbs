@@ -7,7 +7,8 @@
     <script src="https://cdn.tiny.cloud/1/zl91lwryeczyn2jhzji60m8ccauunch925epicw56btc5pa2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-            selector: 'textarea'
+            selector: 'textarea',
+            height : "350"
         });
     </script>
 {{/section}}
@@ -115,11 +116,11 @@
                 </div>
             </div>
             <div class="product-bid-area">
-                <form class="product-bid-form">
+                <form method="post" action="/product/detail/{{product.proID}}/bid" class="product-bid-form">
                     <div class="search-icon">
                         <img src="/public/images/bid.png" alt="product">
                     </div>
-                    <input type="text" class="price-input bg-light" placeholder="Enter you maximum bid amount">
+                    <input type="text" class="price-input bg-light" placeholder="Enter you maximum bid amount" name="price">
                     <button type="submit" class="submit-bid-button auto-submit-bid-button">Ra giá</button>
                 </form>
             </div>
@@ -138,7 +139,7 @@
                 <div class="d-flex justify-content-between align-items-center" style="padding-right: 2.5%">
                     <h1>Mô tả sản phẩm</h1>
                     {{#if (equal authUser.UID product.ownerUID)}}
-                    <button class="btn-primary p-1 rounded-3">Bổ sung mô tả</button>
+                    <button id="open-modal-btn" class="btn-primary p-1 rounded-3">Bổ sung mô tả</button>
                     {{/if}}
                 </div>
                 {{#each description}}
@@ -188,31 +189,26 @@
                         </table>
                     </div>
                     {{#if (equal authUser.UID product.ownerUID)}}
-                        <div class="tab-pane show fade" id="bidder-tab">
-                            <table class="purchasing-table">
-                                <thead>
-                                <th>Người mua</th>
-                                <th>Điểm đánh giá</th>
-                                <th></th>
-                                </thead>
-                                <tbody>
-                                {{#each currentBidder}}
-                                    <tr>
-                                        <td data-purchase="bidder">{{format_name this.name}}</td>
-                                        <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
-                                        <td data-purchase="">
-                                            <button class="btn-outline-danger p-1 rounded-3">Từ chối</button>
-                                                <!--                                        {{#if (equal isBlock 0)}}-->
-                                            <!--                                            <i class="participate-bidder green-text fa fa-check-circle"></i>-->
-                                                <!--                                        {{else}}-->
-                                            <!--                                            <i class="participate-bidder red-text fa fa-minus-circle"></i>-->
-                                                <!--                                        {{/if}}-->
-                                        </td>
-                                    </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="tab-pane fade" id="bidder-tab">
+                        <table class="purchasing-table">
+                            <thead>
+                            <th>Người mua</th>
+                            <th>Điểm đánh giá</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                            {{#each currentBidder}}
+                                <tr>
+                                    <td data-purchase="bidder">{{format_name this.name}}</td>
+                                    <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
+                                    <td data-purchase="">
+                                        <button class="btn-outline-danger p-1 rounded-3">Từ chối</button>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                     {{/if}}
                 </div>
             </div>
@@ -277,14 +273,20 @@
     </div>
     <!-- Related product end -->
 </div>
-<div id="model-box" class="w-100 h-100">
-    <div class="model-background w-100 h-100"></div>
-    <div class="description-additional-form">
-        <h3 class="text-center m-3">Bổ Sung Mô Tả</h3>
-        <div class="description-form p-3" style="height: 50% !important;">
+<div id="modal-box" class="w-100 h-100">
+    <div id="modal-background" class="w-100 h-100"></div>
+    <div class="description-additional-form rounded-3">
+        <h1 class="text-center mx-3 mt-3 mb-1">Bổ Sung Mô Tả</h1>
+        <div class="description-form p-3">
             <form method="post">
                 <textarea id="mytextarea"></textarea>
             </form>
+        </div>
+        <div class="modal-bottom d-flex justify-content-end">
+            <button id="cancel-add-des" class="modal-btn btn-danger rounded-3 px-3">Hủy</button>
+            <a href="">
+                <button class="modal-btn btn-primary rounded-3 px-2 mx-3">Thêm</button>
+            </a>
         </div>
     </div>
 </div>

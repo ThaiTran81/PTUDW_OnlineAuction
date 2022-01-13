@@ -34,3 +34,14 @@ $(".description-container .read-more-btn").click(function() {
 
 });
 
+$('#modal-background').click(function () {
+    $('#modal-box').removeClass( "show" );
+});
+
+$('#cancel-add-des').click(function () {
+    $('#modal-box').removeClass( "show" );
+});
+
+$('#open-modal-btn').click(function () {
+    $('#modal-box').addClass( "show" );
+});

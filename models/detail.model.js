@@ -33,5 +33,27 @@ export default {
             return null;
 
         return list[0];
+    },
+    async checkBidderInAuction(proID, UID) {
+        const list = await knex.raw('SELECT * FROM currentauction WHERE proID = ' + proID + ' AND UID = ' + UID);
+        if (list[0].length === 0)
+            return 0;
+
+        return list[0];
+    },
+    addAuctionBidder(bidder) {
+        return knex('currentauction').insert({
+            UID: bidder.UID,
+            proID: bidder.proID,
+            maxPrice: bidder.maxPrice
+        });
+    },
+    addAuctionBid(bid) {
+        return knex('historyauc').insert({
+            aucTime: new Date(),
+            UID: bid.UID,
+            proID: bid.proID,
+            price: bid.price
+        });
     }
 }

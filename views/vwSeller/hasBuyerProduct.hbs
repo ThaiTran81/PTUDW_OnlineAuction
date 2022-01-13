@@ -47,11 +47,11 @@
             <div class="row mt-3 mt-md-5 align-items-stretch">
                 {{#each this.products}}
                     <div class="col-md-4 mb-4">
-                        <div class="aboutitem">
+                        <div class="aboutitem" style="overflow: visible;">
                             <div class="aboutitemImg"><img class="img-fluid"
                                                            src="/public/images/product/{{proID}}/thumb.png"
                                                            alt="img"></div>
-                            <div class="bgdarkbluecolor aboutitemcnt">
+                            <div class="bgdarkbluecolor aboutitemcnt" style="height: fit-content !important;">
                                 <div class="itemtitlecode">
                                     <h2 class="text-danger"><i class="fa fa-clock-o"></i> <span>Đã có người mua</span></h2>
                                     <h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
@@ -78,12 +78,32 @@
                                     {{#if (equal isRated 1)}}
                                         <a href="">Xem đánh giá</a>
                                     {{else}}
-                                        <a class="btn btn-sm btn-primary" href="" role="button">
-                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
-                                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                        </a>
+                                    {{!-- <a class="btn btn-sm btn-primary" href="" role="button">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" style="margin-left: 5%" href="" role="button">
+                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                    </a> --}}
+                                        <span id="btn-{{proID}}" class="card-bottom-comment-btn curPointer p-2" onclick="form({{proID}})">Thêm nhận xét</span>
+
+                                        {{!-- <button id="close-btn-{{proID}}" onclick="Close_form({{proID}})" class=" btn-danger">close</button> --}}
+                                        <div id="cmt-{{proID}}" class="card-bottom-addComment p-2">
+                                            <span id="btn-{{proID}}" class="card-bottom-comment-btn curPointer mb-2" onclick="Close_form({{proID}})" style="float: right;">Đóng nhận xét</span>
+                                            <form action="">
+                                                <input type="text" name="card-bottom-comment" id="card-bottom-comment" class="m-1 p-1 rounded-1" placeholder="Thêm nhận xét"></input>
+                                                <div class="d-flex justify-content-end align-items-center mt-1">
+                                                    <input type="radio" name="vote" id="like-{{proID}}" value="like-{{proID}}" onclick="like({{proID}})" style="display: none;">
+                                                    <label class="curPointer ml-2 p-2" id="Llike-{{proID}}" for="like-{{proID}}" >
+                                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></label>
+                                                    <input type="radio" name="vote" id="dislike-{{proID}}" value="dislike-{{proID}}" onclick="dislike({{proID}})" style="display: none;">
+                                                    <label class="curPointer ml-2 p-2" id="Ldislike-{{proID}}" for="dislike-{{proID}}" >
+                                                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></label>
+                                                </div>
+                                                <div class="mb-1" style="float: right;">
+                                                    <input type="submit" value="Đánh giá" class=" btn-primary rounded-1 mt-1 p-1">
+                                                </div>
+                                            </form>
+                                        </div>
                                     {{/if}}
                                 </div>
                             </div>

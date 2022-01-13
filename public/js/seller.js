@@ -27,7 +27,44 @@ var infoArea = document.getElementById( 'upload-label' );
 
 input.addEventListener( 'change', showFileName );
 function showFileName( event ) {
-  var input = event.srcElement;
-  var fileName = input.files[0].name;
-  infoArea.textContent = 'File name: ' + fileName;
+    var input = event.srcElement;
+    var fileName = input.files[0].name;
+    infoArea.textContent = 'File name: ' + fileName;
+}
+
+
+
+
+
+
+let addCmtBtn = $('.card-bottom-comment-btn');
+let commentForm = $('.card-bottom-addComment');
+// for(var i in addCmtBtn){
+//     console.log(i)
+// }
+console.log(addCmtBtn)
+const lengthOFAdđCmtBtn = Object.keys(addCmtBtn).length;
+
+function form(id){
+    // console.log(id)
+    // console.log($(`#cmt-${id}`))
+    $(`#cmt-${id}`).addClass( "show" );
+    $(`#btn-${id}`).addClass( "hide" );
+
+}
+function Close_form(id){
+    // console.log(id)
+    // console.log($(`#cmt-${id}`))
+    $(`#cmt-${id}`).removeClass( "show" );
+    $(`#btn-${id}`).removeClass( "hide" );
+}
+function like(id){
+
+    $(`#Llike-${id}`).addClass( "checked" );
+    $(`#Ldislike-${id}`).removeClass( "checked" );
+}
+function dislike(id){
+
+    $(`#Llike-${id}`).removeClass( "checked" );
+    $(`#Ldislike-${id}`).addClass( "checked" );
 }
