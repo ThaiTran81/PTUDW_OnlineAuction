@@ -297,14 +297,48 @@ router.get('/detail/:id', async function (req, res) {
     if (product === null) {
         return res.redirect('/');
     }
-    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
+    let approvedMsg = '*';
+    let blocked = 0;
+    if (res.locals.authUser != null) {
+        for (let i = 0; i < currentBidder.length; i++) {
+            if (res.locals.authUser.UID == currentBidder[i].UID) {
+                if (currentBidder[i].isBlock == 1) {
+                    approvedMsg = approvedMsg + 'Tài khoản đã bị từ chối khỏi cuộc đấu giá này';
+                    blocked = 1
+                    break;
+                }
+            }
+        }
+        if (blocked === 0) {
+            if (product.allowNewBidder == 0) {
+                if (res.locals.authUser.good == 0 && res.locals.authUser.dislike == 0) {
+                    approvedMsg = approvedMsg + 'Sản phẩm đấu giá này không cho phép tài khoản mới tham gia';
+                    blocked = 1;
+                }
+            }
+            if (blocked === 0) {
+                if (product.allowBadBidder == 0) {
+                    if (res.locals.authUser.good < 4 * res.locals.authUser.dislike) {
+                        approvedMsg = approvedMsg + 'Tài khoản không đủ điểm đánh giá để tham đấu giá';
+                        blocked = 1;
+                    }
+                }
+                if (blocked === 0) {
+                    approvedMsg = approvedMsg + 'Giá tham gia tối thiểu: ' + (parseInt(currentPrice.price) + parseInt(product.stepPrice));
+                }
+            }
+        }
+    }
+    else {
+        approvedMsg = approvedMsg + 'Vui lòng đăng nhập trươc khi tham gia đấu giá';
+        blocked = 1;
+    }
+    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder, approvedMsg, blocked });
 })
 
 router.post('/detail/:id/bid',auth, async function (req, res) {
     const proID = req.params.id;
     let product = await detailModel.findById(proID);
-    let description = await detailModel.getDescription(proID);
-    let relatePros = await detailModel.findRelateProduct(product.proID, product.typID, 5);
     let historyBid = await detailModel.findHistoryBid(proID);
     let currentPrice = historyBid.pop();
     historyBid.push(currentPrice);
@@ -315,7 +349,6 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
     const inputPrice = req.body.price;
     // console.log(res.locals.authUser.UID);
     if (res.locals.authUser.UID === product.ownerUID) {
-        // console.log(true);
     }
     else {
         if (inputPrice >= currentPrice.price + product.stepPrice ) {
@@ -332,8 +365,12 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
                     maxPrice: inputPrice
                 }
                 await detailModel.addAuctionBidder(bidder);
+            }
+            else {
+                await detailModel.updateMaxPrice(inputPrice, proID, res.locals.authUser.UID);
+            }
+            if (currentPrice.UID != res.locals.authUser.UID) {
                 const bidPrice = parseInt(currentPrice.price) + parseInt(product.stepPrice);
-                const dt = Date.now().toString();
                 const bid = {
                     UID: res.locals.authUser.UID,
                     proID: proID,
@@ -343,14 +380,8 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
             }
         }
     }
-    product = await detailModel.findById(proID);
-    description = await detailModel.getDescription(proID);
-    relatePros = await detailModel.findRelateProduct(product.proID, product.typID, 5);
-    historyBid = await detailModel.findHistoryBid(proID);
-    currentPrice = historyBid.pop();
-    historyBid.push(currentPrice);
-    currentBidder = await detailModel.findBidder(proID);
-    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
+    const url = '/product/detail/' + proID;
+    res.redirect(url);
 })
 
 
