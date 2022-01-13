@@ -52,27 +52,33 @@
 				<div class="tab-sec auTabing">
 					<nav>
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
-							<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#TabOne">
-								<i class="fa fa-gavel"></i>
-								Đang đấu giá <span>{{count_array curBid}}</span></button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabTwo">
-								<i class="fa fa-trophy"></i>
-								Đấu giá thắng <span>{{count_array winBid}}</span></button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabThree">
-								<i class="fa fa-heart"></i>
-								Yêu thích <span>{{count_array watchList}}</span></button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFour">
-								<i class="fa fa-clock-o"></i>
-								Lịch sử
-							</button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabSix">
-								<i class="fa fa-gavel"></i>
-								Đánh giá
-							</button>
-							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFive">
-								<i class="fa fa-user"></i>
-								Tài khoản
-							</button>
+							{{#if (equal profile.UID authUser.UID)}}
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#TabOne">
+									<i class="fa fa-gavel"></i>
+									Đang đấu giá <span>{{count_array curBid}}</span></button>
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabTwo">
+									<i class="fa fa-trophy"></i>
+									Đấu giá thắng <span>{{count_array winBid}}</span></button>
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabThree">
+									<i class="fa fa-heart"></i>
+									Yêu thích <span>{{count_array watchList}}</span></button>
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFour">
+									<i class="fa fa-clock-o"></i>
+									Lịch sử
+								</button>
+							{{/if}}
+
+								<button class="nav-link {{#unless (equal profile.UID authUser.UID)}} active{{/unless}}" data-bs-toggle="tab" data-bs-target="#TabSix">
+									<i class="fa fa-gavel"></i>
+									Đánh giá
+								</button>
+
+							{{#if (equal profile.UID authUser.UID)}}
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFive">
+									<i class="fa fa-user"></i>
+									Tài khoản
+								</button>
+							{{/if}}
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
@@ -144,7 +150,7 @@
 											<div class="aboutitemImg"><img class="img-fluid"
 																		   src="/public/images/product/{{proID}}/thumb.png"
 																		   alt="img">
-												</div>
+											</div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
 													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
@@ -202,7 +208,7 @@
 											<div class="aboutitemImg"><img class="img-fluid"
 																		   src="/public/images/product/{{proID}}/thumb.png"
 																		   alt="img">
-												</div>
+											</div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
 													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
@@ -395,7 +401,7 @@
 								</form>
 							</div>
 						</div>
-						<div class="tab-pane fade justify-content-center" id="TabSix">
+						<div class="tab-pane fade justify-content-center {{#unless (equal profile.UID authUser.UID)}} show active{{/unless}}" id="TabSix">
 							{{#each feedback}}
 								<div class="comment mb-2">
 									<div class="commentor d-flex">
