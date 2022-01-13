@@ -9,6 +9,18 @@
         tinymce.init({
             selector: 'textarea'
         });
+        $('#category').on('change', function() {
+            const catID = this.value;
+            axios (
+                '/seller/types/' + catID
+            ).then(function (res) {
+                var data = res.data;
+                $('#product-type').empty();
+                for (let i = 0; i < data.length; i++) {
+                    $('#product-type').append('<option value="' + data[i].typID + '">' + data[i].typName + '</option>')
+                }
+            })
+        });
     </script>
 {{/section}}
 
@@ -124,7 +136,7 @@
 
 
     <!-- Start post product session -->
-    <div id="post-product-form" class="container-fluid row">
+    <form id="post-product-form" method="post" action="/seller/addProduct/{{authUser.UID}}" class="container-fluid row">
         <div class="col-lg-1"></div>
         <div class="form-container col-lg-10" style="margin: 6% 0">
             <div class="form-section">
@@ -141,18 +153,16 @@
                             <li class="text-section-item">
                                 <h5>Chọn loại sản phẩm</h5>
                                 <select id="category" name="category" class="text-field product-dropdown">
-                                    <option value="cat1">Category 1</option>
-                                    <option value="cat2">Category 2</option>
-                                    <option value="cat3">Category 3</option>
-                                    <option value="cat4">Category 4</option>
-                                    <option value="cat5">Category 5</option>
+                                    <option value="0">Chọn</option>
+                                    {{#each lcCategories}}
+                                        <option value="{{catID}}">{{catName}}</option>
+                                    {{/each}}
                                 </select>
-                                <select id="product-type" name="product-type" class="text-field product-dropdown mt-2">
-                                    <option value="ty1">Type 1</option>
-                                    <option value="ty2">Type 2</option>
-                                    <option value="ty3">Type 3</option>
-                                    <option value="ty4">Type 4</option>
-                                    <option value="ty5">Type 5</option>
+                                <select id="product-type" name="productType" class="text-field product-dropdown mt-2">
+                                    <option value="0">Chọn</option>
+                                    {{#each lcCategories.types}}
+                                        <option value="{{typID}}">{{typName}}</option>
+                                    {{/each}}
                                 </select>
                             </li>
                             <li class="text-section-item">
@@ -170,7 +180,7 @@
                                 <h5>Mô tả sản phẩm</h5>
                                 <div class="description-form">
                                     <form method="post">
-                                        <textarea id="mytextarea"></textarea>
+                                        <textarea id="mytextarea" name="desContent"></textarea>
                                     </form>
                                 </div>
                             </li>
@@ -187,12 +197,11 @@
                             <li class="text-section-item">
                                 <h5>Loại bidder</h5>
                                 <div>
-                                    <input type="checkbox" id="badBidder" class="checkbox" name="autoExtendAuction">
-                                    <label for="badBidder" class="checkbox-label">Bidder đánh giá thấp</label>
-                                        
+                                    <input type="checkbox" id="badBidder" class="checkbox" name="allowBadBidder">
+                                    <label for="badBidder" class="checkbox-label">Bidder có đánh giá thấp</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="newBidder" class="checkbox" name="autoExtendAuction">
+                                    <input type="checkbox" id="newBidder" class="checkbox" name="allowNewBidder">
                                     <label for="newBidder" class="checkbox-label">Bidder mới</label>
                                     
                                 </div>
@@ -215,12 +224,12 @@
                     </div>
                 </div>
                 <div class="submit-secsion">
-                    <button id="submit-btt" name="submitProduct">Đăng</button>
+                    <button id="submit-btt" form="post-product-form" name="submitProduct">Đăng</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-1"></div>
-    </div>
+    </form>
     <!-- End post product session -->
     <div class="footer container-fluid">
 

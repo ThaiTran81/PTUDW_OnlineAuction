@@ -1,6 +1,9 @@
 import express from 'express';
 import usersModel from '../models/users.model.js';
 import sellerModel from "../models/seller.model.js"
+import categoryModel from "../models/category.model.js"
+import productModel from "../models/product.model.js"
+import detailModel from "../models/detail.model.js";
 
 const router = express.Router();
 
@@ -87,5 +90,50 @@ router.get('/has-buyer-product/:id', async function(req, res){
         pageNumbers
     });
 });
+
+router.get('/types/:catID', async function (req, res) {
+    const catID = req.params.catID;
+    let types = await categoryModel.findAllTypeByCat(catID);
+
+    res.send(types);
+})
+
+router.post('/addProduct/:id', async function (req, res){
+    const uid = req.params.id;
+
+    let a = 0, b = 0, n = 0;
+    if (req.body.autoExtendAuction == 'on') {
+        a = 1;
+    }
+    if (req.body.allowBadBidder == 'on') {
+        b = 1;
+    }
+    if (req.body.allowNewBidder == 'on') {
+        n = 1;
+    }
+    const d = new Date();
+    const product = {
+        typID: req.body.productType,
+        proName: req.body.productName,
+        ownerUID: uid,
+        startPrice: req.body.startPrice,
+        buyNow: req.body.orgPrice,
+        startDate: d,
+        endDate: req.body.endTime,
+        autoExtend: a,
+        stepPrice: req.body.stepPrice,
+        allowBadBidder: b,
+        allowNewBidder: n
+    }
+    const temp = await productModel.addNewProduct(product);
+    console.log(temp)
+    const des = {
+        proID: temp,
+        description: req.body.desContent
+    }
+    await detailModel.addDescription(des);
+
+    res.redirect('/seller/current-product/' + uid);
+})
 
 export default router;

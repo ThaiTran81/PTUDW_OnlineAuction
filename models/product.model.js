@@ -15,6 +15,9 @@ export default {
             .select('product.proID', 'product.typID', 'type.catID', 'product.proName', 'product.startPrice', 'product.buyNow', 'product.startDate', 'product.endDate')
             .where('type.catID', '=', catid);
     },
+    findByName(d) {
+        return knex('product').where('product.proName', '=', d);
+    },
     //by cat
     async findPageByCatId(catId, limit, offset) {
         const proByCat = await knex.raw('SELECT p.*,u.UID,u.`name`,u.email,h.price FROM product p JOIN historyauc h ON p.proID=h.proID JOIN (\n' +
@@ -170,6 +173,20 @@ export default {
     },
     removeFromWatchList(uid, proID){
         return knex('watchlist').where({'UID': uid, 'proID':proID}).delete();
+    },
+    addNewProduct(product){
+        return knex('product').insert({
+            typID: product.typID,
+            proName: product.proName,
+            ownerUID: product.ownerUID,
+            startPrice: product.startPrice,
+            buyNow: product.buyNow,
+            startDate: product.startDate,
+            endDate: product.endDate,
+            autoExtend: product.autoExtend,
+            stepPrice: product.stepPrice,
+            allowBadBidder: product.allowBadBidder,
+            allowNewBidder: product.allowNewBidder
+        });
     }
-
 }

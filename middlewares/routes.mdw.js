@@ -15,7 +15,9 @@ export default function (app){
         const list5Bid = await productModel.findTopBid(5);
         const list5Price = await productModel.findTopPrice(5);
         res.render('home', {list5End, list5Bid, list5Price});
+        console.log(res.locals.lcCategories)
     });
+
     app.get('/error', function (req, res){
         throw new Error('error');
     })

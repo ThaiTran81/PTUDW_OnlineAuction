@@ -200,6 +200,7 @@ router.get('/category/:catID', async function (req, res) {
             list = await productModel.findPageByCatId_PriceDesc(catId, limit, offset);
             break;
     }
+    console.log(list);
 
     // list = await productModel.findPageByCatId(catId, limit, offset);
     res.render('vwProduct/byCat', {
@@ -298,6 +299,7 @@ router.get('/detail/:id', async function (req, res) {
     if (product === null) {
         return res.redirect('/');
     }
+    console.log(currentPrice);
     let approvedMsg = '*';
     let blocked = 0;
     if (res.locals.authUser != null) {
@@ -458,6 +460,5 @@ router.post('/detail/:id/removeBidder',auth, async function (req, res) {
     const url = '/product/detail/' + proID;
     res.redirect(url);
 })
-
 
 export default router;
