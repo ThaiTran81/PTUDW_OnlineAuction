@@ -4,6 +4,7 @@ import categoryModel from "../models/category.model.js";
 import detailModel from "../models/detail.model.js";
 import userslModel from "../models/users.model.js";
 import auth from "../middlewares/auth.mdw.js";
+import emailModel from "../utils/email.js";
 
 const router = express.Router();
 
@@ -333,6 +334,19 @@ router.get('/detail/:id', async function (req, res) {
         approvedMsg = approvedMsg + 'Vui lòng đăng nhập trươc khi tham gia đấu giá';
         blocked = 1;
     }
+    const del = [];
+    for (let i = 0; i < currentBidder.length; i++) {
+        if (currentBidder[i].isBlock == 1) {
+            del.push(i);
+        }
+    }
+    if (del.length != 0) {
+        let count = 0;
+        for (let i = 0; i < del.length; i++) {
+            currentBidder.splice(del[i] - count, 1);
+            count = count + 1;
+        }
+    }
     res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder, approvedMsg, blocked });
 })
 
@@ -350,15 +364,19 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
     if (res.locals.authUser.UID === product.ownerUID) {
     }
     else {
-        if (parseInt(inputPrice) >= parseInt(currentPrice.price) + parseInt(product.stepPrice) ) {
+        if (parseInt(inputPrice) >= parseInt(currentPrice.price) + parseInt(product.stepPrice)) {
             let isExisted = 0;
             let currentBidderMaxPrice = 0;
+            let currentBidderUID;
+            let currentBidderEmail;
             for (let i = 0; i < currentBidder.length; i++) {
                 if (currentBidder[i].UID == res.locals.authUser.UID) {
                     isExisted = 1;
                 }
                 if (currentBidder[i].UID == currentPrice.UID) {
                     currentBidderMaxPrice = parseInt(currentBidder[i].maxPrice);
+                    currentBidderUID = currentBidder[i].UID;
+                    currentBidderEmail = currentBidder[i].email;
                 }
             }
             if (isExisted == 0) {
@@ -373,22 +391,38 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
                 await detailModel.updateMaxPrice(inputPrice, proID, res.locals.authUser.UID);
             }
             if (currentPrice.UID != res.locals.authUser.UID) {
-                const bidPrice = parseInt(currentPrice.price) + parseInt(product.stepPrice);
-                const bid = {
-                    UID: res.locals.authUser.UID,
-                    proID: proID,
-                    price: bidPrice
+                let bidPrice = 0;
+                let bid;
+                let content;
+                if (parseInt(inputPrice) >= parseInt(currentBidderMaxPrice) + parseInt(product.stepPrice)) {
+                    bidPrice = parseInt(currentBidderMaxPrice) + parseInt(product.stepPrice);
+                    bid = {
+                        UID: res.locals.authUser.UID,
+                        proID: proID,
+                        price: bidPrice
+                    }
+                    content = "Tên sản phẩm: " + product.proName + '\nGiá đặt vào: ' + bidPrice;
+                    await emailModel.sendMSG(res.locals.authUser.email,'Đã đặt giá thành công', content);
+                    await emailModel.sendMSG(currentBidderEmail,'Đã có người đặt giá cao hơn', content);
+                } else {
+                    bidPrice = parseInt(inputPrice);
+                    bid = {
+                        UID: currentBidderUID,
+                        proID: proID,
+                        price: bidPrice
+                    }
+                    content = "Tên sản phẩm: " + product.proName + '\nGiá đặt vào: ' + bidPrice;
+                    await emailModel.sendMSG(currentBidderEmail,'Đã đặt giá thành công', content);
                 }
+                // if (product.autoExtend == 1) {
+                //     console.log(product.endDate);
+                //     console.log(new Date());
+                //     console.log(product.endDate - (new Date()));
+                //     // await detailModel.updateEndTime(product.ownerUID)
+                // }
                 await detailModel.addAuctionBid(bid);
-            }
-            if (currentBidderMaxPrice >= parseInt(inputPrice) + parseInt(product.stepPrice)) {
-                const bidPrice = parseInt(inputPrice) + parseInt(product.stepPrice);
-                const bid = {
-                    UID: currentPrice.UID,
-                    proID: proID,
-                    price: bidPrice
-                }
-                await detailModel.addAuctionBid(bid);
+                const user = await userslModel.findUserByUID(product.ownerUID);
+                await emailModel.sendMSG(user.email,'Đã có người đặt giá', content);
             }
         }
     }
@@ -399,7 +433,6 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
 router.post('/detail/:id/addDes',auth, async function (req, res) {
     const proID = req.params.id;
 
-    console.log(req.body);
     const des = {
         proID: proID,
         description: req.body.desAddContent
@@ -413,12 +446,14 @@ router.post('/detail/:id/addDes',auth, async function (req, res) {
 router.post('/detail/:id/removeBidder',auth, async function (req, res) {
     const proID = req.params.id;
 
-    console.log(req.body);
-    const des = {
-        proID: proID,
-        description: req.body.desAddContent
-    }
-    await detailModel.addDescription(des);
+    await detailModel.updateBlock(1, proID, req.body.bidderUid);
+
+    const product = await detailModel.findById(proID);
+    console.log(req.body)
+    const bidder = await userslModel.findUserByUID(req.body.bidderUid);
+
+    const content = 'Người bán đã từ chối lượt ra giá của bạn tại sản phẩm ' + product.proName;
+    await emailModel.sendMSG(bidder.email,'Từ chối lượt ra giá', content);
 
     const url = '/product/detail/' + proID;
     res.redirect(url);

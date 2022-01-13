@@ -63,7 +63,15 @@ export default {
             price: bid.price
         });
     },
-    async updateMaxPrice(maxPrice, proID, UID) {
+    updateMaxPrice(maxPrice, proID, UID) {
         return knex.raw('UPDATE currentauction SET maxPrice = ' + maxPrice + ' WHERE proID = ' + proID + ' AND UID = ' + UID);
+    },
+    updateBlock(type, proID, UID) {
+        return knex.raw('UPDATE currentauction SET isBlock = ' + type + ' WHERE proID = ' + proID + ' AND UID = ' + UID);
+    },
+    updateEndTime(proID) {
+        var d = new Date();
+        d.setDate(d.getMinutes() + 10);
+        return knex.raw('UPDATE product SET endDate = ' + d + ' WHERE proID = ' + proID);
     }
 }

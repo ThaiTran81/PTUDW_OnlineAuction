@@ -6,6 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> <script src="/public/js/detail_body.js"></script>
     <script src="https://cdn.tiny.cloud/1/zl91lwryeczyn2jhzji60m8ccauunch925epicw56btc5pa2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
+        let uid;
+        let myurl;
         tinymce.init({
             selector: 'textarea',
             height : "350"
@@ -13,6 +15,23 @@
         $('#bid-btn').click(function () {
            let amount =  $('#input-amount').val();
             $('#bid-amount').text(amount);
+        });
+        $('.dn-btn').click(function () {
+            var name =  $(this).attr('data-user');
+            uid = $(this).attr('data-uid');
+            myurl = '/product/detail/' + $(this).attr('data-proid') + '/removeBidder';
+            $('#bid-acc').text(name);
+        });
+        $('#acept-reject-btn').click(function () {
+            axios({
+                method: 'post',
+                url: myurl,
+                data: {
+                    bidderUid: uid
+                }
+            }).then(function () {
+                location.reload();
+            })
         });
     </script>
 {{/section}}
@@ -61,7 +80,9 @@
                 </div>
                 <ul class="seller-information account-information">
                     <li>
-                        Người bán: {{product.name}}
+                        <a href="/account/profile/{{product.ownerUID}}">
+                            Người bán: {{format_name product.name}}
+                        </a>
                     </li>
                     <li>
                         {{product.good}}
@@ -189,7 +210,6 @@
                             </thead>
                             <tbody>
                             {{#each historyBid}}
-                                <form action="/product/detail/:id/removeBidder"></form>
                                 <tr>
                                     <td data-purchase="bid-time">{{format_date this.aucTime}}</td>
                                     <td data-purchase="bidder">{{format_name this.name}}</td>
@@ -210,10 +230,17 @@
                             <tbody>
                             {{#each currentBidder}}
                                 <tr>
-                                    <td data-purchase="bidder">{{format_name this.name}}</td>
+                                    <td data-purchase="bidder">
+                                        <form class="reject-form" method="post" action="/product/detail/{{proID}}/removeBidder" style="display: none">
+                                            <input name="bidderUid" value="{{UID}}">
+                                        </form>
+                                        <a class="bidder-uid" href="/account/profile/{{UID}}">
+                                            {{format_name this.name}}
+                                        </a>
+                                    </td>
                                     <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
                                     <td data-purchase="">
-                                        <button  class="btn-outline-danger reject-btn p-1 rounded-3">Từ chối</button>
+                                        <button data-user="{{this.name}}" data-uid="{{UID}}" data-proid="{{proID}}" class="dn-btn btn-outline-danger reject-btn p-1 rounded-3">Từ chối</button>
                                     </td>
                                 </tr>
                             {{/each}}
@@ -324,12 +351,13 @@
         </div>
     </div>
     <div id = "reject-modal" class="description-additional-form rounded-3">
-        <h1 class=" mx-3 mt-3 mb-1">
-            Từ chối bidder này?
+        <h1 class=" mx-3 mt-3 mb-1">Từ chối
+            <span id="bid-acc"></span>
+            tham gia đấu giá</h1>
         </h1>
         <div class="form-btn d-flex justify-content-end">
             <div class="row">
-                <button form="reject-form" class="btn btn-success col-3">Đồng ý</button>
+                <button id="acept-reject-btn" form="reject-form" class="btn btn-success col-3">Đồng ý</button>
                 <button class="btn btn-danger col-3">Hủy</button>
             </div>
         </div>
