@@ -63,7 +63,7 @@ router.get('/', async function (req, res) {
     for (let i = 0; i < filter.length; i++) {
         filter[i].isSelected = sort === filter[i].value;
     }
-    let keyword_format = keyword.trim().replace('  ',' ').replace(' ',' +');
+    let keyword_format = keyword.trim().replace('  ',' ').replace(' ',' >');
     switch (sort) {
         case "timeDesc":
             list = await productModel.findPageBySearch(keyword_format,catID, typID,'DESC', 'time',limit,offset);
