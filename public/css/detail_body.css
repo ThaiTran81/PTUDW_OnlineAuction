@@ -243,6 +243,10 @@ ul.current-higest-bidder li {
     background: transparent;
 }
 
+#price-session {
+    width: 70%;
+}
+
 .price-input::placeholder {
     color: #c0c0c0;
     opacity: 1;
@@ -635,7 +639,7 @@ bottom: .5em;
     font-size: 18px;
 }
 
-.show {
+.show-modal {
     display: block !important;
 }
 

@@ -35,32 +35,32 @@ $(".description-container .read-more-btn").click(function() {
 });
 
 $('#modal-background').click(function () {
-    $('#modal-box').removeClass( "show" );
-    $('#description-modal').removeClass( "show" );
-    $('#bid-modal').removeClass( "show" );
+    $('#modal-box').removeClass( "show-modal" );
+    $('#description-modal').removeClass( "show-modal" );
+    $('#bid-modal').removeClass( "show-modal" );
 });
 
 $('#cancel-add-des').click(function () {
-    $('#modal-box').removeClass( "show" );
+    $('#modal-box').removeClass( "show-modal" );
 });
 
 $('#open-modal-btn').click(function () {
-    $('#modal-box').addClass( "show" );
-    $('#description-modal').addClass( "show" );
+    $('#modal-box').addClass( "show-modal" );
+    $('#description-modal').addClass( "show-modal" );
 });
 
 $('.submit-bid-button').click(function (e) {
   e.preventDefault();
-  $('#modal-box').addClass( "show" );
-  $('#bid-modal').addClass("show");
+  $('#modal-box').addClass( "show-modal" );
+  $('#bid-modal').addClass("show-modal");
 })
 
 $('.btn-success').click(function(){
-  $('#modal-box').removeClass( "show" );
-  $('#bid-modal').removeClass("show");
+  $('#modal-box').removeClass( "show-modal" );
+  $('#bid-modal').removeClass("show-modal");
 })
 
 $('.btn-danger').click(function(){
-  $('#modal-box').removeClass( "show" );
-  $('#bid-modal').removeClass("show");
+  $('#modal-box').removeClass( "show-modal" );
+  $('#bid-modal').removeClass("show-modal");
 })
