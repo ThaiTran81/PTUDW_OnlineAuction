@@ -178,9 +178,21 @@
                                 <h5>Thời điểm kết thúc</h5>
                                 <div class="date-input-container">
                                     <input type="datetime-local" id="endTime" class="text-field" name="endTime">
-                                    <div style="float: right">
-                                        <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
-                                        <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
+                                    <div class = "allow-form d-flex flex-column">
+                                        <div>
+                                            <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
+                                            <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="badBidder" class="checkbox" name="autoExtendAuction">
+                                            <label for="badBidder" class="checkbox-label">Bidder đánh giá thấp</label>
+                                        
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="newBidder" class="checkbox" name="autoExtendAuction">
+                                            <label for="newBidder" class="checkbox-label">Bidder mới</label>
+                                    
+                                        </div>
                                     </div>
                                 </div>
                             </li>

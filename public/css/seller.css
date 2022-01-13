@@ -261,3 +261,33 @@
 .curPointer {
     cursor: pointer;
 }
+
+.allow-form label{
+    display: inline-block;
+}
+
+.checkbox {
+    margin-left: 0;
+}
+
+@media (max-width: 412px) {
+    .date-input-container input{
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px){
+    .side-bar-content {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1273px){
+    #side-bar {
+        height: 34rem;
+    }
+    .sidebar-btt{
+        font-size: 18px;
+    }
+}
+
