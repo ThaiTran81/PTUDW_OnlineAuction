@@ -62,7 +62,7 @@
                                                         <a class="btn" href="/account/sign-in" role="button" id="dropdownMenuLink"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             <img src="/public/images/usericon.svg" alt="img">
-															<span class="text-light">Xin chào, {{getName authUser.name}}</span>
+															<span class="text-light">Chào, {{getName authUser.name}}</span>
                                                         </a>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <form id="frmLogout" action="/account/logout" method="post" hidden></form>
@@ -72,7 +72,7 @@
                                                             {{#if (equal authUser.type 0)}}
                                                                 <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                                                             {{/if}}
-                                                            <li><a class="dropdown-item" href="/account/profile/">Tài khoản</a></li>
+                                                            <li><a class="dropdown-item" href="/account/profile/{{authUser.UID}}">Tài khoản</a></li>
                                                             <li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
                                                         </ul>
                                                     {{else}}
@@ -147,7 +147,7 @@
 									<a class="btn" href="/account/sign-in" role="button" id="dropdownMenuLink"
 										data-bs-toggle="dropdown" aria-expanded="false">
 										<img src="/public/images/usericon.svg" alt="img">
-										<span class="text-light">Xin chào, {{getName authUser.name}}</span>
+										<span class="text-light">Chào, {{getName authUser.name}}</span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 										<form id="frmLogout" action="/account/logout" method="post" hidden></form>
@@ -157,7 +157,7 @@
 										{{#if (equal authUser.type 0)}}
 											<li><a class="dropdown-item" href="/admin/">Admin</a></li>
 										{{/if}}
-										<li><a class="dropdown-item" href="/account/profile/">Tài khoản</a></li>
+										<li><a class="dropdown-item" href="/account/profile/{{authUser.UID}}">Tài khoản</a></li>
 										<li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
 									</ul>
 								{{else}}

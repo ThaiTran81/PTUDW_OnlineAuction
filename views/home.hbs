@@ -20,26 +20,28 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm gần kết thúc</h2>
-				<div class="lastAdded slider d-flex align-items-stretch">
+				<div class="lastAdded row slider d-flex align-items-stretch">
 					{{#each list5End}}
-						<div class="aboutitem">
+						<div class="aboutitem col-md-3">
 							<div class="aboutitemImg">
 								<img class="img-fluid" src="/public/images/product/{{proID}}/thumb.png" alt="img">
-								<span class="">
-									<a href="">
-										<i class="fa fa-heart-o" aria-hidden="true"></i>
-									</a>	
-								</span>
-								<span class="d-none">
-									<a href="" class = "favor">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-									</a>	
-								</span>
+
 							</div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
-											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+									<div class="w-100">
+										<h2 class="text-danger w-auto d-inline-block"><i class="fa fa-clock-o "></i>
+											<span
+													data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+										<a class="float-end text-danger like-btn" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										</a>
+										<a class="float-end text-danger dislike-btn d-none" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart" aria-hidden="true"></i>
+										</a>
+									</div>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -89,26 +91,28 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm có nhiều lượt ra giá nhất</h2>
-				<div class="lastAdded slider d-flex align-items-stretch">
+				<div class="lastAdded row slider d-flex align-items-stretch">
 					{{#each list5Bid}}
-						<div class="aboutitem">
+						<div class="aboutitem col-md-3">
 							<div class="aboutitemImg"><img class="img-fluid"
 														   src="/public/images/product/{{proID}}/thumb.png"
 														   alt="img">
-														   <span class="">
-									<a href="">
-										<i class="fa fa-heart-o" aria-hidden="true"></i>
-									</a>	
-								</span>
-								<span class="d-none">
-									<a href="" class = "favor">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-									</a>	
-								</span></div>
+							</div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
-											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+									<div class="w-100">
+										<h2 class="text-danger w-auto d-inline-block"><i class="fa fa-clock-o "></i>
+											<span
+													data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+										<a class="float-end text-danger like-btn" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										</a>
+										<a class="float-end text-danger dislike-btn d-none" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart" aria-hidden="true"></i>
+										</a>
+									</div>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -158,26 +162,30 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="headingWh mb-3 mb-sm-3 mb-md-4 mb-xl-5">Top 5 sản phẩm có giá cao nhất</h2>
-				<div class="lastAdded slider d-flex align-items-stretch">
+				<div class="lastAdded row slider d-flex align-items-stretch">
 					{{#each list5Price}}
-						<div class="aboutitem">
+						<div class="aboutitem col-md-3">
 							<div class="aboutitemImg"><img class="img-fluid"
 														   src="/public/images/product/{{proID}}/thumb.png"
 														   alt="img">
-														   <span class="">
-									<a href="">
-										<i class="fa fa-heart-o" aria-hidden="true"></i>
-									</a>	
-								</span>
-								<span class="d-none">
-									<a href="" class = "favor">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-									</a>	
-								</span></div>
+
+							</div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
-											data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+									<div class="w-100">
+										<h2 class="text-danger w-auto d-inline-block"><i class="fa fa-clock-o "></i>
+											<span
+													data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+										<a class="float-end text-danger like-btn" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										</a>
+										<a class="float-end text-danger dislike-btn d-none" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart" aria-hidden="true"></i>
+										</a>
+									</div>
+
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">

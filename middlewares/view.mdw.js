@@ -27,6 +27,7 @@ export default function (app) {
                 return part1 + "...@" + part2;
             },
             count_array(arr) {
+                if(arr === undefined) arr=[];
                 return arr.length || 0;
             },
             format_date(date) {

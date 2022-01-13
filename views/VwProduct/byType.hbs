@@ -27,9 +27,12 @@
 								</button>
 
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<li><a class="dropdown-item" href="/product/category/{{selectedCate.catID}}">Tất cả</a></li>
+									<li><a class="dropdown-item" href="/product/category/{{selectedCate.catID}}">Tất
+										cả</a></li>
 									{{#each types}}
-										<li><a class="dropdown-item" href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a></li>
+										<li><a class="dropdown-item"
+											   href="/product/category/{{../selectedCate.catID}}/type/{{this.typID}}">{{this.typName}}</a>
+										</li>
 									{{/each}}
 								</ul>
 							</div>
@@ -73,7 +76,19 @@
 														   alt="img"></div>
 							<div class="bgdarkbluecolor aboutitemcnt">
 								<div class="itemtitlecode">
-									<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span data-countdown='{{endDate}}' >{{endDate}}</span></h2>
+									<div class="w-100">
+										<h2 class="text-danger w-auto d-inline-block"><i class="fa fa-clock-o "></i>
+											<span
+													data-countdown='{{endDate}}'>{{endDate}}</span></h2>
+										<a class="float-end text-danger like-btn" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										</a>
+										<a class="float-end text-danger dislike-btn d-none" data-pro="{{proID}}"
+										   data-user="{{../authUser.UID}}">
+											<i class="fa fa-heart" aria-hidden="true"></i>
+										</a>
+									</div>
 									<h3 class="textwhitecolor"><a href="/product/detail/{{proID}}">{{proName}}</a></h3>
 								</div>
 								<div class="product-price mb-auto">
@@ -124,14 +139,16 @@
 			{{#each pageNumbers}}
 				{{#if this.isCurrent}}
 					<li class="page-active">
-						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
-							{{this.value}}
+						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}
+						&sort={{../selectedSort}}" class="">
+						{{this.value}}
 						</a>
 					</li>
 				{{else}}
 					<li>
-						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}&sort={{../selectedSort}}" class="">
-							{{this.value}}
+						<a href="/product/category/{{../selectedCate.catID}}/{{../selectedType.typID}}?page={{this.value}}
+						&sort={{../selectedSort}}" class="">
+						{{this.value}}
 						</a>
 					</li>
 				{{/if}}

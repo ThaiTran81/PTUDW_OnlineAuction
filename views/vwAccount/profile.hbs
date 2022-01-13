@@ -24,9 +24,19 @@
 
 					<!--</div>-->
 					<div class="prCnt">
-						<h2 class="textwhitecolor">{{authUser.name}}</h2>
-						<h3 class="textgraycolor mt-3 mb-4"><span class="textbluecolor">email:</span> {{authUser.email}}
-						</h3>
+						<div class="">
+							<h2 class="textwhitecolor">{{profile.name}}</h2>
+							<h3 class="textgraycolor mt-3 mb-4"><span
+									class="textbluecolor">email:</span> {{profile.email}}
+							</h3>
+							<h3 class="textgraycolor mt-3 mb-4"><span
+									class="textbluecolor">Điểm đánh giá tích cực:</span> {{profile.good}}
+							</h3>
+							<h3 class="textgraycolor mt-3 mb-4"><span
+									class="textbluecolor">Điểm đánh giá tiêu cực:</span> {{profile.dislike}}
+							</h3>
+						</div>
+
 						<!--<p class="textgraycolor">There are many variations of passages of Lorem Ipsum available, but<br> the majority have suffered alteration in some form, by injected</p>-->
 					</div>
 				</div>
@@ -53,52 +63,20 @@
 								Yêu thích <span>{{count_array watchList}}</span></button>
 							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFour">
 								<i class="fa fa-clock-o"></i>
-								Lịch sử đấu giá
+								Lịch sử
 							</button>
 							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabSix">
 								<i class="fa fa-gavel"></i>
-								Đánh giá</button>
+								Đánh giá
+							</button>
 							<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFive">
 								<i class="fa fa-user"></i>
-								<a class="textgraycolor" href="#">Thông tin cá nhân</a></button>
+								Tài khoản
+							</button>
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
 						<div class="tab-pane fade show active" id="TabOne">
-							<div class="row d-none d-md-flex">
-								<div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-									<button class="filterbtn dropdown-toggle text-start" type="button"
-											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-										Price
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<li><a class="dropdown-item" href="#">Highest price</a></li>
-										<li><a class="dropdown-item" href="#">Lowest Price</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-									<button class="filterbtn dropdown-toggle text-start" type="button"
-											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-										Newest
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<li><a class="dropdown-item" href="#">Newest</a></li>
-										<li><a class="dropdown-item" href="#">Oldest</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-6 col-xl-3 ">
-									<button class="filterbtn dropdown-toggle text-start" type="button"
-											id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-										All items
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<li><a class="dropdown-item" href="#">Single items</a></li>
-										<li><a class="dropdown-item" href="#">Bundles</a></li>
-									</ul>
-								</div>
-							</div>
 
 							<div class="row mt-5">
 								{{#each curBid}}
@@ -106,7 +84,8 @@
 										<div class="aboutitem">
 											<div class="aboutitemImg"><img class="img-fluid"
 																		   src="/public/images/product/{{proID}}/thumb.png"
-																		   alt="img"></div>
+																		   alt="img">
+											</div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
 													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
@@ -128,7 +107,7 @@
 													<div class="card-content">
                                         <span class="card-content-value blue-text">
                                             <i class="icon mx-2 fa fa-user"></i>
-                                            <div class="current-bid">{{protect_email email}}</div>
+                                            <div class="current-bid">{{format_name name}}</div>
                                         </span>
 													</div>
 												</div>
@@ -141,6 +120,13 @@
 														<span class="card-content-value">{{format_number buyNow}}</span>
 													</div>
 												</div>
+												{{#if (is_new startDate)}}
+													<span class="m-0 badge-new">>> Mới đăng {{format_new
+															startDate}}</span>
+												{{else}}
+													<div class="createTime"><i>{{format_date startDate}}</i></div>
+												{{/if}}
+
 											</div>
 										</div>
 									</div>
@@ -157,7 +143,8 @@
 										<div class="aboutitem">
 											<div class="aboutitemImg"><img class="img-fluid"
 																		   src="/public/images/product/{{proID}}/thumb.png"
-																		   alt="img"></div>
+																		   alt="img">
+												</div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
 													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
@@ -179,7 +166,7 @@
 													<div class="card-content">
                                         <span class="card-content-value blue-text">
                                             <i class="icon mx-2 fa fa-user"></i>
-                                            <div class="current-bid">{{protect_email email}}</div>
+                                            <div class="current-bid">{{format_name name}}</div>
                                         </span>
 													</div>
 												</div>
@@ -192,6 +179,13 @@
 														<span class="card-content-value">{{format_number buyNow}}</span>
 													</div>
 												</div>
+												{{#if (is_new startDate)}}
+													<span class="m-0 badge-new">>> Mới đăng {{format_new
+															startDate}}</span>
+												{{else}}
+													<div class="createTime"><i>{{format_date startDate}}</i></div>
+												{{/if}}
+
 											</div>
 										</div>
 									</div>
@@ -207,7 +201,8 @@
 										<div class="aboutitem">
 											<div class="aboutitemImg"><img class="img-fluid"
 																		   src="/public/images/product/{{proID}}/thumb.png"
-																		   alt="img"></div>
+																		   alt="img">
+												</div>
 											<div class="bgdarkbluecolor aboutitemcnt">
 												<div class="itemtitlecode">
 													<h2 class="text-danger"><i class="fa fa-clock-o"></i> <span
@@ -229,7 +224,7 @@
 													<div class="card-content">
                                         <span class="card-content-value blue-text">
                                             <i class="icon mx-2 fa fa-user"></i>
-                                            <div class="current-bid">{{protect_email email}}</div>
+                                            <div class="current-bid">{{format_name name}}</div>
                                         </span>
 													</div>
 												</div>
@@ -242,6 +237,13 @@
 														<span class="card-content-value">{{format_number buyNow}}</span>
 													</div>
 												</div>
+												{{#if (is_new startDate)}}
+													<span class="m-0 badge-new">>> Mới đăng {{format_new
+															startDate}}</span>
+												{{else}}
+													<div class="createTime"><i>{{format_date startDate}}</i></div>
+												{{/if}}
+
 											</div>
 										</div>
 									</div>
@@ -272,7 +274,7 @@
 												</div>
 											</td>
 											<td class="textwhitecolor text-end">{{format_number price}}</td>
-											<td class="textbluecolor text-end">{{endDate}}</td>
+											<td class="textbluecolor text-end">{{format_date endDate}}</td>
 										</tr>
 									{{/each}}
 
@@ -369,10 +371,6 @@
 											   class="form-input" value="{{authUser.addr}}">
 									</div>
 									<div class="input-box">
-										<input type="email" name="email" placeholder="Email"
-											   class="form-input" value="{{authUser.email}}">
-									</div>
-									<div class="input-box">
 										<input type="text" name="dob" placeholder="Ngày sinh"
 											   class="form-input" id="datepicker" value="{{format_dob authUser.dob}}">
 									</div>
@@ -387,7 +385,7 @@
 										</div>
 										<div class="col-md-6">
 											<input id="cpass" type="password" name="cpass"
-												   placeholder="Xác nhận mật khẩu mới"
+												   placeholder="Xác nhận mật khẩu"
 												   class="form-input">
 										</div>
 									</div>
@@ -398,120 +396,50 @@
 							</div>
 						</div>
 						<div class="tab-pane fade justify-content-center" id="TabSix">
-							<div class="comment mb-2">
-								<div class="commentor d-flex">
-									<div class="thumb">
-										<img src="https://cf.shopee.vn/file/4e06ae50007ada5acd4c1d12676f13e9_tn" alt="">
-									</div>
-									<div class="name-rate ml-5">
-										<div class="name">
-											tuandat
+							{{#each feedback}}
+								<div class="comment mb-2">
+									<div class="commentor d-flex">
+										<div class="thumb">
+											<img src="/public/images/author.jpg" alt="">
 										</div>
-										<div class="rate">
-											<i class='bx bxs-like text-blue'></i>
-											
-											<i class='bx bxs-dislike text-danger d-none'></i>
-										</div>
-									</div>
+										<div class="name-rate ml-5">
+											<div class="name">
+												{{name}}
+											</div>
+											<div class="rate">
+												{{#if (equal Type 1)}}
+													<i class='bx bxs-like text-blue'></i>
+												{{else}}
+													<i class='bx bxs-dislike text-danger'></i>
+												{{/if}}
 
-								</div>
-								<div class="product">
-									<div class="row">
-										<div class="pro-thumb col-4">
-											<img src="http://localhost:3000/public/images/product/34/thumb.png" alt="">
+											</div>
 										</div>
-										<div class="pro-name col-8">
-											<a href="">Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội</a>
-										</div>
-									</div>
-								</div>
-								<div class ="comment-text">
-									<div class="cmt">
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									</div>
-									<a href="" class="more-btn">Xem thêm...</a>
-									<a href="" class="less-btn d-none">Thu gọn...</a>
-								</div>
-								<div class="date">
-									29/06/2001
-								</div>
-							</div>
-							<div class="comment mb-2">
-								<div class="commentor d-flex">
-									<div class="thumb">
-										<img src="https://cf.shopee.vn/file/4e06ae50007ada5acd4c1d12676f13e9_tn" alt="">
-									</div>
-									<div class="name-rate ml-5">
-										<div class="name">
-											tuandat
-										</div>
-										<div class="rate">
-											<i class='bx bxs-like text-blue'></i>
-											
-											<i class='bx bxs-dislike text-danger d-none'></i>
-										</div>
-									</div>
 
-								</div>
-								<div class="product">
-									<div class="row">
-										<div class="pro-thumb col-4">
-											<img src="http://localhost:3000/public/images/product/28/thumb.png" alt="">
-										</div>
-										<div class="pro-name col-8">
-											<a href="">Tâm Lý Học - Phác Họa Chân Dung Kẻ Phạm Tội</a>
+									</div>
+									<div class="product">
+										<div class="row">
+											<div class="pro-thumb col-4">
+												<img src="/public/images/product/{{proID}}/thumb.png" alt="">
+											</div>
+											<div class="pro-name col-8">
+												<a href="/product/detail/{{proID}}">{{proName}}</a>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class ="comment-text">
-									<div class="cmt">
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
-									Bidder này boom hàng dojhasjdklhaskjdhas ajslkgdhg khjasdg hkajsdghk asgdahjksgd akjhsg dahkjsgd ajhksgdhkj gahsdjg ashjkdg ashjkgd ajshkdg ajkhsgd akhsjdg ajhksdg akhjsgd 
-									dlasjkgdhajlshdkjas dakshjgd hjas dahjsgdka ahskjdgakjsh.
+									<div class="comment-text">
+										<div class="cmt">
+											{{content}}
+										</div>
+										<a href="" class="more-btn">Xem thêm...</a>
+										<a href="" class="less-btn d-none">Thu gọn...</a>
 									</div>
-									<a href="" class="more-btn">Xem thêm...</a>
-									<a href="" class="less-btn d-none">Thu gọn...</a>
+									<div class="date">
+										{{format_date sendTime}}
+									</div>
 								</div>
-								<div class="date">
-									29/06/2001
-								</div>
-							</div>
+							{{/each}}
+
 						</div>
 					</div>
 				</div>
@@ -540,9 +468,9 @@
 		  });
 	</script> --}}
 	<script>
-		$( function() {
-			$( "#datepicker" ).datepicker();
-			$( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy");
-		} );
+		$(function () {
+			$("#datepicker").datepicker();
+			$("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+		});
 	</script>
 {{/section}}
