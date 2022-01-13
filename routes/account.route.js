@@ -162,6 +162,57 @@ router.post('/watchlist/remove', async function (req, res) {
     const uid = req.body.uid;
     const remove = await productModel.removeFromWatchList(uid, proID);
     res.send('success');
-})
+});
 
+router.get('/change-password', auth, async function (req, res){
+    res.render('vwAccount/changePass', {layout:false});
+});
+
+router.post('/auth', async function (req, res){
+    const email = req.body.email;
+    const user = await userModel.findUserByEmail(email);
+    const password = req.body.password;
+    const ret = bcrypt.compareSync(password, user.password);
+    console.log(password);
+    if (ret === false) {
+        return res.send('fail');
+    }
+    res.send('success');
+});
+
+router.post('/change-password', async function (req, res){
+    const rawPassword = req.body.password;
+    const email = req.body.email;
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(rawPassword, salt);
+
+    await userModel.changePassword(email, hash);
+    req.session.auth = false;
+    req.session.authUser = null;
+    req.session.returnTo = '/';
+    res.send('success');
+});
+
+router.post('/update', async function (req, res){
+    console.log(req.body);
+    const uid = req.body.uid;
+    const name = req.body.name;
+    const addr = req.body.address;
+    const dob = req.body.dob;
+    await userModel.updateUser(uid,name, addr, dob);
+    req.session.authUser = await userModel.findUserByUID(uid);
+    delete req.session.authUser.password;
+    res.locals.authUser = req.session.authUser;
+    res.redirect('/account/profile/'+uid);
+});
+
+router.post('/upgrade', async function (req, res){
+    const uid = req.body.uid;
+    const check = await userModel.findWaitSeller(uid);
+    if(check.length!==0){
+         return res.send('existed');
+    }
+    await userModel.addToWaitSeller(uid);
+    res.send('success');
+})
 export default router;

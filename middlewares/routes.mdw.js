@@ -7,6 +7,7 @@ import productRoute from '../routes/product-user.route.js';
 import sellerRoute from '../routes/seller.route.js';
 import productModel from '../models/product.model.js'
 import adminRoute from '../routes/admin.route.js';
+import * as Console from "console";
 
 export default function (app){
     app.get('/', async function (req, res){
@@ -30,6 +31,7 @@ export default function (app){
     });
 
     app.use(function (err, req, res, next) {
+        console.log(err);
         res.render('500', {layout: false});
     });
 }

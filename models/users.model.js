@@ -1,4 +1,5 @@
 import knex from "../utils/db.js";
+import moment from "moment";
 
 export default {
     findCate() {
@@ -32,8 +33,8 @@ export default {
         const waitList = await knex.raw('SELECT u.UID,u.email,u.`name`,u.addr,u.dob,u.good,u.dislike,us.askDate FROM users u JOIN upseller us ON u.UID=us.UID WHERE us.isAcpt=0');
         return waitList[0];
     },
-    changeTypeUser(role, email){
-        return knex('users').where('email',email).update({type:role}).returning('UID');
+    changeTypeUser(role, uid){
+        return knex('users').where('UID',uid).update({'type':role})
     },
     removeFromWaitSeller(uid){
         return knex('upSeller').where('UID',uid).delete().returning('UID');
@@ -57,5 +58,19 @@ export default {
     },
     unlockUser(email){
         return knex('users').where('email', email).update({'block': 0});
+    },
+    changePassword(email, password){
+        return knex('users').where('email', email).update({'password': password});
+    },
+    updateUser(uid, name, address, dob){
+        var dateMomentObject = moment(dob, "DD/MM/YYYY");
+        var dateObject = dateMomentObject.toDate();
+        return knex('users').where('uid', uid).update({'name': name, 'addr': address, 'dob': dateObject});
+    },
+    findWaitSeller(uid){
+        return knex('upseller').where('UID', uid);
+    },
+    addToWaitSeller(uid){
+        return knex('upseller').insert({'UID': uid,'isAcpt': 0, 'askDate': new Date()});
     }
 }
