@@ -34,3 +34,33 @@ $(".description-container .read-more-btn").click(function() {
 
 });
 
+$('#modal-background').click(function () {
+    $('#modal-box').removeClass( "show" );
+    $('#description-modal').removeClass( "show" );
+    $('#bid-modal').removeClass( "show" );
+});
+
+$('#cancel-add-des').click(function () {
+    $('#modal-box').removeClass( "show" );
+});
+
+$('#open-modal-btn').click(function () {
+    $('#modal-box').addClass( "show" );
+    $('#description-modal').addClass( "show" );
+});
+
+$('.submit-bid-button').click(function (e) {
+  e.preventDefault();
+  $('#modal-box').addClass( "show" );
+  $('#bid-modal').addClass("show");
+})
+
+$('.btn-success').click(function(){
+  $('#modal-box').removeClass( "show" );
+  $('#bid-modal').removeClass("show");
+})
+
+$('.btn-danger').click(function(){
+  $('#modal-box').removeClass( "show" );
+  $('#bid-modal').removeClass("show");
+})

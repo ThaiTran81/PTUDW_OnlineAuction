@@ -2,6 +2,8 @@ import express from "express";
 import productModel from "../models/product.model.js";
 import categoryModel from "../models/category.model.js";
 import detailModel from "../models/detail.model.js";
+import userslModel from "../models/users.model.js";
+import auth from "../middlewares/auth.mdw.js";
 
 const router = express.Router();
 
@@ -295,6 +297,59 @@ router.get('/detail/:id', async function (req, res) {
     if (product === null) {
         return res.redirect('/');
     }
+    res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
+})
+
+router.post('/detail/:id/bid',auth, async function (req, res) {
+    const proID = req.params.id;
+    let product = await detailModel.findById(proID);
+    let description = await detailModel.getDescription(proID);
+    let relatePros = await detailModel.findRelateProduct(product.proID, product.typID, 5);
+    let historyBid = await detailModel.findHistoryBid(proID);
+    let currentPrice = historyBid.pop();
+    historyBid.push(currentPrice);
+    let currentBidder = await detailModel.findBidder(proID);
+    if (product === null) {
+        return res.redirect('/');
+    }
+    const inputPrice = req.body.price;
+    // console.log(res.locals.authUser.UID);
+    if (res.locals.authUser.UID === product.ownerUID) {
+        // console.log(true);
+    }
+    else {
+        if (inputPrice >= currentPrice.price + product.stepPrice ) {
+            let isExisted = 0;
+            for (let i = 0; i < currentBidder.length; i++) {
+                if (currentBidder[i].UID == res.locals.authUser.UID) {
+                    isExisted = 1;
+                }
+            }
+            if (isExisted == 0) {
+                const bidder = {
+                    UID: res.locals.authUser.UID,
+                    proID: proID,
+                    maxPrice: inputPrice
+                }
+                await detailModel.addAuctionBidder(bidder);
+                const bidPrice = parseInt(currentPrice.price) + parseInt(product.stepPrice);
+                const dt = Date.now().toString();
+                const bid = {
+                    UID: res.locals.authUser.UID,
+                    proID: proID,
+                    price: bidPrice
+                }
+                await detailModel.addAuctionBid(bid);
+            }
+        }
+    }
+    product = await detailModel.findById(proID);
+    description = await detailModel.getDescription(proID);
+    relatePros = await detailModel.findRelateProduct(product.proID, product.typID, 5);
+    historyBid = await detailModel.findHistoryBid(proID);
+    currentPrice = historyBid.pop();
+    historyBid.push(currentPrice);
+    currentBidder = await detailModel.findBidder(proID);
     res.render('vwProduct/productDetail', { product, relatePros, description, historyBid, currentPrice, currentBidder });
 })
 
