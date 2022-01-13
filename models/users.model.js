@@ -44,5 +44,12 @@ export default {
     async countAllUser(){
         const lst = await knex('users').where('type','>',0).count({amount: 'UID'});
         return lst[0].amount;
+    },
+    async getFeedbackByUID(uid){
+        const lst = await knex.raw('SELECT p.proID,p.proName,u.UID,u.`name`,r.content,r.Type,r.sendTime FROM rating r JOIN product p ON r.ratingProID=p.proID JOIN users u ON u.UID=r.UIDRater WHERE r.UID='+uid);
+        if(lst[0].length === 0){
+            return null;
+        }
+        return lst[0];
     }
 }

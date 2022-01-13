@@ -157,5 +157,19 @@ export default {
         if(list.length === 0)
             return null;
         return list[0][0][0].amount;
+    },
+    async findByWatchList(uid, proID){
+        const lst = await knex.raw(`SELECT w.* FROM watchlist w WHERE w.proID=${proID} AND w.UID=${uid}`);
+        if(lst[0].length===0){
+            return null;
+        }
+        return lst[0];
+    },
+    addToWatchList(uid, proID){
+        return knex('watchlist').insert({'UID': uid, 'proID': proID});
+    },
+    removeFromWatchList(uid, proID){
+        return knex('watchlist').where({'UID': uid, 'proID':proID}).delete();
     }
+
 }

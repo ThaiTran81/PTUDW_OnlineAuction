@@ -5,8 +5,7 @@ import userModel from "../models/users.model.js";
 import auth from "../middlewares/auth.mdw.js";
 import productModel from "../models/product.model.js";
 import email from "../utils/email.js";
-import otpModel from"../models/otpModel.js";
-
+import otpModel from "../models/otpModel.js";
 
 
 const router = express.Router();
@@ -70,8 +69,8 @@ router.post('/sign-up', async function (req, res) {
         });
 })
 
-router.post('/verify-otp', async function (req,res){
-    const user ={
+router.post('/verify-otp', async function (req, res) {
+    const user = {
         email: req.body.email,
         name: req.body.name,
         address: req.body.address,
@@ -81,11 +80,10 @@ router.post('/verify-otp', async function (req,res){
     const otp = req.body.otp;
     const confirm = await otpModel.findOtp(user.email);
     console.log(confirm);
-    if(confirm.otp === otp){
+    if (confirm.otp === otp) {
         await userModel.add(user);
-        res.render('vwAccount/signin',{layout: false, successMsg: 'Đăng ký thành công, hãy thử đăng nhập'});
-    }
-    else{
+        res.render('vwAccount/signin', {layout: false, successMsg: 'Đăng ký thành công, hãy thử đăng nhập'});
+    } else {
         return res.render('vwAccount/signup', {
             layout: false,
             failMsg: "Đăng ký thất bại, mã otp không đúng "
@@ -97,7 +95,7 @@ router.post('/verify-otp', async function (req,res){
 router.post('/sign-in', async function (req, res) {
     const user = await userModel.findUserByEmail(req.body.email);
 
-    if (user === null){
+    if (user === null) {
         return res.render('vwAccount/signin', {layout: false, failMsg: 'Tài khoản hoặc mật khẩu không đúng'});
     }
     const ret = bcrypt.compareSync(req.body.password, user.password);
@@ -124,12 +122,42 @@ router.get('/admin', function (req, res) {
     res.render('admin/adminDashboard2', {layout: false});
 });
 
-router.get('/profile',auth ,async function (req, res){
-    const curBid = await productModel.findCurBid(res.locals.authUser.UID);
-    const winBid = await productModel.findWinBid(res.locals.authUser.UID);
-    const watchList = await productModel.findWatchList(res.locals.authUser.UID);
-    const historyBid = await productModel.findHistoryBid(res.locals.authUser.UID);
-    res.render('vwAccount/profile', {curBid, winBid, watchList, historyBid});
+router.get('/profile/:uid', auth, async function (req, res) {
+    const uid = req.params.uid || res.locals.authUser.UID;
+    const curBid = await productModel.findCurBid(uid);
+    const winBid = await productModel.findWinBid(uid);
+    const watchList = await productModel.findWatchList(uid);
+    const historyBid = await productModel.findHistoryBid(uid);
+    const profile = await userModel.findUserByUID(uid);
+    const feedback = await userModel.getFeedbackByUID(uid);
+    delete profile.password;
+    console.log(feedback);
+    console.log(curBid)
+    if (+uid === res.locals.authUser.UID) {
+        res.render('vwAccount/profile', {curBid, winBid, watchList, historyBid, profile, feedback});
+    } else {
+        res.render('vwAccount/profile', {profile, feedback});
+    }
+
+});
+
+router.post('/watchlist/add', async function (req, res) {
+    const proID = req.body.proID;
+    const uid = req.body.uid;
+    let lst = await productModel.findByWatchList(uid, proID);
+    if (lst !== null) {
+        return res.send('existed');
+    }
+    const add = await productModel.addToWatchList(uid, proID);
+
+    res.send('success');
+});
+
+router.post('/watchlist/remove', async function (req, res) {
+    const proID = req.body.proID;
+    const uid = req.body.uid;
+    const remove = await productModel.removeFromWatchList(uid, proID);
+    res.send('success');
 })
 
 export default router;
