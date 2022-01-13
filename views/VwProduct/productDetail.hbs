@@ -164,7 +164,7 @@
                         <a href="#bid-his-tab" class="active" data-toggle="tab">Lịch sử đấu giá</a>
                     </li>
                     {{#if (equal authUser.UID product.ownerUID)}}
-                        <li>
+                        <li class = "participant">
                             <a href="#bidder-tab" data-toggle="tab">Người tham gia</a>
                         </li>
                     {{/if}}
@@ -275,7 +275,7 @@
 </div>
 <div id="modal-box" class="w-100 h-100">
     <div id="modal-background" class="w-100 h-100"></div>
-    <div class="description-additional-form rounded-3">
+    <div id="description-modal" class="description-additional-form rounded-3">
         <h1 class="text-center mx-3 mt-3 mb-1">Bổ Sung Mô Tả</h1>
         <div class="description-form p-3">
             <form method="post">
@@ -287,6 +287,15 @@
             <a href="">
                 <button class="modal-btn btn-primary rounded-3 px-2 mx-3">Thêm</button>
             </a>
+        </div>
+    </div>
+    <div id = "bid-modal" class="description-additional-form rounded-3">
+        <h1 class=" mx-3 mt-3 mb-1">Đồng ý ra giá (số tiền) cho sản phẩm?</h1>
+        <div class="form-btn d-flex justify-content-end">
+            <div class="row">
+                <button class="btn btn-success col-3">Đồng ý</button>
+                <button class="btn btn-danger col-3">Hủy</button>
+            </div>
         </div>
     </div>
 </div>
