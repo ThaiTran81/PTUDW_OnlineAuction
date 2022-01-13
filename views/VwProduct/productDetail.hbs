@@ -10,6 +10,10 @@
             selector: 'textarea',
             height : "350"
         });
+        $('#bid-btn').click(function () {
+           let amount =  $('#input-amount').val();
+            $('#bid-amount').text(amount);
+        });
     </script>
 {{/section}}
 
@@ -57,7 +61,7 @@
                 </div>
                 <ul class="seller-information account-information">
                     <li>
-                        Người bán: {{format_name product.name}}
+                        Người bán: {{product.name}}
                     </li>
                     <li>
                         {{product.good}}
@@ -124,14 +128,14 @@
                     </div>
                     <div id="price-session" class="d-flex flex-column">
                         <p class="fst-italic fw-light text-danger px-4">{{approvedMsg}}</p>
-                        <input type="text" class="price-input bg-light mt-1" placeholder="Enter you maximum bid amount" name="price" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>
+                        <input id="input-amount" type="text" class="price-input bg-light mt-1" placeholder="Enter you maximum bid amount" name="price" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>
                     </div>
-                    <button type="submit" class="submit-bid-button auto-submit-bid-button" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Ra giá</button>
+                    <button id="bid-btn" type="submit" class="submit-bid-button auto-submit-bid-button" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Ra giá</button>
                 </form>
             </div>
             <div class="mt-3 mb-2 row d-flex justify-content-around">
-                <button type="submit" class="bottom-btt buy-now-button col-lg-5">Mua ngay: {{format_number product.buyNow}}</button>
-                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5">Thêm vào danh sách yêu thích</button>
+                <button type="submit" class="bottom-btt buy-now-button col-lg-5" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Mua ngay: {{format_number product.buyNow}}</button>
+                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Thêm vào danh sách yêu thích</button>
             </div>
             {{/if}}
         </div>
@@ -185,6 +189,7 @@
                             </thead>
                             <tbody>
                             {{#each historyBid}}
+                                <form action="/product/detail/:id/removeBidder"></form>
                                 <tr>
                                     <td data-purchase="bid-time">{{format_date this.aucTime}}</td>
                                     <td data-purchase="bidder">{{format_name this.name}}</td>
@@ -284,19 +289,21 @@
     <div id="description-modal" class="description-additional-form rounded-3">
         <h1 class="text-center mx-3 mt-3 mb-1">Bổ Sung Mô Tả</h1>
         <div class="description-form p-3">
-            <form method="post">
-                <textarea id="mytextarea"></textarea>
+            <form id="addDes-form" method="post" action="/product/detail/{{product.proID}}/addDes">
+                <textarea id="mytextarea" name="desAddContent"></textarea>
             </form>
         </div>
         <div class="modal-bottom d-flex justify-content-end">
             <button id="cancel-add-des" class="modal-btn btn-danger rounded-3 px-3">Hủy</button>
             <a href="">
-                <button class="modal-btn btn-primary rounded-3 px-2 mx-3">Thêm</button>
+                <button form="addDes-form" class="modal-btn btn-primary rounded-3 px-2 mx-3">Thêm</button>
             </a>
         </div>
     </div>
     <div id = "bid-modal" class="description-additional-form rounded-3">
-        <h1 class=" mx-3 mt-3 mb-1">Đồng ý ra giá (số tiền) cho sản phẩm?</h1>
+        <h1 class=" mx-3 mt-3 mb-1">Đồng ý ra giá
+            <span id="bid-amount"></span>
+            cho sản phẩm?</h1>
         <div class="form-btn d-flex justify-content-end">
             <div class="row">
                 <button form="bid-form" class="btn btn-success col-3">Đồng ý</button>

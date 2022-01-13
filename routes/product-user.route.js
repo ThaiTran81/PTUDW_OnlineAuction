@@ -347,15 +347,18 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
         return res.redirect('/');
     }
     const inputPrice = req.body.price;
-    // console.log(res.locals.authUser.UID);
     if (res.locals.authUser.UID === product.ownerUID) {
     }
     else {
-        if (inputPrice >= currentPrice.price + product.stepPrice ) {
+        if (parseInt(inputPrice) >= parseInt(currentPrice.price) + parseInt(product.stepPrice) ) {
             let isExisted = 0;
+            let currentBidderMaxPrice = 0;
             for (let i = 0; i < currentBidder.length; i++) {
                 if (currentBidder[i].UID == res.locals.authUser.UID) {
                     isExisted = 1;
+                }
+                if (currentBidder[i].UID == currentPrice.UID) {
+                    currentBidderMaxPrice = parseInt(currentBidder[i].maxPrice);
                 }
             }
             if (isExisted == 0) {
@@ -378,8 +381,45 @@ router.post('/detail/:id/bid',auth, async function (req, res) {
                 }
                 await detailModel.addAuctionBid(bid);
             }
+            if (currentBidderMaxPrice >= parseInt(inputPrice) + parseInt(product.stepPrice)) {
+                const bidPrice = parseInt(inputPrice) + parseInt(product.stepPrice);
+                const bid = {
+                    UID: currentPrice.UID,
+                    proID: proID,
+                    price: bidPrice
+                }
+                await detailModel.addAuctionBid(bid);
+            }
         }
     }
+    const url = '/product/detail/' + proID;
+    res.redirect(url);
+})
+
+router.post('/detail/:id/addDes',auth, async function (req, res) {
+    const proID = req.params.id;
+
+    console.log(req.body);
+    const des = {
+        proID: proID,
+        description: req.body.desAddContent
+    }
+    await detailModel.addDescription(des);
+
+    const url = '/product/detail/' + proID;
+    res.redirect(url);
+})
+
+router.post('/detail/:id/removeBidder',auth, async function (req, res) {
+    const proID = req.params.id;
+
+    console.log(req.body);
+    const des = {
+        proID: proID,
+        description: req.body.desAddContent
+    }
+    await detailModel.addDescription(des);
+
     const url = '/product/detail/' + proID;
     res.redirect(url);
 })

@@ -147,7 +147,7 @@
                                     <option value="cat4">Category 4</option>
                                     <option value="cat5">Category 5</option>
                                 </select>
-                                <select id="product-type" name="product-type" class="text-field product-dropdown">
+                                <select id="product-type" name="product-type" class="text-field product-dropdown mt-2">
                                     <option value="ty1">Type 1</option>
                                     <option value="ty2">Type 2</option>
                                     <option value="ty3">Type 3</option>
@@ -159,7 +159,7 @@
                                 <h5>Giá Khởi điểm & Bước giá</h5>
                                 <div class="bid-price">
                                     <input type="text" id="startPrice" class="text-field" name="startPrice" placeholder="Start Price" required>
-                                    <input type="text" id="stepPrice" class="text-field" name="stepPrice" placeholder="Step Price" required>
+                                    <input type="text" id="stepPrice" class="text-field mt-2" name="stepPrice" placeholder="Step Price" required>
                                 </div>
                             </li>
                             <li class="text-section-item">
@@ -178,24 +178,25 @@
                                 <h5>Thời điểm kết thúc</h5>
                                 <div class="date-input-container">
                                     <input type="datetime-local" id="endTime" class="text-field" name="endTime">
-                                    <div class = "allow-form d-flex flex-column">
-                                        <div>
-                                            <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
-                                            <label for="autoExtendAuction" class="checkbox-label">Tự động gia hạn</label>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="badBidder" class="checkbox" name="autoExtendAuction">
-                                            <label for="badBidder" class="checkbox-label">Bidder đánh giá thấp</label>
-                                        
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="newBidder" class="checkbox" name="autoExtendAuction">
-                                            <label for="newBidder" class="checkbox-label">Bidder mới</label>
-                                    
-                                        </div>
+                                    <div>
+                                        <input type="checkbox" id="autoExtendAuction" class="checkbox" name="autoExtendAuction">
+                                        <label for="autoExtendAuction" class="checkbox-label mt-2">Tự động gia hạn</label>
                                     </div>
                                 </div>
                             </li>
+                            <li class="text-section-item">
+                                <h5>Loại bidder</h5>
+                                <div>
+                                    <input type="checkbox" id="badBidder" class="checkbox" name="autoExtendAuction">
+                                    <label for="badBidder" class="checkbox-label">Bidder đánh giá thấp</label>
+                                        
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="newBidder" class="checkbox" name="autoExtendAuction">
+                                    <label for="newBidder" class="checkbox-label">Bidder mới</label>
+                                    
+                                </div>
+                            </li>                                    
                         </ul>
                     </div>
                     <div class="image-section col-lg 4">
