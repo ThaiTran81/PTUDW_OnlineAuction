@@ -132,9 +132,27 @@ router.post('/user/downgrade', async function (req, res) {
     const downgrade = await accountModel.changeTypeUser(2, email).catch(() => {
         return res.send('fail');
     })
-    const send = await emailModel.sendMSG(email,'Hạ cấp tài khoản', 'Tài khoản của bạn đã bị hạ cấp từ seller xuống bidder');
+    const send = await emailModel.sendMSG(email, 'Hạ cấp tài khoản', 'Tài khoản của bạn đã bị hạ cấp từ seller xuống bidder');
     res.send('success');
 });
 
-router.
+router.post('/user/lock', async function (req, res) {
+    console.log();
+    const email = req.body.email;
+    await accountModel.lockUser(email).catch(() => {
+        return res.send('fail');
+    })
+    await emailModel.sendMSG(email, 'Thông báo khoá tài khoản', 'Tài khoản của bạn đã bị khoá bởi quản trị viên');
+    res.send('success');
+});
+
+router.post('/user/unlock', async function (req, res) {
+    console.log();
+    const email = req.body.email;
+    await accountModel.unlockUser(email).catch(() => {
+        return res.send('fail');
+    })
+    await emailModel.sendMSG(email, 'Thông báo mở khoá tài khoản', 'Tài khoản của bạn đã được mở khoá bởi quản trị viên, giờ đây bạn đã có thể đăng nhập trở lại');
+    res.send('success');
+})
 export default router;

@@ -51,5 +51,11 @@ export default {
             return null;
         }
         return lst[0];
+    },
+    lockUser(email){
+        return knex('users').where('email', email).update({'block': 1});
+    },
+    unlockUser(email){
+        return knex('users').where('email', email).update({'block': 0});
     }
 }

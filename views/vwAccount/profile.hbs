@@ -386,7 +386,7 @@
 									</div>
 									<div class="row input-box">
 										<div class="col-md-6">
-											<input id="pass" type="password" name="pass" placeholder="Mật khẩu mới"
+											<input id="pass" type="password" name="newpass" placeholder="Mật khẩu mới"
 												   class="form-input">
 										</div>
 										<div class="col-md-6">
@@ -456,27 +456,14 @@
 
 {{#section 'js'}}
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-	{{!-- <link rel="" href="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.0.2/readmore.min.js">
-	 --}}
-	{{!-- <script src="https://raw.githubusercontent.com/jedfoster/Readmore.js/master/readmore.js"></script> --}}
-	{{!-- <script src="/public/js/readmore.min.js"></script> --}}
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<script src="/public/js/readmore.js"></script>
-	{{!-- <script>
-		$('#comment-text').readmore({ speed: 75, lessLink: '<a href="#">Read less</a>' });
-
-	</script> --}}
-
-	{{!-- <script type="text/javascript">
-  		$(".comment-text").readmore({
-			  speed: 75, // how fast to animate
-  				maxHeight: 30
-		  });
-	</script> --}}
 	<script>
 		$(function () {
 			$("#datepicker").datepicker();
 			$("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
 		});
+
+
 	</script>
 {{/section}}
