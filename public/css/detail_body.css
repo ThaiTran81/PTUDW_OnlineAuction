@@ -690,3 +690,6 @@ bottom: .5em;
     }
 }
 
+.card-bottom a{
+    height: 40px;
+}

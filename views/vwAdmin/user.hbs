@@ -60,10 +60,10 @@
 
 						{{#if (equal block 0)}}
 							<a class="btn btn-danger btn-lock" data-user="{{email}}"><i class="fa fa-lock"></i> Khoá</a>
-							<a class="btn btn-danger btn-unlock d-none" data-user="{{email}}"><i class="fa fa-underlock"></i> Mở khoá</a>
+							<a class="btn btn-warning btn-unlock d-none" data-user="{{email}}"><i class="fa fa-unlock"></i> Mở khoá</a>
 						{{else}}
 							<a class="btn btn-danger btn-lock d-none" data-user="{{email}}"><i class="fa fa-lock"></i> Khoá</a>
-							<a class="btn btn-danger btn-unlock" data-user="{{email}}"><i class="fa fa-underlock"></i> Mở khoá</a>
+							<a class="btn btn-warning btn-unlock" data-user="{{email}}"><i class="fa fa-unlock"></i> Mở khoá</a>
 						{{/if}}
 
 						<a class="btn btn-primary"><i class="fa fa-eye"></i></a>
@@ -138,7 +138,6 @@
 						$(".btn-lock[data-user='"+ email +"']").addClass('d-none');
 						$(".btn-unlock[data-user='"+ email +"']").removeClass('d-none');
 						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
-						location.reload();
 					}
 					else{
 						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Thao tác không thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
@@ -163,7 +162,6 @@
 						$(".btn-unlock[data-user='"+ email +"']").addClass('d-none');
 						$(".btn-lock[data-user='"+ email +"']").removeClass('d-none');
 						$("<div class='alert alert-success row position-absolute w-25'role='alert' style='z-index: 5'> Thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);
-						location.reload();
 					}
 					else{
 						$("<div class='alert alert-danger row position-absolute w-25'role='alert' style='z-index: 5'> Thao tác không thành công </div>").insertBefore('.search-form').delay(1000).fadeOut(2000);

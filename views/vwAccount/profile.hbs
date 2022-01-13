@@ -35,6 +35,14 @@
 							<h3 class="textgraycolor mt-3 mb-4"><span
 									class="textbluecolor">Điểm đánh giá tiêu cực:</span> {{profile.dislike}}
 							</h3>
+							{{#if (equal profile.UID authUser.UID)}}
+								{{#if (equal authUser.type 2)}}
+									<div class="w-100 ">
+										<a class="d-block btn btn-primary w-25 m-auto" id="upgrade-btn" data-uid="{{authUser.UID}}">Nâng cấp lên Bidder</a>
+									</div>
+								{{/if}}
+							{{/if}}
+
 						</div>
 
 						<!--<p class="textgraycolor">There are many variations of passages of Lorem Ipsum available, but<br> the majority have suffered alteration in some form, by injected</p>-->
@@ -68,10 +76,11 @@
 								</button>
 							{{/if}}
 
-								<button class="nav-link {{#unless (equal profile.UID authUser.UID)}} active{{/unless}}" data-bs-toggle="tab" data-bs-target="#TabSix">
-									<i class="fa fa-gavel"></i>
-									Đánh giá
-								</button>
+							<button class="nav-link {{#unless (equal profile.UID authUser.UID)}} active{{/unless}}"
+									data-bs-toggle="tab" data-bs-target="#TabSix">
+								<i class="fa fa-gavel"></i>
+								Đánh giá
+							</button>
 
 							{{#if (equal profile.UID authUser.UID)}}
 								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#TabFive">
@@ -287,121 +296,49 @@
 
 								</table>
 
-
-								<!-- <div class="activityData">
-                                  <div  class="eventType textwhitecolor">
-                                    <img src="img/handicon.svg" alt="img"> Offer
-                                  </div>
-
-                                  <div  class="activityItem">
-                                    <div>
-                                      <img class="img-fluid" src="img/activityItem01.svg" alt="img">
-                                    </div>
-                                    <div class="actiItemTitle">
-                                      <span class="textgraycolor">Jungle Freaks</span>
-                                      <strong class="textwhitecolor">Jungle Freaks by Trosley</strong>
-                                    </div>
-                                  </div>
-
-                                  <div class="activityPrice textwhitecolor">
-                                    <img class="img-fluid" src="img/priceicon.svg" alt="img">
-                                    0,002
-                                  </div>
-
-                                  <div class="activityQty textwhitecolor">
-                                    1
-                                  </div>
-
-                                  <div class="activityFrom textbluecolor">
-                                    alphabet
-                                  </div>
-
-                                  <div class="activityTo textbluecolor">
-                                    barbos2021
-                                  </div>
-
-                                  <div class="activityTime textbluecolor">
-                                    20 seconds ago
-                                  </div>
-
-                                </div>
-                                <div class="activityData">
-                                  <div  class="eventType textwhitecolor">
-                                    <img src="img/cart-icon.svg" alt="img"> Offer
-                                  </div>
-
-                                  <div  class="activityItem">
-                                    <div>
-                                      <img class="img-fluid" src="img/activityItem01.svg" alt="img">
-                                    </div>
-                                    <div class="actiItemTitle">
-                                      <span class="textgraycolor">Jungle Freaks</span>
-                                      <strong class="textwhitecolor">Jungle Freaks by Trosley</strong>
-                                    </div>
-                                  </div>
-
-                                  <div class="activityPrice textwhitecolor">
-                                    <img class="img-fluid" src="img/priceicon.svg" alt="img">
-                                    0,002
-                                  </div>
-
-                                  <div class="activityQty textwhitecolor">
-                                    1
-                                  </div>
-
-                                  <div class="activityFrom textbluecolor">
-                                    alphabet
-                                  </div>
-
-                                  <div class="activityTo textbluecolor">
-                                    barbos2021
-                                  </div>
-
-                                  <div class="activityTime textbluecolor">
-                                    20 seconds ago
-                                  </div>
-
-                                </div> -->
 							</div>
 
 						</div>
 						<div class="tab-pane fade justify-content-center" id="TabFive">
 							<div class="sign-from signup-form m-auto">
-								<form action="#" method="post">
+								<form action="/account/update" id="updateForm" method="post">
+									<input name="uid" type="text" value="{{authUser.UID}}" hidden>
 									<div class="input-box">
 										<input type="text" name="name" placeholder="Họ tên"
-											   class="form-input" value="{{authUser.name}}">
+											   class="form-input" value="{{authUser.name}}" required>
 									</div>
 									<div class="input-box">
 										<input type="text" name="address" placeholder="Địa chỉ"
-											   class="form-input" value="{{authUser.addr}}">
+											   class="form-input" value="{{authUser.addr}}" required>
 									</div>
 									<div class="input-box">
 										<input type="text" name="dob" placeholder="Ngày sinh"
-											   class="form-input" id="datepicker" value="{{format_dob authUser.dob}}">
+											   class="form-input" id="datepicker" value="{{format_dob authUser.dob}}"
+											   required>
 									</div>
-									<div class="input-box">
-										<input type="password" name="curPass" placeholder="Mật khẩu hiện tại"
-											   class="form-input">
-									</div>
-									<div class="row input-box">
-										<div class="col-md-6">
-											<input id="pass" type="password" name="pass" placeholder="Mật khẩu mới"
-												   class="form-input">
-										</div>
-										<div class="col-md-6">
-											<input id="cpass" type="password" name="cpass"
-												   placeholder="Xác nhận mật khẩu"
-												   class="form-input">
-										</div>
-									</div>
+									<!--<div class="input-box">-->
+									<!--	<input type="password" name="curPass" placeholder="Mật khẩu hiện tại"-->
+									<!--		   class="form-input" id="curPass">-->
+									<!--</div>-->
+									<!--<div class="row input-box">-->
+									<!--	<div class="col-md-6">-->
+									<!--		<input id="pass" type="password" name="newPass" placeholder="Mật khẩu mới"-->
+									<!--			   class="form-input" id="newPass">-->
+									<!--	</div>-->
+									<!--	<div class="col-md-6">-->
+									<!--		<input id="cpass" type="password" name="confirmPass"-->
+									<!--			   placeholder="Xác nhận mật khẩu" id="confirmPass"-->
+									<!--			   class="form-input">-->
+									<!--	</div>-->
+									<!--</div>-->
 									<button class="btn btnlightblue me-3 w-100" id="btnRegist" type="submit">
 										Cập nhật thông tin
 									</button>
 								</form>
 							</div>
 						</div>
-						<div class="tab-pane fade justify-content-center {{#unless (equal profile.UID authUser.UID)}} show active{{/unless}}" id="TabSix">
+						<div class="tab-pane fade justify-content-center {{#unless
+								(equal profile.UID authUser.UID)}} show active{{/unless}}" id="TabSix">
 							{{#each feedback}}
 								<div class="comment mb-2">
 									<div class="commentor d-flex">
@@ -456,27 +393,36 @@
 
 {{#section 'js'}}
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-	{{!-- <link rel="" href="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.0.2/readmore.min.js">
-	 --}}
-	{{!-- <script src="https://raw.githubusercontent.com/jedfoster/Readmore.js/master/readmore.js"></script> --}}
-	{{!-- <script src="/public/js/readmore.min.js"></script> --}}
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<script src="/public/js/readmore.js"></script>
-	{{!-- <script>
-		$('#comment-text').readmore({ speed: 75, lessLink: '<a href="#">Read less</a>' });
-
-	</script> --}}
-
-	{{!-- <script type="text/javascript">
-  		$(".comment-text").readmore({
-			  speed: 75, // how fast to animate
-  				maxHeight: 30
-		  });
-	</script> --}}
 	<script>
 		$(function () {
 			$("#datepicker").datepicker();
 			$("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
 		});
+		$('#upgrade-btn').click(function (){
+            let $this = $(this);
+            const uid  = $this.attr('data-uid');
+			axios({
+				method: 'post',
+				url: '/account/upgrade',
+				data: {
+					uid
+				}
+			}).then(function (res){
+				const status = res.data;
+				if(status==='existed'){
+					$("<div class='alert alert-success row position-absolute w-50'role='alert' style='z-index: 1000; left: 20px;top:80px;'> Tài khoản đang nằm trong danh sách chờ duyệt </div>").insertBefore('.container-fluid').delay(2000).fadeOut(2000);
+				}
+				else if(status==='success'){
+					$("<div class='alert alert-success row position-absolute w-50'role='alert' style='z-index: 1000; left: 20px;top:80px;'> Đã thêm tài khoản vào danh sách chờ duyệt</div>").insertBefore('.container-fluid').delay(2000).fadeOut(2000);
+				}
+				else{
+					$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 1000; left: 20px;top:80px;'> Có lỗi xảy ra, vui lòng thử lại sau </div>").insertBefore('.container-fluid').delay(2000).fadeOut(2000);
+				}
+			}).catch(function (){
+				$("<div class='alert alert-danger row position-absolute w-50'role='alert' style='z-index: 1000; left: 20px;top:80px;'> Có lỗi xảy ra, vui lòng thử lại sau </div>").insertBefore('.container-fluid').delay(2000).fadeOut(2000);
+			})
+		})
 	</script>
 {{/section}}

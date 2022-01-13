@@ -73,7 +73,8 @@
                                                                 <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                                                             {{/if}}
                                                             <li><a class="dropdown-item" href="/account/profile/{{authUser.UID}}">Tài khoản</a></li>
-                                                            <li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
+															<li><a class="dropdown-item" href="/account/change-password">Đổi mật khẩu</a></li>
+															<li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
                                                         </ul>
                                                     {{else}}
                                                         <a class="btn" href="/account/sign-in">
@@ -158,6 +159,7 @@
 											<li><a class="dropdown-item" href="/admin/">Admin</a></li>
 										{{/if}}
 										<li><a class="dropdown-item" href="/account/profile/{{authUser.UID}}">Tài khoản</a></li>
+										<li><a class="dropdown-item" href="/account/change-password">Đổi mật khẩu</a></li>
 										<li><a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Đăng xuất</a></li>
 									</ul>
 								{{else}}
