@@ -213,7 +213,7 @@
                                     <td data-purchase="bidder">{{format_name this.name}}</td>
                                     <td data-purchase="rating-point">{{cal_rating_point this.good this.dislike}}</td>
                                     <td data-purchase="">
-                                        <button class="btn-outline-danger p-1 rounded-3">Từ chối</button>
+                                        <button  class="btn-outline-danger reject-btn p-1 rounded-3">Từ chối</button>
                                     </td>
                                 </tr>
                             {{/each}}
@@ -307,6 +307,17 @@
         <div class="form-btn d-flex justify-content-end">
             <div class="row">
                 <button form="bid-form" class="btn btn-success col-3">Đồng ý</button>
+                <button class="btn btn-danger col-3">Hủy</button>
+            </div>
+        </div>
+    </div>
+    <div id = "reject-modal" class="description-additional-form rounded-3">
+        <h1 class=" mx-3 mt-3 mb-1">
+            Từ chối bidder này?
+        </h1>
+        <div class="form-btn d-flex justify-content-end">
+            <div class="row">
+                <button form="reject-form" class="btn btn-success col-3">Đồng ý</button>
                 <button class="btn btn-danger col-3">Hủy</button>
             </div>
         </div>
