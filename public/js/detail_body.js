@@ -38,7 +38,9 @@ $('#modal-background').click(function () {
     $('#modal-box').removeClass( "show-modal" );
     $('#description-modal').removeClass( "show-modal" );
     $('#bid-modal').removeClass( "show-modal" );
-});
+    $('#reject-modal').removeClass( "show-modal" );
+
+  });
 
 $('#cancel-add-des').click(function () {
     $('#modal-box').removeClass( "show-modal" );
@@ -63,4 +65,9 @@ $('.btn-success').click(function(){
 $('.btn-danger').click(function(){
   $('#modal-box').removeClass( "show-modal" );
   $('#bid-modal').removeClass("show-modal");
+})
+
+$('.reject-btn').click(function(){
+  $('#modal-box').addClass( "show-modal" );
+  $('#reject-modal').addClass("show-modal");
 })

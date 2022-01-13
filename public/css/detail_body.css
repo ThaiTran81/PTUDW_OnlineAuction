@@ -606,16 +606,18 @@ bottom: .5em;
     display: none;
 }
 
+#reject-modal,
 #bid-modal {
     display: none;
-    height: 30%;
     width: 60%;
+    height: 30%;
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: -1.04px 4.891px 20px 0px rgba(68, 68, 82, 0.5);
 }
+
 
 
 .form-btn {
