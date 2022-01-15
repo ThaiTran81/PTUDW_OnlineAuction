@@ -155,9 +155,13 @@
                 </form>
             </div>
             <div class="mt-3 mb-2 row d-flex justify-content-around">
-                <button type="submit" class="bottom-btt buy-now-button col-lg-5" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Mua ngay: {{format_number product.buyNow}}</button>
-                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Thêm vào danh sách yêu thích</button>
-            </div>
+                <button type="submit" class="bottom-btt buy-now-button col-lg-5" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}}>Mua ngay: {{format_number c.buyNow}}</button>
+                <button type="submit" class="bottom-btt add-to-fav-button col-lg-5 like-btn" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}} data-pro="{{product.proID}}"
+						data-user="{{authUser.UID}}">Thêm vào danh sách yêu thích</button>
+				<button type="submit" class="bottom-btt add-to-fav-button col-lg-5 dislike-btn d-none" {{#if blocked}}style="cursor: not-allowed" disabled{{/if}} data-pro="{{product.proID}}"
+						data-user="{{authUser.UID}}">Xoá khỏi danh sách yêu thích</button>
+
+			</div>
             {{/if}}
         </div>
     </div>
