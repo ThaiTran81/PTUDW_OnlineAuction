@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : conn
+ Source Server         : MySQL_Web
  Source Server Type    : MySQL
- Source Server Version : 100421
- Source Host           : localhost:3306
+ Source Server Version : 50734
+ Source Host           : localhost:8889
  Source Schema         : auction_online_db
 
  Target Server Type    : MySQL
- Target Server Version : 100421
+ Target Server Version : 50734
  File Encoding         : 65001
 
- Date: 14/01/2022 04:04:21
+ Date: 15/01/2022 20:43:59
 */
 
 SET NAMES utf8mb4;
@@ -21,39 +21,42 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category`  (
-  `catID` int NOT NULL AUTO_INCREMENT,
-  `catName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+CREATE TABLE `category` (
+  `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `catName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`catID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
+BEGIN;
 INSERT INTO `category` VALUES (1, 'Điện tử - Điện lạnh');
 INSERT INTO `category` VALUES (2, 'Nhà cửa, đời sống');
 INSERT INTO `category` VALUES (3, 'Sách');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for currentauction
 -- ----------------------------
 DROP TABLE IF EXISTS `currentauction`;
-CREATE TABLE `currentauction`  (
-  `UID` int NOT NULL,
-  `proID` int NOT NULL,
-  `isDone` tinyint(1) NULL DEFAULT 0,
-  `maxPrice` decimal(15, 2) NULL DEFAULT NULL,
-  `stepPrice` int NULL DEFAULT NULL,
-  `isBlock` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`UID`, `proID`) USING BTREE,
-  INDEX `fk_currentAuction_product`(`proID` ASC) USING BTREE,
-  CONSTRAINT `fk_currentAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_currentAuction_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+CREATE TABLE `currentauction` (
+  `UID` int(11) NOT NULL,
+  `proID` int(11) NOT NULL,
+  `isDone` tinyint(1) DEFAULT '0',
+  `maxPrice` decimal(15,2) DEFAULT NULL,
+  `stepPrice` int(11) DEFAULT NULL,
+  `isBlock` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`UID`,`proID`) USING BTREE,
+  KEY `fk_currentAuction_product` (`proID`) USING BTREE,
+  CONSTRAINT `fk_currentAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`),
+  CONSTRAINT `fk_currentAuction_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of currentauction
 -- ----------------------------
+BEGIN;
 INSERT INTO `currentauction` VALUES (1, 14, 0, 4500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (2, 11, 0, 1800.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (3, 28, 0, 4800.00, NULL, 0);
@@ -210,22 +213,25 @@ INSERT INTO `currentauction` VALUES (12, 29, 0, 6000.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 34, 0, 3500.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 36, 0, 4200.00, NULL, 0);
 INSERT INTO `currentauction` VALUES (12, 39, 0, 9000.00, NULL, 0);
+INSERT INTO `currentauction` VALUES (28, 1, 0, 6000.00, NULL, 1);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for description
 -- ----------------------------
 DROP TABLE IF EXISTS `description`;
-CREATE TABLE `description`  (
-  `proID` int NOT NULL,
+CREATE TABLE `description` (
+  `proID` int(11) NOT NULL,
   `dateDes` datetime NOT NULL,
-  `description` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  PRIMARY KEY (`proID`, `dateDes`) USING BTREE,
-  CONSTRAINT `fk_description_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  `description` longtext,
+  PRIMARY KEY (`proID`,`dateDes`) USING BTREE,
+  CONSTRAINT `fk_description_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of description
 -- ----------------------------
+BEGIN;
 INSERT INTO `description` VALUES (1, '2021-12-24 17:13:31', '<h4 class=\"BlockTitle__Wrapper-sc-qpz3fo-0 eHltcn\" style=\"box-sizing: border-box; color: rgb(51, 51, 51); font-size: 20px; font-weight: 400; line-height: 32px; padding: 8px 16px; text-transform: capitalize; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center; margin: 0px; font-family: Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">M&ocirc; Tả Sản Phẩm</h4>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\">\r\n            <div style=\"box-sizing: border-box;\">\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">Nội dung t&iacute;nh năng</h5>\r\n                <p style=\"box-sizing: border-box; margin: 5px 0px 12px;\"><span data-sheets-textstyleruns=\'{\"1\":0,\"2\":{\"5\":1}}{\"1\":12}{\"1\":760,\"2\":{\"5\":1}}{\"1\":777}{\"1\":1981,\"2\":{\"5\":1}}{\"1\":1982}{\"1\":2090,\"2\":{\"5\":1}}{\"1\":2097}{\"1\":2327,\"2\":{\"5\":1}}{\"1\":2329}{\"1\":2330,\"2\":{\"5\":1}}{\"1\":2347}{\"1\":2411,\"2\":{\"5\":1}}{\"1\":2438}\' data-sheets-userformat=\'{\"2\":12801,\"3\":{\"1\":0},\"12\":0,\"15\":\"Montserrat\",\"16\":9}\' data-sheets-value=\'{\"1\":2,\"2\":\"MacBook Air\\nMạnh mẽ. Mà nhẹ bỗng.\\nMacBook Air. Nay có chip Apple M1.\\nSiêu mạnh mẽ. Siêu nhẹ.\\n\\nMacBook Air là máy tính xách tay mỏng và nhẹ nhất của Apple – nay thay đổi ngoạn mục với chip Apple M1 mạnh \\nmẽ. Tạo ra một cú nhảy vọt về hiệu năng CPU và đồ họa, cùng thời lượng pin lên đến 18 giờ. (1)\\n\\nMáy tính xách tay mỏng và nhẹ nhất của Apple, nay siêu mạnh mẽ với chip Apple M1. Xử lý công việc giúp bạn với \\nCPU 8 lõi nhanh như chớp. Đưa các ứng dụng và game có đồ họa khủng lên một tầm cao mới với GPU 8 lõi. Đồng \\nthời, tăng tốc các tác vụ máy học với Neural Engine 16 lõi. Tất cả gói gọn trong một thiết kế không quạt, không tiếng \\nồn, thời lượng pin dài nhất từ trước đến nay lên đến 18 giờ. (1) MacBook Air. Vẫn cực kỳ cơ động. Mà mạnh mẽ hơn \\nnhiều.\\n\\nTính năng nổi bật\\n•        Chip M1 do Apple thiết kế tạo ra một cú nhảy vọt về hiệu năng máy học, CPU và GPU\\n•        Tăng thời gian sử dụng với thời lượng pin lên đến 18 giờ (1)\\n•        CPU 8 lõi cho tốc độ nhanh hơn đến 3.5x, xử lý công việc nhanh chóng hơn bao giờ hết (2)\\n•        GPU lên đến 8 lõi với tốc độ xử lý đồ họa nhanh hơn đến 5x cho các ứng dụng và game đồ họa khủng (2)\\n•        Neural Engine 16 lõi cho công nghệ máy học hiện đại\\n•        Bộ nhớ thống nhất 8GB giúp bạn làm việc gì cũng nhanh chóng và trôi chảy \\n•        Ổ lưu trữ SSD siêu nhanh khởi chạy ứng dụng và mở tập tin chỉ trong tích tắc\\n•        Thiết kế không quạt giảm tối đa tiếng ồn khi sử dụng \\n•        Màn hình Retina 13.3 inch với dải màu rộng P3 cho hình ảnh sống động và chi tiết ấn tượng (3)\\n•        Camera FaceTime HD với bộ xử lý tín hiệu hình ảnh tiên tiến cho các cuộc gọi video đẹp hình, rõ tiếng hơn\\n•        Bộ ba micro phối hợp tập trung thu giọng nói của bạn, không thu tạp âm môi trường\\n•        Wi-Fi 6 thế hệ mới giúp kết nối nhanh hơn\\n•        Hai cổng Thunderbolt / USB 4 để sạc và kết nối phụ kiện\\n•        Bàn phím Magic Keyboard có đèn nền và Touch ID giúp mở khóa và thanh toán an toàn hơn\\n•        macOS sở hữu thiết kế ấn tượng, dễ sử dụng và phối hợp mượt mà với iPhone\\n•        Hiện có màu vàng kim, xám bạc và bạc\\n\\nPháp lý\\nHiện có sẵn các lựa chọn để nâng cấp.\\n(1) Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\\n(2) So với thế hệ máy trước.\\n(3) Kích thước màn hình tính theo đường chéo.\\n\\n\\nThông số kỹ thuật\\nTruy cập apple.com/macbook-air/specs để xem cấu hình đầy đủ. \\n\\nTên chính thức của sản phẩm\\nMacBook Air (M1, 2020)\\n\"}\' style=\"box-sizing: border-box;\">MacBook Air l&agrave; m&aacute;y t&iacute;nh x&aacute;ch tay mỏng v&agrave; nhẹ nhất của Apple &ndash; nay thay đổi ngoạn mục với chip Apple M1 mạnh mẽ. Tạo ra một c&uacute; nhảy vọt về hiệu năng CPU v&agrave; đồ họa, c&ugrave;ng thời lượng pin l&ecirc;n đến 18 giờ. (1)<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">M&aacute;y t&iacute;nh x&aacute;ch tay mỏng v&agrave; nhẹ nhất của Apple, nay si&ecirc;u mạnh mẽ với chip Apple M1. Xử l&yacute; c&ocirc;ng việc gi&uacute;p bạn với CPU 8 l&otilde;i nhanh như chớp. Đưa c&aacute;c ứng dụng v&agrave; game c&oacute; đồ họa khủng l&ecirc;n một tầm cao mới với GPU 8 l&otilde;i. Đồng thời, tăng tốc c&aacute;c t&aacute;c vụ m&aacute;y học với Neural Engine 16 l&otilde;i. Tất cả g&oacute;i gọn trong một thiết kế kh&ocirc;ng quạt, kh&ocirc;ng tiếng ồn, thời lượng pin d&agrave;i nhất từ trước đến nay l&ecirc;n đến 18 giờ. (1) MacBook Air vẫn cực kỳ cơ động m&agrave; mạnh mẽ hơn nhiều.<br style=\"box-sizing: border-box;\"></span></p>\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">T&iacute;nh năng nổi bật</h5>\r\n                <ul style=\"box-sizing: border-box;\">\r\n                    <li style=\"box-sizing: border-box;\">Chip M1 do Apple thiết kế tạo ra một c&uacute; nhảy vọt về hiệu năng m&aacute;y học, CPU v&agrave; GPU</li>\r\n                    <li style=\"box-sizing: border-box;\">Tăng thời gian sử dụng với thời lượng pin l&ecirc;n đến 18 giờ (1)</li>\r\n                    <li style=\"box-sizing: border-box;\">CPU 8 l&otilde;i cho tốc độ nhanh hơn đến 3.5x, xử l&yacute; c&ocirc;ng việc nhanh ch&oacute;ng hơn bao giờ hết (2)</li>\r\n                    <li style=\"box-sizing: border-box;\">GPU l&ecirc;n đến 8 l&otilde;i với tốc độ xử l&yacute; đồ họa nhanh hơn đến 5x cho c&aacute;c ứng dụng v&agrave; game đồ họa khủng (2)</li>\r\n                    <li style=\"box-sizing: border-box;\">Neural Engine 16 l&otilde;i cho c&ocirc;ng nghệ m&aacute;y học hiện đại</li>\r\n                    <li style=\"box-sizing: border-box;\">Bộ nhớ thống nhất 8GB gi&uacute;p bạn l&agrave;m việc g&igrave; cũng nhanh ch&oacute;ng v&agrave; tr&ocirc;i chảy</li>\r\n                    <li style=\"box-sizing: border-box;\">Ổ lưu trữ SSD si&ecirc;u nhanh khởi chạy ứng dụng v&agrave; mở tập tin chỉ trong t&iacute;ch tắc</li>\r\n                    <li style=\"box-sizing: border-box;\">Thiết kế kh&ocirc;ng quạt giảm tối đa tiếng ồn khi sử dụng</li>\r\n                    <li style=\"box-sizing: border-box;\">M&agrave;n h&igrave;nh Retina 13.3 inch với dải m&agrave;u rộng P3 cho h&igrave;nh ảnh sống động v&agrave; chi tiết ấn tượng (3)</li>\r\n                    <li style=\"box-sizing: border-box;\">Camera FaceTime HD với bộ xử l&yacute; t&iacute;n hiệu h&igrave;nh ảnh ti&ecirc;n tiến cho c&aacute;c cuộc gọi video đẹp h&igrave;nh, r&otilde; tiếng hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">Bộ ba micro phối hợp tập trung thu giọng n&oacute;i của bạn, kh&ocirc;ng thu tạp &acirc;m m&ocirc;i trường</li>\r\n                    <li style=\"box-sizing: border-box;\">Wi-Fi 6 thế hệ mới gi&uacute;p kết nối nhanh hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">Hai cổng Thunderbolt / USB 4 để sạc v&agrave; kết nối phụ kiện</li>\r\n                    <li style=\"box-sizing: border-box;\">B&agrave;n ph&iacute;m Magic Keyboard c&oacute; đ&egrave;n nền v&agrave; Touch ID gi&uacute;p mở kh&oacute;a v&agrave; thanh to&aacute;n an to&agrave;n hơn</li>\r\n                    <li style=\"box-sizing: border-box;\">macOS sở hữu thiết kế ấn tượng, dễ sử dụng v&agrave; phối hợp mượt m&agrave; với iPhone</li>\r\n                    <li style=\"box-sizing: border-box;\">Hiện c&oacute; m&agrave;u v&agrave;ng kim, x&aacute;m bạc v&agrave; bạc</li>\r\n                </ul>\r\n                <h5 style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 10px; font-size: 20px;\">Ph&aacute;p l&yacute;</h5>\r\n                <p style=\"box-sizing: border-box; margin: 5px 0px 12px;\"><span data-sheets-textstyleruns=\'{\"1\":0,\"2\":{\"5\":1}}{\"1\":12}{\"1\":760,\"2\":{\"5\":1}}{\"1\":777}{\"1\":1981,\"2\":{\"5\":1}}{\"1\":1982}{\"1\":2090,\"2\":{\"5\":1}}{\"1\":2097}{\"1\":2327,\"2\":{\"5\":1}}{\"1\":2329}{\"1\":2330,\"2\":{\"5\":1}}{\"1\":2347}{\"1\":2411,\"2\":{\"5\":1}}{\"1\":2438}\' data-sheets-userformat=\'{\"2\":12801,\"3\":{\"1\":0},\"12\":0,\"15\":\"Montserrat\",\"16\":9}\' data-sheets-value=\'{\"1\":2,\"2\":\"MacBook Air\\nMạnh mẽ. Mà nhẹ bỗng.\\nMacBook Air. Nay có chip Apple M1.\\nSiêu mạnh mẽ. Siêu nhẹ.\\n\\nMacBook Air là máy tính xách tay mỏng và nhẹ nhất của Apple – nay thay đổi ngoạn mục với chip Apple M1 mạnh \\nmẽ. Tạo ra một cú nhảy vọt về hiệu năng CPU và đồ họa, cùng thời lượng pin lên đến 18 giờ. (1)\\n\\nMáy tính xách tay mỏng và nhẹ nhất của Apple, nay siêu mạnh mẽ với chip Apple M1. Xử lý công việc giúp bạn với \\nCPU 8 lõi nhanh như chớp. Đưa các ứng dụng và game có đồ họa khủng lên một tầm cao mới với GPU 8 lõi. Đồng \\nthời, tăng tốc các tác vụ máy học với Neural Engine 16 lõi. Tất cả gói gọn trong một thiết kế không quạt, không tiếng \\nồn, thời lượng pin dài nhất từ trước đến nay lên đến 18 giờ. (1) MacBook Air. Vẫn cực kỳ cơ động. Mà mạnh mẽ hơn \\nnhiều.\\n\\nTính năng nổi bật\\n•        Chip M1 do Apple thiết kế tạo ra một cú nhảy vọt về hiệu năng máy học, CPU và GPU\\n•        Tăng thời gian sử dụng với thời lượng pin lên đến 18 giờ (1)\\n•        CPU 8 lõi cho tốc độ nhanh hơn đến 3.5x, xử lý công việc nhanh chóng hơn bao giờ hết (2)\\n•        GPU lên đến 8 lõi với tốc độ xử lý đồ họa nhanh hơn đến 5x cho các ứng dụng và game đồ họa khủng (2)\\n•        Neural Engine 16 lõi cho công nghệ máy học hiện đại\\n•        Bộ nhớ thống nhất 8GB giúp bạn làm việc gì cũng nhanh chóng và trôi chảy \\n•        Ổ lưu trữ SSD siêu nhanh khởi chạy ứng dụng và mở tập tin chỉ trong tích tắc\\n•        Thiết kế không quạt giảm tối đa tiếng ồn khi sử dụng \\n•        Màn hình Retina 13.3 inch với dải màu rộng P3 cho hình ảnh sống động và chi tiết ấn tượng (3)\\n•        Camera FaceTime HD với bộ xử lý tín hiệu hình ảnh tiên tiến cho các cuộc gọi video đẹp hình, rõ tiếng hơn\\n•        Bộ ba micro phối hợp tập trung thu giọng nói của bạn, không thu tạp âm môi trường\\n•        Wi-Fi 6 thế hệ mới giúp kết nối nhanh hơn\\n•        Hai cổng Thunderbolt / USB 4 để sạc và kết nối phụ kiện\\n•        Bàn phím Magic Keyboard có đèn nền và Touch ID giúp mở khóa và thanh toán an toàn hơn\\n•        macOS sở hữu thiết kế ấn tượng, dễ sử dụng và phối hợp mượt mà với iPhone\\n•        Hiện có màu vàng kim, xám bạc và bạc\\n\\nPháp lý\\nHiện có sẵn các lựa chọn để nâng cấp.\\n(1) Thời lượng pin khác nhau tùy theo cách sử dụng và cấu hình. Truy cập apple.com/batteries để biết thêm thông tin.\\n(2) So với thế hệ máy trước.\\n(3) Kích thước màn hình tính theo đường chéo.\\n\\n\\nThông số kỹ thuật\\nTruy cập apple.com/macbook-air/specs để xem cấu hình đầy đủ. \\n\\nTên chính thức của sản phẩm\\nMacBook Air (M1, 2020)\\n\"}\' style=\"box-sizing: border-box;\">Hiện c&oacute; sẵn c&aacute;c lựa chọn để n&acirc;ng cấp.<br style=\"box-sizing: border-box;\">(1) Thời lượng pin kh&aacute;c nhau t&ugrave;y theo c&aacute;ch sử dụng v&agrave; cấu h&igrave;nh. Truy cập apple.com/batteries để biết th&ecirc;m th&ocirc;ng tin.<br style=\"box-sizing: border-box;\">(2) So với thế hệ m&aacute;y trước.<br style=\"box-sizing: border-box;\">(3) K&iacute;ch thước m&agrave;n h&igrave;nh t&iacute;nh theo đường ch&eacute;o</span></p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>');
 INSERT INTO `description` VALUES (2, '2021-09-26 03:58:44', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Hộp 12 B&uacute;t Ch&igrave; 2B Si&ecirc;u R&otilde; N&eacute;t Tỳ Kh&ocirc;ng G&atilde;y Cho B&eacute;</strong> l&agrave; vật dụng kh&ocirc;ng thể thiếu khi học vẽ, học viết hay l&agrave;m to&aacute;n, l&agrave;m b&agrave;i thi.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Th&acirc;n b&uacute;t được l&agrave;m từ chất liệu gỗ chắc chắn, bền đẹp, bao gọn ruột ch&igrave; b&ecirc;n trong, gi&uacute;p cho n&eacute;t vẽ được cứng c&aacute;p</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Thiết kế gọn nhẹ, đơn giản nhưng ưa nh&igrave;n.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">M&agrave;u ch&igrave; đậm, r&otilde; n&eacute;t, mịn đẹp l&agrave; đặc trưng của ch&igrave; 2B</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Khi sử dụng, ng&ograve;i kh&ocirc;ng bị g&atilde;y vụn, &iacute;t hao, dễ x&oacute;a sạch bằng cục tẩy, đặc biệt hạn chế l&agrave;m bẩn tay v&agrave; quần &aacute;o.</p>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\">\r\n            <div style=\"box-sizing: border-box;\"><br></div>\r\n        </div>\r\n    </div>\r\n</div>');
 INSERT INTO `description` VALUES (3, '2021-09-30 06:24:04', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">T&Iacute;NH NĂNG SẢN PHẨM:<br style=\"box-sizing: border-box;\">️Sổ tay được thiết kế c&aacute;c m&agrave;u t&ocirc;ng nhẹ nh&agrave;ng, trong suốt.<br style=\"box-sizing: border-box;\">️Sổ g&aacute;y xoắn c&oacute; thể xoay được c&aacute;c trang, đặc biệt l&agrave; c&oacute; thể th&aacute;o rời để lấy giấy b&ecirc;n trong.<br style=\"box-sizing: border-box;\">️Sổ được chia mục r&otilde; r&agrave;ng, thuận tiện cho việc chia c&aacute;c đầu c&ocirc;ng việc/ m&ocirc;n học dễ d&agrave;ng hơn.<br style=\"box-sizing: border-box;\">️Sổ đi k&egrave;m với sticker ph&acirc;n loại.<br style=\"box-sizing: border-box;\">️Chất lượng giấy đạt chuẩn, ph&ugrave; hợp cho đ&ocirc;i mắt.<br style=\"box-sizing: border-box;\">️Sổ ph&ugrave; hợp cho mọi đối tượng.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">TH&Ocirc;NG TIN SẢN PHẨM:<br style=\"box-sizing: border-box;\">Sổ tay ghi ch&eacute;p A5 Deli - QHA560<br style=\"box-sizing: border-box;\">Bốn M&agrave;u: Xanh dương/Hồng/V&agrave;ng/Xanh l&aacute;<br style=\"box-sizing: border-box;\">K&iacute;ch thước: 208x145mm<br style=\"box-sizing: border-box;\">Trọng lượng giấy: 80g</p>\r\n<div class=\"content\" style=\"box-sizing: border-box; width: 920px; padding: 0px 16px 16px; display: inline-block; color: rgb(36, 36, 36); line-height: 21px; text-align: justify; border-radius: 4px; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <div class=\"ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr\" style=\"box-sizing: border-box;\">\r\n        <div class=\"ToggleContent__View-sc-1dbmfaw-0 wyACs\" style=\"box-sizing: border-box; position: relative;\"><br></div>\r\n    </div>\r\n</div>');
@@ -269,26 +275,28 @@ INSERT INTO `description` VALUES (40, '2020-11-03 17:18:17', '<p style=\"box-siz
 INSERT INTO `description` VALUES (41, '2021-01-21 18:38:05', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống</strong><br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống l&agrave; cuốn s&aacute;ch giới thiệu tới bạn đọc chi&ecirc;m tinh l&agrave; g&igrave; th&ocirc;ng qua c&aacute;c định nghĩa, m&ocirc; tả lịch sử chi&ecirc;m tinh v&agrave; giải th&iacute;ch những ngộ nhận nhiều người mắc phải khi n&oacute;i về chủ đề n&agrave; Quan trọng hơn, cuốn s&aacute;ch hướng dẫn bạn đọc ứng dụng chi&ecirc;m tinh v&agrave;o mọi kh&iacute;a cạnh của đời sống.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Loại chi&ecirc;m tinh được thực h&agrave;nh ng&agrave;y nay, dựa tr&ecirc;n kh&aacute;i niệm về bản đồ sao, bắt nguồn từ Hy Lạp v&agrave; Babylon cổ đại. Bản đồ sao l&agrave; h&igrave;nh ảnh c&aacute;ch điệu của bầu trời, được vẽ cho một thời gian v&agrave; địa điểm cụ thể. Đ&oacute; l&agrave; h&igrave;nh ảnh tổng thể về bạn. Những biểu tượng tr&ecirc;n đ&oacute; m&ocirc; tả cả trạng th&aacute;i b&ecirc;n trong nội t&acirc;m lẫn t&igrave;nh huống b&ecirc;n ngo&agrave;i cuộc sống, lịch sử v&agrave; kinh nghiệm c&aacute; nh&acirc;n của bạn tr&ecirc;n mọi cấp độ, từ thể chất tới t&acirc;m l&yacute;. Bằng c&aacute;ch n&agrave;y hay c&aacute;ch kh&aacute;c, mọi thứ về con người bạn, những g&igrave; bạn l&agrave;m đều được chứa đựng trong bức tranh sống động n&agrave;y.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Cuốn s&aacute;ch n&agrave;y hướng dẫn bạn mở kh&oacute;a bản đồ sao bằng c&aacute;ch t&igrave;m hiểu t&aacute;c động c&aacute;c v&igrave; sao l&ecirc;n vạn vật, nắm bắt những quy tắc cốt l&otilde;i v&agrave; c&aacute;ch ứng dụng chi&ecirc;m tinh v&agrave;o đời sống, từ những vấn đề b&igrave;nh thường nhất tới những g&igrave; mang &yacute; nghĩa s&acirc;u sắc nhất v&agrave; định h&igrave;nh tiến tr&igrave;nh cuộc đời bạn. V&agrave;o những l&uacute;c quan trọng của cuộc đời như thay đổi chỗ l&agrave;m, lập gia đ&igrave;nh, gặp kh&oacute; khăn t&agrave;i ch&iacute;nh&hellip; bạn c&oacute; thể coi n&oacute; như một chỉ dẫn hữu &iacute;ch. Từ bản đồ sao, bạn đọc sẽ được học c&aacute;ch diễn giải c&aacute;c cung Ho&agrave;ng đạo, c&aacute;c h&agrave;nh tinh v&agrave; c&aacute;c nh&agrave; trong chi&ecirc;m tinh để hiểu bản th&acirc;n hơn. Qua những lời khuy&ecirc;n thiết thực v&agrave; c&aacute;c trường hợp tham khảo, bạn sẽ kh&aacute;m ph&aacute; c&aacute;ch nu&ocirc;i dưỡng những mối quan hệ, đương đầu với những kh&oacute; khăn v&agrave; nhiều hơn thế nữa.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Với lời văn s&uacute;c t&iacute;ch, dễ hiểu, khoa học v&agrave; phần minh họa sống động, thu h&uacute;t, Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống cung cấp c&aacute;c kiến thức cơ bản v&agrave; nền tảng, sẽ khiến độc giả ho&agrave;n to&agrave;n ch&igrave;m đắm v&agrave; hứng th&uacute; đ&agrave;o s&acirc;u v&agrave;o chi&ecirc;m tinh học. Cuốn s&aacute;ch được viết bởi Carole Taylor, hiện l&agrave; Gi&aacute;m đốc Nghi&ecirc;n cứu tại Khoa Nghi&ecirc;n cứu Chi&ecirc;m tinh học v&agrave; l&agrave; c&acirc;y b&uacute;t uy t&iacute;n trong cộng đồng chi&ecirc;m tinh.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box; font-weight: 500;\">Nhận x&eacute;t về t&aacute;c phẩm:</strong></p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">&ldquo;Cuốn s&aacute;ch kỳ diệu n&agrave;y sẽ đưa ta du h&agrave;nh qua to&agrave;n bộ miền đất chi&ecirc;m tinh&hellip; Lời văn s&uacute;c t&iacute;ch, dễ hiểu v&agrave; phần minh họa sống động, thu h&uacute;t sẽ khiến độc giả ho&agrave;n to&agrave;n ch&igrave;m đắm. Nến, đ&aacute; chi&ecirc;m tinh v&agrave; quyển s&aacute;ch n&agrave;y l&agrave; những g&igrave; m&agrave; bất kỳ ai y&ecirc;u th&iacute;ch chi&ecirc;m tinh đều kh&ocirc;ng thể thiếu được.&rdquo;<br style=\"box-sizing: border-box;\">- B&aacute;o Elite Daily<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">&ldquo;Cuốn s&aacute;ch n&agrave;y sẽ tạo cho độc giả hứng th&uacute; đ&agrave;o s&acirc;u v&agrave;o chi&ecirc;m tinh học nghi&ecirc;m t&uacute;c. Một quyển s&aacute;ch cơ bản v&agrave; nền tảng, c&oacute; gi&aacute; trị tham khảo hơn đa phần kiến thức chi&ecirc;m tinh từ c&aacute;c app điện thoại, video tr&ecirc;n Youtube hay c&aacute;c b&agrave;i viết tr&ecirc;n Instagram m&agrave; ta vẫn thỉnh thoảng lướt qua.&rdquo;<br style=\"box-sizing: border-box;\">- Chi&ecirc;m tinh gia Tim Burness<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Th&ocirc;ng tin t&aacute;c giả: Hiện đang giữ chức Gi&aacute;m đốc Nghi&ecirc;n cứu tại Khoa Nghi&ecirc;n cứu Chi&ecirc;m tinh học v&agrave; từng l&agrave; bi&ecirc;n tập vi&ecirc;n cho chuy&ecirc;n san của Hiệp hội Chi&ecirc;m tinh học Vương quốc Anh, t&aacute;c giả Carole Taylor l&agrave; một c&acirc;y b&uacute;t uy t&iacute;n trong cộng đồng chi&ecirc;m tinh. Bằng lối tr&igrave;nh b&agrave;y kiến thức thực tiễn, dễ d&agrave;ng tiếp cận, Taylor sẽ hướng dẫn độc giả vận dụng sự th&ocirc;ng th&aacute;i của bộ m&ocirc;n chi&ecirc;m tinh học cổ xưa v&agrave;o qu&aacute; tr&igrave;nh tự nhận thức v&agrave; giải quyết những vấn đề của bản th&acirc;n trong c&aacute;c giai đoạn quan trọng của cuộc đời, như khi thay đổi chỗ l&agrave;m, lập gia đ&igrave;nh hay gặp kh&oacute; khăn t&agrave;i ch&iacute;nh.<br style=\"box-sizing: border-box;\"><br style=\"box-sizing: border-box;\">Với nội dung mạch lạc, khoa học c&ugrave;ng h&igrave;nh ảnh minh họa cuốn h&uacute;t v&agrave; truyền cảm hứng, Chi&ecirc;m tinh học - Vận dụng tr&iacute; tuệ về c&aacute;c v&igrave; sao v&agrave;o đời sống l&agrave; quyển cẩm nang cần thiết cho mọi độc giả quan t&acirc;m tới chi&ecirc;m tinh học.</p>');
 INSERT INTO `description` VALUES (42, '2021-01-08 00:58:34', '<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">ỔN ĐỊNH HAY TỰ DO (Y&ecirc;n ổn bạn th&iacute;ch kh&ocirc;ng cho bạn được cuộc đời như mong muốn) - cuốn s&aacute;ch Best-seller d&agrave;nh cho thế hệ GEN Z, tiếp nối H&atilde;y khiến tương lai biết ơn v&igrave; hiện tại bạn đ&atilde; cố gắng hết m&igrave;nh.</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Dưới g&oacute;c nh&igrave;n thực tế c&ugrave;ng giọng văn v&ocirc; c&ugrave;ng thẳng thắn, sắc sảo, nữ nh&agrave; văn đ&atilde; thức tỉnh h&agrave;ng vạn thanh ni&ecirc;n Trung Quốc:</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Mơ mộng viển v&ocirc;ng - đơn giản l&agrave; kh&ocirc;ng c&oacute; khả năng thực hiện ước mơ</li>\r\n    <li style=\"box-sizing: border-box;\">Nếu như kh&ocirc;ng c&oacute; đ&iacute;ch đến, th&igrave; gi&oacute; phương n&agrave;o cũng l&agrave; ngược chiều</li>\r\n    <li style=\"box-sizing: border-box;\">Khi t&acirc;m th&aacute;i thay đổi, &aacute;p lực sẽ biến th&agrave;nh động lực</li>\r\n    <li style=\"box-sizing: border-box;\">Th&agrave;nh c&ocirc;ng chỉ ưu &aacute;i cho những người dũng cảm</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Xuy&ecirc;n suốt 300 trang s&aacute;ch, bạn sẽ c&oacute; được hơn 56 b&agrave;i học gi&aacute; trị kh&aacute;c cho bản th&acirc;n:</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Cuốn s&aacute;ch truyền động lực tới bạn: d&aacute;m ước mơ cũng d&aacute;m biến ước mơ th&agrave;nh hiện thực</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&iacute;ch lệ bạn theo đuổi đến c&ugrave;ng sự nỗ lực để đạt được th&agrave;nh tựu tối ưu</li>\r\n    <li style=\"box-sizing: border-box;\">Truyền cảm hứng để sống v&agrave; l&agrave;m theo những g&igrave; m&igrave;nh muốn</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&ocirc;ng qu&ecirc;n nhắc nhở bạn về sức mạnh của th&aacute;i độ mềm mỏng: vừa biết khoan dung cho người kh&aacute;c, vừa biết c&uacute;i m&igrave;nh khi&ecirc;m tốn</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Được viết ra với mục đ&iacute;ch song h&agrave;nh c&ugrave;ng những người trẻ v&igrave; vậy m&agrave; cuốn s&aacute;ch đặc biệt ph&ugrave; hợp d&agrave;nh cho thế hệ GEN Z v&agrave; cuối GEN Y - l&agrave; những người trẻ</p>\r\n<ul style=\"box-sizing: border-box; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\r\n    <li style=\"box-sizing: border-box;\">Đứng trước ngưỡng cửa chọn trường, chọn ng&agrave;nh, chọn hướng đi theo đuổi đam m&ecirc;</li>\r\n    <li style=\"box-sizing: border-box;\">Loay hoay v&agrave; mệt mỏi với c&ocirc;ng việc văn ph&ograve;ng 8 tiếng nhưng kh&ocirc;ng biết l&agrave;m sao để thay đổi</li>\r\n    <li style=\"box-sizing: border-box;\">Kh&ocirc;ng c&oacute; động lực sống, học tập v&agrave; l&agrave;m việc. Lu&ocirc;n hoang mang v&agrave; mơ hồ khi nghĩ về tương lai.</li>\r\n</ul>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Tr&iacute;ch dẫn lời khuy&ecirc;n đắt gi&aacute; nhất trong cuốn s&aacute;ch: &quot;Nh&acirc;n l&uacute;c c&ograve;n trẻ, ch&uacute;ng ta h&atilde;y cố gắng chạy thật nhanh, l&agrave;m nhiều hơn những g&igrave; bạn muốn l&agrave;m, phấn đấu kh&ocirc;ng ngừng tiến l&ecirc;n, tin tưởng bản th&acirc;n trong tương lai nhất định sẽ c&oacute; một cuộc sống tuyệt vời.&quot;</p>\r\n<p style=\"box-sizing: border-box; margin: 5px 0px 12px; color: rgb(36, 36, 36); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Vậy n&ecirc;n ỔN ĐỊNH hay TỰ DO? - bạn h&atilde;y ki&ecirc;n định lựa chọn</p>');
 INSERT INTO `description` VALUES (49, '2022-01-14 03:55:25', '<p>qwertyuiop</p>');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for historyauc
 -- ----------------------------
 DROP TABLE IF EXISTS `historyauc`;
-CREATE TABLE `historyauc`  (
+CREATE TABLE `historyauc` (
   `aucTime` datetime NOT NULL,
-  `UID` int NOT NULL,
-  `proID` int NOT NULL,
-  `price` decimal(15, 2) NULL DEFAULT NULL,
-  PRIMARY KEY (`aucTime`, `UID`, `proID`) USING BTREE,
-  INDEX `fk_historyAuc_users`(`UID` ASC) USING BTREE,
-  INDEX `fk_historyAuc_product`(`proID` ASC) USING BTREE,
-  CONSTRAINT `fk_historyAuc_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_historyAuc_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  `UID` int(11) NOT NULL,
+  `proID` int(11) NOT NULL,
+  `price` decimal(15,2) DEFAULT NULL,
+  PRIMARY KEY (`aucTime`,`UID`,`proID`) USING BTREE,
+  KEY `fk_historyAuc_users` (`UID`) USING BTREE,
+  KEY `fk_historyAuc_product` (`proID`) USING BTREE,
+  CONSTRAINT `fk_historyAuc_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`),
+  CONSTRAINT `fk_historyAuc_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of historyauc
 -- ----------------------------
+BEGIN;
 INSERT INTO `historyauc` VALUES ('2019-01-05 00:34:47', 6, 35, 1600.00);
 INSERT INTO `historyauc` VALUES ('2020-04-26 16:09:40', 7, 33, 1800.00);
 INSERT INTO `historyauc` VALUES ('2020-09-04 23:51:33', 11, 33, 2400.00);
@@ -498,21 +506,24 @@ INSERT INTO `historyauc` VALUES ('2022-01-02 13:05:29', 11, 1, 3900.00);
 INSERT INTO `historyauc` VALUES ('2022-01-04 20:46:02', 9, 32, 7300.00);
 INSERT INTO `historyauc` VALUES ('2022-01-12 20:34:50', 10, 41, 8200.00);
 INSERT INTO `historyauc` VALUES ('2022-01-12 20:35:12', 10, 42, 9100.00);
+INSERT INTO `historyauc` VALUES ('2022-01-14 11:07:58', 28, 1, 4500.00);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for otpcode
 -- ----------------------------
 DROP TABLE IF EXISTS `otpcode`;
-CREATE TABLE `otpcode`  (
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+CREATE TABLE `otpcode` (
+  `email` varchar(255) NOT NULL,
   `sendTime` datetime NOT NULL,
-  `otp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`email`, `sendTime`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `otp` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`email`,`sendTime`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of otpcode
 -- ----------------------------
+BEGIN;
 INSERT INTO `otpcode` VALUES ('tranhoangthai2001@gmail.com', '2022-01-13 17:01:30', '155800');
 INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 01:00:59', '123');
 INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 01:14:23', '058128');
@@ -523,37 +534,39 @@ INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:04:46', '44830
 INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:06:07', '856966');
 INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 02:07:09', '385406');
 INSERT INTO `otpcode` VALUES ('vnthtpk@gmail.com', '2022-01-13 17:02:08', '999138');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for product
 -- ----------------------------
 DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product`  (
-  `proID` int NOT NULL AUTO_INCREMENT,
-  `typID` int NULL DEFAULT NULL,
-  `proName` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `ownerUID` int NULL DEFAULT NULL,
-  `startPrice` decimal(15, 2) NULL DEFAULT NULL,
-  `buyNow` decimal(15, 2) NULL DEFAULT NULL,
-  `startDate` datetime NULL DEFAULT NULL,
-  `endDate` datetime NULL DEFAULT NULL,
-  `autoExtend` tinyint(1) NULL DEFAULT 1,
-  `stepPrice` decimal(15, 2) NULL DEFAULT NULL,
-  `allowBadBidder` tinyint(1) NULL DEFAULT 0,
-  `allowNewBidder` tinyint(1) NULL DEFAULT 1,
-  `BidCount` int UNSIGNED NULL DEFAULT 0,
-  `buyUID` int NULL DEFAULT -1,
-  `isRated` tinyint NULL DEFAULT 0,
+CREATE TABLE `product` (
+  `proID` int(11) NOT NULL AUTO_INCREMENT,
+  `typID` int(11) DEFAULT NULL,
+  `proName` varchar(150) DEFAULT NULL,
+  `ownerUID` int(11) DEFAULT NULL,
+  `startPrice` decimal(15,2) DEFAULT NULL,
+  `buyNow` decimal(15,2) DEFAULT NULL,
+  `startDate` datetime DEFAULT NULL,
+  `endDate` datetime DEFAULT NULL,
+  `autoExtend` tinyint(1) DEFAULT '1',
+  `stepPrice` decimal(15,2) DEFAULT NULL,
+  `allowBadBidder` tinyint(1) DEFAULT '0',
+  `allowNewBidder` tinyint(1) DEFAULT '1',
+  `BidCount` int(10) unsigned DEFAULT '0',
+  `buyUID` int(11) DEFAULT '-1',
+  `isRated` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`proID`) USING BTREE,
-  INDEX `fk_product_type`(`typID` ASC) USING BTREE,
-  FULLTEXT INDEX `proName`(`proName`),
-  CONSTRAINT `fk_product_type` FOREIGN KEY (`typID`) REFERENCES `type` (`typID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  KEY `fk_product_type` (`typID`) USING BTREE,
+  FULLTEXT KEY `proName` (`proName`),
+  CONSTRAINT `fk_product_type` FOREIGN KEY (`typID`) REFERENCES `type` (`typID`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 9000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', 1, 100.00, 1, 1, 5, -1, 0);
+BEGIN;
+INSERT INTO `product` VALUES (1, 2, 'Apple MacBook Air M1 2020 - 13 Inchs (8GB / 16GB - 256GB / 512GB) - Hàng Chính Hãng', 1, 1200.00, 9000.00, '2021-12-24 17:13:31', '2022-01-25 17:13:35', 1, 100.00, 1, 1, 6, -1, 0);
 INSERT INTO `product` VALUES (2, 6, 'Hộp 12 Bút Chì 2B', 3, 1600.00, 8000.00, '2021-09-26 03:58:44', '2022-01-24 02:40:13', 1, 100.00, 1, 1, 5, -1, 0);
 INSERT INTO `product` VALUES (3, 6, 'Sổ Tay Ghi Chép 60 Trang Gáy Lò Xo A5 Deli - Xanh Dương/Hồng/Vàng/Xanh Lá', 4, 1400.00, 9300.00, '2021-09-30 06:24:04', '2022-11-01 19:03:36', 1, 50.00, 0, 1, 5, -1, 0);
 INSERT INTO `product` VALUES (4, 6, 'Combo 5-10-20 Bút Bi Thiên Long TL-027 - Mực Xanh/Đen/Đỏ/Tím', 2, 1800.00, 8500.00, '2021-03-24 18:34:09', '2022-05-26 00:23:35', 0, 100.00, 1, 1, 5, -1, 0);
@@ -602,89 +615,99 @@ INSERT INTO `product` VALUES (46, 2, 'San pham4567', 1, 2000.00, 8000.00, '2022-
 INSERT INTO `product` VALUES (47, 4, 'San pham', 1, 2000.00, 8000.00, '2022-01-14 03:52:57', '2022-01-25 03:52:00', 1, 100.00, 1, 1, 0, -1, 0);
 INSERT INTO `product` VALUES (48, 4, 'San pham', 1, 2000.00, 8000.00, '2022-01-14 03:53:59', '2022-02-05 03:53:00', 1, 100.00, 1, 1, 0, -1, 0);
 INSERT INTO `product` VALUES (49, 4, 'San pham final', 1, 2000.00, 8000.00, '2022-01-14 03:55:25', '2022-02-02 03:55:00', 1, 100.00, 0, 1, 0, -1, 0);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for rating
 -- ----------------------------
 DROP TABLE IF EXISTS `rating`;
-CREATE TABLE `rating`  (
-  `UIDRater` int NOT NULL,
-  `UID` int NOT NULL,
-  `ratingProID` int NOT NULL,
-  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `Type` int NULL DEFAULT NULL,
-  `sendTime` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`UIDRater`, `UID`, `ratingProID`) USING BTREE,
-  INDEX `fk_rating_users`(`UID` ASC) USING BTREE,
-  INDEX `fk_rating_product`(`ratingProID` ASC) USING BTREE,
-  CONSTRAINT `fk_rating_product` FOREIGN KEY (`ratingProID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_rating_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+CREATE TABLE `rating` (
+  `UIDRater` int(11) NOT NULL,
+  `UID` int(11) NOT NULL,
+  `ratingProID` int(11) NOT NULL,
+  `content` longtext,
+  `Type` int(11) DEFAULT NULL,
+  `sendTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`UIDRater`,`UID`,`ratingProID`) USING BTREE,
+  KEY `fk_rating_users` (`UID`) USING BTREE,
+  KEY `fk_rating_product` (`ratingProID`) USING BTREE,
+  CONSTRAINT `fk_rating_product` FOREIGN KEY (`ratingProID`) REFERENCES `product` (`proID`),
+  CONSTRAINT `fk_rating_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of rating
 -- ----------------------------
+BEGIN;
 INSERT INTO `rating` VALUES (1, 10, 37, 'Cám ơn', 1, '2022-01-13 15:52:32');
 INSERT INTO `rating` VALUES (1, 10, 39, 'Người thắng không thanh toán', 0, '2022-01-13 15:52:36');
 INSERT INTO `rating` VALUES (1, 10, 40, 'Cám ơn', 1, '2022-01-13 15:52:39');
 INSERT INTO `rating` VALUES (10, 1, 37, 'Sản phẩm tốt', 1, '2022-01-13 15:52:42');
 INSERT INTO `rating` VALUES (10, 1, 40, 'Sản phẩm lỗi', 0, '2022-01-13 15:52:45');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sessions
 -- ----------------------------
 DROP TABLE IF EXISTS `sessions`;
-CREATE TABLE `sessions`  (
+CREATE TABLE `sessions` (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int UNSIGNED NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL,
+  `expires` int(10) unsigned NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   PRIMARY KEY (`session_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('_Obb_SVm0PpWsActaUNHZrSdvt_i_7GN', 1642169270, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":28,\"email\":\"vnthtpk@gmail.com\",\"name\":\"Thai Tran\",\"addr\":\"district 8\",\"dob\":null,\"type\":2,\"good\":null,\"dislike\":null,\"block\":0}}');
+BEGIN;
+INSERT INTO `sessions` VALUES ('Jqe_5P5HR9YJTZuT_bv8E75PiquSZ1kX', 1642220110, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":1,\"email\":\"dmnhat19@clc.fitus.edu.vn\",\"name\":\"Đỗ Minh Nhật\",\"addr\":\"TP. HCM\",\"dob\":\"2001-11-03T17:00:00.000Z\",\"type\":1,\"good\":123,\"dislike\":4,\"block\":0}}');
+INSERT INTO `sessions` VALUES ('Qao8ZyXpcESaCntHRKlN8Vxdpoq8B_MI', 1642340307, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":27,\"email\":\"admin@gmail.com\",\"name\":\"Louise Jonson\",\"addr\":\"88 W Ring Rd, Buji Town, Longgang\",\"dob\":\"1990-07-10T17:00:00.000Z\",\"type\":0,\"good\":null,\"dislike\":null,\"block\":0}}');
+INSERT INTO `sessions` VALUES ('_Obb_SVm0PpWsActaUNHZrSdvt_i_7GN', 1642194605, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":11,\"email\":\"minhnhatnan@gmail.com\",\"name\":\"Herbert Grant\",\"addr\":\"1-6-8, Marunouchi, Chiyoda-ku\",\"dob\":\"2000-07-19T17:00:00.000Z\",\"type\":2,\"good\":45,\"dislike\":1,\"block\":0}}');
 INSERT INTO `sessions` VALUES ('bMtwGC-RJ53gH1nNJUaNRwS4yUZdTyNZ', 1642194156, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"auth\":true,\"returnTo\":\"http://localhost:3000/\",\"authUser\":{\"UID\":11,\"email\":\"minhnhatnan@gmail.com\",\"name\":\"Herbert Grant\",\"addr\":\"1-6-8, Marunouchi, Chiyoda-ku\",\"dob\":\"2000-07-19T17:00:00.000Z\",\"type\":2,\"good\":45,\"dislike\":1,\"block\":0}}');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for type
 -- ----------------------------
 DROP TABLE IF EXISTS `type`;
-CREATE TABLE `type`  (
-  `typID` int NOT NULL AUTO_INCREMENT,
-  `catID` int NULL DEFAULT NULL,
-  `typName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+CREATE TABLE `type` (
+  `typID` int(11) NOT NULL AUTO_INCREMENT,
+  `catID` int(11) DEFAULT NULL,
+  `typName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`typID`) USING BTREE,
-  INDEX `fk_type_category`(`catID` ASC) USING BTREE,
-  CONSTRAINT `fk_type_category` FOREIGN KEY (`catID`) REFERENCES `category` (`catID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  KEY `fk_type_category` (`catID`) USING BTREE,
+  CONSTRAINT `fk_type_category` FOREIGN KEY (`catID`) REFERENCES `category` (`catID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of type
 -- ----------------------------
+BEGIN;
 INSERT INTO `type` VALUES (1, 1, 'Thiết bị điện lạnh');
 INSERT INTO `type` VALUES (2, 1, 'Máy tính');
 INSERT INTO `type` VALUES (3, 2, 'Dụng cụ nhà bếp');
 INSERT INTO `type` VALUES (4, 2, 'Nội thất');
 INSERT INTO `type` VALUES (5, 3, 'Sách tiếng Việt');
 INSERT INTO `type` VALUES (6, 3, 'Văn phòng phẩm');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for upseller
 -- ----------------------------
 DROP TABLE IF EXISTS `upseller`;
-CREATE TABLE `upseller`  (
-  `UID` int NOT NULL,
-  `isAcpt` tinyint(1) NULL DEFAULT 0,
+CREATE TABLE `upseller` (
+  `UID` int(11) NOT NULL,
+  `isAcpt` tinyint(1) DEFAULT '0',
   `askDate` datetime NOT NULL,
   PRIMARY KEY (`UID`) USING BTREE,
-  CONSTRAINT `fk_upSeller_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `fk_upSeller_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of upseller
 -- ----------------------------
+BEGIN;
 INSERT INTO `upseller` VALUES (1, 1, '2020-06-07 13:43:42');
 INSERT INTO `upseller` VALUES (2, 1, '2020-03-10 13:46:15');
 INSERT INTO `upseller` VALUES (3, 1, '2020-04-05 13:47:02');
@@ -692,28 +715,31 @@ INSERT INTO `upseller` VALUES (4, 1, '2020-03-17 13:48:57');
 INSERT INTO `upseller` VALUES (7, 1, '2020-05-03 13:49:37');
 INSERT INTO `upseller` VALUES (8, 0, '2022-01-05 13:43:08');
 INSERT INTO `upseller` VALUES (10, 0, '2022-01-07 14:49:57');
+INSERT INTO `upseller` VALUES (11, 0, '2022-01-14 04:08:58');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`  (
-  `UID` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` char(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `addr` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dob` date NULL DEFAULT NULL,
-  `type` int NULL DEFAULT NULL,
-  `good` int UNSIGNED NULL DEFAULT 0,
-  `dislike` int UNSIGNED NULL DEFAULT 0,
-  `block` tinyint NULL DEFAULT 0,
+CREATE TABLE `users` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `password` char(60) DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `addr` varchar(200) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `good` int(10) unsigned DEFAULT '0',
+  `dislike` int(10) unsigned DEFAULT '0',
+  `block` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`UID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+BEGIN;
 INSERT INTO `users` VALUES (1, 'dmnhat19@clc.fitus.edu.vn', '$2b$10$yGpsTRGAk.HjgcfRDnL76.ibfrpR13o1/eoN/cBu4MmaOAHL08YUW', 'Đỗ Minh Nhật', 'TP. HCM', '2001-11-04', 1, 123, 4, 0);
 INSERT INTO `users` VALUES (2, 'fregregory@gmail.com', '$2b$10$R97KJWuA49IuTtGJW.BjVun/tsiN4G2LTD1GTL07rqolXRZZxVgEO', 'Gregory Freeman', '326 Whitehouse Lane, Huntingdon Rd', '1992-02-17', 1, 50, 10, 0);
 INSERT INTO `users` VALUES (3, 'rogerfrank@outlook.com', '$2b$10$y4tVVp9cIeb0wLLeuqztvu4szMtHgT6w22uoQx..KGOSEpdPQbTKK', 'Frank Rogers', 'No.855, Dongsan Road, Erxianqiao, Chenghua District', '1995-01-07', 1, 75, 5, 0);
@@ -727,22 +753,24 @@ INSERT INTO `users` VALUES (10, 'kcoleman@outlook.com', '$2b$10$X2ELpjGguXtIWVNq
 INSERT INTO `users` VALUES (11, 'minhnhatnan@gmail.com', '$2b$10$bY3/kifoSiPcj9FTlfUQvO.cYayu573U3wilUKx6AWVyVMO9JaXWy', 'Herbert Grant', '1-6-8, Marunouchi, Chiyoda-ku', '2000-07-20', 2, 45, 1, 0);
 INSERT INTO `users` VALUES (12, 'emilyhahaha@gmail.com', '$2b$10$YS5210oyxMNtxnh51CQFWuX.BPLg2i7mZbQvtdTs46aUuSGXr1Y6G', 'Emily Hai', '124 2nd Zhongshan Road, Yuexiu District', '2003-07-24', 2, 14, 1, 0);
 INSERT INTO `users` VALUES (27, 'admin@gmail.com', '$2b$10$nnUZGF9kijyINy8XzmNA7OA9dZsTP2GVRsuGMBIXRwvPPwuQ2ZLHC', 'Louise Jonson', '88 W Ring Rd, Buji Town, Longgang', '1990-07-11', 0, NULL, NULL, 0);
-INSERT INTO `users` VALUES (28, 'vnthtpk@gmail.com', '$2b$10$hhsrNj2UD5lJxZGGaatUCegHIw7Y9r3r1nS9QQpkb5kzzOrD5Fnge', 'Thai Tran', 'district 8', NULL, 2, 0, 0, 0);
+INSERT INTO `users` VALUES (28, 'vnthtpk@gmail.com', '$2b$10$hhsrNj2UD5lJxZGGaatUCegHIw7Y9r3r1nS9QQpkb5kzzOrD5Fnge', 'Thai Tran', 'district 8', NULL, 1, 0, 0, 0);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for watchlist
 -- ----------------------------
 DROP TABLE IF EXISTS `watchlist`;
-CREATE TABLE `watchlist`  (
-  `UID` int NOT NULL,
-  `proID` int NOT NULL,
-  PRIMARY KEY (`UID`, `proID`) USING BTREE,
-  CONSTRAINT `fk_watchList_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+CREATE TABLE `watchlist` (
+  `UID` int(11) NOT NULL,
+  `proID` int(11) NOT NULL,
+  PRIMARY KEY (`UID`,`proID`) USING BTREE,
+  CONSTRAINT `fk_watchList_users` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of watchlist
 -- ----------------------------
+BEGIN;
 INSERT INTO `watchlist` VALUES (1, 14);
 INSERT INTO `watchlist` VALUES (3, 28);
 INSERT INTO `watchlist` VALUES (4, 28);
@@ -832,30 +860,33 @@ INSERT INTO `watchlist` VALUES (28, 2);
 INSERT INTO `watchlist` VALUES (28, 30);
 INSERT INTO `watchlist` VALUES (28, 32);
 INSERT INTO `watchlist` VALUES (28, 36);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for winauction
 -- ----------------------------
 DROP TABLE IF EXISTS `winauction`;
-CREATE TABLE `winauction`  (
-  `proID` int NOT NULL,
-  `UID` int NULL DEFAULT NULL,
-  `winPrice` decimal(15, 2) NULL DEFAULT NULL,
-  `isRated` tinyint NULL DEFAULT 0,
-  `type` tinyint NULL DEFAULT 0,
+CREATE TABLE `winauction` (
+  `proID` int(11) NOT NULL,
+  `UID` int(11) DEFAULT NULL,
+  `winPrice` decimal(15,2) DEFAULT NULL,
+  `isRated` tinyint(4) DEFAULT '0',
+  `type` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`proID`) USING BTREE,
-  CONSTRAINT `fk_winAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `fk_winAuction_product` FOREIGN KEY (`proID`) REFERENCES `product` (`proID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of winauction
 -- ----------------------------
+BEGIN;
 INSERT INTO `winauction` VALUES (37, 10, 5600.00, 1, 0);
 INSERT INTO `winauction` VALUES (38, 10, 4500.00, 0, 0);
 INSERT INTO `winauction` VALUES (39, 10, 8500.00, 0, 0);
 INSERT INTO `winauction` VALUES (40, 10, 5600.00, 1, 0);
 INSERT INTO `winauction` VALUES (41, 10, 8200.00, 0, 1);
 INSERT INTO `winauction` VALUES (42, 10, 9100.00, 0, 1);
+COMMIT;
 
 -- ----------------------------
 -- Procedure structure for textSearch
